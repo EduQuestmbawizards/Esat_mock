@@ -64,7 +64,8 @@ def save_test_bundle(folder_path, html_name, js_name, title, duration_min, quest
   <!-- PAGE 1: REGISTRATION -->
   <div class="page active" id="pageReg">
     <header class="hdr">
-      <div class="hdr-brand"><span>📐</span><span>EduQuest</span><span class="hdr-pill">ESAT Portal</span></div>
+      <a href="{prefix}index.html" class="hdr-brand" style="text-decoration:none; color:#fff;"><span>📐</span><span>EduQuest</span><span class="hdr-pill">ESAT Portal</span></a>
+      <a href="{prefix}index.html" class="btn btn-outline" style="width:auto; padding:6px 14px; font-size:0.82rem; text-decoration:none;">🏠 Home Portal</a>
     </header>
     <div class="reg-wrap">
       <div class="reg-card">
@@ -144,8 +145,9 @@ def save_test_bundle(folder_path, html_name, js_name, title, duration_min, quest
   <!-- PAGE 3: RESULT REPORT -->
   <div class="page" id="pageResult">
     <header class="hdr">
-      <div class="hdr-brand"><span>📐</span><span>EduQuest</span><span class="hdr-pill">Report</span></div>
+      <a href="{prefix}index.html" class="hdr-brand" style="text-decoration:none; color:#fff;"><span>📐</span><span>EduQuest</span><span class="hdr-pill">Report</span></a>
       <div style="display:flex; gap:10px;">
+        <a href="{prefix}index.html" class="btn btn-outline" style="width:auto; padding:6px 14px; font-size:0.85rem; text-decoration:none;">🏠 Home Portal</a>
         <button class="btn btn-outline" onclick="exportPDF()" style="width:auto; padding:6px 14px; font-size:0.85rem;">📄 Save as PDF</button>
         <a href="{prefix}dashboard.html" class="btn btn-primary" style="width:auto; padding:6px 14px; font-size:0.85rem; text-decoration:none;">Go to Dashboard →</a>
       </div>

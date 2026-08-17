@@ -126,7 +126,7 @@
     </a>
     <div style="display:flex; align-items:center; gap:14px;">
       <span style="color:rgba(255,255,255,0.7); font-size:0.85rem; font-weight:500;">🔑 Admin: rupali.eduquest@gmail.com</span>
-      <a href="index.html" style="color:#60a5fa; text-decoration:none; font-size:0.85rem;">← Exit to Portal</a>
+      <a href="index.html" class="btn-sm" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px; color:#60a5fa; padding:6px 12px;">🏠 Home Portal</a>
       <button onclick="window.supabaseLogout()" class="btn-logout">🚪 Logout</button>
     </div>
   </header>
@@ -315,33 +315,39 @@
 
     function renderAccessTable() {
       const tbody = document.getElementById('accessTableBody');
+      if (!tbody) return;
       tbody.innerHTML = '';
 
       let list = allUsers;
       if (currentStatusFilter === 'approved') {
         list = list.filter(u => {
           const p = userProfilesMap[u.email.toLowerCase()];
-          return p && p.has_esat_access !== false;
+          return p && p.has_esat_access === true;
         });
       } else if (currentStatusFilter === 'pending') {
         list = list.filter(u => {
           const p = userProfilesMap[u.email.toLowerCase()];
-          return p && p.has_esat_access === false;
+          return !p || p.has_esat_access !== true;
         });
       }
 
-      document.getElementById('cntAll').textContent = allUsers.length;
-      document.getElementById('cntApproved').textContent = allUsers.filter(u => {
+      const totalCount = allUsers.length;
+      const approvedCount = allUsers.filter(u => {
         const p = userProfilesMap[u.email.toLowerCase()];
-        return p && p.has_esat_access !== false;
+        return p && p.has_esat_access === true;
       }).length;
-      document.getElementById('cntPending').textContent = allUsers.filter(u => {
-        const p = userProfilesMap[u.email.toLowerCase()];
-        return p && p.has_esat_access === false;
-      }).length;
+      const pendingCount = totalCount - approvedCount;
+
+      const elCountAll = document.getElementById('countAll') || document.getElementById('cntAll');
+      const elCountApp = document.getElementById('countApproved') || document.getElementById('cntApproved');
+      const elCountPen = document.getElementById('countPending') || document.getElementById('cntPending');
+
+      if (elCountAll) elCountAll.textContent = totalCount;
+      if (elCountApp) elCountApp.textContent = approvedCount;
+      if (elCountPen) elCountPen.textContent = pendingCount;
 
       if (list.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:20px; color:rgba(255,255,255,0.4);">No students matching criteria.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:24px; color:rgba(255,255,255,0.4);">No registered students found matching the selected filter.</td></tr>';
         return;
       }
 
@@ -349,17 +355,17 @@
         const em = u.email.toLowerCase();
         const p = userProfilesMap[em] || {};
 
-        const hasEsat = p.has_esat_access !== false;
-        const hasFullMock = p.has_esat_fullmock_access !== false;
-        const hasDiag = p.has_esat_diagnostic_access !== false;
-        const hasMock = p.has_esat_mock_access !== false;
-        const hasTopic = p.has_esat_topic_access !== false;
+        const hasEsat = p.has_esat_access === true;
+        const hasFullMock = p.has_esat_fullmock_access === true;
+        const hasDiag = p.has_esat_diagnostic_access === true;
+        const hasMock = p.has_esat_mock_access === true;
+        const hasTopic = p.has_esat_topic_access === true;
 
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td><strong>${u.name}</strong></td>
+          <td><strong>${u.name || em.split('@')[0]}</strong></td>
           <td>${u.email}</td>
-          <td><span style="font-size:0.75rem; color:#60a5fa;">${u.target_course || 'Engineering'}</span></td>
+          <td><span style="font-size:0.75rem; color:#60a5fa; background:rgba(59,130,246,0.1); padding:2px 8px; border-radius:4px;">${u.target_course || 'Engineering'}</span></td>
           <td>
             <label class="switch">
               <input type="checkbox" ${hasEsat ? 'checked' : ''} onchange="togglePermission('${em}', 'has_esat_access', this.checked)">
@@ -595,10 +601,14 @@
       });
     }
 
-    function filterReportType(type) {
+    function filterReportType(type, btnEl) {
       currentReportType = type;
       document.querySelectorAll('#reportSubTabs .sub-tab-btn').forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
+      if (btnEl) {
+        btnEl.classList.add('active');
+      } else if (window.event && window.event.target) {
+        window.event.target.classList.add('active');
+      }
       renderSubmissionsTable();
     }
 

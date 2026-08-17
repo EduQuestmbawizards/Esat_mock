@@ -171,18 +171,22 @@ async function saveToSupabase(result) {
   }
 }
 
-// ── Auto-fill Email for Logged-In User ────────
+// ── Auto-fill Email for Logged-In Student ────────
 document.addEventListener('DOMContentLoaded', async () => {
   if (window.supabase && typeof window.supabase.createClient === 'function') {
     try {
       const client = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
       const { data: { session } } = await client.auth.getSession();
       if (session && session.user && session.user.email) {
+        const userEmail = session.user.email.toLowerCase().trim();
+        // Do not pre-fill if admin
+        if (userEmail === 'rupali.eduquest@gmail.com') return;
+
         const emailInput = document.getElementById('regEmail');
         if (emailInput && !emailInput.value) {
           emailInput.value = session.user.email;
           emailInput.setAttribute('readonly', 'true');
-          emailInput.style.opacity = '0.75';
+          emailInput.style.opacity = '0.85';
           emailInput.style.cursor = 'not-allowed';
         }
         const nameInput = document.getElementById('regName');

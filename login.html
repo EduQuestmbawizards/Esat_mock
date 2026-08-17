@@ -201,11 +201,12 @@
 
 <body>
   <div class="auth-card">
-    <div style="text-align:center; margin-bottom:12px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
       <a href="index.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px; color:#fff; font-family:'Syne',sans-serif; font-size:1.15rem; font-weight:700;">
         <span>📐</span><span>EduQuest</span>
         <span style="background:linear-gradient(135deg,#0ea5e9,#6366f1); padding:2px 8px; border-radius:4px; font-size:0.7rem; text-transform:uppercase;">ESAT</span>
       </a>
+      <a href="index.html" style="color:#60a5fa; text-decoration:none; font-size:0.8rem; background:rgba(59,130,246,0.12); padding:4px 10px; border-radius:6px; border:1px solid rgba(59,130,246,0.25);">🏠 Home Portal</a>
     </div>
 
     <h2 id="authHeading">Student Portal</h2>
@@ -224,17 +225,17 @@
     </div>
 
     <!-- FORM -->
-    <form id="authForm" onsubmit="handleAuth(event)">
+    <form id="authForm" autocomplete="off" onsubmit="handleAuth(event)">
       <!-- Name field (Sign up only) -->
       <div class="field" id="fieldName" style="display:none;">
         <label>Full Name *</label>
-        <input type="text" id="authName" placeholder="Enter your full name" autocomplete="name">
+        <input type="text" id="authName" placeholder="Enter your full name" autocomplete="off">
       </div>
 
       <!-- Email field -->
       <div class="field">
         <label>Email Address *</label>
-        <input type="email" id="authEmail" placeholder="student@example.com" required autocomplete="email">
+        <input type="email" id="authEmail" placeholder="student@example.com" required autocomplete="off">
       </div>
 
       <!-- Phone field (Sign up only) -->
@@ -242,7 +243,7 @@
         <label>Mobile Number</label>
         <div style="display:flex; gap:8px;">
           <select id="regCC" style="max-width:130px;"></select>
-          <input type="tel" id="authPhone" placeholder="Mobile number" autocomplete="tel">
+          <input type="tel" id="authPhone" placeholder="Mobile number" autocomplete="off">
         </div>
       </div>
 
@@ -250,7 +251,7 @@
       <div class="field">
         <label>Password *</label>
         <div class="pwd-wrap">
-          <input type="password" id="authPassword" placeholder="••••••••" required autocomplete="current-password">
+          <input type="password" id="authPassword" placeholder="••••••••" required autocomplete="new-password">
           <button type="button" class="eye-btn" onclick="togglePwdVisibility()">👁️</button>
         </div>
       </div>
@@ -268,8 +269,30 @@
     let currentRole = 'student'; // 'student' | 'admin'
     let currentMode = 'signin';  // 'signin' | 'signup'
 
+    function clearAuthInputs() {
+      const email = document.getElementById('authEmail');
+      const pwd = document.getElementById('authPassword');
+      const name = document.getElementById('authName');
+      const phone = document.getElementById('authPhone');
+      if (email) email.value = '';
+      if (pwd) pwd.value = '';
+      if (name) name.value = '';
+      if (phone) phone.value = '';
+      const msg = document.getElementById('authMsg');
+      if (msg) {
+        msg.textContent = '';
+        msg.className = 'auth-msg';
+        msg.style.display = 'none';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      clearAuthInputs();
+    });
+
     function switchRole(role) {
       currentRole = role;
+      clearAuthInputs();
       document.getElementById('roleStudent').classList.toggle('active', role === 'student');
       document.getElementById('roleAdmin').classList.toggle('active', role === 'admin');
 
@@ -287,12 +310,13 @@
         modeTabs.style.display = 'flex';
         authHeading.textContent = 'Student Portal';
         authSub.textContent = 'Sign in to access your ESAT mocks & diagnostics';
-        switchMode(currentMode);
+        switchMode(currentMode, false);
       }
     }
 
-    function switchMode(mode) {
+    function switchMode(mode, clear = true) {
       currentMode = mode;
+      if (clear) clearAuthInputs();
       document.getElementById('tabSignIn').classList.toggle('active', mode === 'signin');
       document.getElementById('tabSignUp').classList.toggle('active', mode === 'signup');
 
@@ -315,6 +339,7 @@
       const el = document.getElementById('authMsg');
       el.textContent = text;
       el.className = `auth-msg ${type}`;
+      el.style.display = 'block';
     }
 
     async function handleAuth(e) {
@@ -341,7 +366,7 @@
           const { data, error } = await client.auth.signInWithPassword({ email, password });
           if (error) {
             // Fallback check for admin email
-            if (email === 'rupali.eduquest@gmail.com') {
+            if (email.toLowerCase() === 'rupali.eduquest@gmail.com') {
               localStorage.setItem('eduquest_custom_session', JSON.stringify({ user: { email: email } }));
               window.location.href = 'admin.html';
               return;
@@ -365,15 +390,15 @@
           if (error) {
             // Session fallback for demo
             localStorage.setItem('eduquest_custom_session', JSON.stringify({ user: { email: email } }));
-            window.location.href = redirectUrl ? decodeURIComponent(redirectUrl) : 'dashboard.html';
+            window.location.href = redirectUrl ? decodeURIComponent(redirectUrl) : 'index.html';
             return;
           }
           if (data && data.user) {
-            window.location.href = redirectUrl ? decodeURIComponent(redirectUrl) : 'dashboard.html';
+            window.location.href = redirectUrl ? decodeURIComponent(redirectUrl) : 'index.html';
           }
         } catch (err) {
           localStorage.setItem('eduquest_custom_session', JSON.stringify({ user: { email: email } }));
-          window.location.href = redirectUrl ? decodeURIComponent(redirectUrl) : 'dashboard.html';
+          window.location.href = redirectUrl ? decodeURIComponent(redirectUrl) : 'index.html';
         }
       } else {
         // Student Sign Up
@@ -415,8 +440,8 @@
           localStorage.setItem('eduquest_custom_session', JSON.stringify({ user: { email: email, user_metadata: { name: name } } }));
           showMsg('Account created! Awaiting admin approval to unlock tests.', 'success');
           setTimeout(() => {
-            window.location.href = redirectUrl ? decodeURIComponent(redirectUrl) : 'dashboard.html';
-          }, 1500);
+            window.location.href = redirectUrl ? decodeURIComponent(redirectUrl) : 'index.html';
+          }, 1200);
         } catch (err) {
           showMsg(err.message || 'Registration error', 'error');
         }

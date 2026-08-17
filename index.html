@@ -389,41 +389,76 @@
       await updateCardLockStatus();
     });
 
-    async function renderAuthHeader() {
-      if (window.supabase) {
-        const client = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
-        const { data: { session } } = await client.auth.getSession();
-        const authSection = document.getElementById('authSection');
-
-        if (session && session.user) {
-          const email = session.user.email;
-          const isAdmin = email === 'rupali.eduquest@gmail.com';
-
-          authSection.innerHTML = `
-            <span style="color:rgba(255,255,255,0.7); font-size:0.85rem; font-weight:500;">👤 ${email}</span>
-            <a href="dashboard.html" class="hdr-link">📊 Dashboard</a>
-            ${isAdmin ? '<a href="admin.html" class="hdr-link">🛠️ Admin</a>' : ''}
-            <button onclick="window.supabaseLogout()" class="hdr-link" style="background:rgba(220,38,38,0.15); border:1px solid rgba(220,38,38,0.4); color:#f87171; cursor:pointer;">🚪 Logout</button>
-          `;
+    async function getUserSession() {
+      let session = null;
+      if (window.supabase && typeof window.supabase.createClient === 'function') {
+        try {
+          const client = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
+          const res = await client.auth.getSession();
+          if (res && res.data && res.data.session) {
+            session = res.data.session;
+          }
+        } catch (e) {}
+      }
+      if (!session) {
+        const custom = localStorage.getItem('eduquest_custom_session');
+        if (custom) {
+          try { session = JSON.parse(custom); } catch (e) {}
         }
+      }
+      return session;
+    }
+
+    async function renderAuthHeader() {
+      const session = await getUserSession();
+      const authSection = document.getElementById('authSection');
+      if (!authSection) return;
+
+      if (session && session.user && session.user.email) {
+        const email = session.user.email;
+        const isAdmin = email.toLowerCase().trim() === 'rupali.eduquest@gmail.com';
+
+        authSection.innerHTML = `
+          <span style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); padding:4px 12px; border-radius:20px; color:#fff; font-size:0.82rem; font-weight:600; display:inline-flex; align-items:center; gap:6px;">
+            ${isAdmin ? '🔑 Admin' : '👨‍🎓'} <span>${email}</span>
+          </span>
+          <a href="dashboard.html" class="hdr-link" style="color:#60a5fa; font-weight:600;">📊 Student Dashboard</a>
+          ${isAdmin ? '<a href="admin.html" class="hdr-link" style="color:#f59e0b; font-weight:600;">🛠️ Admin Control</a>' : ''}
+          <button onclick="window.supabaseLogout()" class="hdr-link" style="background:rgba(220,38,38,0.15); border:1px solid rgba(220,38,38,0.4); color:#f87171; cursor:pointer; padding:5px 12px; border-radius:6px; font-weight:600;">🚪 Logout</button>
+        `;
+      } else {
+        authSection.innerHTML = `
+          <a href="dashboard.html" class="hdr-link">📊 Student Dashboard</a>
+          <a href="admin.html" class="hdr-link">🛠️ Admin Portal</a>
+          <a href="login.html" class="hdr-btn-primary" id="loginBtn">Sign In / Sign Up</a>
+        `;
       }
     }
 
     async function updateCardLockStatus() {
-      if (!window.supabase) return;
       try {
-        const client = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
-        const { data: { session } } = await client.auth.getSession();
-        if (!session || !session.user) return;
+        const session = await getUserSession();
+        if (!session || !session.user || !session.user.email) return;
 
-        const email = session.user.email;
-        if (email === 'rupali.eduquest@gmail.com') return; // Admin bypass
+        const email = session.user.email.toLowerCase().trim();
+        if (email === 'rupali.eduquest@gmail.com') {
+          // Admin bypass - unlock everything
+          document.querySelectorAll('.card-btn').forEach(btn => {
+            btn.innerHTML = '🟢 Unlocked · Start Test →';
+            btn.style.background = '#3b82f6';
+            btn.style.color = '#fff';
+            btn.style.border = 'none';
+          });
+          return;
+        }
 
-        const { data: profile } = await client
-          .from('profiles')
-          .select('has_esat_access, has_esat_diagnostic_access, has_esat_topic_access, has_esat_mock_access, has_esat_fullmock_access')
-          .eq('email', email)
-          .maybeSingle();
+        const headers = { 'apikey': SUPABASE_CONFIG.anonKey, 'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}` };
+        const res = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/profiles?email=eq.${encodeURIComponent(email)}`, { headers });
+        let profile = null;
+        if (res.ok) {
+          const list = await res.json();
+          if (list && list.length > 0) profile = list[0];
+        }
 
         const hasOverall = profile && profile.has_esat_access === true;
         const hasFull = hasOverall && profile.has_esat_fullmock_access === true;
