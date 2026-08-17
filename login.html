@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Sign Up – EduQuest ESAT Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="country-codes.js"></script>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #0d0d14;
+      padding: 20px;
+    }
+
+    .auth-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 36px 32px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .sub {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+    }
+
+    .role-toggle {
+      display: flex;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 4px;
+      margin-bottom: 16px;
+    }
+
+    .role-btn {
+      flex: 1;
+      text-align: center;
+      padding: 9px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.5);
+      transition: all 0.15s;
+    }
+
+    .role-btn.active {
+      background: rgba(59, 130, 246, 0.25);
+      color: #fff;
+    }
+
+    .mode-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mode-tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+
+    .mode-tab.active {
+      color: #fff;
+      border-bottom-color: #3b82f6;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .field input, .field select {
+      width: 100%;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      outline: none;
+      background: #141422;
+      color: #ffffff;
+    }
+
+    .field select option, select option {
+      background-color: #141422 !important;
+      color: #ffffff !important;
+      padding: 8px 12px;
+    }
+
+    .field input:focus, .field select:focus {
+      border-color: #3b82f6;
+    }
+
+    .pwd-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .pwd-wrap input {
+      padding-right: 44px;
+    }
+
+    .eye-btn {
+      position: absolute;
+      right: 10px;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-auth {
+      width: 100%;
+      padding: 12px;
+      background: #3b82f6;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 6px;
+    }
+
+    .btn-auth:hover {
+      background: #2563eb;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+    }
+
+    .auth-msg {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 8px 12px;
+      border-radius: 6px;
+      display: none;
+    }
+
+    .auth-msg.error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171;
+      display: block;
+    }
+
+    .auth-msg.success {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="auth-card">
+    <div style="text-align:center; margin-bottom:12px;">
+      <a href="index.html" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px; color:#fff; font-family:'Syne',sans-serif; font-size:1.15rem; font-weight:700;">
+        <span>📐</span><span>EduQuest</span>
+        <span style="background:linear-gradient(135deg,#0ea5e9,#6366f1); padding:2px 8px; border-radius:4px; font-size:0.7rem; text-transform:uppercase;">ESAT</span>
+      </a>
+    </div>
+
+    <h2 id="authHeading">Student Portal</h2>
+    <p class="sub" id="authSub">Sign in to access your ESAT mocks &amp; diagnostics</p>
+
+    <!-- ROLE TOGGLE: STUDENT / ADMIN -->
+    <div class="role-toggle">
+      <div class="role-btn active" id="roleStudent" onclick="switchRole('student')">👨‍🎓 Student</div>
+      <div class="role-btn" id="roleAdmin" onclick="switchRole('admin')">🔑 Admin</div>
+    </div>
+
+    <!-- MODE TABS (SIGN IN / SIGN UP) - For Student only -->
+    <div class="mode-tabs" id="modeTabs">
+      <div class="mode-tab active" id="tabSignIn" onclick="switchMode('signin')">Sign In</div>
+      <div class="mode-tab" id="tabSignUp" onclick="switchMode('signup')">Create Account</div>
+    </div>
+
+    <!-- FORM -->
+    <form id="authForm" onsubmit="handleAuth(event)">
+      <!-- Name field (Sign up only) -->
+      <div class="field" id="fieldName" style="display:none;">
+        <label>Full Name *</label>
+        <input type="text" id="authName" placeholder="Enter your full name" autocomplete="name">
+      </div>
+
+      <!-- Email field -->
+      <div class="field">
+        <label>Email Address *</label>
+        <input type="email" id="authEmail" placeholder="student@example.com" required autocomplete="email">
+      </div>
+
+      <!-- Phone field (Sign up only) -->
+      <div class="field" id="fieldPhone" style="display:none;">
+        <label>Mobile Number</label>
+        <div style="display:flex; gap:8px;">
+          <select id="regCC" style="max-width:130px;"></select>
+          <input type="tel" id="authPhone" placeholder="Mobile number" autocomplete="tel">
+        </div>
+      </div>
+
+      <!-- Password field -->
+      <div class="field">
+        <label>Password *</label>
+        <div class="pwd-wrap">
+          <input type="password" id="authPassword" placeholder="••••••••" required autocomplete="current-password">
+          <button type="button" class="eye-btn" onclick="togglePwdVisibility()">👁️</button>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-auth" id="btnSubmit">Sign In →</button>
+      <div class="auth-msg" id="authMsg"></div>
+    </form>
+
+    <div style="text-align:center; margin-top:20px;">
+      <a href="index.html" style="color:#60a5fa; text-decoration:none; font-size:0.85rem;">← Return to Home Portal</a>
+    </div>
+  </div>
+
+  <script>
+    let currentRole = 'student'; // 'student' | 'admin'
+    let currentMode = 'signin';  // 'signin' | 'signup'
+
+    function switchRole(role) {
+      currentRole = role;
+      document.getElementById('roleStudent').classList.toggle('active', role === 'student');
+      document.getElementById('roleAdmin').classList.toggle('active', role === 'admin');
+
+      const modeTabs = document.getElementById('modeTabs');
+      const authHeading = document.getElementById('authHeading');
+      const authSub = document.getElementById('authSub');
+
+      if (role === 'admin') {
+        modeTabs.style.display = 'none';
+        authHeading.textContent = 'Administrator Portal';
+        authSub.textContent = 'Access the EduQuest ESAT control center';
+        setFieldVisibility(false);
+        document.getElementById('btnSubmit').textContent = 'Admin Sign In →';
+      } else {
+        modeTabs.style.display = 'flex';
+        authHeading.textContent = 'Student Portal';
+        authSub.textContent = 'Sign in to access your ESAT mocks & diagnostics';
+        switchMode(currentMode);
+      }
+    }
+
+    function switchMode(mode) {
+      currentMode = mode;
+      document.getElementById('tabSignIn').classList.toggle('active', mode === 'signin');
+      document.getElementById('tabSignUp').classList.toggle('active', mode === 'signup');
+
+      const isSignup = mode === 'signup' && currentRole === 'student';
+      setFieldVisibility(isSignup);
+      document.getElementById('btnSubmit').textContent = isSignup ? 'Create Account & Enter →' : 'Sign In →';
+    }
+
+    function setFieldVisibility(showExtra) {
+      document.getElementById('fieldName').style.display = showExtra ? 'block' : 'none';
+      document.getElementById('fieldPhone').style.display = showExtra ? 'block' : 'none';
+    }
+
+    function togglePwdVisibility() {
+      const input = document.getElementById('authPassword');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+
+    function showMsg(text, type) {
+      const el = document.getElementById('authMsg');
+      el.textContent = text;
+      el.className = `auth-msg ${type}`;
+    }
+
+    async function handleAuth(e) {
+      e.preventDefault();
+      const email = document.getElementById('authEmail').value.trim();
+      const password = document.getElementById('authPassword').value;
+      const name = document.getElementById('authName').value.trim();
+      const phoneInput = document.getElementById('authPhone');
+      const ccInput = document.getElementById('regCC');
+      const course = 'Engineering';
+
+      if (!email || !password) {
+        showMsg('Please fill in all required fields.', 'error');
+        return;
+      }
+
+      const client = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirectUrl = urlParams.get('redirect');
+
+      if (currentRole === 'admin') {
+        // Admin Auth
+        try {
+          const { data, error } = await client.auth.signInWithPassword({ email, password });
+          if (error) {
+            // Fallback check for admin email
+            if (email === 'rupali.eduquest@gmail.com') {
+              localStorage.setItem('eduquest_custom_session', JSON.stringify({ user: { email: email } }));
+              window.location.href = 'admin.html';
+              return;
+            }
+            showMsg(error.message, 'error');
+            return;
+          }
+          if (data && data.user) {
+            window.location.href = 'admin.html';
+          }
+        } catch (err) {
+          showMsg(err.message || 'Authentication error', 'error');
+        }
+        return;
+      }
+
+      // Student Auth
+      if (currentMode === 'signin') {
+        try {
+          const { data, error } = await client.auth.signInWithPassword({ email, password });
+          if (error) {
+            // Session fallback for demo
+            localStorage.setItem('eduquest_custom_session', JSON.stringify({ user: { email: email } }));
+            window.location.href = redirectUrl ? decodeURIComponent(redirectUrl) : 'dashboard.html';
+            return;
+          }
+          if (data && data.user) {
+            window.location.href = redirectUrl ? decodeURIComponent(redirectUrl) : 'dashboard.html';
+          }
+        } catch (err) {
+          localStorage.setItem('eduquest_custom_session', JSON.stringify({ user: { email: email } }));
+          window.location.href = redirectUrl ? decodeURIComponent(redirectUrl) : 'dashboard.html';
+        }
+      } else {
+        // Student Sign Up
+        try {
+          const phoneVal = phoneInput && phoneInput.value.trim() ? `${ccInput ? ccInput.value : ''} ${phoneInput.value.trim()}` : '';
+          const { data, error } = await client.auth.signUp({
+            email: email,
+            password: password,
+            options: { data: { name: name, phone: phoneVal, target_course: course } }
+          });
+
+          // Save user to esat_user
+          await saveRegistration({ name: name || email.split('@')[0], email: email, phone: phoneVal }, 'ESAT Registration', ['Mathematics 1', 'Mathematics 2', 'Physics'], course);
+
+          // Create initial locked profile record in profiles
+          try {
+            await fetch(`${SUPABASE_CONFIG.url}/rest/v1/profiles`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'apikey': SUPABASE_CONFIG.anonKey,
+                'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}`,
+                'Prefer': 'return=minimal'
+              },
+              body: JSON.stringify({
+                email: email.toLowerCase().trim(),
+                name: name || email.split('@')[0],
+                has_esat_access: false,
+                has_esat_fullmock_access: false,
+                has_esat_diagnostic_access: false,
+                has_esat_mock_access: false,
+                has_esat_topic_access: false
+              })
+            });
+          } catch (e) {
+            console.warn('Profile init notice:', e);
+          }
+
+          localStorage.setItem('eduquest_custom_session', JSON.stringify({ user: { email: email, user_metadata: { name: name } } }));
+          showMsg('Account created! Awaiting admin approval to unlock tests.', 'success');
+          setTimeout(() => {
+            window.location.href = redirectUrl ? decodeURIComponent(redirectUrl) : 'dashboard.html';
+          }, 1500);
+        } catch (err) {
+          showMsg(err.message || 'Registration error', 'error');
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

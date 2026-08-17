@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard – EduQuest ESAT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="supabase.js"></script>
+  <script src="scoring.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'IBM Plex Sans', sans-serif; background: #0d0d14; color: #fff; min-height: 100vh; }
+    
+    .hdr {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+      background: rgba(13, 13, 20, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    
+    .brand { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+    .brand-pill { background: linear-gradient(135deg, #0ea5e9, #6366f1); padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; text-transform: uppercase; font-weight: 800; }
+    
+    .wrap { max-width: 1140px; margin: 32px auto; padding: 0 20px; }
+    
+    .dash-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 14px; }
+    .dash-top h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; }
+    
+    /* MODULE SCORE CARDS GRID */
+    .module-scores-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .mod-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .mod-card:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .mod-card .mod-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .mod-card .mod-val {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #38bdf8;
+      line-height: 1.1;
+    }
+
+    .mod-card .mod-sub {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 6px;
+    }
+
+    /* SUMMARY STAT STRIP */
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
+    .stat-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 14px; padding: 18px; text-align: center; }
+    .stat-card .val { font-family: 'Syne', sans-serif; font-size: 1.7rem; font-weight: 800; color: #60a5fa; }
+    .stat-card .lbl { font-size: 0.72rem; color: rgba(255, 255, 255, 0.5); text-transform: uppercase; margin-top: 4px; }
+    
+    .chart-box { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 24px; margin-bottom: 32px; }
+    
+    table { width: 100%; border-collapse: collapse; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; overflow: hidden; margin-bottom: 40px; }
+    th, td { padding: 14px 18px; text-align: left; font-size: 0.88rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+    th { background: rgba(255, 255, 255, 0.04); font-size: 0.72rem; text-transform: uppercase; color: rgba(255, 255, 255, 0.5); font-weight: 700; }
+    tr.report-row { cursor: pointer; transition: background 0.2s; }
+    tr.report-row:hover { background: rgba(255, 255, 255, 0.04); }
+
+    .btn-sm { background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); color: #60a5fa; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; }
+    .btn-sm:hover { background: #3b82f6; color: #fff; }
+    .btn-logout { background: rgba(220, 38, 38, 0.15); border: 1px solid rgba(220, 38, 38, 0.4); color: #f87171; padding: 6px 14px; border-radius: 6px; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; }
+    .btn-logout:hover { background: #dc2626; color: #fff; }
+
+    /* MODAL STYLING FOR LOOK & REVIEW REPORT */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px); z-index: 1000; overflow-y: auto; padding: 30px 20px; }
+    .modal-overlay.active { display: block; }
+    .modal-card { background: #14141f; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 20px; max-width: 950px; margin: 0 auto; padding: 32px; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7); }
+    
+    .modal-hdr { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 16px; }
+    .modal-hdr h3 { font-family: 'Syne', sans-serif; font-size: 1.5rem; margin-bottom: 4px; }
+    .modal-hdr p { color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; }
+    
+    .review-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 24px; }
+    .review-stat { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 14px; text-align: center; }
+    .review-stat .r-num { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; }
+    .review-stat .r-lbl { font-size: 0.7rem; color: rgba(255, 255, 255, 0.5); text-transform: uppercase; margin-top: 2px; }
+
+    /* MULTI-PAGE FULL PRINT STYLES */
+    @media print {
+      html, body {
+        background: #0d0d14 !important;
+        color: #ffffff !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        overflow: visible !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .hdr, .wrap, .dash-top, .module-scores-grid, .stat-grid, .chart-box, h3, table, .btn-sm, .btn-logout, button, a {
+        display: none !important;
+      }
+
+      .modal-overlay.active {
+        display: block !important;
+        position: static !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: visible !important;
+        height: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      .modal-card {
+        display: block !important;
+        position: static !important;
+        background: #14141f !important;
+        color: #ffffff !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      .modal-hdr button {
+        display: none !important;
+      }
+
+      .q-review-card, .pdf-avoid, .review-stat {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        margin-bottom: 14px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hdr">
+    <a href="index.html" class="brand">
+      <span>📐</span><span>EduQuest</span>
+      <span class="brand-pill">ESAT Dashboard</span>
+    </a>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <span id="userEmailDisplay" style="color:rgba(255,255,255,0.7); font-size:0.85rem; font-weight:500;"></span>
+      <a href="index.html" style="color:#60a5fa; text-decoration:none; font-size:0.85rem;">← Home Portal</a>
+      <button onclick="window.supabaseLogout()" class="btn-logout">🚪 Logout</button>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="dash-top">
+      <div>
+        <h2>My ESAT Performance &amp; Module Scores</h2>
+        <p style="color:rgba(255,255,255,0.5); font-size:0.88rem; margin-top:4px;">Official Cambridge &amp; Imperial 1.0 – 9.0 Module Evaluation Standard</p>
+      </div>
+      <button class="btn-sm" onclick="loadDashboardData()">🔄 Refresh Results</button>
+    </div>
+
+    <!-- 5 ESAT MODULE ESTIMATED SCORE CARDS (1.0 - 9.0) -->
+    <h3 style="font-family:'Syne',sans-serif; margin-bottom:14px; font-size:1.1rem; color:#f1f5f9;">🎯 Latest Estimated Module Scores (1.0 – 9.0)</h3>
+    <div class="module-scores-grid">
+      <div class="mod-card">
+        <div class="mod-title">📐 Mathematics 1 (Compulsory)</div>
+        <div class="mod-val" id="scoreMath1">-- <span style="font-size:1.1rem; color:rgba(255,255,255,0.4);">/ 9.0</span></div>
+        <div class="mod-sub" id="subMath1">No attempts yet</div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-title">🔢 Mathematics 2</div>
+        <div class="mod-val" id="scoreMath2">-- <span style="font-size:1.1rem; color:rgba(255,255,255,0.4);">/ 9.0</span></div>
+        <div class="mod-sub" id="subMath2">No attempts yet</div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-title">⚡ Physics</div>
+        <div class="mod-val" id="scorePhys">-- <span style="font-size:1.1rem; color:rgba(255,255,255,0.4);">/ 9.0</span></div>
+        <div class="mod-sub" id="subPhys">No attempts yet</div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-title">🧪 Chemistry</div>
+        <div class="mod-val" id="scoreChem">-- <span style="font-size:1.1rem; color:rgba(255,255,255,0.4);">/ 9.0</span></div>
+        <div class="mod-sub" id="subChem">No attempts yet</div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-title">🧬 Biology</div>
+        <div class="mod-val" id="scoreBio">-- <span style="font-size:1.1rem; color:rgba(255,255,255,0.4);">/ 9.0</span></div>
+        <div class="mod-sub" id="subBio">No attempts yet</div>
+      </div>
+    </div>
+
+    <!-- AGGREGATE STAT STRIP -->
+    <div class="stat-grid">
+      <div class="stat-card"><div class="val" id="statAttempts">0</div><div class="lbl">Assessments Completed</div></div>
+      <div class="stat-card"><div class="val" id="statBestScale" style="color:#34d399">--</div><div class="lbl">Highest Module Score</div></div>
+      <div class="stat-card"><div class="val" id="statAvgScale" style="color:#a78bfa">--</div><div class="lbl">Average Module Score</div></div>
+      <div class="stat-card"><div class="val" id="statAvgPct" style="color:#fbbf24">0%</div><div class="lbl">Average Accuracy</div></div>
+    </div>
+
+    <!-- PROGRESSION OVER TIME CHART -->
+    <div class="chart-box">
+      <h3 style="font-family:'Syne',sans-serif; margin-bottom:16px; font-size:1.1rem;">ESAT Module Score Progression (1.0 – 9.0 Scale)</h3>
+      <canvas id="scoreChart" height="100"></canvas>
+    </div>
+
+    <!-- SUBMITTED TEST HISTORY TABLE -->
+    <h3 style="font-family:'Syne',sans-serif; margin-bottom:16px; font-size:1.2rem;">Submitted Exam &amp; Mock Reports</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Assessment Title</th>
+          <th>Type</th>
+          <th>Raw Score</th>
+          <th>Accuracy</th>
+          <th>Module Scores (1.0–9.0)</th>
+          <th>Submitted On</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="reportsTableBody">
+        <tr><td colspan="7" style="text-align:center; color:rgba(255,255,255,0.4);">Loading results from Supabase...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MODAL FOR DETAILED REPORT LOOK & REVIEW IN DASHBOARD -->
+  <div class="modal-overlay" id="dashboardReportModal">
+    <div class="modal-card">
+      <div class="modal-hdr">
+        <div>
+          <h3 id="mExamTitle">ESAT Detailed Assessment Report</h3>
+          <p id="mStudentMeta">Candidate: Loading...</p>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <button class="btn-sm" style="background:#2563eb; color:#fff;" onclick="window.print()">🖨️ Print Report</button>
+          <button class="btn-sm" style="background:rgba(255,255,255,0.1); color:#fff;" onclick="closeDashboardModal()">✖ Close</button>
+        </div>
+      </div>
+
+      <div class="review-grid">
+        <div class="review-stat"><div class="r-num" style="color:#10b981" id="mCorrect">0</div><div class="r-lbl">Total Correct</div></div>
+        <div class="review-stat"><div class="r-num" style="color:#ef4444" id="mWrong">0</div><div class="r-lbl">Total Wrong</div></div>
+        <div class="review-stat"><div class="r-num" style="color:#f59e0b" id="mSkipped">0</div><div class="r-lbl">Unattempted</div></div>
+        <div class="review-stat"><div class="r-num" style="color:#60a5fa" id="mPct">0%</div><div class="r-lbl">Accuracy</div></div>
+      </div>
+
+      <!-- MODULE-WISE RESULTS CONTAINER IN MODAL -->
+      <h4 style="font-family:'Syne',sans-serif; margin-bottom:12px; font-size:1.1rem; color:#f1f5f9;">🎯 Module-wise Score Breakdown</h4>
+      <div id="modalModuleCards" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; margin-bottom:24px;"></div>
+
+      <h4 style="font-family:'Syne',sans-serif; margin-bottom:16px; font-size:1.1rem; color:#f1f5f9; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:8px;">📋 Full Question, Given Answer &amp; Solution Review</h4>
+      <div id="modalQuestionList"></div>
+    </div>
+  </div>
+
+  <script>
+    let userReports = [];
+    let scoreChart = null;
+    const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      loadDashboardData();
+    });
+
+    async function loadDashboardData() {
+      const client = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
+      const { data: { session } } = await client.auth.getSession();
+
+      if (session && session.user) {
+        document.getElementById('userEmailDisplay').textContent = '👤 ' + session.user.email;
+        fetchReports(session.user.email);
+      } else {
+        document.getElementById('userEmailDisplay').textContent = '👤 Guest Candidate';
+        fetchReports('');
+      }
+    }
+
+    async function fetchReports(email) {
+      try {
+        let url = `${SUPABASE_CONFIG.url}/rest/v1/esat_report?select=*&order=created_at.desc`;
+        if (email) {
+          url += `&email=eq.${encodeURIComponent(email)}`;
+        }
+        
+        const res = await fetch(url, {
+          headers: {
+            'apikey': SUPABASE_CONFIG.anonKey,
+            'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}`
+          }
+        });
+
+        if (res.ok) {
+          userReports = await res.json();
+          renderDashboard();
+        } else {
+          renderDashboard();
+        }
+      } catch (e) {
+        console.error('Error fetching ESAT reports:', e);
+        renderDashboard();
+      }
+    }
+
+    function renderDashboard() {
+      const tbody = document.getElementById('reportsTableBody');
+      tbody.innerHTML = '';
+
+      if (!userReports || userReports.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding:24px; color:rgba(255,255,255,0.4);">No test attempts found yet. Take an ESAT Full Mock or Topic Test to view results!</td></tr>';
+        return;
+      }
+
+      document.getElementById('statAttempts').textContent = userReports.length;
+
+      // Extract all module scores across attempts
+      const allModuleScores = [];
+      const latestScores = { 'Mathematics 1': null, 'Mathematics 2': null, 'Physics': null, 'Chemistry': null, 'Biology': null };
+
+      userReports.forEach(r => {
+        let modArr = [];
+        try {
+          modArr = typeof r.module_scores_json === 'string' ? JSON.parse(r.module_scores_json) : (r.module_scores_json || []);
+        } catch (e) { modArr = []; }
+
+        modArr.forEach(m => {
+          const scoreNum = parseFloat(m.esatScore || m.esat_score || 1.0);
+          allModuleScores.push(scoreNum);
+          if (latestScores[m.module] === null) {
+            latestScores[m.module] = m;
+          }
+        });
+      });
+
+      // Update Latest Module Score Cards
+      updateModuleCard('scoreMath1', 'subMath1', latestScores['Mathematics 1']);
+      updateModuleCard('scoreMath2', 'subMath2', latestScores['Mathematics 2']);
+      updateModuleCard('scorePhys', 'subPhys', latestScores['Physics']);
+      updateModuleCard('scoreChem', 'subChem', latestScores['Chemistry']);
+      updateModuleCard('scoreBio', 'subBio', latestScores['Biology']);
+
+      if (allModuleScores.length > 0) {
+        const best = Math.max(...allModuleScores).toFixed(1);
+        const avg = (allModuleScores.reduce((a, b) => a + b, 0) / allModuleScores.length).toFixed(1);
+        document.getElementById('statBestScale').textContent = `${best} / 9.0`;
+        document.getElementById('statAvgScale').textContent = `${avg} / 9.0`;
+      }
+
+      const avgPct = Math.round(userReports.reduce((s, r) => s + Number(r.overall_accuracy || 0), 0) / userReports.length);
+      document.getElementById('statAvgPct').textContent = `${avgPct}%`;
+
+      // Render History Table Rows
+      userReports.forEach((r, idx) => {
+        let modArr = [];
+        try {
+          modArr = typeof r.module_scores_json === 'string' ? JSON.parse(r.module_scores_json) : (r.module_scores_json || []);
+        } catch (e) { modArr = []; }
+
+        const modBadgesHtml = modArr.map(m => `
+          <span style="background:rgba(59,130,246,0.15); color:#60a5fa; padding:3px 8px; border-radius:5px; font-weight:700; font-size:0.78rem; margin-right:4px;">
+            ${m.module}: <strong>${m.esatScore || m.esat_score || '1.0'}</strong>
+          </span>
+        `).join('');
+
+        const tr = document.createElement('tr');
+        tr.className = 'report-row';
+        tr.onclick = (e) => {
+          if (e.target.tagName !== 'BUTTON') {
+            openDashboardReportModal(idx);
+          }
+        };
+
+        tr.innerHTML = `
+          <td><strong>${r.test_title || 'ESAT Assessment'}</strong></td>
+          <td><span style="text-transform:uppercase; font-size:0.75rem; color:rgba(255,255,255,0.5);">${r.test_type || 'full_mock'}</span></td>
+          <td><span style="color:#38bdf8; font-weight:700;">${r.total_correct || 0} / ${r.total_questions || 0}</span></td>
+          <td><span style="color:#60a5fa; font-weight:600;">${r.overall_accuracy || 0}%</span></td>
+          <td>${modBadgesHtml || '<span style="color:rgba(255,255,255,0.4);">--</span>'}</td>
+          <td style="color:rgba(255,255,255,0.5); font-size:0.82rem;">${r.submit_time || 'Recent'}</td>
+          <td>
+            <button class="btn-sm" onclick="openDashboardReportModal(${idx})">👁️ Look &amp; Review</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      renderChart();
+    }
+
+    function updateModuleCard(scoreElId, subElId, modObj) {
+      const scoreEl = document.getElementById(scoreElId);
+      const subEl = document.getElementById(subElId);
+      if (!scoreEl || !subEl) return;
+
+      if (modObj) {
+        scoreEl.innerHTML = `${modObj.esatScore || modObj.esat_score || '1.0'} <span style="font-size:1.1rem; color:rgba(255,255,255,0.4);">/ 9.0</span>`;
+        subEl.textContent = `Raw: ${modObj.correct}/${modObj.total} (${modObj.accuracy}%)`;
+      } else {
+        scoreEl.innerHTML = `-- <span style="font-size:1.1rem; color:rgba(255,255,255,0.4);">/ 9.0</span>`;
+        subEl.textContent = `Not attempted yet`;
+      }
+    }
+
+    function renderChart() {
+      const ctx = document.getElementById('scoreChart').getContext('2d');
+      if (scoreChart) scoreChart.destroy();
+
+      const revReports = [...userReports].reverse();
+      const labels = revReports.map((r, i) => r.test_title ? r.test_title.replace('ESAT', '').trim() : `Test ${i+1}`);
+      const dataAccuracy = revReports.map(r => Number(r.overall_accuracy || 0));
+
+      scoreChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Overall Accuracy (%)',
+            data: dataAccuracy,
+            borderColor: '#38bdf8',
+            backgroundColor: 'rgba(56, 189, 248, 0.1)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.3
+          }]
+        },
+        options: {
+          plugins: { legend: { labels: { color: '#fff' } } },
+          scales: {
+            y: { min: 0, max: 100, ticks: { color: 'rgba(255,255,255,0.5)' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+            x: { ticks: { color: 'rgba(255,255,255,0.5)' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+          }
+        }
+      });
+    }
+
+    // ── DASHBOARD LOOK & REVIEW REPORT MODAL ──────
+    function openDashboardReportModal(idx) {
+      const r = userReports[idx];
+      if (!r) return;
+
+      document.getElementById('mExamTitle').textContent = `📊 ${r.test_title || 'ESAT Assessment'} Report`;
+      document.getElementById('mStudentMeta').textContent = `Candidate: ${r.name || 'Student'} &nbsp;|&nbsp; Submitted: ${r.submit_time || 'N/A'}`;
+      document.getElementById('mCorrect').textContent = `${r.total_correct || 0} / ${r.total_questions || 0}`;
+      document.getElementById('mWrong').textContent = r.total_wrong || 0;
+      document.getElementById('mSkipped').textContent = r.total_unattempted || 0;
+      document.getElementById('mPct').textContent = `${r.overall_accuracy || 0}%`;
+
+      // Render module cards
+      let modArr = [];
+      try {
+        modArr = typeof r.module_scores_json === 'string' ? JSON.parse(r.module_scores_json) : (r.module_scores_json || []);
+      } catch (e) { modArr = []; }
+
+      const modContainer = document.getElementById('modalModuleCards');
+      modContainer.innerHTML = modArr.map(m => `
+        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(59,130,246,0.3); border-radius:12px; padding:16px; text-align:center;">
+          <div style="font-size:0.75rem; text-transform:uppercase; color:#93c5fd; font-weight:700; margin-bottom:4px;">${m.module}</div>
+          <div style="font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; color:#38bdf8;">
+            ${m.esatScore || m.esat_score || '1.0'} <span style="font-size:1.1rem; color:rgba(255,255,255,0.5);">/ 9.0</span>
+          </div>
+          <div style="font-size:0.78rem; color:rgba(255,255,255,0.7); margin-top:4px;">Raw: <strong>${m.correct}/${m.total}</strong> · <strong>${m.accuracy}%</strong></div>
+        </div>
+      `).join('');
+
+      let details = [];
+      try {
+        let raw = r.details_json || [];
+        if (typeof raw === 'string') details = JSON.parse(raw);
+        else if (Array.isArray(raw)) details = raw;
+      } catch (e) { details = []; }
+
+      const qListContainer = document.getElementById('modalQuestionList');
+      qListContainer.innerHTML = '';
+
+      if (!details || details.length === 0) {
+        qListContainer.innerHTML = '<div style="text-align:center; color:rgba(255,255,255,0.4); padding:20px;">Question breakdown details not stored for this submission.</div>';
+      } else {
+        details.forEach((d, i) => {
+          const isCorrect = d.status === 'correct';
+          const isWrong = d.status === 'wrong';
+          const statusClass = isCorrect ? 'color:#10b981' : isWrong ? 'color:#ef4444' : 'color:#f59e0b';
+          const statusBadge = isCorrect ? '✅ Correct' : isWrong ? '❌ Wrong' : '⏭ Skipped';
+
+          const card = document.createElement('div');
+          card.className = 'q-review-card pdf-avoid';
+          card.style.cssText = 'background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:18px; margin-bottom:14px; page-break-inside:avoid; break-inside:avoid;';
+          card.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:6px;">
+              <div>
+                <span style="font-weight:700; font-size:0.88rem;">Question ${d.number || (i + 1)}</span>
+                <span style="font-size:0.75rem; background:rgba(59,130,246,0.15); color:#60a5fa; padding:2px 8px; border-radius:4px; margin-left:8px; font-weight:600;">${d.module || 'Mathematics 1'}</span>
+                ${d.topic ? `<span style="font-size:0.75rem; background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.7); padding:2px 8px; border-radius:4px; margin-left:6px;">${d.topic}</span>` : ''}
+              </div>
+              <span style="font-weight:700; font-size:0.78rem; ${statusClass}">${statusBadge}</span>
+            </div>
+            <div style="font-size:0.95rem; margin-bottom:12px; color:#f1f5f9;">${d.question || ''}</div>
+            <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:14px;">
+              ${(d.options || []).map((optText, optIdx) => {
+                let optStyle = 'background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08);';
+                let badge = '';
+
+                if (optIdx === d.answer) {
+                  optStyle = 'background:rgba(16,185,129,0.15); border:1px solid #10b981; color:#fff;';
+                  badge = '<span style="color:#10b981; font-weight:bold; margin-left:auto; font-size:0.78rem;">✓ Correct Answer</span>';
+                }
+                if (d.status === 'wrong' && optIdx === d.chosen) {
+                  optStyle = 'background:rgba(239,68,68,0.15); border:1px solid #ef4444; color:#fff;';
+                  badge = '<span style="color:#ef4444; font-weight:bold; margin-left:auto; font-size:0.78rem;">✗ Your Choice</span>';
+                } else if (d.status === 'correct' && optIdx === d.chosen) {
+                  badge = '<span style="color:#10b981; font-weight:bold; margin-left:auto; font-size:0.78rem;">✓ Your Choice</span>';
+                }
+
+                return `
+                  <div style="display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:6px; font-size:0.85rem; ${optStyle}">
+                    <div style="font-weight:bold;">${LETTERS[optIdx]}</div>
+                    <div style="flex:1;">${optText}</div>
+                    ${badge}
+                  </div>
+                `;
+              }).join('')}
+            </div>
+            ${d.explanation ? `<div style="background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.2); padding:10px 14px; border-radius:8px; font-size:0.82rem; color:#93c5fd;">💡 <strong>Explanation:</strong> ${d.explanation}</div>` : ''}
+          `;
+          qListContainer.appendChild(card);
+        });
+      }
+
+      renderMath(document.getElementById('dashboardReportModal'));
+      document.getElementById('dashboardReportModal').classList.add('active');
+    }
+
+    function renderMath(targetElement) {
+      const el = targetElement || document.body;
+      if (window.renderMathInElement) {
+        try {
+          window.renderMathInElement(el, {
+            delimiters: [
+              { left: '$$', right: '$$', display: true },
+              { left: '$', right: '$', display: false },
+              { left: '\\(', right: '\\)', display: false },
+              { left: '\\[', right: '\\]', display: true }
+            ],
+            ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code", "option"],
+            throwOnError: false
+          });
+        } catch (e) {
+          console.warn('Math rendering error:', e);
+        }
+      }
+    }
+
+    function closeDashboardModal() {
+      document.getElementById('dashboardReportModal').classList.remove('active');
+    }
+  </script>
+</body>
+
+</html>

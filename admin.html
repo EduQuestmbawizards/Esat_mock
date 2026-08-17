@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Control Center – EduQuest ESAT Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="scoring.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'IBM Plex Sans', sans-serif; background: #0d0d14; color: #fff; min-height: 100vh; }
+    
+    .hdr {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+      background: rgba(13, 13, 20, 0.95);
+      backdrop-filter: blur(14px);
+      z-index: 100;
+    }
+    
+    .brand { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+    .brand-pill { background: linear-gradient(135deg, #dc2626, #9333ea); padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; text-transform: uppercase; font-weight: 800; }
+    
+    .wrap { max-width: 1400px; margin: 32px auto; padding: 0 20px; }
+    
+    .main-tabs { display: flex; gap: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+    .main-tab-btn { background: none; border: none; color: rgba(255, 255, 255, 0.5); padding: 10px 18px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .main-tab-btn.active { color: #fff; background: rgba(59, 130, 246, 0.2); border-bottom: 2px solid #3b82f6; }
+    
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    
+    .status-tabs { display: flex; gap: 10px; margin-bottom: 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 6px; border-radius: 12px; max-width: 540px; }
+    .status-tab-btn { flex: 1; text-align: center; background: none; border: none; color: rgba(255,255,255,0.5); padding: 8px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+    .status-tab-btn.active { background: #3b82f6; color: #fff; }
+
+    .sub-tabs { display: flex; gap: 8px; margin-bottom: 14px; overflow-x: auto; padding-bottom: 6px; }
+    .sub-tab-btn { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.6); padding: 8px 14px; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all 0.2s; }
+    .sub-tab-btn.active { background: rgba(139, 92, 246, 0.25); border-color: #8b5cf6; color: #fff; }
+    
+    .search-bar { width: 100%; border: 1.5px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 10px 14px; font-family: inherit; font-size: 0.9rem; outline: none; background: rgba(255, 255, 255, 0.03); color: #fff; margin-bottom: 16px; }
+    .search-bar:focus { border-color: #3b82f6; }
+
+    .table-container {
+      max-height: 620px;
+      overflow-y: auto;
+      overflow-x: auto;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+
+    table { width: 100%; border-collapse: collapse; overflow: hidden; }
+    th, td { padding: 12px 14px; text-align: left; font-size: 0.85rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); white-space: nowrap; }
+    
+    th {
+      position: sticky;
+      top: 0;
+      background: #141422;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      z-index: 10;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+    
+    .btn-sm { background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); color: #60a5fa; padding: 5px 10px; border-radius: 6px; font-size: 0.78rem; cursor: pointer; }
+    .btn-sm:hover { background: #3b82f6; color: #fff; }
+    
+    .btn-grant { background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #34d399; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; font-weight: 600; }
+    .btn-grant:hover { background: #10b981; color: #fff; }
+    
+    .btn-revoke { background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #f87171; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; font-weight: 600; }
+    .btn-revoke:hover { background: #dc2626; color: #fff; }
+    
+    .btn-logout { background: rgba(220, 38, 38, 0.15); border: 1px solid rgba(220, 38, 38, 0.4); color: #f87171; padding: 6px 14px; border-radius: 6px; font-size: 0.82rem; cursor: pointer; }
+    .btn-logout:hover { background: #dc2626; color: #fff; }
+
+    /* Switch Component */
+    .switch { position: relative; display: inline-block; width: 34px; height: 18px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255,255,255,0.2); transition: .2s; border-radius: 20px; }
+    .slider:before { position: absolute; content: ""; height: 12px; width: 12px; left: 3px; bottom: 3px; background-color: white; transition: .2s; border-radius: 50%; }
+    input:checked + .slider { background-color: #10b981; }
+    input:checked + .slider:before { transform: translateX(16px); }
+
+    /* Modal Styling */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px); z-index: 1000; overflow-y: auto; padding: 30px 20px; }
+    .modal-overlay.active { display: block; }
+    .modal-card { background: #14141f; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 20px; max-width: 950px; margin: 0 auto; padding: 32px; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7); }
+    .modal-hdr { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 16px; }
+    
+    .review-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 24px; }
+    .review-stat { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 14px; text-align: center; }
+    .review-stat .r-num { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; }
+    .review-stat .r-lbl { font-size: 0.7rem; color: rgba(255, 255, 255, 0.5); text-transform: uppercase; margin-top: 2px; }
+
+    @media print {
+      html, body { background: #0d0d14 !important; color: #fff !important; }
+      .hdr, .main-tabs, .tab-content, h2, button { display: none !important; }
+      .modal-overlay.active { display: block !important; position: static !important; }
+      .modal-card { border: none !important; background: transparent !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="hdr">
+    <a href="index.html" class="brand">
+      <span>📐</span><span>EduQuest</span>
+      <span class="brand-pill">ESAT Admin</span>
+    </a>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <span style="color:rgba(255,255,255,0.7); font-size:0.85rem; font-weight:500;">🔑 Admin: rupali.eduquest@gmail.com</span>
+      <a href="index.html" style="color:#60a5fa; text-decoration:none; font-size:0.85rem;">← Exit to Portal</a>
+      <button onclick="window.supabaseLogout()" class="btn-logout">🚪 Logout</button>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <h2 style="font-family:'Syne',sans-serif; font-size:1.8rem; margin-bottom:20px;">ESAT Administrator Control Center</h2>
+
+    <!-- MAIN NAVIGATION TABS -->
+    <div class="main-tabs">
+      <button class="main-tab-btn active" onclick="switchMainTab('access')">🔒 Student Access Permissions</button>
+      <button class="main-tab-btn" onclick="switchMainTab('reports')">📊 Student Submissions &amp; Reports</button>
+    </div>
+
+    <!-- 1. STUDENT ACCESS MANAGEMENT TAB -->
+    <div id="tab-access" class="tab-content active">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
+        <h3 style="font-family:'Syne',sans-serif; font-size:1.2rem;">Registered Students &amp; ESAT Access Controls</h3>
+        <div style="display:flex; gap:10px;">
+          <button class="btn-grant" onclick="grantAllESATAccess()">🟢 Grant ESAT Access to ALL</button>
+          <button class="btn-revoke" onclick="revokeAllESATAccess()">🔴 Revoke ALL Access</button>
+        </div>
+      </div>
+
+      <div class="status-tabs">
+        <button class="status-tab-btn active" id="btnStatusAll" onclick="filterUserStatus('all')">All Students (<span id="countAll">0</span>)</button>
+        <button class="status-tab-btn" id="btnStatusApproved" onclick="filterUserStatus('approved')">Approved / Unlocked (<span id="countApproved">0</span>)</button>
+        <button class="status-tab-btn" id="btnStatusPending" onclick="filterUserStatus('pending')">Pending Approval (<span id="countPending">0</span>)</button>
+      </div>
+
+      <input type="text" class="search-bar" id="accessSearch" placeholder="🔍 Search students by name, email, or course..." onkeyup="filterAccessTable()">
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Email</th>
+              <th>Course / Stream</th>
+              <th>Overall ESAT Access</th>
+              <th>Full Mock Access</th>
+              <th>Diagnostic Access</th>
+              <th>Module Mocks Access</th>
+              <th>Topic Tests Access</th>
+              <th>Quick Actions</th>
+            </tr>
+          </thead>
+          <tbody id="accessTableBody">
+            <tr><td colspan="9" style="text-align:center; padding:20px; color:rgba(255,255,255,0.4);">Loading registered students...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 2. SUBMISSIONS & REPORTS TAB -->
+    <div id="tab-reports" class="tab-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
+        <h3 style="font-family:'Syne',sans-serif; font-size:1.2rem;">Submitted ESAT Test Reports</h3>
+        <button class="btn-sm" onclick="fetchAdminReports()">🔄 Refresh Submissions</button>
+      </div>
+
+      <div class="sub-tabs" id="reportSubTabs">
+        <button class="sub-tab-btn active" onclick="filterReportType('ALL')">All Submissions</button>
+        <button class="sub-tab-btn" onclick="filterReportType('full_mock')">🎓 Full Mocks</button>
+        <button class="sub-tab-btn" onclick="filterReportType('diagnostic')">🎯 Diagnostics</button>
+        <button class="sub-tab-btn" onclick="filterReportType('mock_test')">⏱️ Module Mocks</button>
+        <button class="sub-tab-btn" onclick="filterReportType('topic_test')">📐 Topic Tests</button>
+      </div>
+
+      <input type="text" class="search-bar" id="reportSearch" placeholder="🔍 Search submission by student name, email, or test title..." onkeyup="filterReportTable()">
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Email</th>
+              <th>Assessment Title</th>
+              <th>Test Type</th>
+              <th>Raw Score</th>
+              <th>Accuracy</th>
+              <th>Module Scores (1.0–9.0)</th>
+              <th>Submitted On</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="adminReportsBody">
+            <tr><td colspan="9" style="text-align:center; padding:20px; color:rgba(255,255,255,0.4);">Loading submissions...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL FOR DETAILED REPORT LOOK & REVIEW -->
+  <div class="modal-overlay" id="reportModal">
+    <div class="modal-card">
+      <div class="modal-hdr">
+        <div>
+          <h3 id="modalExamTitle">ESAT Detailed Assessment Report</h3>
+          <p id="modalStudentMeta">Candidate: Loading...</p>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <button class="btn-sm" style="background:#2563eb; color:#fff;" onclick="window.print()">🖨️ Print Report</button>
+          <button class="btn-sm" style="background:rgba(255,255,255,0.1); color:#fff;" onclick="closeReportModal()">✖ Close</button>
+        </div>
+      </div>
+
+      <div class="review-grid">
+        <div class="review-stat"><div class="r-num" style="color:#10b981" id="mCorrect">0</div><div class="r-lbl">Total Correct</div></div>
+        <div class="review-stat"><div class="r-num" style="color:#ef4444" id="mWrong">0</div><div class="r-lbl">Total Wrong</div></div>
+        <div class="review-stat"><div class="r-num" style="color:#f59e0b" id="mSkipped">0</div><div class="r-lbl">Unattempted</div></div>
+        <div class="review-stat"><div class="r-num" style="color:#60a5fa" id="mPct">0%</div><div class="r-lbl">Accuracy</div></div>
+      </div>
+
+      <div id="modalModuleCards" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; margin-bottom:24px;"></div>
+
+      <h4 style="font-family:'Syne',sans-serif; margin-bottom:16px; font-size:1.1rem; color:#f1f5f9; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:8px;">📋 Full Question, Given Answer &amp; Solution Review</h4>
+      <div id="modalQuestionList"></div>
+    </div>
+  </div>
+
+  <script>
+    let allUsers = [];
+    let userProfilesMap = {};
+    let allSubmissions = [];
+    let currentStatusFilter = 'all';
+    let currentReportType = 'ALL';
+    let currentQuestionModule = 'ALL';
+    const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchStudentAccessData();
+      fetchAdminReports();
+    });
+
+    function switchMainTab(tabKey) {
+      document.querySelectorAll('.main-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+      event.target.classList.add('active');
+      document.getElementById(`tab-${tabKey}`).classList.add('active');
+    }
+
+    async function fetchStudentAccessData() {
+      try {
+        const headers = { 'apikey': SUPABASE_CONFIG.anonKey, 'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}` };
+
+        const [usersRes, profilesRes] = await Promise.allSettled([
+          fetch(`${SUPABASE_CONFIG.url}/rest/v1/esat_user?select=*&order=created_at.desc`, { headers }),
+          fetch(`${SUPABASE_CONFIG.url}/rest/v1/profiles?select=*`, { headers })
+        ]);
+
+        const userMap = {};
+
+        if (profilesRes.status === 'fulfilled' && profilesRes.value.ok) {
+          const profilesList = await profilesRes.value.json();
+          profilesList.forEach(p => {
+            if (p.email) {
+              const em = p.email.toLowerCase();
+              userProfilesMap[em] = p;
+              userMap[em] = { name: p.name || em.split('@')[0], email: p.email, target_course: 'Registered Student' };
+            }
+          });
+        }
+
+        if (usersRes.status === 'fulfilled' && usersRes.value.ok) {
+          const uList = await usersRes.value.json();
+          uList.forEach(u => {
+            if (u.email) {
+              const em = u.email.toLowerCase();
+              userMap[em] = {
+                name: u.name || em.split('@')[0],
+                email: u.email,
+                target_course: u.target_course || 'Engineering'
+              };
+            }
+          });
+        }
+
+        allUsers = Object.values(userMap);
+        renderAccessTable();
+      } catch (e) {
+        console.error('Error fetching users:', e);
+      }
+    }
+
+    function renderAccessTable() {
+      const tbody = document.getElementById('accessTableBody');
+      tbody.innerHTML = '';
+
+      let list = allUsers;
+      if (currentStatusFilter === 'approved') {
+        list = list.filter(u => {
+          const p = userProfilesMap[u.email.toLowerCase()];
+          return p && p.has_esat_access !== false;
+        });
+      } else if (currentStatusFilter === 'pending') {
+        list = list.filter(u => {
+          const p = userProfilesMap[u.email.toLowerCase()];
+          return p && p.has_esat_access === false;
+        });
+      }
+
+      document.getElementById('cntAll').textContent = allUsers.length;
+      document.getElementById('cntApproved').textContent = allUsers.filter(u => {
+        const p = userProfilesMap[u.email.toLowerCase()];
+        return p && p.has_esat_access !== false;
+      }).length;
+      document.getElementById('cntPending').textContent = allUsers.filter(u => {
+        const p = userProfilesMap[u.email.toLowerCase()];
+        return p && p.has_esat_access === false;
+      }).length;
+
+      if (list.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:20px; color:rgba(255,255,255,0.4);">No students matching criteria.</td></tr>';
+        return;
+      }
+
+      list.forEach(u => {
+        const em = u.email.toLowerCase();
+        const p = userProfilesMap[em] || {};
+
+        const hasEsat = p.has_esat_access !== false;
+        const hasFullMock = p.has_esat_fullmock_access !== false;
+        const hasDiag = p.has_esat_diagnostic_access !== false;
+        const hasMock = p.has_esat_mock_access !== false;
+        const hasTopic = p.has_esat_topic_access !== false;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${u.name}</strong></td>
+          <td>${u.email}</td>
+          <td><span style="font-size:0.75rem; color:#60a5fa;">${u.target_course || 'Engineering'}</span></td>
+          <td>
+            <label class="switch">
+              <input type="checkbox" ${hasEsat ? 'checked' : ''} onchange="togglePermission('${em}', 'has_esat_access', this.checked)">
+              <span class="slider"></span>
+            </label>
+          </td>
+          <td>
+            <label class="switch">
+              <input type="checkbox" ${hasFullMock ? 'checked' : ''} onchange="togglePermission('${em}', 'has_esat_fullmock_access', this.checked)">
+              <span class="slider"></span>
+            </label>
+          </td>
+          <td>
+            <label class="switch">
+              <input type="checkbox" ${hasDiag ? 'checked' : ''} onchange="togglePermission('${em}', 'has_esat_diagnostic_access', this.checked)">
+              <span class="slider"></span>
+            </label>
+          </td>
+          <td>
+            <label class="switch">
+              <input type="checkbox" ${hasMock ? 'checked' : ''} onchange="togglePermission('${em}', 'has_esat_mock_access', this.checked)">
+              <span class="slider"></span>
+            </label>
+          </td>
+          <td>
+            <label class="switch">
+              <input type="checkbox" ${hasTopic ? 'checked' : ''} onchange="togglePermission('${em}', 'has_esat_topic_access', this.checked)">
+              <span class="slider"></span>
+            </label>
+          </td>
+          <td>
+            <div style="display:flex; gap:6px;">
+              <button class="btn-grant" style="padding:4px 8px; font-size:0.75rem;" onclick="grantStudentFull('${em}')">Grant All</button>
+              <button class="btn-revoke" style="padding:4px 8px; font-size:0.75rem;" onclick="revokeStudentFull('${em}')">Revoke All</button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterUserStatus(status) {
+      currentStatusFilter = status;
+      document.getElementById('btnStatusAll').classList.toggle('active', status === 'all');
+      document.getElementById('btnStatusApproved').classList.toggle('active', status === 'approved');
+      document.getElementById('btnStatusPending').classList.toggle('active', status === 'pending');
+      renderAccessTable();
+    }
+
+    function filterAccessTable() {
+      const q = document.getElementById('accessSearch').value.toLowerCase();
+      document.querySelectorAll('#accessTableBody tr').forEach(row => {
+        row.style.display = row.innerText.toLowerCase().includes(q) ? '' : 'none';
+      });
+    }
+
+    async function saveProfileToSupabase(email, patchData) {
+      const emailLower = email.toLowerCase().trim();
+      const headers = {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_CONFIG.anonKey,
+        'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}`,
+        'Prefer': 'return=minimal'
+      };
+
+      try {
+        // Step 1: Try updating existing record via PATCH
+        const patchRes = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/profiles?email=eq.${encodeURIComponent(emailLower)}`, {
+          method: 'PATCH',
+          headers: headers,
+          body: JSON.stringify(patchData)
+        });
+
+        if (patchRes.ok || patchRes.status === 204) {
+          console.log(`✅ Profile updated successfully for ${emailLower}`);
+          return;
+        }
+
+        // Step 2: If not found, insert new profile record
+        const insertPayload = Object.assign({ email: emailLower }, patchData);
+        const postRes = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/profiles`, {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify(insertPayload)
+        });
+
+        if (postRes.ok || postRes.status === 201) {
+          console.log(`✅ Profile created successfully for ${emailLower}`);
+        } else {
+          console.warn('Profile save note:', postRes.status);
+        }
+      } catch (e) {
+        console.error('Error saving profile to Supabase:', e);
+      }
+    }
+
+    async function togglePermission(email, key, value) {
+      const em = email.toLowerCase().trim();
+      if (!userProfilesMap[em]) userProfilesMap[em] = { email: em };
+      userProfilesMap[em][key] = value;
+
+      await saveProfileToSupabase(em, { [key]: value });
+      renderAccessTable();
+    }
+
+    async function grantAllESATAccess() {
+      if (!confirm('Approve and grant full ESAT access to ALL students?')) return;
+      for (const u of allUsers) {
+        const em = u.email.toLowerCase().trim();
+        if (!userProfilesMap[em]) userProfilesMap[em] = { email: em };
+        const updates = {
+          has_esat_access: true,
+          has_esat_fullmock_access: true,
+          has_esat_diagnostic_access: true,
+          has_esat_mock_access: true,
+          has_esat_topic_access: true
+        };
+        Object.assign(userProfilesMap[em], updates);
+        await saveProfileToSupabase(em, updates);
+      }
+      renderAccessTable();
+      alert('🟢 All students have been GRANTED full ESAT access.');
+    }
+
+    async function revokeAllESATAccess() {
+      if (!confirm('Are you sure you want to REVOKE all ESAT access from ALL students?')) return;
+      for (const u of allUsers) {
+        const em = u.email.toLowerCase().trim();
+        if (!userProfilesMap[em]) userProfilesMap[em] = { email: em };
+        const updates = {
+          has_esat_access: false,
+          has_esat_fullmock_access: false,
+          has_esat_diagnostic_access: false,
+          has_esat_mock_access: false,
+          has_esat_topic_access: false
+        };
+        Object.assign(userProfilesMap[em], updates);
+        await saveProfileToSupabase(em, updates);
+      }
+      renderAccessTable();
+      alert('🔴 All ESAT access has been REVOKED for all students.');
+    }
+
+    async function grantStudentFull(email) {
+      const em = email.toLowerCase().trim();
+      if (!userProfilesMap[em]) userProfilesMap[em] = { email: em };
+      const updates = {
+        has_esat_access: true,
+        has_esat_fullmock_access: true,
+        has_esat_diagnostic_access: true,
+        has_esat_mock_access: true,
+        has_esat_topic_access: true
+      };
+      Object.assign(userProfilesMap[em], updates);
+      await saveProfileToSupabase(em, updates);
+      renderAccessTable();
+    }
+
+    async function revokeStudentFull(email) {
+      const em = email.toLowerCase().trim();
+      if (!userProfilesMap[em]) userProfilesMap[em] = { email: em };
+      const updates = {
+        has_esat_access: false,
+        has_esat_fullmock_access: false,
+        has_esat_diagnostic_access: false,
+        has_esat_mock_access: false,
+        has_esat_topic_access: false
+      };
+      Object.assign(userProfilesMap[em], updates);
+      await saveProfileToSupabase(em, updates);
+      renderAccessTable();
+    }
+
+    // ── SUBMISSIONS & REPORTS ─────────────────────
+    async function fetchAdminReports() {
+      try {
+        const res = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/esat_report?select=*&order=created_at.desc`, {
+          headers: {
+            'apikey': SUPABASE_CONFIG.anonKey,
+            'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}`
+          }
+        });
+        if (res.ok) {
+          allSubmissions = await res.json();
+          renderSubmissionsTable();
+        }
+      } catch (e) {
+        console.error('Error fetching admin reports:', e);
+      }
+    }
+
+    function renderSubmissionsTable() {
+      const tbody = document.getElementById('adminReportsBody');
+      tbody.innerHTML = '';
+
+      let list = allSubmissions;
+      if (currentReportType !== 'ALL') {
+        list = list.filter(r => r.test_type === currentReportType);
+      }
+
+      if (list.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:20px; color:rgba(255,255,255,0.4);">No submissions found.</td></tr>';
+        return;
+      }
+
+      list.forEach((r, idx) => {
+        let modArr = [];
+        try {
+          modArr = typeof r.module_scores_json === 'string' ? JSON.parse(r.module_scores_json) : (r.module_scores_json || []);
+        } catch (e) { modArr = []; }
+
+        const modScoresHtml = modArr.map(m => `
+          <span style="background:rgba(59,130,246,0.15); color:#60a5fa; padding:2px 6px; border-radius:4px; font-weight:700; font-size:0.75rem; margin-right:4px;">
+            ${m.module}: <strong>${m.esatScore || m.esat_score || '1.0'}</strong>
+          </span>
+        `).join('');
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${r.name || 'Student'}</strong></td>
+          <td>${r.email || 'N/A'}</td>
+          <td>${r.test_title || 'ESAT Assessment'}</td>
+          <td><span style="font-size:0.75rem; text-transform:uppercase; color:rgba(255,255,255,0.5);">${r.test_type || 'full_mock'}</span></td>
+          <td><span style="color:#38bdf8; font-weight:700;">${r.total_correct || 0} / ${r.total_questions || 0}</span></td>
+          <td><span style="color:#60a5fa; font-weight:600;">${r.overall_accuracy || 0}%</span></td>
+          <td>${modScoresHtml || '--'}</td>
+          <td style="color:rgba(255,255,255,0.5); font-size:0.8rem;">${r.submit_time || 'Recent'}</td>
+          <td>
+            <button class="btn-sm" onclick="openReportModal(${idx})">👁️ Review</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterReportType(type) {
+      currentReportType = type;
+      document.querySelectorAll('#reportSubTabs .sub-tab-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      renderSubmissionsTable();
+    }
+
+    function filterReportTable() {
+      const q = document.getElementById('reportSearch').value.toLowerCase();
+      document.querySelectorAll('#adminReportsBody tr').forEach(row => {
+        row.style.display = row.innerText.toLowerCase().includes(q) ? '' : 'none';
+      });
+    }
+
+    function openReportModal(idx) {
+      const r = allSubmissions[idx];
+      if (!r) return;
+
+      document.getElementById('modalExamTitle').textContent = `📊 ${r.test_title || 'ESAT Assessment'} Report`;
+      document.getElementById('modalStudentMeta').textContent = `Candidate: ${r.name || 'Student'} (${r.email || 'N/A'}) &nbsp;|&nbsp; Submitted: ${r.submit_time || 'N/A'}`;
+      document.getElementById('mCorrect').textContent = `${r.total_correct || 0} / ${r.total_questions || 0}`;
+      document.getElementById('mWrong').textContent = r.total_wrong || 0;
+      document.getElementById('mSkipped').textContent = r.total_unattempted || 0;
+      document.getElementById('mPct').textContent = `${r.overall_accuracy || 0}%`;
+
+      let modArr = [];
+      try {
+        modArr = typeof r.module_scores_json === 'string' ? JSON.parse(r.module_scores_json) : (r.module_scores_json || []);
+      } catch (e) { modArr = []; }
+
+      const modContainer = document.getElementById('modalModuleCards');
+      modContainer.innerHTML = modArr.map(m => `
+        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(59,130,246,0.3); border-radius:12px; padding:16px; text-align:center;">
+          <div style="font-size:0.75rem; text-transform:uppercase; color:#93c5fd; font-weight:700; margin-bottom:4px;">${m.module}</div>
+          <div style="font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; color:#38bdf8;">
+            ${m.esatScore || m.esat_score || '1.0'} <span style="font-size:1.1rem; color:rgba(255,255,255,0.5);">/ 9.0</span>
+          </div>
+          <div style="font-size:0.78rem; color:rgba(255,255,255,0.7); margin-top:4px;">Raw: <strong>${m.correct}/${m.total}</strong> · <strong>${m.accuracy}%</strong></div>
+        </div>
+      `).join('');
+
+      let details = [];
+      try {
+        let raw = r.details_json || [];
+        if (typeof raw === 'string') details = JSON.parse(raw);
+        else if (Array.isArray(raw)) details = raw;
+      } catch (e) { details = []; }
+
+      const qListContainer = document.getElementById('modalQuestionList');
+      qListContainer.innerHTML = '';
+
+      if (!details || details.length === 0) {
+        qListContainer.innerHTML = '<div style="text-align:center; color:rgba(255,255,255,0.4); padding:20px;">Question breakdown details not available.</div>';
+      } else {
+        details.forEach((d, i) => {
+          const isCorrect = d.status === 'correct';
+          const isWrong = d.status === 'wrong';
+          const statusClass = isCorrect ? 'color:#10b981' : isWrong ? 'color:#ef4444' : 'color:#f59e0b';
+          const statusBadge = isCorrect ? '✅ Correct' : isWrong ? '❌ Wrong' : '⏭ Skipped';
+
+          const card = document.createElement('div');
+          card.className = 'q-review-card pdf-avoid';
+          card.style.cssText = 'background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:18px; margin-bottom:14px;';
+          card.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:6px;">
+              <div>
+                <span style="font-weight:700; font-size:0.88rem;">Question ${d.number || (i + 1)}</span>
+                <span style="font-size:0.75rem; background:rgba(59,130,246,0.15); color:#60a5fa; padding:2px 8px; border-radius:4px; margin-left:8px; font-weight:600;">${d.module || 'Mathematics 1'}</span>
+                ${d.topic ? `<span style="font-size:0.75rem; background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.7); padding:2px 8px; border-radius:4px; margin-left:6px;">${d.topic}</span>` : ''}
+              </div>
+              <span style="font-weight:700; font-size:0.78rem; ${statusClass}">${statusBadge}</span>
+            </div>
+            <div style="font-size:0.95rem; margin-bottom:12px; color:#f1f5f9;">${d.question || ''}</div>
+            <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:14px;">
+              ${(d.options || []).map((optText, optIdx) => {
+                let optStyle = 'background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08);';
+                let badge = '';
+
+                if (optIdx === d.answer) {
+                  optStyle = 'background:rgba(16,185,129,0.15); border:1px solid #10b981; color:#fff;';
+                  badge = '<span style="color:#10b981; font-weight:bold; margin-left:auto; font-size:0.78rem;">✓ Correct Answer</span>';
+                }
+                if (d.status === 'wrong' && optIdx === d.chosen) {
+                  optStyle = 'background:rgba(239,68,68,0.15); border:1px solid #ef4444; color:#fff;';
+                  badge = '<span style="color:#ef4444; font-weight:bold; margin-left:auto; font-size:0.78rem;">✗ Candidate Choice</span>';
+                } else if (d.status === 'correct' && optIdx === d.chosen) {
+                  badge = '<span style="color:#10b981; font-weight:bold; margin-left:auto; font-size:0.78rem;">✓ Candidate Choice</span>';
+                }
+
+                return `
+                  <div style="display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:6px; font-size:0.85rem; ${optStyle}">
+                    <div style="font-weight:bold;">${LETTERS[optIdx]}</div>
+                    <div style="flex:1;">${optText}</div>
+                    ${badge}
+                  </div>
+                `;
+              }).join('')}
+            </div>
+            ${d.explanation ? `<div style="background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.2); padding:10px 14px; border-radius:8px; font-size:0.82rem; color:#93c5fd;">💡 <strong>Explanation:</strong> ${d.explanation}</div>` : ''}
+          `;
+          qListContainer.appendChild(card);
+        });
+      }
+
+      renderMath(document.getElementById('reportModal'));
+      document.getElementById('reportModal').classList.add('active');
+    }
+
+    function closeReportModal() {
+      document.getElementById('reportModal').classList.remove('active');
+    }
+
+    function renderMath(targetElement) {
+      const el = targetElement || document.body;
+      if (window.renderMathInElement) {
+        try {
+          window.renderMathInElement(el, {
+            delimiters: [
+              { left: '$$', right: '$$', display: true },
+              { left: '$', right: '$', display: false },
+              { left: '\\(', right: '\\)', display: false },
+              { left: '\\[', right: '\\]', display: true }
+            ],
+            ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code", "option"],
+            throwOnError: false
+          });
+        } catch (e) {
+          console.warn('Math rendering error:', e);
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

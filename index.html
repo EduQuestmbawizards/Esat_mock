@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduQuest ESAT – Engineering &amp; Science Admissions Test Portal</title>
+  <meta name="description" content="Master the Cambridge & Imperial ESAT exam with official-format Diagnostic, Topic Tests, Module Mocks, and 3-Module Full-Length Mocks. Module-wise 1.0–9.0 Rasch score reporting.">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="hdr">
+    <a href="index.html" class="brand">
+      <span class="brand-icon">📐</span>
+      <span>EduQuest</span>
+      <span class="brand-pill">ESAT Platform</span>
+    </a>
+    <div class="hdr-right" id="authSection">
+      <a href="dashboard.html" class="hdr-link">📊 Student Dashboard</a>
+      <a href="admin.html" class="hdr-link">🛠️ Admin Portal</a>
+      <a href="login.html" class="hdr-btn-primary" id="loginBtn">Sign In / Sign Up</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <main class="hero">
+    <div class="hero-badge">✦ Official Cambridge &amp; Imperial ESAT Format · 1.0–9.0 Module Scale</div>
+    <h1>Master the ESAT<br><span>Diagnostic, Module &amp; Full Mocks</span></h1>
+    <p>Prepare for Cambridge &amp; Imperial Engineering, Natural Sciences, Chemical Engineering, Physics, and Veterinary Medicine. Practice compulsory Mathematics 1, tailor your 2 elective modules, build topic mastery, and track scores on the official 1.0–9.0 scale.</p>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('full-mock')">🎓 Full Mocks (3)</button>
+      <button class="tab-btn" onclick="showTab('diagnostic')">🎯 Diagnostic Tests (3)</button>
+      <button class="tab-btn" onclick="showTab('module-mocks')">⏱️ Module Mocks (15)</button>
+      <button class="tab-btn" onclick="showTab('maths1-topics')">📐 Maths 1 Topics (3)</button>
+      <button class="tab-btn" onclick="showTab('maths2-topics')">🔢 Maths 2 Topics (3)</button>
+      <button class="tab-btn" onclick="showTab('physics-topics')">⚡ Physics Topics (3)</button>
+      <button class="tab-btn" onclick="showTab('chem-topics')">🧪 Chemistry Topics (3)</button>
+      <button class="tab-btn" onclick="showTab('bio-topics')">🧬 Biology Topics (3)</button>
+    </div>
+
+    <!-- 1. FULL MOCK TAB (3 TESTS) -->
+    <div id="tab-full-mock" class="tab-content active">
+      <div class="cards">
+        <div class="exam-card" style="border-color: rgba(139, 92, 246, 0.4); background: rgba(139, 92, 246, 0.04);">
+          <div class="card-icon">🎓</div>
+          <div class="card-num">Mock Exam 01</div>
+          <div class="card-title">ESAT Full-Length Practice Mock 1</div>
+          <div class="card-sub">81 Questions · 120 Minutes · Mathematics 1 (Compulsory) + Mathematics 2 + Physics. Module-wise scores calculated on official 1.0 – 9.0 scale.</div>
+          <div class="card-meta">
+            <span class="tag tag-full">81 Qs · 120 Min</span>
+            <a href="full_mock/test_full_mock.html" class="card-btn">Start Full Mock 1 →</a>
+          </div>
+        </div>
+
+        <div class="exam-card" style="border-color: rgba(59, 130, 246, 0.4); background: rgba(59, 130, 246, 0.04);">
+          <div class="card-icon">🏗️</div>
+          <div class="card-num">Mock Exam 02</div>
+          <div class="card-title">ESAT Full-Length Practice Mock 2</div>
+          <div class="card-sub">81 Questions · 120 Minutes · Mathematics 1 (Compulsory) + Chemistry + Biology. Full timed simulation with authentic worked solutions.</div>
+          <div class="card-meta">
+            <span class="tag tag-full">81 Qs · 120 Min</span>
+            <a href="full_mock/test_full_mock_02.html" class="card-btn">Start Full Mock 2 →</a>
+          </div>
+        </div>
+
+        <div class="exam-card" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.04);">
+          <div class="card-icon">🔬</div>
+          <div class="card-num">Mock Exam 03</div>
+          <div class="card-title">ESAT Full-Length Practice Mock 3</div>
+          <div class="card-sub">81 Questions · 120 Minutes · Mathematics 1 (Compulsory) + Physics + Chemistry. Scored individually per module on 1.0–9.0 scale.</div>
+          <div class="card-meta">
+            <span class="tag tag-full">81 Qs · 120 Min</span>
+            <a href="full_mock/test_full_mock_03.html" class="card-btn">Start Full Mock 3 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. DIAGNOSTIC ASSESSMENT TAB (3 TESTS) -->
+    <div id="tab-diagnostic" class="tab-content">
+      <div class="cards">
+        <div class="exam-card" style="border-color: rgba(59, 130, 246, 0.4); background: rgba(59, 130, 246, 0.04);">
+          <div class="card-icon">🎯</div>
+          <div class="card-num">Diagnostic Assessment 01</div>
+          <div class="card-title">ESAT Full Diagnostic Assessment 1</div>
+          <div class="card-sub">81 Questions · 120 Minutes · Baseline assessment across Mathematics 1, Mathematics 2, and Physics. Identifies topic-level strengths and weaknesses.</div>
+          <div class="card-meta">
+            <span class="tag tag-compulsory">81 Qs · 3 Modules</span>
+            <a href="diagnostic_test/test_diag.html" class="card-btn">Start Diagnostic 1 →</a>
+          </div>
+        </div>
+
+        <div class="exam-card" style="border-color: rgba(139, 92, 246, 0.4); background: rgba(139, 92, 246, 0.04);">
+          <div class="card-icon">📊</div>
+          <div class="card-num">Diagnostic Assessment 02</div>
+          <div class="card-title">ESAT Full Diagnostic Assessment 2</div>
+          <div class="card-sub">81 Questions · 120 Minutes · Baseline diagnostic evaluation across Mathematics 1, Chemistry, and Biology. Detailed time pacing breakdown.</div>
+          <div class="card-meta">
+            <span class="tag tag-compulsory">81 Qs · 3 Modules</span>
+            <a href="diagnostic_test/test_diag_02.html" class="card-btn">Start Diagnostic 2 →</a>
+          </div>
+        </div>
+
+        <div class="exam-card" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.04);">
+          <div class="card-icon">🧪</div>
+          <div class="card-num">Diagnostic Assessment 03</div>
+          <div class="card-title">ESAT Full Diagnostic Assessment 3</div>
+          <div class="card-sub">81 Questions · 120 Minutes · Baseline diagnostic evaluation across Mathematics 1, Mathematics 2, and Biology with worked step-by-step explanations.</div>
+          <div class="card-meta">
+            <span class="tag tag-compulsory">81 Qs · 3 Modules</span>
+            <a href="diagnostic_test/test_diag_03.html" class="card-btn">Start Diagnostic 3 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. SINGLE MODULE MOCKS TAB (15 TESTS) -->
+    <div id="tab-module-mocks" class="tab-content">
+      <div class="cards">
+        <!-- MATHS 1 -->
+        <div class="exam-card">
+          <div class="card-icon">📐</div>
+          <div class="card-num">Maths 1 · Mock 01</div>
+          <div class="card-title">Mathematics 1 Mock 1</div>
+          <div class="card-sub">27 Questions · 40 Minutes · Pure Mathematics, Algebra, Geometry, Trigonometry, and Probability. Scored 1.0 – 9.0.</div>
+          <div class="card-meta"><span class="tag tag-compulsory">Compulsory · 27 Qs</span><a href="mock_tests/maths1_mock_01/test.html" class="card-btn">Start Maths 1 Mock 1 →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">📐</div>
+          <div class="card-num">Maths 1 · Mock 02</div>
+          <div class="card-title">Mathematics 1 Mock 2</div>
+          <div class="card-sub">27 Questions · 40 Minutes · Polynomials, coordinate geometry, logarithms, series, and trigonometry. Scored 1.0 – 9.0.</div>
+          <div class="card-meta"><span class="tag tag-compulsory">Compulsory · 27 Qs</span><a href="mock_tests/maths1_mock_02/test.html" class="card-btn">Start Maths 1 Mock 2 →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">📐</div>
+          <div class="card-num">Maths 1 · Mock 03</div>
+          <div class="card-title">Mathematics 1 Mock 3</div>
+          <div class="card-sub">27 Questions · 40 Minutes · Functions, transformations, circles, binomial expansions, and combinatorics. Scored 1.0 – 9.0.</div>
+          <div class="card-meta"><span class="tag tag-compulsory">Compulsory · 27 Qs</span><a href="mock_tests/maths1_mock_03/test.html" class="card-btn">Start Maths 1 Mock 3 →</a></div>
+        </div>
+
+        <!-- MATHS 2 -->
+        <div class="exam-card">
+          <div class="card-icon">🔢</div>
+          <div class="card-num">Maths 2 · Mock 01</div>
+          <div class="card-title">Mathematics 2 Mock 1</div>
+          <div class="card-sub">27 Questions · 40 Minutes · Advanced Calculus, Differentiation, Integration by Parts, and 3D Vectors. Scored 1.0 – 9.0.</div>
+          <div class="card-meta"><span class="tag tag-elective">Elective · 27 Qs</span><a href="mock_tests/maths2_mock_01/test.html" class="card-btn">Start Maths 2 Mock 1 →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">🔢</div>
+          <div class="card-num">Maths 2 · Mock 02</div>
+          <div class="card-title">Mathematics 2 Mock 2</div>
+          <div class="card-sub">27 Questions · 40 Minutes · Matrices, Complex Numbers, Differential Equations, and Maclaurin Series. Scored 1.0 – 9.0.</div>
+          <div class="card-meta"><span class="tag tag-elective">Elective · 27 Qs</span><a href="mock_tests/maths2_mock_02/test.html" class="card-btn">Start Maths 2 Mock 2 →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">🔢</div>
+          <div class="card-num">Maths 2 · Mock 03</div>
+          <div class="card-title">Mathematics 2 Mock 3</div>
+          <div class="card-sub">27 Questions · 40 Minutes · Advanced Coordinate Geometry, Implicit Differentiation, and Vector Planes. Scored 1.0 – 9.0.</div>
+          <div class="card-meta"><span class="tag tag-elective">Elective · 27 Qs</span><a href="mock_tests/maths2_mock_03/test.html" class="card-btn">Start Maths 2 Mock 3 →</a></div>
+        </div>
+
+        <!-- PHYSICS -->
+        <div class="exam-card">
+          <div class="card-icon">⚡</div>
+          <div class="card-num">Physics · Mock 01</div>
+          <div class="card-title">Physics Mock 1</div>
+          <div class="card-sub">27 Questions · 40 Minutes · Mechanics, Newton's Laws, Work-Energy, Momentum, and Waves. Scored 1.0 – 9.0.</div>
+          <div class="card-meta"><span class="tag tag-elective">Elective · 27 Qs</span><a href="mock_tests/physics_mock_01/test.html" class="card-btn">Start Physics Mock 1 →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">⚡</div>
+          <div class="card-num">Physics · Mock 02</div>
+          <div class="card-title">Physics Mock 2</div>
+          <div class="card-sub">27 Questions · 40 Minutes · Electricity, Circuits, Internal Resistance, and Potential Dividers. Scored 1.0 – 9.0.</div>
+          <div class="card-meta"><span class="tag tag-elective">Elective · 27 Qs</span><a href="mock_tests/physics_mock_02/test.html" class="card-btn">Start Physics Mock 2 →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">⚡</div>
+          <div class="card-num">Physics · Mock 03</div>
+          <div class="card-title">Physics Mock 3</div>
+          <div class="card-sub">27 Questions · 40 Minutes · Circular Motion, Gravitation, Thermal Physics, and Nuclear Decay. Scored 1.0 – 9.0.</div>
+          <div class="card-meta"><span class="tag tag-elective">Elective · 27 Qs</span><a href="mock_tests/physics_mock_03/test.html" class="card-btn">Start Physics Mock 3 →</a></div>
+        </div>
+
+        <!-- CHEMISTRY -->
+        <div class="exam-card">
+          <div class="card-icon">🧪</div>
+          <div class="card-num">Chemistry · Mock 01</div>
+          <div class="card-title">Chemistry Mock 1</div>
+          <div class="card-sub">27 Questions · 40 Minutes · Atomic Structure, VSEPR Molecular Shapes, and Energetics. Scored 1.0 – 9.0.</div>
+          <div class="card-meta"><span class="tag tag-elective">Elective · 27 Qs</span><a href="mock_tests/chemistry_mock_01/test.html" class="card-btn">Start Chemistry Mock 1 →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">🧪</div>
+          <div class="card-num">Chemistry · Mock 02</div>
+          <div class="card-title">Chemistry Mock 2</div>
+          <div class="card-sub">27 Questions · 40 Minutes · Equilibria, Le Chatelier's Principle, Kinetics, and Rate Laws. Scored 1.0 – 9.0.</div>
+          <div class="card-meta"><span class="tag tag-elective">Elective · 27 Qs</span><a href="mock_tests/chemistry_mock_02/test.html" class="card-btn">Start Chemistry Mock 2 →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">🧪</div>
+          <div class="card-num">Chemistry · Mock 03</div>
+          <div class="card-title">Chemistry Mock 3</div>
+          <div class="card-sub">27 Questions · 40 Minutes · Organic Functional Groups, Isomerism, Acids/Bases, and Redox. Scored 1.0 – 9.0.</div>
+          <div class="card-meta"><span class="tag tag-elective">Elective · 27 Qs</span><a href="mock_tests/chemistry_mock_03/test.html" class="card-btn">Start Chemistry Mock 3 →</a></div>
+        </div>
+
+        <!-- BIOLOGY -->
+        <div class="exam-card">
+          <div class="card-icon">🧬</div>
+          <div class="card-num">Biology · Mock 01</div>
+          <div class="card-title">Biology Mock 1</div>
+          <div class="card-sub">27 Questions · 40 Minutes · Cell Organelles, Enzyme Kinetics, and Molecular Genetics. Scored 1.0 – 9.0.</div>
+          <div class="card-meta"><span class="tag tag-elective">Elective · 27 Qs</span><a href="mock_tests/biology_mock_01/test.html" class="card-btn">Start Biology Mock 1 →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">🧬</div>
+          <div class="card-num">Biology · Mock 02</div>
+          <div class="card-title">Biology Mock 2</div>
+          <div class="card-sub">27 Questions · 40 Minutes · Cellular Respiration, Photosynthesis Calvin Cycle, and Meiosis. Scored 1.0 – 9.0.</div>
+          <div class="card-meta"><span class="tag tag-elective">Elective · 27 Qs</span><a href="mock_tests/biology_mock_02/test.html" class="card-btn">Start Biology Mock 2 →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">🧬</div>
+          <div class="card-num">Biology · Mock 03</div>
+          <div class="card-title">Biology Mock 3</div>
+          <div class="card-sub">27 Questions · 40 Minutes · Neurobiology Action Potentials, Endocrinology, and Ecology. Scored 1.0 – 9.0.</div>
+          <div class="card-meta"><span class="tag tag-elective">Elective · 27 Qs</span><a href="mock_tests/biology_mock_03/test.html" class="card-btn">Start Biology Mock 3 →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. MATHEMATICS 1 TOPICS (3 TESTS) -->
+    <div id="tab-maths1-topics" class="tab-content">
+      <div class="cards">
+        <div class="exam-card">
+          <div class="card-icon">🔤</div>
+          <div class="card-num">Maths 1 · Topic 01</div>
+          <div class="card-title">Algebra, Surds &amp; Polynomials</div>
+          <div class="card-sub">15 Questions · 25 Minutes · Quadratic roots, factor theorem, surds, indices, and rational inequalities.</div>
+          <div class="card-meta"><span class="tag tag-compulsory">15 Questions</span><a href="topic_tests/maths1/algebra/test.html" class="card-btn">Start Topic Test →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">📐</div>
+          <div class="card-num">Maths 1 · Topic 02</div>
+          <div class="card-title">Geometry &amp; Trigonometry</div>
+          <div class="card-sub">15 Questions · 25 Minutes · Straight lines, circle tangents, exact trig values, and cosine rule.</div>
+          <div class="card-meta"><span class="tag tag-compulsory">15 Questions</span><a href="topic_tests/maths1/geometry_trig/test.html" class="card-btn">Start Topic Test →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">🎲</div>
+          <div class="card-num">Maths 1 · Topic 03</div>
+          <div class="card-title">Calculus Foundations &amp; Probability</div>
+          <div class="card-sub">15 Questions · 25 Minutes · Basic derivatives, stationary points, definite integrals, and combinatorics.</div>
+          <div class="card-meta"><span class="tag tag-compulsory">15 Questions</span><a href="topic_tests/maths1/calculus_prob/test.html" class="card-btn">Start Topic Test →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. MATHEMATICS 2 TOPICS (3 TESTS) -->
+    <div id="tab-maths2-topics" class="tab-content">
+      <div class="cards">
+        <div class="exam-card">
+          <div class="card-icon">🔢</div>
+          <div class="card-num">Maths 2 · Topic 01</div>
+          <div class="card-title">Advanced Calculus</div>
+          <div class="card-sub">15 Questions · 25 Minutes · Integration by parts, substitution, and implicit differentiation.</div>
+          <div class="card-meta"><span class="tag tag-elective">15 Questions</span><a href="topic_tests/maths2/advanced_calculus/test.html" class="card-btn">Start Topic Test →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">🧭</div>
+          <div class="card-num">Maths 2 · Topic 02</div>
+          <div class="card-title">Vectors &amp; 3D Geometry</div>
+          <div class="card-sub">15 Questions · 25 Minutes · 3D dot product, angle between vectors, and Cartesian plane equations.</div>
+          <div class="card-meta"><span class="tag tag-elective">15 Questions</span><a href="topic_tests/maths2/vectors_3d/test.html" class="card-btn">Start Topic Test →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">🧮</div>
+          <div class="card-num">Maths 2 · Topic 03</div>
+          <div class="card-title">Matrices &amp; Complex Numbers</div>
+          <div class="card-sub">15 Questions · 25 Minutes · Matrix inverses, eigenvalues, modulus-argument form, and differential equations.</div>
+          <div class="card-meta"><span class="tag tag-elective">15 Questions</span><a href="topic_tests/maths2/matrices_complex/test.html" class="card-btn">Start Topic Test →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. PHYSICS TOPICS (3 TESTS) -->
+    <div id="tab-physics-topics" class="tab-content">
+      <div class="cards">
+        <div class="exam-card">
+          <div class="card-icon">🏎️</div>
+          <div class="card-num">Physics · Topic 01</div>
+          <div class="card-title">Mechanics &amp; Energy</div>
+          <div class="card-sub">15 Questions · 25 Minutes · SUVAT kinematics, Newton's laws, impulse, and kinetic energy relations.</div>
+          <div class="card-meta"><span class="tag tag-elective">15 Questions</span><a href="topic_tests/physics/mechanics/test.html" class="card-btn">Start Topic Test →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">💡</div>
+          <div class="card-num">Physics · Topic 02</div>
+          <div class="card-title">Electricity &amp; Waves</div>
+          <div class="card-sub">15 Questions · 25 Minutes · Internal resistance, terminal potential, critical angle, and wave phase difference.</div>
+          <div class="card-meta"><span class="tag tag-elective">15 Questions</span><a href="topic_tests/physics/electricity_waves/test.html" class="card-btn">Start Topic Test →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">🪐</div>
+          <div class="card-num">Physics · Topic 03</div>
+          <div class="card-title">Thermal &amp; Gravitational Fields</div>
+          <div class="card-sub">15 Questions · 25 Minutes · Kepler's laws, satellite orbital periods, ideal gas laws, and radioactivity.</div>
+          <div class="card-meta"><span class="tag tag-elective">15 Questions</span><a href="topic_tests/physics/thermal_fields/test.html" class="card-btn">Start Topic Test →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. CHEMISTRY TOPICS (3 TESTS) -->
+    <div id="tab-chem-topics" class="tab-content">
+      <div class="cards">
+        <div class="exam-card">
+          <div class="card-icon">⚛️</div>
+          <div class="card-num">Chemistry · Topic 01</div>
+          <div class="card-title">Atomic Structure &amp; Bonding</div>
+          <div class="card-sub">15 Questions · 25 Minutes · Ionisation energies, VSEPR molecular geometry, and intermolecular hydrogen bonding.</div>
+          <div class="card-meta"><span class="tag tag-elective">15 Questions</span><a href="topic_tests/chemistry/atomic_bonding/test.html" class="card-btn">Start Topic Test →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">🔥</div>
+          <div class="card-num">Chemistry · Topic 02</div>
+          <div class="card-title">Energetics &amp; Kinetics</div>
+          <div class="card-sub">15 Questions · 25 Minutes · Hess's law cycles, Le Chatelier equilibria shifts, and rate order determination.</div>
+          <div class="card-meta"><span class="tag tag-elective">15 Questions</span><a href="topic_tests/chemistry/energetics_kinetics/test.html" class="card-btn">Start Topic Test →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">🧪</div>
+          <div class="card-num">Chemistry · Topic 03</div>
+          <div class="card-title">Organic Chemistry &amp; Redox</div>
+          <div class="card-sub">15 Questions · 25 Minutes · Alcohol oxidation, structural isomers, pH calculations, and cell potentials.</div>
+          <div class="card-meta"><span class="tag tag-elective">15 Questions</span><a href="topic_tests/chemistry/organic_chem/test.html" class="card-btn">Start Topic Test →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. BIOLOGY TOPICS (3 TESTS) -->
+    <div id="tab-bio-topics" class="tab-content">
+      <div class="cards">
+        <div class="exam-card">
+          <div class="card-icon">🔬</div>
+          <div class="card-num">Biology · Topic 01</div>
+          <div class="card-title">Cell Biology &amp; Organelles</div>
+          <div class="card-sub">15 Questions · 25 Minutes · Golgi apparatus, competitive enzyme kinetics ($V_{\max}, K_m$), and cell organelles.</div>
+          <div class="card-meta"><span class="tag tag-elective">15 Questions</span><a href="topic_tests/biology/cell_biology/test.html" class="card-btn">Start Topic Test →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">🧬</div>
+          <div class="card-num">Biology · Topic 02</div>
+          <div class="card-title">Genetics &amp; Molecular Biology</div>
+          <div class="card-sub">15 Questions · 25 Minutes · Chargaff's rules, meiotic crossing over, and sex-linked inheritance.</div>
+          <div class="card-meta"><span class="tag tag-elective">15 Questions</span><a href="topic_tests/biology/genetics_molecular/test.html" class="card-btn">Start Topic Test →</a></div>
+        </div>
+        <div class="exam-card">
+          <div class="card-icon">🌱</div>
+          <div class="card-num">Biology · Topic 03</div>
+          <div class="card-title">Human Physiology &amp; Ecology</div>
+          <div class="card-sub">15 Questions · 25 Minutes · Action potential depolarisation, glucagon, Hardy-Weinberg equilibrium, and xylem transport.</div>
+          <div class="card-meta"><span class="tag tag-elective">15 Questions</span><a href="topic_tests/biology/physiology_ecology/test.html" class="card-btn">Start Topic Test →</a></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 EduQuest ESAT Portal. Engineering and Science Admissions Test preparation platform. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      await renderAuthHeader();
+      await updateCardLockStatus();
+    });
+
+    async function renderAuthHeader() {
+      if (window.supabase) {
+        const client = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
+        const { data: { session } } = await client.auth.getSession();
+        const authSection = document.getElementById('authSection');
+
+        if (session && session.user) {
+          const email = session.user.email;
+          const isAdmin = email === 'rupali.eduquest@gmail.com';
+
+          authSection.innerHTML = `
+            <span style="color:rgba(255,255,255,0.7); font-size:0.85rem; font-weight:500;">👤 ${email}</span>
+            <a href="dashboard.html" class="hdr-link">📊 Dashboard</a>
+            ${isAdmin ? '<a href="admin.html" class="hdr-link">🛠️ Admin</a>' : ''}
+            <button onclick="window.supabaseLogout()" class="hdr-link" style="background:rgba(220,38,38,0.15); border:1px solid rgba(220,38,38,0.4); color:#f87171; cursor:pointer;">🚪 Logout</button>
+          `;
+        }
+      }
+    }
+
+    async function updateCardLockStatus() {
+      if (!window.supabase) return;
+      try {
+        const client = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
+        const { data: { session } } = await client.auth.getSession();
+        if (!session || !session.user) return;
+
+        const email = session.user.email;
+        if (email === 'rupali.eduquest@gmail.com') return; // Admin bypass
+
+        const { data: profile } = await client
+          .from('profiles')
+          .select('has_esat_access, has_esat_diagnostic_access, has_esat_topic_access, has_esat_mock_access, has_esat_fullmock_access')
+          .eq('email', email)
+          .maybeSingle();
+
+        const hasOverall = profile && profile.has_esat_access === true;
+        const hasFull = hasOverall && profile.has_esat_fullmock_access === true;
+        const hasDiag = hasOverall && profile.has_esat_diagnostic_access === true;
+        const hasMock = hasOverall && profile.has_esat_mock_access === true;
+        const hasTopic = hasOverall && profile.has_esat_topic_access === true;
+
+        // Apply lock states to cards
+        document.querySelectorAll('.card-btn').forEach(btn => {
+          const href = btn.getAttribute('href') || '';
+          let isUnlocked = false;
+
+          if (href.includes('full_mock')) isUnlocked = hasFull;
+          else if (href.includes('diagnostic')) isUnlocked = hasDiag;
+          else if (href.includes('mock_tests')) isUnlocked = hasMock;
+          else if (href.includes('topic_tests')) isUnlocked = hasTopic;
+
+          if (!isUnlocked) {
+            btn.innerHTML = '🔒 Locked (Admin Approval Req)';
+            btn.style.background = 'rgba(239, 68, 68, 0.15)';
+            btn.style.color = '#f87171';
+            btn.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+          } else {
+            btn.innerHTML = '🟢 Unlocked · Start Test →';
+            btn.style.background = '#3b82f6';
+            btn.style.color = '#fff';
+            btn.style.border = 'none';
+          }
+        });
+      } catch (e) {
+        console.warn('Card lock status check notice:', e);
+      }
+    }
+
+    function showTab(tabName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+      event.target.classList.add('active');
+      const target = document.getElementById(`tab-${tabName}`);
+      if (target) target.classList.add('active');
+    }
+  </script>
+</body>
+
+</html>

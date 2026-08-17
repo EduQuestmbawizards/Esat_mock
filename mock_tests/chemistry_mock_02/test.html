@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESAT Chemistry Mock Exam 2 – EduQuest</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="../../supabase.js"></script>
+  <script src="../../access-check.js"></script>
+  <script src="../../country-codes.js"></script>
+  <script src="../../scoring.js"></script>
+  <script src="questions.js"></script>
+  <link rel="stylesheet" href="../../test.css">
+  <script> const TEST_DURATION_MINUTES = 40; </script>
+</head>
+
+<body>
+  <!-- PAGE 1: REGISTRATION -->
+  <div class="page active" id="pageReg">
+    <header class="hdr">
+      <div class="hdr-brand"><span>📐</span><span>EduQuest</span><span class="hdr-pill">ESAT Portal</span></div>
+    </header>
+    <div class="reg-wrap">
+      <div class="reg-card">
+        <div class="reg-top">
+          <span class="icon">📐</span>
+          <h2>ESAT Chemistry Mock Exam 2</h2>
+          <p>Official ESAT Specification · 5 Options (A–E) · +1 Point per Correct Answer · No Negative Marking</p>
+        </div>
+        <div class="field">
+          <label>Full Name *</label>
+          <input type="text" id="regName" placeholder="Enter your full name" autocomplete="name">
+        </div>
+        <div class="field">
+          <label>Email Address *</label>
+          <input type="email" id="regEmail" placeholder="Enter your email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label>Phone Number</label>
+          <div class="phone-row">
+            <select id="regCC"></select>
+            <input type="tel" id="regPhone" placeholder="Mobile number">
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="startTest()">▶ Start Assessment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2: TEST PLAYER -->
+  <div class="page" id="pageTest">
+    <header class="hdr">
+      <div class="hdr-brand">
+        <span>📐</span><span>EduQuest</span>
+        <span class="hdr-pill">ESAT Live Exam</span>
+        <span class="hdr-module" id="currentModuleName">Mathematics 1</span>
+      </div>
+      <div class="timer" id="timerBox">
+        <span>⏱️</span>
+        <span id="timerDisplay">--:--</span>
+      </div>
+      <button class="btn btn-primary" onclick="confirmSubmit()" style="width:auto; padding:8px 18px; font-size:0.88rem;">Submit Test →</button>
+    </header>
+
+    <div class="test-wrap">
+      <main class="test-main">
+        <div class="mod-banner">
+          <div>
+            <div class="mod-name" id="qTopicTag">Mathematics 1 · Topic</div>
+            <div class="mod-info" id="modProgress">Question 1 of 27</div>
+          </div>
+          <span class="q-badge" id="qBadge">Q 1</span>
+        </div>
+
+        <div class="q-card">
+          <div class="q-text" id="qText">Loading question content...</div>
+          <div class="opts" id="qOpts"></div>
+          <div class="q-nav">
+            <button class="btn btn-outline" id="btnPrev" onclick="prevQ()">← Previous</button>
+            <button class="btn btn-primary" id="btnNext" onclick="nextQ()">Next →</button>
+          </div>
+        </div>
+      </main>
+
+      <aside class="sidebar">
+        <div class="palette-card">
+          <h3>Question Palette</h3>
+          <div class="pal-grid" id="palette"></div>
+        </div>
+        <div>
+          <div class="prog-bg"><div class="prog-fill" id="progFill" style="width:0%;"></div></div>
+          <div class="prog-lbl" id="progLbl">0 / 27 answered</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- PAGE 3: RESULT REPORT -->
+  <div class="page" id="pageResult">
+    <header class="hdr">
+      <div class="hdr-brand"><span>📐</span><span>EduQuest</span><span class="hdr-pill">Report</span></div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn btn-outline" onclick="exportPDF()" style="width:auto; padding:6px 14px; font-size:0.85rem;">📄 Save as PDF</button>
+        <a href="../../dashboard.html" class="btn btn-primary" style="width:auto; padding:6px 14px; font-size:0.85rem; text-decoration:none;">Go to Dashboard →</a>
+      </div>
+    </header>
+    <div class="res-wrap" id="resWrap">
+      <div id="resultContent"></div>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+  <div class="modal-bg" id="modalBg">
+    <div class="modal">
+      <h3>Submit Assessment?</h3>
+      <p id="modalMsg">Are you sure you want to finish and submit your test?</p>
+      <div style="display:flex; gap:12px;">
+        <button class="btn btn-outline" onclick="closeModal()">Review More</button>
+        <button class="btn btn-primary" onclick="doSubmit()">Yes, Submit Test</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-bg" id="alertBg">
+    <div class="modal">
+      <h3>Notice</h3>
+      <p id="alertMsg">Alert message</p>
+      <button class="btn btn-primary" onclick="document.getElementById('alertBg').classList.remove('open')">OK</button>
+    </div>
+  </div>
+
+  <script src="../../script.js"></script>
+</body>
+</html>
