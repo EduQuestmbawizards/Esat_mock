@@ -1,1298 +1,1379 @@
 const QUESTIONS = [
   {
+    "type_tag": "M1_ALG_PART_FRAC",
     "module": "Mathematics 1",
-    "topic": "Coordinate Geometry",
-    "difficulty": "Medium",
-    "question": "Determine the gradient of the normal to the line $y = 31x + 88$.",
+    "topic": "Algebra",
+    "difficulty": "Hard",
+    "question": "Decompose $\\frac{3}{(x + 4)(x + 7)}$ into partial fractions.",
     "options": [
-      "$-\\frac{1}{31}$",
-      "$31$",
-      "$\\frac{1}{31}$",
-      "$-31$",
-      "$-36$"
+      "$\\frac{1}{x + 4} - \\frac{1}{x + 7}$",
+      "$\\frac{2}{x + 4} - \\frac{1}{x + 7}$",
+      "$\\frac{1}{x + 4} + \\frac{1}{x + 7}$",
+      "$\\frac{1}{x + 4} - \\frac{2}{x + 7}$",
+      "$\\frac{3}{x + 4} + \\frac{3}{x + 7}$"
     ],
     "answer": 0,
-    "explanation": "Gradient of the normal is $m_n = -\\frac{1}{m_l} = -\\frac{1}{31}$.",
+    "explanation": "Partial fractions decompose to $\\frac{1}{x + 4} - \\frac{1}{x + 7}$.",
     "number": 1
   },
   {
+    "type_tag": "M1_GEO_COORD_A",
     "module": "Mathematics 1",
-    "topic": "Coordinate Geometry",
+    "topic": "Geometry & Trig",
     "difficulty": "Medium",
-    "question": "Determine the gradient of the normal to the line $y = 32x + 91$.",
+    "question": "Area of right triangle with vertices $(0,0)$, $(8, 0)$, and $(0, 20)$.",
     "options": [
-      "$-\\frac{1}{32}$",
-      "$32$",
-      "$\\frac{1}{32}$",
-      "$-32$",
-      "$-37$"
+      "$80$",
+      "$100$",
+      "$90$",
+      "$85$",
+      "$95$"
     ],
     "answer": 0,
-    "explanation": "Gradient of the normal is $m_n = -\\frac{1}{m_l} = -\\frac{1}{32}$.",
+    "explanation": "$\\text{Area} = 0.5 \\times 8 \\times 20 = 80$.",
     "number": 2
   },
   {
+    "type_tag": "M1_CALC_SEC_DERIV",
     "module": "Mathematics 1",
-    "topic": "Coordinate Geometry",
+    "topic": "Calculus & Prob",
     "difficulty": "Medium",
-    "question": "Determine the gradient of the normal to the line $y = 33x + 94$.",
+    "question": "Find $\\frac{d^2y}{dx^2}$ for $y = 7x^3 - 6x$ at $x = 1$.",
     "options": [
-      "$-\\frac{1}{33}$",
-      "$33$",
-      "$\\frac{1}{33}$",
-      "$-33$",
-      "$-38$"
+      "$42$",
+      "$21$",
+      "$84$",
+      "$36$",
+      "$7$"
     ],
     "answer": 0,
-    "explanation": "Gradient of the normal is $m_n = -\\frac{1}{m_l} = -\\frac{1}{33}$.",
+    "explanation": "$\\frac{d^2y}{dx^2} = 6(7)x = 42$.",
     "number": 3
   },
   {
+    "type_tag": "M1_ALG_SURDS",
     "module": "Mathematics 1",
-    "topic": "Coordinate Geometry",
+    "topic": "Algebra",
     "difficulty": "Medium",
-    "question": "Determine the gradient of the normal to the line $y = 34x + 97$.",
+    "question": "Rationalise the denominator of $\\frac{13}{8 - \\sqrt{3}}$ and simplify.",
     "options": [
-      "$-\\frac{1}{34}$",
-      "$34$",
-      "$\\frac{1}{34}$",
-      "$-34$",
-      "$-39$"
+      "$\\frac{13(8 + \\sqrt{3})}{67}$",
+      "$\\frac{13(8 + \\sqrt{3})}{61}$",
+      "$\\frac{8 + \\sqrt{3}}{61}$",
+      "$\\frac{13\\sqrt{3}}{61}$",
+      "$\\frac{13(8 - \\sqrt{3})}{61}$"
     ],
-    "answer": 0,
-    "explanation": "Gradient of the normal is $m_n = -\\frac{1}{m_l} = -\\frac{1}{34}$.",
+    "answer": 1,
+    "explanation": "Multiply numerator and denominator by conjugate $(8 + \\sqrt{3})$.",
     "number": 4
   },
   {
+    "type_tag": "M1_GEO_PERP_GRAD",
     "module": "Mathematics 1",
-    "topic": "Coordinate Geometry",
-    "difficulty": "Medium",
-    "question": "Determine the gradient of the normal to the line $y = 35x + 100$.",
+    "topic": "Geometry & Trig",
+    "difficulty": "Easy",
+    "question": "Find gradient perpendicular to $y = 7x + 9$.",
     "options": [
-      "$-\\frac{1}{35}$",
-      "$35$",
-      "$\\frac{1}{35}$",
-      "$-35$",
-      "$-40$"
+      "$-7$",
+      "$\\frac{1}{7}$",
+      "$7$",
+      "$-\\frac{1}{7}$",
+      "$-\\frac{1}{8}$"
     ],
-    "answer": 0,
-    "explanation": "Gradient of the normal is $m_n = -\\frac{1}{m_l} = -\\frac{1}{35}$.",
+    "answer": 3,
+    "explanation": "$m_\\perp = -\\frac{1}{7}$.",
     "number": 5
   },
   {
+    "type_tag": "M1_CALC_TANG_GRAD",
     "module": "Mathematics 1",
-    "topic": "Coordinate Geometry",
-    "difficulty": "Medium",
-    "question": "Determine the gradient of the normal to the line $y = 36x + 103$.",
+    "topic": "Calculus & Prob",
+    "difficulty": "Easy",
+    "question": "Gradient of tangent to $y = 8x^2$ at $x = 1$.",
     "options": [
-      "$-\\frac{1}{36}$",
-      "$36$",
-      "$\\frac{1}{36}$",
-      "$-36$",
-      "$-41$"
+      "$16$",
+      "$2$",
+      "$64$",
+      "$8$",
+      "$18$"
     ],
     "answer": 0,
-    "explanation": "Gradient of the normal is $m_n = -\\frac{1}{m_l} = -\\frac{1}{36}$.",
+    "explanation": "$\\frac{dy}{dx} = 2(8)x = 16$.",
     "number": 6
   },
   {
+    "type_tag": "M1_ALG_EXPONENTS",
     "module": "Mathematics 1",
-    "topic": "Coordinate Geometry",
-    "difficulty": "Medium",
-    "question": "Determine the gradient of the normal to the line $y = 37x + 106$.",
+    "topic": "Algebra",
+    "difficulty": "Easy",
+    "question": "Evaluate the exact value of $(49)^{3/2} + 6$.",
     "options": [
-      "$-\\frac{1}{37}$",
-      "$37$",
-      "$\\frac{1}{37}$",
-      "$-37$",
-      "$-42$"
+      "$360$",
+      "$371$",
+      "$347$",
+      "$351$",
+      "$349$"
     ],
-    "answer": 0,
-    "explanation": "Gradient of the normal is $m_n = -\\frac{1}{m_l} = -\\frac{1}{37}$.",
+    "answer": 4,
+    "explanation": "$(\\sqrt{49})^3 + 6 = 349$.",
     "number": 7
   },
   {
+    "type_tag": "M1_GEO_CIRC_TANG",
     "module": "Mathematics 1",
-    "topic": "Coordinate Geometry",
+    "topic": "Geometry & Trig",
     "difficulty": "Medium",
-    "question": "Determine the gradient of the normal to the line $y = 38x + 109$.",
+    "question": "Equation of vertical tangent to $x^2 + y^2 = 64$ at $(8, 0)$.",
     "options": [
-      "$-\\frac{1}{38}$",
-      "$38$",
-      "$\\frac{1}{38}$",
-      "$-38$",
-      "$-43$"
+      "$x = 64$",
+      "$x = -8$",
+      "$y = 8$",
+      "$y = 0$",
+      "$x = 8$"
     ],
-    "answer": 0,
-    "explanation": "Gradient of the normal is $m_n = -\\frac{1}{m_l} = -\\frac{1}{38}$.",
+    "answer": 4,
+    "explanation": "Vertical tangent is $x = 8$.",
     "number": 8
   },
   {
+    "type_tag": "M1_CALC_NORM_GRAD",
     "module": "Mathematics 1",
-    "topic": "Coordinate Geometry",
+    "topic": "Calculus & Prob",
     "difficulty": "Medium",
-    "question": "Determine the gradient of the normal to the line $y = 39x + 112$.",
+    "question": "If tangent gradient is $13$, find normal gradient.",
     "options": [
-      "$-\\frac{1}{39}$",
-      "$39$",
-      "$\\frac{1}{39}$",
-      "$-39$",
-      "$-44$"
+      "$-\\frac{1}{13}$",
+      "$-\\frac{1}{14}$",
+      "$13$",
+      "$-13$",
+      "$\\frac{1}{13}$"
     ],
     "answer": 0,
-    "explanation": "Gradient of the normal is $m_n = -\\frac{1}{m_l} = -\\frac{1}{39}$.",
+    "explanation": "$m_n = -\\frac{1}{13}$.",
     "number": 9
   },
   {
+    "type_tag": "M1_ALG_DISCRIM",
     "module": "Mathematics 1",
-    "topic": "Coordinate Geometry",
+    "topic": "Algebra",
     "difficulty": "Medium",
-    "question": "Determine the gradient of the normal to the line $y = 40x + 115$.",
+    "question": "Find $c$ such that $x^2 + 14x + c = 0$ has exactly one repeated real root.",
     "options": [
-      "$-\\frac{1}{40}$",
-      "$40$",
-      "$\\frac{1}{40}$",
-      "$-40$",
-      "$-45$"
+      "$c = 51$",
+      "$c = 55$",
+      "$c = 53$",
+      "$c = 49$",
+      "$c = 57$"
     ],
-    "answer": 0,
-    "explanation": "Gradient of the normal is $m_n = -\\frac{1}{m_l} = -\\frac{1}{40}$.",
+    "answer": 3,
+    "explanation": "$\\Delta = (14)^2 - 4c = 0 \\implies c = 49$.",
     "number": 10
   },
   {
+    "type_tag": "M1_GEO_CIRC_EQ",
     "module": "Mathematics 1",
-    "topic": "Coordinate Geometry",
+    "topic": "Geometry & Trig",
     "difficulty": "Medium",
-    "question": "Determine the gradient of the normal to the line $y = 41x + 118$.",
+    "question": "Cartesian equation of circle with centre $(6, -7)$ and radius $8$.",
     "options": [
-      "$-\\frac{1}{41}$",
-      "$41$",
-      "$\\frac{1}{41}$",
-      "$-41$",
-      "$-46$"
+      "$(x - 6)^2 + (y - 7)^2 = 64$",
+      "$(x + 6)^2 + (y - 7)^2 = 64$",
+      "$(x + 6)^2 + (y + 7)^2 = 64$",
+      "$(x - 6)^2 + (y + 7)^2 = 64$",
+      "$(x - 6)^2 + (y + 7)^2 = 8$"
     ],
-    "answer": 0,
-    "explanation": "Gradient of the normal is $m_n = -\\frac{1}{m_l} = -\\frac{1}{41}$.",
+    "answer": 3,
+    "explanation": "$(x - 6)^2 + (y + 7)^2 = 64$.",
     "number": 11
   },
   {
+    "type_tag": "M1_CALC_STAT_PT",
     "module": "Mathematics 1",
-    "topic": "Coordinate Geometry",
+    "topic": "Calculus & Prob",
     "difficulty": "Medium",
-    "question": "Determine the gradient of the normal to the line $y = 42x + 121$.",
+    "question": "Positive $x$-coordinate of stationary point of $y = x^3 - 21x + 4$.",
     "options": [
-      "$-\\frac{1}{42}$",
-      "$42$",
-      "$\\frac{1}{42}$",
-      "$-42$",
-      "$-47$"
+      "$\\sqrt{7}$",
+      "$7$",
+      "$\\frac{1}{\\sqrt{7}}$",
+      "$8$",
+      "$14$"
     ],
     "answer": 0,
-    "explanation": "Gradient of the normal is $m_n = -\\frac{1}{m_l} = -\\frac{1}{42}$.",
+    "explanation": "$3x^2 = 3(7) \\implies x = \\sqrt{7}$.",
     "number": 12
   },
   {
+    "type_tag": "M1_ALG_COMP_SQ",
     "module": "Mathematics 1",
-    "topic": "Circles",
-    "difficulty": "Hard",
-    "question": "A circle has equation $(x - 2)^2 + (y - 4)^2 = 9$. What is its circumference?",
+    "topic": "Algebra",
+    "difficulty": "Medium",
+    "question": "Find the minimum turning point of $y = x^2 - 14x + 61$.",
     "options": [
-      "$6\\pi$",
-      "$16\\pi$",
-      "$18\\pi$",
-      "$17\\pi$",
-      "$28\\pi$"
+      "$(7, -14)$",
+      "$(-7, -14)$",
+      "$(-7, 12)$",
+      "$(7, 16)$",
+      "$(7, 12)$"
     ],
-    "answer": 0,
-    "explanation": "Radius $r = \\sqrt{9} = 3$. Circumference $= 2\\pi r = 6\\pi$.",
+    "answer": 4,
+    "explanation": "$y = (x - 7)^2 + 12$. Minimum point is $(7, 12)$.",
     "number": 13
   },
   {
+    "type_tag": "M1_GEO_EXACT_TRIG",
     "module": "Mathematics 1",
-    "topic": "Circles",
-    "difficulty": "Hard",
-    "question": "A circle has equation $(x - 3)^2 + (y - 5)^2 = 16$. What is its circumference?",
+    "topic": "Geometry & Trig",
+    "difficulty": "Easy",
+    "question": "Exact value of $\\tan(45^\\circ) + \\cos(60^\\circ) + 6$.",
     "options": [
-      "$8\\pi$",
-      "$23\\pi$",
-      "$19\\pi$",
-      "$29\\pi$",
-      "$\\text{Option } E$"
+      "$7.0$",
+      "$6.5$",
+      "$7.5$",
+      "$8.0$",
+      "$6.0$"
     ],
-    "answer": 0,
-    "explanation": "Radius $r = \\sqrt{16} = 4$. Circumference $= 2\\pi r = 8\\pi$.",
+    "answer": 2,
+    "explanation": "$1 + 0.5 + 6 = 7.5$.",
     "number": 14
   },
   {
+    "type_tag": "M1_CALC_DEF_INT",
     "module": "Mathematics 1",
-    "topic": "Circles",
-    "difficulty": "Hard",
-    "question": "A circle has equation $(x - 4)^2 + (y - 6)^2 = 25$. What is its circumference?",
+    "topic": "Calculus & Prob",
+    "difficulty": "Medium",
+    "question": "Evaluate $\\int_0^2 18x^2 \\, dx$.",
     "options": [
-      "$10\\pi$",
-      "$32\\pi$",
-      "$20\\pi$",
-      "$21\\pi$",
-      "$30\\pi$"
+      "$96$",
+      "$72$",
+      "$50$",
+      "$24$",
+      "$48$"
     ],
-    "answer": 0,
-    "explanation": "Radius $r = \\sqrt{25} = 5$. Circumference $= 2\\pi r = 10\\pi$.",
+    "answer": 4,
+    "explanation": "$\\left[ 6x^3 \\right]_0^2 = 48$.",
     "number": 15
   },
   {
+    "type_tag": "M1_ALG_INEQUAL",
     "module": "Mathematics 1",
-    "topic": "Circles",
-    "difficulty": "Hard",
-    "question": "A circle has equation $(x - 5)^2 + (y - 7)^2 = 36$. What is its circumference?",
+    "topic": "Algebra",
+    "difficulty": "Medium",
+    "question": "Solve the quadratic inequality $(x - 6)(x - 10) < 0$.",
     "options": [
-      "$12\\pi$",
-      "$43\\pi$",
-      "$21\\pi$",
-      "$23\\pi$",
-      "$31\\pi$"
+      "$x < 6 \\text{ or } x > 10$",
+      "$-10 < x < -6$",
+      "$6 < x < 10$",
+      "$7 < x < 11$",
+      "$8 < x < 12$"
     ],
-    "answer": 0,
-    "explanation": "Radius $r = \\sqrt{36} = 6$. Circumference $= 2\\pi r = 12\\pi$.",
+    "answer": 2,
+    "explanation": "Parabola is below x-axis strictly between roots: $6 < x < 10$.",
     "number": 16
   },
   {
+    "type_tag": "M1_GEO_COS_RULE",
     "module": "Mathematics 1",
-    "topic": "Circles",
-    "difficulty": "Hard",
-    "question": "A circle has equation $(x - 6)^2 + (y - 8)^2 = 49$. What is its circumference?",
+    "topic": "Geometry & Trig",
+    "difficulty": "Medium",
+    "question": "In $\\triangle ABC$, $b = 7, c = 8$, $\\angle A = 60^\\circ$. Find $a^2$.",
     "options": [
-      "$14\\pi$",
-      "$56\\pi$",
-      "$22\\pi$",
-      "$25\\pi$",
-      "$32\\pi$"
+      "$113$",
+      "$30$",
+      "$169$",
+      "$57$",
+      "$56$"
     ],
-    "answer": 0,
-    "explanation": "Radius $r = \\sqrt{49} = 7$. Circumference $= 2\\pi r = 14\\pi$.",
+    "answer": 3,
+    "explanation": "$a^2 = 57$.",
     "number": 17
   },
   {
+    "type_tag": "M1_CALC_KIN_VEL",
     "module": "Mathematics 1",
-    "topic": "Circles",
-    "difficulty": "Hard",
-    "question": "A circle has equation $(x - 7)^2 + (y - 9)^2 = 64$. What is its circumference?",
+    "topic": "Calculus & Prob",
+    "difficulty": "Easy",
+    "question": "Displacement $s(t) = 12t + 4t^2$. Find velocity at $t = 1\\text{ s}$.",
     "options": [
-      "$16\\pi$",
-      "$71\\pi$",
-      "$23\\pi$",
-      "$27\\pi$",
-      "$33\\pi$"
+      "$20\\text{ m s}^{-1}$",
+      "$18\\text{ m s}^{-1}$",
+      "$16\\text{ m s}^{-1}$",
+      "$22\\text{ m s}^{-1}$",
+      "$14\\text{ m s}^{-1}$"
     ],
     "answer": 0,
-    "explanation": "Radius $r = \\sqrt{64} = 8$. Circumference $= 2\\pi r = 16\\pi$.",
+    "explanation": "$v(1) = 12 + 8 = 20\\text{ m s}^{-1}$.",
     "number": 18
   },
   {
+    "type_tag": "M1_ALG_SIMULT",
     "module": "Mathematics 1",
-    "topic": "Circles",
+    "topic": "Algebra",
     "difficulty": "Hard",
-    "question": "A circle has equation $(x - 8)^2 + (y - 10)^2 = 81$. What is its circumference?",
+    "question": "Find positive $x$-intercept of line $y = 8x$ and curve $y = x^2 - 8x$.",
     "options": [
-      "$18\\pi$",
-      "$88\\pi$",
-      "$24\\pi$",
-      "$29\\pi$",
-      "$34\\pi$"
+      "$x = 18$",
+      "$x = 20$",
+      "$x = 14$",
+      "$x = 13$",
+      "$x = 16$"
     ],
-    "answer": 0,
-    "explanation": "Radius $r = \\sqrt{81} = 9$. Circumference $= 2\\pi r = 18\\pi$.",
+    "answer": 4,
+    "explanation": "$x^2 - 16x = 0 \\implies x = 16$.",
     "number": 19
   },
   {
+    "type_tag": "M1_GEO_SIN_RULE",
     "module": "Mathematics 1",
-    "topic": "Circles",
-    "difficulty": "Hard",
-    "question": "A circle has equation $(x - 9)^2 + (y - 11)^2 = 100$. What is its circumference?",
+    "topic": "Geometry & Trig",
+    "difficulty": "Medium",
+    "question": "In $\\triangle PQR$, $\\frac{p}{\\sin(30^\\circ)} = 24$. Find $p$.",
     "options": [
-      "$20\\pi$",
-      "$107\\pi$",
-      "$25\\pi$",
-      "$31\\pi$",
-      "$35\\pi$"
+      "$6$",
+      "$48$",
+      "$13$",
+      "$12$",
+      "$24$"
     ],
-    "answer": 0,
-    "explanation": "Radius $r = \\sqrt{100} = 10$. Circumference $= 2\\pi r = 20\\pi$.",
+    "answer": 3,
+    "explanation": "$p = 24 \\times 0.5 = 12$.",
     "number": 20
   },
   {
+    "type_tag": "M1_CALC_KIN_DISP",
     "module": "Mathematics 1",
-    "topic": "Circles",
-    "difficulty": "Hard",
-    "question": "A circle has equation $(x - 10)^2 + (y - 12)^2 = 121$. What is its circumference?",
+    "topic": "Calculus & Prob",
+    "difficulty": "Medium",
+    "question": "Velocity $v(t) = 18 + 6t$. Find displacement $\\Delta s$ from $t=0$ to $t=2\\text{ s}$.",
     "options": [
-      "$22\\pi$",
-      "$128\\pi$",
-      "$26\\pi$",
-      "$33\\pi$",
-      "$36\\pi$"
+      "$44\\text{ m}$",
+      "$38\\text{ m}$",
+      "$42\\text{ m}$",
+      "$48\\text{ m}$",
+      "$40\\text{ m}$"
     ],
-    "answer": 0,
-    "explanation": "Radius $r = \\sqrt{121} = 11$. Circumference $= 2\\pi r = 22\\pi$.",
+    "answer": 3,
+    "explanation": "$\\Delta s = 2(18) + 12 = 48\\text{ m}$.",
     "number": 21
   },
   {
+    "type_tag": "M1_ALG_REMAINDER",
     "module": "Mathematics 1",
-    "topic": "Circles",
-    "difficulty": "Hard",
-    "question": "A circle has equation $(x - 11)^2 + (y - 13)^2 = 144$. What is its circumference?",
+    "topic": "Algebra",
+    "difficulty": "Medium",
+    "question": "Find remainder when $P(x) = 2x^2 - 3x + 11$ is divided by $(x - 6)$.",
     "options": [
-      "$24\\pi$",
-      "$151\\pi$",
-      "$27\\pi$",
-      "$35\\pi$",
-      "$37\\pi$"
+      "$65$",
+      "$80$",
+      "$75$",
+      "$70$",
+      "$62$"
     ],
     "answer": 0,
-    "explanation": "Radius $r = \\sqrt{144} = 12$. Circumference $= 2\\pi r = 24\\pi$.",
+    "explanation": "$P(6) = 2(6)^2 - 3(6) + 11 = 65$.",
     "number": 22
   },
   {
+    "type_tag": "M1_GEO_TRI_AREA",
     "module": "Mathematics 1",
-    "topic": "Circles",
-    "difficulty": "Hard",
-    "question": "A circle has equation $(x - 12)^2 + (y - 14)^2 = 169$. What is its circumference?",
+    "topic": "Geometry & Trig",
+    "difficulty": "Easy",
+    "question": "Area of triangle with sides $12\\text{ cm}$ and $6\\text{ cm}$ enclosing $30^\\circ$.",
     "options": [
-      "$26\\pi$",
-      "$176\\pi$",
-      "$28\\pi$",
-      "$37\\pi$",
-      "$38\\pi$"
+      "$36\\text{ cm}^2$",
+      "$20\\text{ cm}^2$",
+      "$9.0\\text{ cm}^2$",
+      "$72\\text{ cm}^2$",
+      "$18\\text{ cm}^2$"
     ],
-    "answer": 0,
-    "explanation": "Radius $r = \\sqrt{169} = 13$. Circumference $= 2\\pi r = 26\\pi$.",
+    "answer": 4,
+    "explanation": "$\\text{Area} = 0.5 \\times 12 \\times 6 \\times 0.5 = 18\\text{ cm}^2$.",
     "number": 23
   },
   {
+    "type_tag": "M1_CALC_AP_NTH",
     "module": "Mathematics 1",
-    "topic": "Circles",
-    "difficulty": "Hard",
-    "question": "A circle has equation $(x - 13)^2 + (y - 15)^2 = 196$. What is its circumference?",
+    "topic": "Calculus & Prob",
+    "difficulty": "Easy",
+    "question": "AP has $a = 12$ and $d = 4$. Find $10\\text{th}$ term ($u_{10}$).",
     "options": [
-      "$28\\pi$",
-      "$203\\pi$",
-      "$29\\pi$",
-      "$39\\pi$",
-      "$\\text{Option } E$"
+      "$42$",
+      "$48$",
+      "$44$",
+      "$46$",
+      "$50$"
     ],
-    "answer": 0,
-    "explanation": "Radius $r = \\sqrt{196} = 14$. Circumference $= 2\\pi r = 28\\pi$.",
+    "answer": 1,
+    "explanation": "$u_{10} = 12 + 36$.",
     "number": 24
   },
   {
+    "type_tag": "M1_ALG_FACTOR",
     "module": "Mathematics 1",
-    "topic": "Circles",
+    "topic": "Algebra",
     "difficulty": "Hard",
-    "question": "A circle has equation $(x - 14)^2 + (y - 16)^2 = 225$. What is its circumference?",
+    "question": "If $(x - 7)$ is a factor of $x^3 - 9x^2 + kx - 14$, find $k$.",
     "options": [
-      "$30\\pi$",
-      "$232\\pi$",
-      "$41\\pi$",
-      "$40\\pi$",
-      "$\\text{Option } E$"
+      "$k = 18$",
+      "$k = 20$",
+      "$k = 14$",
+      "$k = 16$",
+      "$k = 13$"
     ],
-    "answer": 0,
-    "explanation": "Radius $r = \\sqrt{225} = 15$. Circumference $= 2\\pi r = 30\\pi$.",
+    "answer": 3,
+    "explanation": "$P(7) = 0 \\implies k = 16$.",
     "number": 25
   },
   {
+    "type_tag": "M1_GEO_PYTHAG_TRIG",
     "module": "Mathematics 1",
-    "topic": "Circles",
-    "difficulty": "Hard",
-    "question": "A circle has equation $(x - 15)^2 + (y - 17)^2 = 256$. What is its circumference?",
+    "topic": "Geometry & Trig",
+    "difficulty": "Medium",
+    "question": "If acute angle $\\theta$ has $\\sin\\theta = \\frac{12}{37}$, find $\\cos\\theta$.",
     "options": [
-      "$32\\pi$",
-      "$263\\pi$",
-      "$31\\pi$",
-      "$43\\pi$",
-      "$41\\pi$"
+      "$\\frac{37}{35}$",
+      "$\\frac{35}{37}$",
+      "$\\frac{1}{37}$",
+      "$\\frac{12}{37}$",
+      "$\\frac{12}{35}$"
     ],
-    "answer": 0,
-    "explanation": "Radius $r = \\sqrt{256} = 16$. Circumference $= 2\\pi r = 32\\pi$.",
+    "answer": 1,
+    "explanation": "$\\cos\\theta = \\sqrt{1 - (12/37)^2} = \\frac{35}{37}$.",
     "number": 26
   },
   {
+    "type_tag": "M1_CALC_AP_SUM",
     "module": "Mathematics 1",
-    "topic": "Circles",
-    "difficulty": "Hard",
-    "question": "A circle has equation $(x - 16)^2 + (y - 18)^2 = 289$. What is its circumference?",
+    "topic": "Calculus & Prob",
+    "difficulty": "Medium",
+    "question": "Sum of first $10$ terms of AP with $a = 7$ and $d = 3$.",
     "options": [
-      "$34\\pi$",
-      "$296\\pi$",
-      "$32\\pi$",
-      "$45\\pi$",
-      "$42\\pi$"
+      "$210$",
+      "$200$",
+      "$195$",
+      "$205$",
+      "$190$"
     ],
-    "answer": 0,
-    "explanation": "Radius $r = \\sqrt{289} = 17$. Circumference $= 2\\pi r = 34\\pi$.",
+    "answer": 3,
+    "explanation": "$S_{10} = 5(2(7) + 27) = 205$.",
     "number": 27
   },
   {
+    "type_tag": "CHM_ATM_E_CONFIG",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
-    "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $0.5\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "topic": "Atomic & Bonding",
+    "difficulty": "Easy",
+    "question": "Ground state electron configuration of neutral Phosphorus (P, Z=15).",
     "options": [
-      "$29.25\\text{ g}$",
-      "$60.5\\text{ g}$",
-      "$15.625\\text{ g}$",
-      "$0.3085\\text{ g}$",
-      "$44.25\\text{ g}$"
+      "$1s^2 2s^2 2p^6 3s^2 3p^3$",
+      "$[\\text{He}] 2s^2$",
+      "$1s^2 2s^2 2p^6 3s^{10}$",
+      "$1s^2 2s^2 2p^6$",
+      "$1s^2 2s^2 2p^5 3s^2$"
     ],
     "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 0.5 \\times 58.5 = 29.25\\text{ g}$.",
+    "explanation": "Electronic configuration fills subshells: $1s^2 2s^2 2p^6 3s^2 3p^3$.",
     "number": 28
   },
   {
+    "type_tag": "CHM_ENR_HESS_LAW",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
-    "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $0.6\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "topic": "Energetics & Kinetics",
+    "difficulty": "Hard",
+    "question": "Calculate $\\Delta H$ given $\\sum \\Delta H_f^\\circ(\\text{prod}) = -1300\\text{ kJ}$ and $\\sum \\Delta H_f^\\circ(\\text{react}) = -450\\text{ kJ}$.",
     "options": [
-      "$35.1\\text{ g}$",
-      "$72.2\\text{ g}$",
-      "$18.55\\text{ g}$",
-      "$0.3103\\text{ g}$",
-      "$50.1\\text{ g}$"
+      "$-1750\\text{ kJ mol}^{-1}$",
+      "$-650\\text{ kJ mol}^{-1}$",
+      "$-850\\text{ kJ mol}^{-1}$",
+      "$+1750\\text{ kJ mol}^{-1}$",
+      "$+850\\text{ kJ mol}^{-1}$"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 0.6 \\times 58.5 = 35.1\\text{ g}$.",
+    "answer": 2,
+    "explanation": "$\\Delta H = \\text{Products} - \\text{Reactants} = -850\\text{ kJ mol}^{-1}$.",
     "number": 29
   },
   {
+    "type_tag": "CHM_ORG_IUPAC_ALC",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
-    "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $0.7\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "topic": "Organic Chemistry",
+    "difficulty": "Easy",
+    "question": "IUPAC name of straight-chain alcohol Pentan-1-ol.",
     "options": [
-      "$40.95\\text{ g}$",
-      "$83.9\\text{ g}$",
-      "$21.475\\text{ g}$",
-      "$0.312\\text{ g}$",
-      "$55.95\\text{ g}$"
+      "Pentan-1-ol",
+      "Propanone",
+      "Propanoic acid",
+      "Ethane",
+      "Methoxyethane"
     ],
     "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 0.7 \\times 58.5 = 40.95\\text{ g}$.",
+    "explanation": "Pentan-1-ol is a primary alcohol.",
     "number": 30
   },
   {
+    "type_tag": "CHM_ATM_VSEPR_CH4",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Atomic & Bonding",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $0.8\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "VSEPR molecular shape and bond angle of methane ($\\text{CH}_4$) in sample 5.",
     "options": [
-      "$46.8\\text{ g}$",
-      "$95.6\\text{ g}$",
-      "$24.4\\text{ g}$",
-      "$0.3137\\text{ g}$",
-      "$61.8\\text{ g}$"
+      "Trigonal planar, $120^\\circ$",
+      "Tetrahedral, $109.5^\\circ$",
+      "Bent, $104.5^\\circ$",
+      "Trigonal pyramidal, $107^\\circ$",
+      "Linear, $180^\\circ$"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 0.8 \\times 58.5 = 46.8\\text{ g}$.",
+    "answer": 1,
+    "explanation": "4 bonding pairs, 0 lone pairs $\\implies$ Tetrahedral, $109.5^\\circ$.",
     "number": 31
   },
   {
+    "type_tag": "CHM_ENR_GIBBS",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
-    "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $0.9\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "topic": "Energetics & Kinetics",
+    "difficulty": "Hard",
+    "question": "Temperature at which reaction with $\\Delta H = +150\\text{ kJ}, \\Delta S = +500\\text{ J K}^{-1}$ has $\\Delta G = 0$.",
     "options": [
-      "$52.65\\text{ g}$",
-      "$107.3\\text{ g}$",
-      "$27.325\\text{ g}$",
-      "$0.3154\\text{ g}$",
-      "$67.65\\text{ g}$"
+      "$T = 30\\text{ K}$",
+      "$T = 100\\text{ K}$",
+      "$T = 300\\text{ K}$",
+      "$T = 3000\\text{ K}$",
+      "$T = 0\\text{ K}$"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 0.9 \\times 58.5 = 52.65\\text{ g}$.",
+    "answer": 2,
+    "explanation": "$T = \\frac{\\Delta H}{\\Delta S} = \\frac{150000}{500} = 300\\text{ K}$.",
     "number": 32
   },
   {
+    "type_tag": "CHM_ORG_IUPAC_KET",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
-    "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $1.0\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "topic": "Organic Chemistry",
+    "difficulty": "Easy",
+    "question": "IUPAC name of ketone Hexan-2-one.",
     "options": [
-      "$58.5\\text{ g}$",
-      "$119.0\\text{ g}$",
-      "$30.25\\text{ g}$",
-      "$0.3171\\text{ g}$",
-      "$73.5\\text{ g}$"
+      "Propanoic acid",
+      "Propan-1-ol",
+      "Methyl ethanoate",
+      "Propanal",
+      "Hexan-2-one"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 1.0 \\times 58.5 = 58.5\\text{ g}$.",
+    "answer": 4,
+    "explanation": "Hexan-2-one is an aliphatic ketone.",
     "number": 33
   },
   {
+    "type_tag": "CHM_ATM_VSEPR_NH3",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Atomic & Bonding",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $1.1\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "VSEPR shape and bond angle of ammonia ($\\text{NH}_3$) in container 5.",
     "options": [
-      "$64.35\\text{ g}$",
-      "$130.7\\text{ g}$",
-      "$33.175\\text{ g}$",
-      "$0.3188\\text{ g}$",
-      "$79.35\\text{ g}$"
+      "T-shaped, $90^\\circ$",
+      "Tetrahedral, $109.5^\\circ$",
+      "Trigonal pyramidal, $107^\\circ$",
+      "Trigonal planar, $120^\\circ$",
+      "Bent, $104.5^\\circ$"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 1.1 \\times 58.5 = 64.35\\text{ g}$.",
+    "answer": 2,
+    "explanation": "3 bonding pairs, 1 lone pair $\\implies$ Trigonal pyramidal, $107^\\circ$.",
     "number": 34
   },
   {
+    "type_tag": "CHM_ENR_RATE_EQ",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Energetics & Kinetics",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $1.2\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "$\\text{Rate} = k[A]^{5}[B]$. If $[A]$ is doubled and $[B]$ unchanged, rate increases by factor:",
     "options": [
-      "$70.2\\text{ g}$",
-      "$142.4\\text{ g}$",
-      "$36.1\\text{ g}$",
-      "$0.3205\\text{ g}$",
-      "$85.2\\text{ g}$"
+      "$33$",
+      "$34$",
+      "$32$",
+      "$35$",
+      "$36$"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 1.2 \\times 58.5 = 70.2\\text{ g}$.",
+    "answer": 2,
+    "explanation": "Factor $= 2^{5} = 32$.",
     "number": 35
   },
   {
+    "type_tag": "CHM_ORG_CHIRAL",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Organic Chemistry",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $1.3\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "Which compound in set 5 contains an asymmetric chiral carbon?",
     "options": [
-      "$76.05\\text{ g}$",
-      "$154.1\\text{ g}$",
-      "$39.025\\text{ g}$",
-      "$0.3222\\text{ g}$",
-      "$91.05\\text{ g}$"
+      "Ethane",
+      "Propan-1-ol",
+      "Butan-2-ol ($\\text{CH}_3\\text{CH(OH)CH}_2\\text{CH}_3$)",
+      "Propan-2-ol",
+      "Butan-1-ol"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 1.3 \\times 58.5 = 76.05\\text{ g}$.",
+    "answer": 2,
+    "explanation": "C-2 in butan-2-ol has 4 distinct substituents.",
     "number": 36
   },
   {
+    "type_tag": "CHM_ATM_VSEPR_H2O",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Atomic & Bonding",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $1.4\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "VSEPR shape and bond angle of water ($\\text{H}_2\\text{O}$) in trial 5.",
     "options": [
-      "$81.9\\text{ g}$",
-      "$165.8\\text{ g}$",
-      "$41.95\\text{ g}$",
-      "$0.3239\\text{ g}$",
-      "$96.9\\text{ g}$"
+      "Bent, $104.5^\\circ$",
+      "Trigonal planar, $120^\\circ$",
+      "Linear, $180^\\circ$",
+      "Trigonal pyramidal, $107^\\circ$",
+      "Tetrahedral, $109.5^\\circ$"
     ],
     "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 1.4 \\times 58.5 = 81.9\\text{ g}$.",
+    "explanation": "2 bonding pairs, 2 lone pairs $\\implies$ Bent, $104.5^\\circ$.",
     "number": 37
   },
   {
+    "type_tag": "CHM_ENR_LE_CHATELIER",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Energetics & Kinetics",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $1.5\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "Exothermic reaction with $\\Delta H = -250\\text{ kJ mol}^{-1}$. Increasing temperature causes $K_c$ to:",
     "options": [
-      "$87.75\\text{ g}$",
-      "$177.5\\text{ g}$",
-      "$44.875\\text{ g}$",
-      "$0.3256\\text{ g}$",
-      "$102.75\\text{ g}$"
+      "Double",
+      "Increase",
+      "Decrease (equilibrium shifts in reverse)",
+      "Remain constant",
+      "Become zero"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 1.5 \\times 58.5 = 87.75\\text{ g}$.",
+    "answer": 2,
+    "explanation": "Exothermic reactions shift left when heated, lowering $K_c$.",
     "number": 38
   },
   {
+    "type_tag": "CHM_ORG_MARKOVNIKOV",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Organic Chemistry",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $1.6\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "Major organic product of propene reacting with $\\text{HBr}$ in trial 5:",
     "options": [
-      "$93.6\\text{ g}$",
-      "$189.2\\text{ g}$",
-      "$47.8\\text{ g}$",
-      "$0.3274\\text{ g}$",
-      "$108.6\\text{ g}$"
+      "2-bromopropene",
+      "Propane",
+      "1-bromopropane",
+      "2-bromopropane",
+      "1,2-dibromopropane"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 1.6 \\times 58.5 = 93.6\\text{ g}$.",
+    "answer": 3,
+    "explanation": "Markovnikov addition proceeds via more stable secondary carbocation.",
     "number": 39
   },
   {
+    "type_tag": "CHM_ATM_IONIS_ENERGY",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Atomic & Bonding",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $1.7\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "Sharp jump between the 6th and 7th ionisation energies indicates valence electron count of:",
     "options": [
-      "$99.45\\text{ g}$",
-      "$200.9\\text{ g}$",
-      "$50.725\\text{ g}$",
-      "$0.3291\\text{ g}$",
-      "$114.45\\text{ g}$"
+      "$9$ valence electrons",
+      "$6$ valence electrons",
+      "$10$ valence electrons",
+      "$7$ valence electrons",
+      "$8$ valence electrons"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 1.7 \\times 58.5 = 99.45\\text{ g}$.",
+    "answer": 1,
+    "explanation": "Jump occurs when removing electron from inner shell after losing all $6$ valence electrons.",
     "number": 40
   },
   {
+    "type_tag": "CHM_ENR_PH_STRONG",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
-    "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $1.8\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "topic": "Energetics & Kinetics",
+    "difficulty": "Easy",
+    "question": "pH of solution with $[\\text{H}^+] = 1.0 \\times 10^{-5}\\text{ mol dm}^{-3}$.",
     "options": [
-      "$105.3\\text{ g}$",
-      "$212.6\\text{ g}$",
-      "$53.65\\text{ g}$",
-      "$0.3308\\text{ g}$",
-      "$120.3\\text{ g}$"
+      "$8.0$",
+      "$9.0$",
+      "$5.0$",
+      "$7.0$",
+      "$6.0$"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 1.8 \\times 58.5 = 105.3\\text{ g}$.",
+    "answer": 2,
+    "explanation": "$\\text{pH} = -\\log_{10}(10^{-5}) = 5.0$.",
     "number": 41
   },
   {
+    "type_tag": "CHM_ORG_NUCLEO_SUB",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Organic Chemistry",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $1.9\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "Reaction mechanism for bromoethane with aqueous $\\text{NaOH}$ in flask 5:",
     "options": [
-      "$111.15\\text{ g}$",
-      "$224.3\\text{ g}$",
-      "$56.575\\text{ g}$",
-      "$0.3325\\text{ g}$",
-      "$126.15\\text{ g}$"
+      "Electrophilic Addition",
+      "Elimination",
+      "Nucleophilic Substitution ($S_N2$)",
+      "Electrophilic Substitution",
+      "Free Radical Substitution"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 1.9 \\times 58.5 = 111.15\\text{ g}$.",
+    "answer": 2,
+    "explanation": "$\\text{OH}^-$ nucleophile attacks primary haloalkane via $S_N2$.",
     "number": 42
   },
   {
+    "type_tag": "CHM_ATM_ELECTRONEG",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
-    "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $2.0\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "topic": "Atomic & Bonding",
+    "difficulty": "Easy",
+    "question": "Which element among (F, Cl, Br, I, At) has the highest Pauling electronegativity in group set 5?",
     "options": [
-      "$117.0\\text{ g}$",
-      "$236.0\\text{ g}$",
-      "$59.5\\text{ g}$",
-      "$0.3342\\text{ g}$",
-      "$132.0\\text{ g}$"
+      "Astatine (At)",
+      "Bromine (Br)",
+      "Fluorine (F, 4.0)",
+      "Chlorine (Cl)",
+      "Iodine (I)"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 2.0 \\times 58.5 = 117.0\\text{ g}$.",
+    "answer": 2,
+    "explanation": "Fluorine has highest electronegativity (4.0).",
     "number": 43
   },
   {
+    "type_tag": "CHM_ENR_BUFFER",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
-    "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $2.1\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "topic": "Energetics & Kinetics",
+    "difficulty": "Hard",
+    "question": "pH of buffer with $[\\text{acid}] = [\\text{salt}]$ and $pK_a = 5.00$.",
     "options": [
-      "$122.85\\text{ g}$",
-      "$247.7\\text{ g}$",
-      "$62.425\\text{ g}$",
-      "$0.3359\\text{ g}$",
-      "$137.85\\text{ g}$"
+      "$7.00$",
+      "$9.00$",
+      "$1.00$",
+      "$4.00$",
+      "$5.00$"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 2.1 \\times 58.5 = 122.85\\text{ g}$.",
+    "answer": 4,
+    "explanation": "$\\text{pH} = pK_a = 5.00$.",
     "number": 44
   },
   {
+    "type_tag": "CHM_ORG_OXID_ALC_PRI",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Organic Chemistry",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $2.2\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "Product of primary alcohol heated under reflux with excess acidified $\\text{K}_2\\text{Cr}_2\\text{O}_7$ in run 5:",
     "options": [
-      "$128.7\\text{ g}$",
-      "$259.4\\text{ g}$",
-      "$65.35\\text{ g}$",
-      "$0.3376\\text{ g}$",
-      "$143.7\\text{ g}$"
+      "Carboxylic acid",
+      "Alkene",
+      "Aldehyde",
+      "Ketone",
+      "Ester"
     ],
     "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 2.2 \\times 58.5 = 128.7\\text{ g}$.",
+    "explanation": "Full reflux oxidation yields carboxylic acid.",
     "number": 45
   },
   {
+    "type_tag": "CHM_ATM_INTERMOL_H",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Atomic & Bonding",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $2.3\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "Which alcohol among isomers in batch 5 forms intermolecular hydrogen bonds?",
     "options": [
-      "$134.55\\text{ g}$",
-      "$271.1\\text{ g}$",
-      "$68.275\\text{ g}$",
-      "$0.3393\\text{ g}$",
-      "$149.55\\text{ g}$"
+      "Dimethyl ether ($\\text{CH}_3\\text{OCH}_3$)",
+      "Fluoroethane",
+      "Propane",
+      "Ethane ($\\text{C}_2\\text{H}_6$)",
+      "Ethanol ($\\text{CH}_3\\text{CH}_2\\text{OH}$)"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 2.3 \\times 58.5 = 134.55\\text{ g}$.",
+    "answer": 4,
+    "explanation": "Ethanol contains $-\\text{OH}$ group capable of hydrogen bonding.",
     "number": 46
   },
   {
+    "type_tag": "CHM_ENR_CELL_EMF",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Energetics & Kinetics",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $2.4\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "Standard cell potential given $E^\\circ[\\text{anode}] = -1.00\\text{ V}, E^\\circ[\\text{cathode}] = +0.34\\text{ V}$.",
     "options": [
-      "$140.4\\text{ g}$",
-      "$282.8\\text{ g}$",
-      "$71.2\\text{ g}$",
-      "$0.341\\text{ g}$",
-      "$155.4\\text{ g}$"
+      "$+1.34\\text{ V}$",
+      "$-1.34\\text{ V}$",
+      "$+0.66\\text{ V}$",
+      "$+0.34\\text{ V}$",
+      "$-0.66\\text{ V}$"
     ],
     "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 2.4 \\times 58.5 = 140.4\\text{ g}$.",
+    "explanation": "$E^\\circ_{\\text{cell}} = +0.34 - (-1.00) = +1.34\\text{ V}$.",
     "number": 47
   },
   {
+    "type_tag": "CHM_ORG_OXID_ALC_SEC",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Organic Chemistry",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $2.5\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "Oxidation of secondary alcohol (e.g. propan-2-ol) in tube 5 yields:",
     "options": [
-      "$146.25\\text{ g}$",
-      "$294.5\\text{ g}$",
-      "$74.125\\text{ g}$",
-      "$0.3427\\text{ g}$",
-      "$161.25\\text{ g}$"
+      "A carboxylic acid",
+      "An aldehyde",
+      "A ketone (propanone)",
+      "An alkene",
+      "An ester"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 2.5 \\times 58.5 = 146.25\\text{ g}$.",
+    "answer": 2,
+    "explanation": "Secondary alcohols oxidize to ketones.",
     "number": 48
   },
   {
+    "type_tag": "CHM_ATM_LATTICE_E",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
-    "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $2.6\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "topic": "Atomic & Bonding",
+    "difficulty": "Hard",
+    "question": "Which ionic solid has stronger lattice enthalpy: $\\text{MgO}$ or $\\text{NaCl}$ in comparison 5?",
     "options": [
-      "$152.1\\text{ g}$",
-      "$306.2\\text{ g}$",
-      "$77.05\\text{ g}$",
-      "$0.3444\\text{ g}$",
-      "$167.1\\text{ g}$"
+      "$\\text{NaBr}$",
+      "$\\text{NaCl}$",
+      "Equal lattice energy",
+      "$\\text{MgO}$ (due to $+2/-2$ charges)",
+      "$\\text{KCl}$"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 2.6 \\times 58.5 = 152.1\\text{ g}$.",
+    "answer": 3,
+    "explanation": "Doubled charges in $\\text{MgO}$ give roughly $4\\times$ lattice enthalpy.",
     "number": 49
   },
   {
+    "type_tag": "CHM_ENR_MOLES_VOL",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
-    "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $2.7\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "topic": "Energetics & Kinetics",
+    "difficulty": "Easy",
+    "question": "Volume of $2.5\\text{ mol}$ ideal gas at RTP ($24.0\\text{ dm}^3\\text{ mol}^{-1}$).",
     "options": [
-      "$157.95\\text{ g}$",
-      "$317.9\\text{ g}$",
-      "$79.975\\text{ g}$",
-      "$0.3462\\text{ g}$",
-      "$172.95\\text{ g}$"
+      "$60.0\\text{ dm}^3$",
+      "$62.0\\text{ dm}^3$",
+      "$120.0\\text{ dm}^3$",
+      "$30.0\\text{ dm}^3$",
+      "$240.0\\text{ dm}^3$"
     ],
     "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 2.7 \\times 58.5 = 157.95\\text{ g}$.",
+    "explanation": "$V = n \\times 24.0 = 60.0\\text{ dm}^3$.",
     "number": 50
   },
   {
+    "type_tag": "CHM_ORG_ESTERIFICATION",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Organic Chemistry",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $2.8\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "Reagents for esterification of ethanol and ethanoic acid in flask 5:",
     "options": [
-      "$163.8\\text{ g}$",
-      "$329.6\\text{ g}$",
-      "$82.9\\text{ g}$",
-      "$0.3479\\text{ g}$",
-      "$178.8\\text{ g}$"
+      "Nickel catalyst",
+      "Concentrated $\\text{H}_2\\text{SO}_4$ catalyst and heat",
+      "Acidified $\\text{KMnO}_4$",
+      "Dry ether",
+      "Aqueous $\\text{NaOH}$"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 2.8 \\times 58.5 = 163.8\\text{ g}$.",
+    "answer": 1,
+    "explanation": "Concentrated $\\text{H}_2\\text{SO}_4$ catalyses Fischer esterification.",
     "number": 51
   },
   {
+    "type_tag": "CHM_ATM_PERIOD_RADIUS",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Atomic & Bonding",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $2.9\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "Across Period 3 from Na to Cl, atomic radius trend observed in experiment 5:",
     "options": [
-      "$169.65\\text{ g}$",
-      "$341.3\\text{ g}$",
-      "$85.825\\text{ g}$",
-      "$0.3496\\text{ g}$",
-      "$184.65\\text{ g}$"
+      "Increases due to more electrons",
+      "Decreases due to higher effective nuclear charge with constant shielding",
+      "Increases then decreases",
+      "Remains constant",
+      "Decreases then increases"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 2.9 \\times 58.5 = 169.65\\text{ g}$.",
+    "answer": 1,
+    "explanation": "Greater $Z_{\\text{eff}}$ pulls electrons closer.",
     "number": 52
   },
   {
+    "type_tag": "CHM_ENR_BOND_ENTHALPY",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Energetics & Kinetics",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $3.0\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "Enthalpy change $\\Delta H$ calculated from bond enthalpies in reaction 5:",
     "options": [
-      "$175.5\\text{ g}$",
-      "$353.0\\text{ g}$",
-      "$88.75\\text{ g}$",
-      "$0.3513\\text{ g}$",
-      "$190.5\\text{ g}$"
+      "$\\sum BE(\\text{formed}) - \\sum BE(\\text{broken})$",
+      "$\\sum BE(\\text{reactants}) \\times 2$",
+      "$\\text{Products} - \\text{Reactants}$",
+      "$\\sum BE(\\text{bonds broken}) - \\sum BE(\\text{bonds formed})$",
+      "$\\sum BE(\\text{products}) + \\sum BE(\\text{reactants})$"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 3.0 \\times 58.5 = 175.5\\text{ g}$.",
+    "answer": 3,
+    "explanation": "$\\Delta H = \\text{Bonds broken} - \\text{Bonds formed}$.",
     "number": 53
   },
   {
+    "type_tag": "CHM_ORG_COND_POLY",
     "module": "Chemistry",
-    "topic": "Stoichiometry",
+    "topic": "Organic Chemistry",
     "difficulty": "Medium",
-    "question": "Calculate the mass in grams of $3.1\\text{ mol}$ of sodium chloride ($\\text{NaCl}$, $M_r = 58.5\\text{ g mol}^{-1}$).",
+    "question": "Small molecule eliminated during Nylon-6,6 condensation polymerisation in reactor 5:",
     "options": [
-      "$181.35\\text{ g}$",
-      "$364.7\\text{ g}$",
-      "$91.675\\text{ g}$",
-      "$0.353\\text{ g}$",
-      "$196.35\\text{ g}$"
+      "$\\text{CH}_4$",
+      "$\\text{CO}_2$",
+      "$\\text{NH}_3$",
+      "Water ($\\text{H}_2\\text{O}$)",
+      "$\\text{HCl}$"
     ],
-    "answer": 0,
-    "explanation": "Mass $m = n \\times M_r = 3.1 \\times 58.5 = 181.35\\text{ g}$.",
+    "answer": 3,
+    "explanation": "Amide bond formation eliminates water.",
     "number": 54
   },
   {
+    "type_tag": "BIO_CEL_TEST_STARCH",
     "module": "Biology",
     "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 2900$ in study 28. What is the image size in mm?",
+    "difficulty": "Easy",
+    "question": "Reagent test confirming presence of starch in food extract 4:",
     "options": [
-      "$58.0\\text{ mm}$",
-      "$582.0\\text{ mm}$",
-      "$6.1\\text{ mm}$",
-      "$146.5\\text{ mm}$",
-      "$66.0\\text{ mm}$"
+      "Benedict's solution",
+      "DCPIP reagent",
+      "Ethanol emulsion",
+      "Biuret reagent",
+      "Iodine in potassium iodide (blue-black colour)"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 2900 = 58000\\,\\mu\\text{m} = 58.0\\text{ mm}$.",
+    "answer": 4,
+    "explanation": "Iodine forms blue-black complex with amylose.",
     "number": 55
   },
   {
+    "type_tag": "BIO_GEN_NONSENSE_MUT",
     "module": "Biology",
-    "topic": "Cell Biology",
+    "topic": "Genetics & Molecular",
     "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 3000$ in study 29. What is the image size in mm?",
+    "question": "A mutation converting an amino acid codon into a premature STOP codon in gene 4 is a:",
     "options": [
-      "$60.0\\text{ mm}$",
-      "$602.0\\text{ mm}$",
-      "$6.3\\text{ mm}$",
-      "$151.5\\text{ mm}$",
-      "$68.0\\text{ mm}$"
+      "Nonsense mutation",
+      "Silent mutation",
+      "Missense mutation",
+      "Frameshift insertion",
+      "Duplication"
     ],
     "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 3000 = 60000\\,\\mu\\text{m} = 60.0\\text{ mm}$.",
+    "explanation": "Nonsense mutations introduce premature termination codons.",
     "number": 56
   },
   {
+    "type_tag": "BIO_PHY_KREBS_SITE",
     "module": "Biology",
-    "topic": "Cell Biology",
+    "topic": "Physiology & Ecology",
     "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 3100$ in study 30. What is the image size in mm?",
+    "question": "Subcellular site of Krebs (citric acid) cycle in eukaryotic cell 4:",
     "options": [
-      "$62.0\\text{ mm}$",
-      "$622.0\\text{ mm}$",
-      "$6.5\\text{ mm}$",
-      "$156.5\\text{ mm}$",
-      "$70.0\\text{ mm}$"
+      "Cytoplasm",
+      "Intermembrane space",
+      "Chloroplast lumen",
+      "Mitochondrial Matrix",
+      "Inner Mitochondrial Membrane"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 3100 = 62000\\,\\mu\\text{m} = 62.0\\text{ mm}$.",
+    "answer": 3,
+    "explanation": "Krebs cycle enzymes are located in mitochondrial matrix.",
     "number": 57
   },
   {
+    "type_tag": "BIO_CEL_TEST_PROTEIN",
     "module": "Biology",
     "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 3200$ in study 31. What is the image size in mm?",
+    "difficulty": "Easy",
+    "question": "Reagent test confirming presence of proteins in sample 4:",
     "options": [
-      "$64.0\\text{ mm}$",
-      "$642.0\\text{ mm}$",
-      "$6.7\\text{ mm}$",
-      "$161.5\\text{ mm}$",
-      "$72.0\\text{ mm}$"
+      "Iodine solution",
+      "Emulsion test",
+      "Biuret test (violet / purple colour)",
+      "Benedict's test",
+      "Ninhydrin only"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 3200 = 64000\\,\\mu\\text{m} = 64.0\\text{ mm}$.",
+    "answer": 2,
+    "explanation": "Biuret reagent reacts with peptide bonds to form purple complex.",
     "number": 58
   },
   {
+    "type_tag": "BIO_GEN_DNA_POLYMER",
     "module": "Biology",
-    "topic": "Cell Biology",
+    "topic": "Genetics & Molecular",
     "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 3300$ in study 32. What is the image size in mm?",
+    "question": "Enzyme synthesising new DNA strands in $5' \\to 3'$ direction during replication in cell 4:",
     "options": [
-      "$66.0\\text{ mm}$",
-      "$662.0\\text{ mm}$",
-      "$6.9\\text{ mm}$",
-      "$166.5\\text{ mm}$",
-      "$74.0\\text{ mm}$"
+      "DNA Helicase",
+      "DNA Ligase",
+      "Topoisomerase",
+      "DNA Polymerase",
+      "RNA Polymerase"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 3300 = 66000\\,\\mu\\text{m} = 66.0\\text{ mm}$.",
+    "answer": 3,
+    "explanation": "DNA Polymerase adds complementary nucleotides in $5'\\to 3'$ direction.",
     "number": 59
   },
   {
+    "type_tag": "BIO_PHY_TROPHIC_EFF",
     "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 3400$ in study 33. What is the image size in mm?",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Easy",
+    "question": "Average percentage of energy transferred from trophic level $4$ to level $5$ in ecosystem:",
     "options": [
-      "$68.0\\text{ mm}$",
-      "$682.0\\text{ mm}$",
-      "$7.1\\text{ mm}$",
-      "$171.5\\text{ mm}$",
-      "$76.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 3400 = 68000\\,\\mu\\text{m} = 68.0\\text{ mm}$.",
-    "number": 60
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 3500$ in study 34. What is the image size in mm?",
-    "options": [
-      "$70.0\\text{ mm}$",
-      "$702.0\\text{ mm}$",
-      "$7.3\\text{ mm}$",
-      "$176.5\\text{ mm}$",
-      "$78.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 3500 = 70000\\,\\mu\\text{m} = 70.0\\text{ mm}$.",
-    "number": 61
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 3600$ in study 35. What is the image size in mm?",
-    "options": [
-      "$72.0\\text{ mm}$",
-      "$722.0\\text{ mm}$",
-      "$7.5\\text{ mm}$",
-      "$181.5\\text{ mm}$",
-      "$80.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 3600 = 72000\\,\\mu\\text{m} = 72.0\\text{ mm}$.",
-    "number": 62
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 3700$ in study 36. What is the image size in mm?",
-    "options": [
-      "$74.0\\text{ mm}$",
-      "$742.0\\text{ mm}$",
-      "$7.7\\text{ mm}$",
-      "$186.5\\text{ mm}$",
-      "$82.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 3700 = 74000\\,\\mu\\text{m} = 74.0\\text{ mm}$.",
-    "number": 63
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 3800$ in study 37. What is the image size in mm?",
-    "options": [
-      "$76.0\\text{ mm}$",
-      "$762.0\\text{ mm}$",
-      "$7.9\\text{ mm}$",
-      "$191.5\\text{ mm}$",
-      "$84.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 3800 = 76000\\,\\mu\\text{m} = 76.0\\text{ mm}$.",
-    "number": 64
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 3900$ in study 38. What is the image size in mm?",
-    "options": [
-      "$78.0\\text{ mm}$",
-      "$782.0\\text{ mm}$",
-      "$8.1\\text{ mm}$",
-      "$196.5\\text{ mm}$",
-      "$86.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 3900 = 78000\\,\\mu\\text{m} = 78.0\\text{ mm}$.",
-    "number": 65
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 4000$ in study 39. What is the image size in mm?",
-    "options": [
-      "$80.0\\text{ mm}$",
-      "$802.0\\text{ mm}$",
-      "$8.3\\text{ mm}$",
-      "$201.5\\text{ mm}$",
-      "$88.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 4000 = 80000\\,\\mu\\text{m} = 80.0\\text{ mm}$.",
-    "number": 66
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 4100$ in study 40. What is the image size in mm?",
-    "options": [
-      "$82.0\\text{ mm}$",
-      "$822.0\\text{ mm}$",
-      "$8.5\\text{ mm}$",
-      "$206.5\\text{ mm}$",
-      "$90.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 4100 = 82000\\,\\mu\\text{m} = 82.0\\text{ mm}$.",
-    "number": 67
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 4200$ in study 41. What is the image size in mm?",
-    "options": [
-      "$84.0\\text{ mm}$",
-      "$842.0\\text{ mm}$",
-      "$8.7\\text{ mm}$",
-      "$211.5\\text{ mm}$",
-      "$92.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 4200 = 84000\\,\\mu\\text{m} = 84.0\\text{ mm}$.",
-    "number": 68
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 4300$ in study 42. What is the image size in mm?",
-    "options": [
-      "$86.0\\text{ mm}$",
-      "$862.0\\text{ mm}$",
-      "$8.9\\text{ mm}$",
-      "$216.5\\text{ mm}$",
-      "$94.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 4300 = 86000\\,\\mu\\text{m} = 86.0\\text{ mm}$.",
-    "number": 69
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 4400$ in study 43. What is the image size in mm?",
-    "options": [
-      "$88.0\\text{ mm}$",
-      "$882.0\\text{ mm}$",
-      "$9.1\\text{ mm}$",
-      "$221.5\\text{ mm}$",
-      "$96.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 4400 = 88000\\,\\mu\\text{m} = 88.0\\text{ mm}$.",
-    "number": 70
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 4500$ in study 44. What is the image size in mm?",
-    "options": [
-      "$90.0\\text{ mm}$",
-      "$902.0\\text{ mm}$",
-      "$9.3\\text{ mm}$",
-      "$226.5\\text{ mm}$",
-      "$98.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 4500 = 90000\\,\\mu\\text{m} = 90.0\\text{ mm}$.",
-    "number": 71
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 4600$ in study 45. What is the image size in mm?",
-    "options": [
-      "$92.0\\text{ mm}$",
-      "$922.0\\text{ mm}$",
-      "$9.5\\text{ mm}$",
-      "$231.5\\text{ mm}$",
-      "$100.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 4600 = 92000\\,\\mu\\text{m} = 92.0\\text{ mm}$.",
-    "number": 72
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 4700$ in study 46. What is the image size in mm?",
-    "options": [
-      "$94.0\\text{ mm}$",
-      "$942.0\\text{ mm}$",
-      "$9.7\\text{ mm}$",
-      "$236.5\\text{ mm}$",
-      "$102.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 4700 = 94000\\,\\mu\\text{m} = 94.0\\text{ mm}$.",
-    "number": 73
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 4800$ in study 47. What is the image size in mm?",
-    "options": [
-      "$96.0\\text{ mm}$",
-      "$962.0\\text{ mm}$",
-      "$9.9\\text{ mm}$",
-      "$241.5\\text{ mm}$",
-      "$104.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 4800 = 96000\\,\\mu\\text{m} = 96.0\\text{ mm}$.",
-    "number": 74
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 4900$ in study 48. What is the image size in mm?",
-    "options": [
-      "$98.0\\text{ mm}$",
-      "$982.0\\text{ mm}$",
-      "$10.1\\text{ mm}$",
-      "$246.5\\text{ mm}$",
-      "$106.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 4900 = 98000\\,\\mu\\text{m} = 98.0\\text{ mm}$.",
-    "number": 75
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 5000$ in study 49. What is the image size in mm?",
-    "options": [
-      "$100.0\\text{ mm}$",
-      "$1002.0\\text{ mm}$",
-      "$10.3\\text{ mm}$",
-      "$251.5\\text{ mm}$",
-      "$108.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 5000 = 100000\\,\\mu\\text{m} = 100.0\\text{ mm}$.",
-    "number": 76
-  },
-  {
-    "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 5100$ in study 50. What is the image size in mm?",
-    "options": [
-      "$102.0\\text{ mm}$",
-      "$1022.0\\text{ mm}$",
-      "$10.5\\text{ mm}$",
-      "$256.5\\text{ mm}$",
-      "$110.0\\text{ mm}$"
-    ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 5100 = 102000\\,\\mu\\text{m} = 102.0\\text{ mm}$.",
-    "number": 77
-  },
-  {
-    "module": "Biology",
-    "topic": "Molecular Genetics",
-    "difficulty": "Medium",
-    "question": "A double-stranded DNA molecule from organism 1 contains $16\\%$ adenine. Calculate the percentage of cytosine.",
-    "options": [
-      "$34\\%$",
-      "$16\\%$",
-      "$33\\%$",
-      "$84\\%$",
-      "$52\\%$"
-    ],
-    "answer": 0,
-    "explanation": "By Chargaff's rules: $\\text{A} = \\text{T} = 16\\% \\implies \\text{A}+\\text{T} = 32\\%$. Remaining $\\text{G}+\\text{C} = 68\\% \\implies \\text{C} = 34\\%$.",
-    "number": 78
-  },
-  {
-    "module": "Biology",
-    "topic": "Molecular Genetics",
-    "difficulty": "Medium",
-    "question": "A double-stranded DNA molecule from organism 2 contains $17\\%$ adenine. Calculate the percentage of cytosine.",
-    "options": [
-      "$33\\%$",
-      "$17\\%$",
-      "$35\\%$",
-      "$83\\%$",
-      "$51\\%$"
-    ],
-    "answer": 0,
-    "explanation": "By Chargaff's rules: $\\text{A} = \\text{T} = 17\\% \\implies \\text{A}+\\text{T} = 34\\%$. Remaining $\\text{G}+\\text{C} = 66\\% \\implies \\text{C} = 33\\%$.",
-    "number": 79
-  },
-  {
-    "module": "Biology",
-    "topic": "Molecular Genetics",
-    "difficulty": "Medium",
-    "question": "A double-stranded DNA molecule from organism 3 contains $18\\%$ adenine. Calculate the percentage of cytosine.",
-    "options": [
-      "$32\\%$",
-      "$18\\%$",
-      "$37\\%$",
-      "$82\\%$",
+      "$10\\%$",
+      "$100\\%$",
+      "$90\\%$",
+      "$1\\%$",
       "$50\\%$"
     ],
     "answer": 0,
-    "explanation": "By Chargaff's rules: $\\text{A} = \\text{T} = 18\\% \\implies \\text{A}+\\text{T} = 36\\%$. Remaining $\\text{G}+\\text{C} = 64\\% \\implies \\text{C} = 32\\%$.",
+    "explanation": "Roughly $10\\%$ ecological efficiency transfers between trophic levels.",
+    "number": 60
+  },
+  {
+    "type_tag": "BIO_CEL_TEST_LIPID",
+    "module": "Biology",
+    "topic": "Cell Biology",
+    "difficulty": "Easy",
+    "question": "Diagnostic test for lipids/triglycerides in emulsion tube 4:",
+    "options": [
+      "Fehling's test",
+      "Benedict's test",
+      "Biuret test",
+      "Iodine test",
+      "Ethanol emulsion test (milky white layer)"
+    ],
+    "answer": 4,
+    "explanation": "Ethanol dissolving lipids forms cloudy emulsion when added to water.",
+    "number": 61
+  },
+  {
+    "type_tag": "BIO_GEN_CROSSING_OVER",
+    "module": "Biology",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Medium",
+    "question": "Meiotic phase where crossing over and chiasmata occur in gametogenesis 4:",
+    "options": [
+      "Prophase I",
+      "Prophase II",
+      "Telophase II",
+      "Metaphase I",
+      "Anaphase I"
+    ],
+    "answer": 0,
+    "explanation": "Crossing over occurs between homologous non-sister chromatids in Prophase I.",
+    "number": 62
+  },
+  {
+    "type_tag": "BIO_PHY_SYNAPSE_CA",
+    "module": "Biology",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Medium",
+    "question": "Ion triggering neurotransmitter vesicle exocytosis at presynaptic terminal 4:",
+    "options": [
+      "Calcium ($\\text{Ca}^{2+}$)",
+      "Potassium ($\\text{K}^+$)",
+      "Magnesium",
+      "Chloride ($\\text{Cl}^-$)",
+      "Sodium ($\\text{Na}^+$)"
+    ],
+    "answer": 0,
+    "explanation": "$\\text{Ca}^{2+}$ influx triggers SNARE-mediated vesicle fusion.",
+    "number": 63
+  },
+  {
+    "type_tag": "BIO_CEL_COMP_INHIB",
+    "module": "Biology",
+    "topic": "Cell Biology",
+    "difficulty": "Hard",
+    "question": "Effect of competitive inhibitor on enzyme kinetics in assay 4:",
+    "options": [
+      "Both increase",
+      "$V_{\\max}$ decreases; $K_m$ unchanged",
+      "Both $V_{\\max}$ and $K_m$ decrease",
+      "Neither changes",
+      "$V_{\\max}$ unchanged; $K_m$ increases"
+    ],
+    "answer": 4,
+    "explanation": "Competitive inhibitor competes for active site: $V_{\\max}$ unchanged, $K_m$ increases.",
+    "number": 64
+  },
+  {
+    "type_tag": "BIO_GEN_DIHYBRID_RATIO",
+    "module": "Biology",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Medium",
+    "question": "Expected phenotypic ratio in $F_2$ generation of Mendelian dihybrid cross $AaBb \\times AaBb$ in cross 4:",
+    "options": [
+      "$1 : 2 : 1$",
+      "$3 : 1$",
+      "$12 : 3 : 1$",
+      "$9 : 3 : 3 : 1$",
+      "$1 : 1 : 1 : 1$"
+    ],
+    "answer": 3,
+    "explanation": "Standard unlinked dihybrid cross yields $9:3:3:1$ ratio.",
+    "number": 65
+  },
+  {
+    "type_tag": "BIO_PHY_CARDIAC_SYST",
+    "module": "Biology",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Medium",
+    "question": "State of cardiac valves during ventricular systole in cycle 4:",
+    "options": [
+      "Atrioventricular (AV) valves closed; Semilunar valves open",
+      "AV valves open; Semilunar closed",
+      "Both open",
+      "Tricuspid open; Bicuspid closed",
+      "Both closed"
+    ],
+    "answer": 0,
+    "explanation": "High ventricular pressure forces semilunars open and AVs shut.",
+    "number": 66
+  },
+  {
+    "type_tag": "BIO_CEL_NONCOMP_INHIB",
+    "module": "Biology",
+    "topic": "Cell Biology",
+    "difficulty": "Hard",
+    "question": "Effect of non-competitive inhibitor on enzyme kinetics in assay 4:",
+    "options": [
+      "$V_{\\max}$ unchanged; $K_m$ increases",
+      "Both increase",
+      "Both decrease",
+      "$V_{\\max}$ increases",
+      "$V_{\\max}$ decreases; $K_m$ unchanged"
+    ],
+    "answer": 4,
+    "explanation": "Non-competitive inhibitor lowers catalytic turnover without affecting substrate binding.",
+    "number": 67
+  },
+  {
+    "type_tag": "BIO_GEN_FRAME_SHIFT",
+    "module": "Biology",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Medium",
+    "question": "Insertion of $1$ nucleotide base pair in an exon of gene 4 causes a:",
+    "options": [
+      "Inversion",
+      "Silent mutation",
+      "Polyploidy",
+      "Frameshift mutation",
+      "Point substitution only"
+    ],
+    "answer": 3,
+    "explanation": "Non-multiple-of-three insertions alter the translational reading frame.",
+    "number": 68
+  },
+  {
+    "type_tag": "BIO_PHY_RESTING_POT",
+    "module": "Biology",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Medium",
+    "question": "Resting membrane potential maintained across axon membrane in experiment 4:",
+    "options": [
+      "$-120\\text{ mV}$",
+      "$-20\\text{ mV}$",
+      "$+40\\text{ mV}$",
+      "$-70\\text{ mV}$",
+      "$0\\text{ mV}$"
+    ],
+    "answer": 3,
+    "explanation": "Resting potential is maintained at approx $-70\\text{ mV}$ by $\\text{Na}^+/\\text{K}^+$ ATPase.",
+    "number": 69
+  },
+  {
+    "type_tag": "BIO_CEL_FLUID_MOSAIC",
+    "module": "Biology",
+    "topic": "Cell Biology",
+    "difficulty": "Medium",
+    "question": "Role of cholesterol in mammalian cell membrane model 4:",
+    "options": [
+      "Transcribes rRNA",
+      "Forms cell wall",
+      "Pumps sodium ions",
+      "Regulates fluidity and stability across changing temperatures",
+      "Synthesizes ATP"
+    ],
+    "answer": 3,
+    "explanation": "Cholesterol modulates lipid bilayer fluidity.",
+    "number": 70
+  },
+  {
+    "type_tag": "BIO_GEN_DNA_LIGASE",
+    "module": "Biology",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Medium",
+    "question": "Enzyme responsible for joining Okazaki fragments on the lagging strand in cell 4:",
+    "options": [
+      "DNA Ligase",
+      "Exonuclease",
+      "DNA Primase",
+      "DNA Helicase",
+      "DNA Polymerase I"
+    ],
+    "answer": 0,
+    "explanation": "DNA Ligase catalyses phosphodiester bond formation between fragments.",
+    "number": 71
+  },
+  {
+    "type_tag": "BIO_PHY_INSULIN",
+    "module": "Biology",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Easy",
+    "question": "Hormone secreted by pancreatic $\\beta$-cells following meal in subject 4:",
+    "options": [
+      "Aldosterone",
+      "Insulin",
+      "Glucagon",
+      "Adrenaline",
+      "Somatostatin"
+    ],
+    "answer": 1,
+    "explanation": "Insulin stimulates cellular glucose uptake and glycogenesis.",
+    "number": 72
+  },
+  {
+    "type_tag": "BIO_CEL_PROKARYOTE",
+    "module": "Biology",
+    "topic": "Cell Biology",
+    "difficulty": "Easy",
+    "question": "Structural feature present in prokaryotic bacterium 4 but absent in eukaryotes:",
+    "options": [
+      "Linear chromosomes",
+      "Nucleus",
+      "Mitochondria",
+      "$80\\text{S}$ ribosomes",
+      "Peptidoglycan cell wall and circular naked DNA ($70\\text{S}$ ribosomes)"
+    ],
+    "answer": 4,
+    "explanation": "Prokaryotes possess circular DNA and $70\\text{S}$ ribosomes.",
+    "number": 73
+  },
+  {
+    "type_tag": "BIO_GEN_KARYOTYPE",
+    "module": "Biology",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Easy",
+    "question": "Genetic condition caused by trisomy $21$ ($47$ chromosomes) diagnosed in karyotype 4:",
+    "options": [
+      "Klinefelter Syndrome",
+      "Sickle Cell",
+      "Down Syndrome",
+      "Turner Syndrome",
+      "Hemophilia"
+    ],
+    "answer": 2,
+    "explanation": "Trisomy 21 is Down syndrome.",
+    "number": 74
+  },
+  {
+    "type_tag": "BIO_PHY_ALVEOLI_ADAPT",
+    "module": "Biology",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Easy",
+    "question": "Structural adaptation of pulmonary alveoli maximizing gas exchange rate in lung 4:",
+    "options": [
+      "Thick lining",
+      "Low capillary density",
+      "Single-cell thin epithelial wall and extensive capillary network",
+      "Small total surface area",
+      "Dry surface"
+    ],
+    "answer": 2,
+    "explanation": "Alveoli minimize diffusion distance and maximize surface area.",
+    "number": 75
+  },
+  {
+    "type_tag": "BIO_CEL_FACIL_DIFF",
+    "module": "Biology",
+    "topic": "Cell Biology",
+    "difficulty": "Medium",
+    "question": "Facilitated diffusion of solute across membrane in cell 4 differs from active transport because it:",
+    "options": [
+      "Is passive (down gradient) and requires no ATP",
+      "Only transports water",
+      "Uses endocytosis",
+      "Moves solutes against gradient",
+      "Requires ATP hydrolysis"
+    ],
+    "answer": 0,
+    "explanation": "Facilitated diffusion is passive downhill transport.",
+    "number": 76
+  },
+  {
+    "type_tag": "BIO_GEN_CODOMINANCE",
+    "module": "Biology",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Medium",
+    "question": "In human blood group pedigree 4, alleles $I^A$ and $I^B$ exhibiting equal phenotypic expression demonstrate:",
+    "options": [
+      "Incomplete dominance",
+      "Epistasis",
+      "Codominance",
+      "Sex-linkage",
+      "Pleiotropy"
+    ],
+    "answer": 2,
+    "explanation": "Both alleles are expressed simultaneously $\\implies$ codominance.",
+    "number": 77
+  },
+  {
+    "type_tag": "BIO_PHY_LIGHT_DEP_PHO",
+    "module": "Biology",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Medium",
+    "question": "Photolysis of water yielding oxygen occurs at which complex in thylakoid 4:",
+    "options": [
+      "Mitochondrial matrix",
+      "Photosystem I (PSI)",
+      "Calvin cycle (Stroma)",
+      "Outer membrane",
+      "Photosystem II (PSII)"
+    ],
+    "answer": 4,
+    "explanation": "Water oxidation occurs at the oxygen-evolving complex of PSII.",
+    "number": 78
+  },
+  {
+    "type_tag": "BIO_CEL_LYSOSOMES",
+    "module": "Biology",
+    "topic": "Cell Biology",
+    "difficulty": "Easy",
+    "question": "Organelle containing hydrolytic digestive enzymes in phagocyte 4:",
+    "options": [
+      "Nucleolus",
+      "Ribosome",
+      "Lysosome",
+      "Peroxisome only",
+      "Centriole"
+    ],
+    "answer": 2,
+    "explanation": "Lysosomes contain acid hydrolases for intracellular degradation.",
+    "number": 79
+  },
+  {
+    "type_tag": "BIO_GEN_SEMICONSERV",
+    "module": "Biology",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Easy",
+    "question": "Meselson-Stahl density gradient experiment in culture 4 confirmed DNA replication is:",
+    "options": [
+      "Dispersive",
+      "Semi-conservative",
+      "Random",
+      "Non-conservative",
+      "Conservative"
+    ],
+    "answer": 1,
+    "explanation": "Each replicated DNA duplex retains one parental and one newly synthesized strand.",
     "number": 80
   },
   {
+    "type_tag": "BIO_PHY_GLYCOLYSIS_LOC",
     "module": "Biology",
-    "topic": "Molecular Genetics",
-    "difficulty": "Medium",
-    "question": "A double-stranded DNA molecule from organism 4 contains $19\\%$ adenine. Calculate the percentage of cytosine.",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Easy",
+    "question": "Cellular location of initial anaerobic glycolysis pathway in cell 4:",
     "options": [
-      "$31\\%$",
-      "$19\\%$",
-      "$39\\%$",
-      "$81\\%$",
-      "$49\\%$"
+      "Thylakoid",
+      "Cristae",
+      "Mitochondrial matrix",
+      "Nucleus",
+      "Cytoplasm / Cytosol"
     ],
-    "answer": 0,
-    "explanation": "By Chargaff's rules: $\\text{A} = \\text{T} = 19\\% \\implies \\text{A}+\\text{T} = 38\\%$. Remaining $\\text{G}+\\text{C} = 62\\% \\implies \\text{C} = 31\\%$.",
+    "answer": 4,
+    "explanation": "Glycolysis enzymes reside in the soluble cytosol.",
     "number": 81
   }
 ];

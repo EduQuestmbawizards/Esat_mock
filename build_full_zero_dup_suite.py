@@ -16,15 +16,26 @@ from generate_unique_banks import (
 
 BASE_DIR = r"c:\Users\priya\OneDrive\Desktop\esat"
 
+import random
+
 GLOBAL_HASHES = set()
 
-def validate_and_register(q):
+def validate_and_register(q, seed=None):
     norm = re.sub(r'[^a-zA-Z0-9]', '', q['question'].lower())
     if norm in GLOBAL_HASHES:
         raise ValueError(f"DUPLICATE FOUND:\n{q['question']}")
     GLOBAL_HASHES.add(norm)
     assert len(q['options']) == 5
     assert len(set(q['options'])) == 5
+
+    # Deterministically shuffle options and update answer index
+    correct_opt = q['options'][q['answer']]
+    opts = list(q['options'])
+    rng = random.Random(seed if seed is not None else hash(norm) % 1000000)
+    rng.shuffle(opts)
+    q['options'] = opts
+    q['answer'] = opts.index(correct_opt)
+
     assert q['answer'] in [0, 1, 2, 3, 4]
     return q
 

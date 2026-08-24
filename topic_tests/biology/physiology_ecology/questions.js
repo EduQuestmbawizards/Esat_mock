@@ -1,242 +1,257 @@
 const QUESTIONS = [
   {
+    "type_tag": "BIO_PHY_AORTA",
     "module": "Biology",
-    "topic": "Cellular Respiration",
-    "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $4.3\\text{ mol}$ of glucose in trial 43?",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Easy",
+    "question": "Vessel carrying oxygenated blood under high pressure from left ventricle to systemic organs in subject 1:",
     "options": [
-      "$137.6\\text{ mol}$",
-      "$278.2\\text{ mol}$",
-      "$70.0\\text{ mol}$",
-      "$0.3844\\text{ mol}$",
-      "$152.6\\text{ mol}$"
+      "Vena cava",
+      "Aorta",
+      "Pulmonary artery",
+      "Coronary sinus",
+      "Pulmonary vein"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 4.3 \\times 32 = 137.6\\text{ mol}$.",
+    "answer": 1,
+    "explanation": "Aorta distributes oxygenated blood from left ventricle.",
     "number": 1
   },
   {
+    "type_tag": "BIO_PHY_BOHR_SHIFT",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Physiology & Ecology",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $4.4\\text{ mol}$ of glucose in trial 44?",
+    "question": "Bohr shift in exercising muscle tissue 1: elevated $p\\text{CO}_2$ and lower pH shift hemoglobin curve:",
     "options": [
-      "$140.8\\text{ mol}$",
-      "$284.6\\text{ mol}$",
-      "$71.6\\text{ mol}$",
-      "$0.3875\\text{ mol}$",
-      "$155.8\\text{ mol}$"
+      "To the left, increasing oxygen affinity",
+      "No shift",
+      "Downward completely",
+      "To the right, facilitating oxygen unloading at respiring tissues",
+      "Upward"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 4.4 \\times 32 = 140.8\\text{ mol}$.",
+    "answer": 3,
+    "explanation": "Right shift lowers oxygen affinity, enhancing delivery to tissues.",
     "number": 2
   },
   {
+    "type_tag": "BIO_PHY_DEPOLARIS",
     "module": "Biology",
-    "topic": "Cellular Respiration",
-    "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $4.5\\text{ mol}$ of glucose in trial 45?",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Hard",
+    "question": "Depolarization phase of neuron action potential in trace 1 is caused by rapid influx of:",
     "options": [
-      "$144.0\\text{ mol}$",
-      "$291.0\\text{ mol}$",
-      "$73.2\\text{ mol}$",
-      "$0.3906\\text{ mol}$",
-      "$159.0\\text{ mol}$"
+      "Calcium ions ($\\text{Ca}^{2+}$)",
+      "Sodium ions ($\\text{Na}^+$)",
+      "Chloride ions ($\\text{Cl}^-$)",
+      "Hydrogen ions",
+      "Potassium ions ($\\text{K}^+$)"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 4.5 \\times 32 = 144.0\\text{ mol}$.",
+    "answer": 1,
+    "explanation": "Opening of voltage-gated $\\text{Na}^+$ channels causes inward current.",
     "number": 3
   },
   {
+    "type_tag": "BIO_PHY_GLUCAGON",
     "module": "Biology",
-    "topic": "Cellular Respiration",
-    "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $4.6\\text{ mol}$ of glucose in trial 46?",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Easy",
+    "question": "Hormone secreted by pancreatic $\\alpha$-cells during fasting state 1:",
     "options": [
-      "$147.2\\text{ mol}$",
-      "$297.4\\text{ mol}$",
-      "$74.8\\text{ mol}$",
-      "$0.3937\\text{ mol}$",
-      "$162.2\\text{ mol}$"
+      "Thyroxine",
+      "Glucagon",
+      "Cortisol",
+      "Adrenaline",
+      "Insulin"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 4.6 \\times 32 = 147.2\\text{ mol}$.",
+    "answer": 1,
+    "explanation": "Glucagon stimulates liver glycogenolysis.",
     "number": 4
   },
   {
+    "type_tag": "BIO_PHY_ADH",
     "module": "Biology",
-    "topic": "Cellular Respiration",
-    "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $4.7\\text{ mol}$ of glucose in trial 47?",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Hard",
+    "question": "Action of Anti-Diuretic Hormone (ADH) on collecting duct epithelium in kidney 1:",
     "options": [
-      "$150.4\\text{ mol}$",
-      "$303.8\\text{ mol}$",
-      "$76.4\\text{ mol}$",
-      "$0.3969\\text{ mol}$",
-      "$165.4\\text{ mol}$"
+      "Inserts aquaporin channels, increasing water reabsorption",
+      "Blocks water reabsorption",
+      "Increases sodium excretion",
+      "Inhibits Bowman's capsule",
+      "Decreases urine concentration"
     ],
     "answer": 0,
-    "explanation": "Total ATP $= 4.7 \\times 32 = 150.4\\text{ mol}$.",
+    "explanation": "ADH promotes aquaporin-2 vesicle insertion to concentrate urine.",
     "number": 5
   },
   {
+    "type_tag": "BIO_PHY_RUBISCO",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Physiology & Ecology",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $4.8\\text{ mol}$ of glucose in trial 48?",
+    "question": "Enzyme fixing $\\text{CO}_2$ to ribulose bisphosphate (RuBP) in photosynthetic leaf 1:",
     "options": [
-      "$153.6\\text{ mol}$",
-      "$310.2\\text{ mol}$",
-      "$78.0\\text{ mol}$",
-      "$0.4\\text{ mol}$",
-      "$168.6\\text{ mol}$"
+      "ATP Synthase",
+      "Pepsin",
+      "DNA Polymerase",
+      "Amylase",
+      "RuBisCO"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 4.8 \\times 32 = 153.6\\text{ mol}$.",
+    "answer": 4,
+    "explanation": "RuBisCO catalyses carbon fixation in chloroplast stroma.",
     "number": 6
   },
   {
+    "type_tag": "BIO_PHY_KREBS_SITE",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Physiology & Ecology",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $4.9\\text{ mol}$ of glucose in trial 49?",
+    "question": "Subcellular site of Krebs (citric acid) cycle in eukaryotic cell 1:",
     "options": [
-      "$156.8\\text{ mol}$",
-      "$316.6\\text{ mol}$",
-      "$79.6\\text{ mol}$",
-      "$0.4031\\text{ mol}$",
-      "$171.8\\text{ mol}$"
+      "Cytoplasm",
+      "Mitochondrial Matrix",
+      "Inner Mitochondrial Membrane",
+      "Chloroplast lumen",
+      "Intermembrane space"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 4.9 \\times 32 = 156.8\\text{ mol}$.",
+    "answer": 1,
+    "explanation": "Krebs cycle enzymes are located in mitochondrial matrix.",
     "number": 7
   },
   {
+    "type_tag": "BIO_PHY_TROPHIC_EFF",
     "module": "Biology",
-    "topic": "Cellular Respiration",
-    "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $5.0\\text{ mol}$ of glucose in trial 50?",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Easy",
+    "question": "Average percentage of energy transferred from trophic level $1$ to level $2$ in ecosystem:",
     "options": [
-      "$160.0\\text{ mol}$",
-      "$323.0\\text{ mol}$",
-      "$81.2\\text{ mol}$",
-      "$0.4062\\text{ mol}$",
-      "$175.0\\text{ mol}$"
+      "$90\\%$",
+      "$1\\%$",
+      "$50\\%$",
+      "$100\\%$",
+      "$10\\%$"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 5.0 \\times 32 = 160.0\\text{ mol}$.",
+    "answer": 4,
+    "explanation": "Roughly $10\\%$ ecological efficiency transfers between trophic levels.",
     "number": 8
   },
   {
+    "type_tag": "BIO_PHY_SYNAPSE_CA",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Physiology & Ecology",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $5.1\\text{ mol}$ of glucose in trial 51?",
+    "question": "Ion triggering neurotransmitter vesicle exocytosis at presynaptic terminal 1:",
     "options": [
-      "$163.2\\text{ mol}$",
-      "$329.4\\text{ mol}$",
-      "$82.8\\text{ mol}$",
-      "$0.4094\\text{ mol}$",
-      "$178.2\\text{ mol}$"
+      "Magnesium",
+      "Chloride ($\\text{Cl}^-$)",
+      "Potassium ($\\text{K}^+$)",
+      "Sodium ($\\text{Na}^+$)",
+      "Calcium ($\\text{Ca}^{2+}$)"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 5.1 \\times 32 = 163.2\\text{ mol}$.",
+    "answer": 4,
+    "explanation": "$\\text{Ca}^{2+}$ influx triggers SNARE-mediated vesicle fusion.",
     "number": 9
   },
   {
+    "type_tag": "BIO_PHY_CARDIAC_SYST",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Physiology & Ecology",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $5.2\\text{ mol}$ of glucose in trial 52?",
+    "question": "State of cardiac valves during ventricular systole in cycle 1:",
     "options": [
-      "$166.4\\text{ mol}$",
-      "$335.8\\text{ mol}$",
-      "$84.4\\text{ mol}$",
-      "$0.4125\\text{ mol}$",
-      "$181.4\\text{ mol}$"
+      "Tricuspid open; Bicuspid closed",
+      "Both open",
+      "AV valves open; Semilunar closed",
+      "Both closed",
+      "Atrioventricular (AV) valves closed; Semilunar valves open"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 5.2 \\times 32 = 166.4\\text{ mol}$.",
+    "answer": 4,
+    "explanation": "High ventricular pressure forces semilunars open and AVs shut.",
     "number": 10
   },
   {
+    "type_tag": "BIO_PHY_RESTING_POT",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Physiology & Ecology",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $5.3\\text{ mol}$ of glucose in trial 53?",
+    "question": "Resting membrane potential maintained across axon membrane in experiment 1:",
     "options": [
-      "$169.6\\text{ mol}$",
-      "$342.2\\text{ mol}$",
-      "$86.0\\text{ mol}$",
-      "$0.4156\\text{ mol}$",
-      "$184.6\\text{ mol}$"
+      "$-70\\text{ mV}$",
+      "$0\\text{ mV}$",
+      "$-20\\text{ mV}$",
+      "$-120\\text{ mV}$",
+      "$+40\\text{ mV}$"
     ],
     "answer": 0,
-    "explanation": "Total ATP $= 5.3 \\times 32 = 169.6\\text{ mol}$.",
+    "explanation": "Resting potential is maintained at approx $-70\\text{ mV}$ by $\\text{Na}^+/\\text{K}^+$ ATPase.",
     "number": 11
   },
   {
+    "type_tag": "BIO_PHY_INSULIN",
     "module": "Biology",
-    "topic": "Cellular Respiration",
-    "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $5.4\\text{ mol}$ of glucose in trial 54?",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Easy",
+    "question": "Hormone secreted by pancreatic $\\beta$-cells following meal in subject 1:",
     "options": [
-      "$172.8\\text{ mol}$",
-      "$348.6\\text{ mol}$",
-      "$87.6\\text{ mol}$",
-      "$0.4188\\text{ mol}$",
-      "$187.8\\text{ mol}$"
+      "Insulin",
+      "Adrenaline",
+      "Aldosterone",
+      "Glucagon",
+      "Somatostatin"
     ],
     "answer": 0,
-    "explanation": "Total ATP $= 5.4 \\times 32 = 172.8\\text{ mol}$.",
+    "explanation": "Insulin stimulates cellular glucose uptake and glycogenesis.",
     "number": 12
   },
   {
+    "type_tag": "BIO_PHY_ALVEOLI_ADAPT",
     "module": "Biology",
-    "topic": "Cellular Respiration",
-    "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $5.5\\text{ mol}$ of glucose in trial 55?",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Easy",
+    "question": "Structural adaptation of pulmonary alveoli maximizing gas exchange rate in lung 1:",
     "options": [
-      "$176.0\\text{ mol}$",
-      "$355.0\\text{ mol}$",
-      "$89.2\\text{ mol}$",
-      "$0.4219\\text{ mol}$",
-      "$191.0\\text{ mol}$"
+      "Thick lining",
+      "Dry surface",
+      "Low capillary density",
+      "Small total surface area",
+      "Single-cell thin epithelial wall and extensive capillary network"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 5.5 \\times 32 = 176.0\\text{ mol}$.",
+    "answer": 4,
+    "explanation": "Alveoli minimize diffusion distance and maximize surface area.",
     "number": 13
   },
   {
+    "type_tag": "BIO_PHY_LIGHT_DEP_PHO",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Physiology & Ecology",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $5.6\\text{ mol}$ of glucose in trial 56?",
+    "question": "Photolysis of water yielding oxygen occurs at which complex in thylakoid 1:",
     "options": [
-      "$179.2\\text{ mol}$",
-      "$361.4\\text{ mol}$",
-      "$90.8\\text{ mol}$",
-      "$0.425\\text{ mol}$",
-      "$194.2\\text{ mol}$"
+      "Outer membrane",
+      "Photosystem II (PSII)",
+      "Calvin cycle (Stroma)",
+      "Mitochondrial matrix",
+      "Photosystem I (PSI)"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 5.6 \\times 32 = 179.2\\text{ mol}$.",
+    "answer": 1,
+    "explanation": "Water oxidation occurs at the oxygen-evolving complex of PSII.",
     "number": 14
   },
   {
+    "type_tag": "BIO_PHY_GLYCOLYSIS_LOC",
     "module": "Biology",
-    "topic": "Cellular Respiration",
-    "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $5.7\\text{ mol}$ of glucose in trial 57?",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Easy",
+    "question": "Cellular location of initial anaerobic glycolysis pathway in cell 1:",
     "options": [
-      "$182.4\\text{ mol}$",
-      "$367.8\\text{ mol}$",
-      "$92.4\\text{ mol}$",
-      "$0.4281\\text{ mol}$",
-      "$197.4\\text{ mol}$"
+      "Cytoplasm / Cytosol",
+      "Thylakoid",
+      "Mitochondrial matrix",
+      "Cristae",
+      "Nucleus"
     ],
     "answer": 0,
-    "explanation": "Total ATP $= 5.7 \\times 32 = 182.4\\text{ mol}$.",
+    "explanation": "Glycolysis enzymes reside in the soluble cytosol.",
     "number": 15
   }
 ];

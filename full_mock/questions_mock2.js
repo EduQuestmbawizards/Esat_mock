@@ -1,1298 +1,1379 @@
 const QUESTIONS = [
   {
+    "type_tag": "M1_ALG_INEQUAL",
     "module": "Mathematics 1",
-    "topic": "Surds & Indices",
+    "topic": "Algebra",
     "difficulty": "Medium",
-    "question": "Simplify fully the surd difference expression: $\\sqrt{1800} - \\sqrt{1682}$.",
+    "question": "Solve the quadratic inequality $(x - 4)(x - 8) < 0$.",
     "options": [
-      "$1\\sqrt{2}$",
-      "$59\\sqrt{2}$",
-      "$6\\sqrt{2}$",
-      "$40\\sqrt{2}$",
-      "$41\\sqrt{2}$"
+      "$x < 4 \\text{ or } x > 8$",
+      "$6 < x < 10$",
+      "$-8 < x < -4$",
+      "$4 < x < 8$",
+      "$5 < x < 9$"
     ],
-    "answer": 0,
-    "explanation": "$\\sqrt{1800} - \\sqrt{1682} = 30\\sqrt{2} - 29\\sqrt{2} = 1\\sqrt{2}$.",
+    "answer": 3,
+    "explanation": "Parabola is below x-axis strictly between roots: $4 < x < 8$.",
     "number": 1
   },
   {
+    "type_tag": "M1_GEO_COS_RULE",
     "module": "Mathematics 1",
-    "topic": "Surds & Indices",
+    "topic": "Geometry & Trig",
     "difficulty": "Medium",
-    "question": "Simplify fully the surd difference expression: $\\sqrt{1922} - \\sqrt{1800}$.",
+    "question": "In $\\triangle ABC$, $b = 5, c = 6$, $\\angle A = 60^\\circ$. Find $a^2$.",
     "options": [
-      "$1\\sqrt{2}$",
-      "$61\\sqrt{2}$",
-      "$6\\sqrt{2}$",
-      "$41\\sqrt{2}$",
-      "$42\\sqrt{2}$"
+      "$61$",
+      "$22$",
+      "$31$",
+      "$91$",
+      "$30$"
     ],
-    "answer": 0,
-    "explanation": "$\\sqrt{1922} - \\sqrt{1800} = 31\\sqrt{2} - 30\\sqrt{2} = 1\\sqrt{2}$.",
+    "answer": 2,
+    "explanation": "$a^2 = 31$.",
     "number": 2
   },
   {
+    "type_tag": "M1_CALC_KIN_VEL",
     "module": "Mathematics 1",
-    "topic": "Surds & Indices",
-    "difficulty": "Medium",
-    "question": "Simplify fully the surd difference expression: $\\sqrt{2048} - \\sqrt{1922}$.",
+    "topic": "Calculus & Prob",
+    "difficulty": "Easy",
+    "question": "Displacement $s(t) = 8t + 4t^2$. Find velocity at $t = 1\\text{ s}$.",
     "options": [
-      "$1\\sqrt{2}$",
-      "$63\\sqrt{2}$",
-      "$6\\sqrt{2}$",
-      "$42\\sqrt{2}$",
-      "$43\\sqrt{2}$"
+      "$18\\text{ m s}^{-1}$",
+      "$16\\text{ m s}^{-1}$",
+      "$12\\text{ m s}^{-1}$",
+      "$14\\text{ m s}^{-1}$",
+      "$10\\text{ m s}^{-1}$"
     ],
-    "answer": 0,
-    "explanation": "$\\sqrt{2048} - \\sqrt{1922} = 32\\sqrt{2} - 31\\sqrt{2} = 1\\sqrt{2}$.",
+    "answer": 1,
+    "explanation": "$v(1) = 8 + 8 = 16\\text{ m s}^{-1}$.",
     "number": 3
   },
   {
+    "type_tag": "M1_ALG_SIMULT",
     "module": "Mathematics 1",
-    "topic": "Surds & Indices",
-    "difficulty": "Medium",
-    "question": "Simplify fully the surd difference expression: $\\sqrt{2178} - \\sqrt{2048}$.",
+    "topic": "Algebra",
+    "difficulty": "Hard",
+    "question": "Find positive $x$-intercept of line $y = 6x$ and curve $y = x^2 - 6x$.",
     "options": [
-      "$1\\sqrt{2}$",
-      "$65\\sqrt{2}$",
-      "$6\\sqrt{2}$",
-      "$43\\sqrt{2}$",
-      "$44\\sqrt{2}$"
+      "$x = 16$",
+      "$x = 10$",
+      "$x = 12$",
+      "$x = 9$",
+      "$x = 14$"
     ],
-    "answer": 0,
-    "explanation": "$\\sqrt{2178} - \\sqrt{2048} = 33\\sqrt{2} - 32\\sqrt{2} = 1\\sqrt{2}$.",
+    "answer": 2,
+    "explanation": "$x^2 - 12x = 0 \\implies x = 12$.",
     "number": 4
   },
   {
+    "type_tag": "M1_GEO_SIN_RULE",
     "module": "Mathematics 1",
-    "topic": "Surds & Indices",
+    "topic": "Geometry & Trig",
     "difficulty": "Medium",
-    "question": "Simplify fully the surd difference expression: $\\sqrt{2312} - \\sqrt{2178}$.",
+    "question": "In $\\triangle PQR$, $\\frac{p}{\\sin(30^\\circ)} = 16$. Find $p$.",
     "options": [
-      "$1\\sqrt{2}$",
-      "$67\\sqrt{2}$",
-      "$6\\sqrt{2}$",
-      "$44\\sqrt{2}$",
-      "$45\\sqrt{2}$"
+      "$4$",
+      "$9$",
+      "$32$",
+      "$8$",
+      "$16$"
     ],
-    "answer": 0,
-    "explanation": "$\\sqrt{2312} - \\sqrt{2178} = 34\\sqrt{2} - 33\\sqrt{2} = 1\\sqrt{2}$.",
+    "answer": 3,
+    "explanation": "$p = 16 \\times 0.5 = 8$.",
     "number": 5
   },
   {
+    "type_tag": "M1_CALC_KIN_DISP",
     "module": "Mathematics 1",
-    "topic": "Surds & Indices",
+    "topic": "Calculus & Prob",
     "difficulty": "Medium",
-    "question": "Simplify fully the surd difference expression: $\\sqrt{2450} - \\sqrt{2312}$.",
+    "question": "Velocity $v(t) = 12 + 6t$. Find displacement $\\Delta s$ from $t=0$ to $t=2\\text{ s}$.",
     "options": [
-      "$1\\sqrt{2}$",
-      "$69\\sqrt{2}$",
-      "$6\\sqrt{2}$",
-      "$45\\sqrt{2}$",
-      "$46\\sqrt{2}$"
+      "$32\\text{ m}$",
+      "$30\\text{ m}$",
+      "$28\\text{ m}$",
+      "$26\\text{ m}$",
+      "$36\\text{ m}$"
     ],
-    "answer": 0,
-    "explanation": "$\\sqrt{2450} - \\sqrt{2312} = 35\\sqrt{2} - 34\\sqrt{2} = 1\\sqrt{2}$.",
+    "answer": 4,
+    "explanation": "$\\Delta s = 2(12) + 12 = 36\\text{ m}$.",
     "number": 6
   },
   {
+    "type_tag": "M1_ALG_REMAINDER",
     "module": "Mathematics 1",
-    "topic": "Surds & Indices",
+    "topic": "Algebra",
     "difficulty": "Medium",
-    "question": "Simplify fully the surd difference expression: $\\sqrt{2592} - \\sqrt{2450}$.",
+    "question": "Find remainder when $P(x) = 2x^2 - 3x + 9$ is divided by $(x - 4)$.",
     "options": [
-      "$1\\sqrt{2}$",
-      "$71\\sqrt{2}$",
-      "$6\\sqrt{2}$",
-      "$46\\sqrt{2}$",
-      "$47\\sqrt{2}$"
-    ],
-    "answer": 0,
-    "explanation": "$\\sqrt{2592} - \\sqrt{2450} = 36\\sqrt{2} - 35\\sqrt{2} = 1\\sqrt{2}$.",
-    "number": 7
-  },
-  {
-    "module": "Mathematics 1",
-    "topic": "Surds & Indices",
-    "difficulty": "Medium",
-    "question": "Simplify fully the surd difference expression: $\\sqrt{2738} - \\sqrt{2592}$.",
-    "options": [
-      "$1\\sqrt{2}$",
-      "$73\\sqrt{2}$",
-      "$6\\sqrt{2}$",
-      "$47\\sqrt{2}$",
-      "$48\\sqrt{2}$"
-    ],
-    "answer": 0,
-    "explanation": "$\\sqrt{2738} - \\sqrt{2592} = 37\\sqrt{2} - 36\\sqrt{2} = 1\\sqrt{2}$.",
-    "number": 8
-  },
-  {
-    "module": "Mathematics 1",
-    "topic": "Surds & Indices",
-    "difficulty": "Medium",
-    "question": "Simplify fully the surd difference expression: $\\sqrt{2888} - \\sqrt{2738}$.",
-    "options": [
-      "$1\\sqrt{2}$",
-      "$75\\sqrt{2}$",
-      "$6\\sqrt{2}$",
-      "$48\\sqrt{2}$",
-      "$49\\sqrt{2}$"
-    ],
-    "answer": 0,
-    "explanation": "$\\sqrt{2888} - \\sqrt{2738} = 38\\sqrt{2} - 37\\sqrt{2} = 1\\sqrt{2}$.",
-    "number": 9
-  },
-  {
-    "module": "Mathematics 1",
-    "topic": "Surds & Indices",
-    "difficulty": "Medium",
-    "question": "Simplify fully the surd difference expression: $\\sqrt{3042} - \\sqrt{2888}$.",
-    "options": [
-      "$1\\sqrt{2}$",
-      "$77\\sqrt{2}$",
-      "$6\\sqrt{2}$",
-      "$49\\sqrt{2}$",
-      "$50\\sqrt{2}$"
-    ],
-    "answer": 0,
-    "explanation": "$\\sqrt{3042} - \\sqrt{2888} = 39\\sqrt{2} - 38\\sqrt{2} = 1\\sqrt{2}$.",
-    "number": 10
-  },
-  {
-    "module": "Mathematics 1",
-    "topic": "Surds & Indices",
-    "difficulty": "Medium",
-    "question": "Simplify fully the surd difference expression: $\\sqrt{3200} - \\sqrt{3042}$.",
-    "options": [
-      "$1\\sqrt{2}$",
-      "$79\\sqrt{2}$",
-      "$6\\sqrt{2}$",
-      "$50\\sqrt{2}$",
-      "$51\\sqrt{2}$"
-    ],
-    "answer": 0,
-    "explanation": "$\\sqrt{3200} - \\sqrt{3042} = 40\\sqrt{2} - 39\\sqrt{2} = 1\\sqrt{2}$.",
-    "number": 11
-  },
-  {
-    "module": "Mathematics 1",
-    "topic": "Surds & Indices",
-    "difficulty": "Medium",
-    "question": "Simplify fully the surd difference expression: $\\sqrt{3362} - \\sqrt{3200}$.",
-    "options": [
-      "$1\\sqrt{2}$",
-      "$81\\sqrt{2}$",
-      "$6\\sqrt{2}$",
-      "$51\\sqrt{2}$",
-      "$52\\sqrt{2}$"
-    ],
-    "answer": 0,
-    "explanation": "$\\sqrt{3362} - \\sqrt{3200} = 41\\sqrt{2} - 40\\sqrt{2} = 1\\sqrt{2}$.",
-    "number": 12
-  },
-  {
-    "module": "Mathematics 1",
-    "topic": "Surds & Indices",
-    "difficulty": "Medium",
-    "question": "Simplify fully the surd difference expression: $\\sqrt{3528} - \\sqrt{3362}$.",
-    "options": [
-      "$1\\sqrt{2}$",
-      "$83\\sqrt{2}$",
-      "$6\\sqrt{2}$",
-      "$52\\sqrt{2}$",
-      "$53\\sqrt{2}$"
-    ],
-    "answer": 0,
-    "explanation": "$\\sqrt{3528} - \\sqrt{3362} = 42\\sqrt{2} - 41\\sqrt{2} = 1\\sqrt{2}$.",
-    "number": 13
-  },
-  {
-    "module": "Mathematics 1",
-    "topic": "Quadratics",
-    "difficulty": "Medium",
-    "question": "Find the product of the real roots of the quadratic equation $x^2 - 8x + 7 = 0$.",
-    "options": [
-      "$7$",
-      "$108$",
+      "$29$",
       "$26$",
-      "$-12$",
-      "$-9$"
-    ],
-    "answer": 0,
-    "explanation": "Product of roots for $ax^2+bx+c=0$ is $\\frac{c}{a} = 7$.",
-    "number": 14
-  },
-  {
-    "module": "Mathematics 1",
-    "topic": "Quadratics",
-    "difficulty": "Medium",
-    "question": "Find the product of the real roots of the quadratic equation $x^2 - 10x + 16 = 0$.",
-    "options": [
-      "$16$",
-      "$110$",
-      "$35$",
-      "$-21$",
-      "$0$"
-    ],
-    "answer": 0,
-    "explanation": "Product of roots for $ax^2+bx+c=0$ is $\\frac{c}{a} = 16$.",
-    "number": 15
-  },
-  {
-    "module": "Mathematics 1",
-    "topic": "Quadratics",
-    "difficulty": "Medium",
-    "question": "Find the product of the real roots of the quadratic equation $x^2 - 12x + 27 = 0$.",
-    "options": [
-      "$27$",
-      "$112$",
-      "$46$",
-      "$-32$",
-      "$11$"
-    ],
-    "answer": 0,
-    "explanation": "Product of roots for $ax^2+bx+c=0$ is $\\frac{c}{a} = 27$.",
-    "number": 16
-  },
-  {
-    "module": "Mathematics 1",
-    "topic": "Quadratics",
-    "difficulty": "Medium",
-    "question": "Find the product of the real roots of the quadratic equation $x^2 - 14x + 40 = 0$.",
-    "options": [
-      "$40$",
-      "$114$",
-      "$59$",
-      "$-45$",
-      "$24$"
-    ],
-    "answer": 0,
-    "explanation": "Product of roots for $ax^2+bx+c=0$ is $\\frac{c}{a} = 40$.",
-    "number": 17
-  },
-  {
-    "module": "Mathematics 1",
-    "topic": "Quadratics",
-    "difficulty": "Medium",
-    "question": "Find the product of the real roots of the quadratic equation $x^2 - 16x + 55 = 0$.",
-    "options": [
-      "$55$",
-      "$116$",
-      "$74$",
-      "$-60$",
+      "$34$",
+      "$44$",
       "$39$"
     ],
     "answer": 0,
-    "explanation": "Product of roots for $ax^2+bx+c=0$ is $\\frac{c}{a} = 55$.",
+    "explanation": "$P(4) = 2(4)^2 - 3(4) + 9 = 29$.",
+    "number": 7
+  },
+  {
+    "type_tag": "M1_GEO_TRI_AREA",
+    "module": "Mathematics 1",
+    "topic": "Geometry & Trig",
+    "difficulty": "Easy",
+    "question": "Area of triangle with sides $8\\text{ cm}$ and $6\\text{ cm}$ enclosing $30^\\circ$.",
+    "options": [
+      "$14\\text{ cm}^2$",
+      "$24\\text{ cm}^2$",
+      "$12\\text{ cm}^2$",
+      "$6.0\\text{ cm}^2$",
+      "$48\\text{ cm}^2$"
+    ],
+    "answer": 2,
+    "explanation": "$\\text{Area} = 0.5 \\times 8 \\times 6 \\times 0.5 = 12\\text{ cm}^2$.",
+    "number": 8
+  },
+  {
+    "type_tag": "M1_CALC_AP_NTH",
+    "module": "Mathematics 1",
+    "topic": "Calculus & Prob",
+    "difficulty": "Easy",
+    "question": "AP has $a = 8$ and $d = 4$. Find $10\\text{th}$ term ($u_{10}$).",
+    "options": [
+      "$42$",
+      "$44$",
+      "$38$",
+      "$40$",
+      "$46$"
+    ],
+    "answer": 1,
+    "explanation": "$u_{10} = 8 + 36$.",
+    "number": 9
+  },
+  {
+    "type_tag": "M1_ALG_FACTOR",
+    "module": "Mathematics 1",
+    "topic": "Algebra",
+    "difficulty": "Hard",
+    "question": "If $(x - 5)$ is a factor of $x^3 - 7x^2 + kx - 10$, find $k$.",
+    "options": [
+      "$k = 16$",
+      "$k = 14$",
+      "$k = 10$",
+      "$k = 9$",
+      "$k = 12$"
+    ],
+    "answer": 4,
+    "explanation": "$P(5) = 0 \\implies k = 12$.",
+    "number": 10
+  },
+  {
+    "type_tag": "M1_GEO_PYTHAG_TRIG",
+    "module": "Mathematics 1",
+    "topic": "Geometry & Trig",
+    "difficulty": "Medium",
+    "question": "If acute angle $\\theta$ has $\\sin\\theta = \\frac{7}{25}$, find $\\cos\\theta$.",
+    "options": [
+      "$\\frac{24}{25}$",
+      "$\\frac{25}{24}$",
+      "$\\frac{7}{24}$",
+      "$\\frac{1}{25}$",
+      "$\\frac{7}{25}$"
+    ],
+    "answer": 0,
+    "explanation": "$\\cos\\theta = \\sqrt{1 - (7/25)^2} = \\frac{24}{25}$.",
+    "number": 11
+  },
+  {
+    "type_tag": "M1_CALC_AP_SUM",
+    "module": "Mathematics 1",
+    "topic": "Calculus & Prob",
+    "difficulty": "Medium",
+    "question": "Sum of first $10$ terms of AP with $a = 5$ and $d = 3$.",
+    "options": [
+      "$180$",
+      "$190$",
+      "$170$",
+      "$185$",
+      "$175$"
+    ],
+    "answer": 3,
+    "explanation": "$S_{10} = 5(2(5) + 27) = 185$.",
+    "number": 12
+  },
+  {
+    "type_tag": "M1_ALG_BINOMIAL",
+    "module": "Mathematics 1",
+    "topic": "Algebra",
+    "difficulty": "Hard",
+    "question": "Find coefficient of $x^2$ in the expansion of $(1 + 4x)^5$.",
+    "options": [
+      "$165$",
+      "$175$",
+      "$170$",
+      "$160$",
+      "$180$"
+    ],
+    "answer": 3,
+    "explanation": "$\\binom{5}{2}(1)^3(4)^2 = 160$.",
+    "number": 13
+  },
+  {
+    "type_tag": "M1_GEO_TRIG_SOL",
+    "module": "Mathematics 1",
+    "topic": "Geometry & Trig",
+    "difficulty": "Hard",
+    "question": "Number of distinct solutions to $\\sin(5x) = 0$ in the range $0 \\le x \\le \\pi$.",
+    "options": [
+      "$9$",
+      "$7$",
+      "$5$",
+      "$6$",
+      "$8$"
+    ],
+    "answer": 3,
+    "explanation": "Solutions occur at $(5)x = 0, \\pi, 2\\pi, \\dots, 5\\pi$, giving $6$ solutions.",
+    "number": 14
+  },
+  {
+    "type_tag": "M1_CALC_GP_NTH",
+    "module": "Mathematics 1",
+    "topic": "Calculus & Prob",
+    "difficulty": "Easy",
+    "question": "GP has $a = 6$ and $r = 3$. Find $4\\text{th}$ term.",
+    "options": [
+      "$72$",
+      "$164$",
+      "$54$",
+      "$486$",
+      "$162$"
+    ],
+    "answer": 4,
+    "explanation": "$u_4 = (6) \\times 27 = 162$.",
+    "number": 15
+  },
+  {
+    "type_tag": "M1_ALG_TRANSFORM",
+    "module": "Mathematics 1",
+    "topic": "Algebra",
+    "difficulty": "Medium",
+    "question": "State the equation after translating $y = f(x)$ by vector $\\begin{pmatrix} 5 \\\\ -7 \\end{pmatrix}$.",
+    "options": [
+      "$y = f(x + 5) + 7$",
+      "$y = f(x - 5) - 7$",
+      "$y = 5f(x) - 7$",
+      "$y = f(x - 5) + 7$",
+      "$y = f(x + 5) - 7$"
+    ],
+    "answer": 1,
+    "explanation": "$y = f(x - 5) - 7$.",
+    "number": 16
+  },
+  {
+    "type_tag": "M1_GEO_ARC_LEN",
+    "module": "Mathematics 1",
+    "topic": "Geometry & Trig",
+    "difficulty": "Easy",
+    "question": "Arc length with radius $16\\text{ cm}$ and angle $\\frac{\\pi}{4}\\text{ rad}$.",
+    "options": [
+      "$6\\pi\\text{ cm}$",
+      "$4\\pi\\text{ cm}$",
+      "$8\\pi\\text{ cm}$",
+      "$7\\pi\\text{ cm}$",
+      "$5\\pi\\text{ cm}$"
+    ],
+    "answer": 1,
+    "explanation": "$s = 16 \\times \\frac{\\pi}{4} = 4\\pi\\text{ cm}$.",
+    "number": 17
+  },
+  {
+    "type_tag": "M1_CALC_GP_SUM_INF",
+    "module": "Mathematics 1",
+    "topic": "Calculus & Prob",
+    "difficulty": "Medium",
+    "question": "Sum to infinity of GP with $a = 12$ and $r = \\frac{1}{4}$.",
+    "options": [
+      "$48$",
+      "$4$",
+      "$12$",
+      "$17$",
+      "$16$"
+    ],
+    "answer": 4,
+    "explanation": "$S_\\infty = \\frac{12}{3/4} = 16$.",
     "number": 18
   },
   {
+    "type_tag": "M1_ALG_INVERSE",
     "module": "Mathematics 1",
-    "topic": "Quadratics",
+    "topic": "Algebra",
     "difficulty": "Medium",
-    "question": "Find the product of the real roots of the quadratic equation $x^2 - 18x + 72 = 0$.",
+    "question": "Find $f^{-1}(x)$ for $f(x) = 6x - 8$.",
     "options": [
-      "$72$",
-      "$118$",
-      "$91$",
-      "$-77$",
-      "$56$"
+      "$\\frac{6}{x + 8}$",
+      "$\\frac{x + 8}{6}$",
+      "$\\frac{x - 8}{6}$",
+      "$6x + 8$",
+      "$\\frac{1}{6x - 8}$"
     ],
-    "answer": 0,
-    "explanation": "Product of roots for $ax^2+bx+c=0$ is $\\frac{c}{a} = 72$.",
+    "answer": 1,
+    "explanation": "$f^{-1}(x) = \\frac{x + 8}{6}$.",
     "number": 19
   },
   {
+    "type_tag": "M1_GEO_SECTOR_A",
     "module": "Mathematics 1",
-    "topic": "Quadratics",
+    "topic": "Geometry & Trig",
     "difficulty": "Medium",
-    "question": "Find the product of the real roots of the quadratic equation $x^2 - 20x + 91 = 0$.",
+    "question": "Sector area with radius $8\\text{ cm}$ and angle $\\frac{\\pi}{4}\\text{ rad}$.",
     "options": [
-      "$91$",
-      "$120$",
-      "$110$",
-      "$-96$",
-      "$75$"
+      "$17\\pi\\text{ cm}^2$",
+      "$\\frac{21\\pi}{4}\\text{ cm}^2$",
+      "$\\frac{16\\pi}{2}\\text{ cm}^2$",
+      "$\\frac{19\\pi}{2}\\text{ cm}^2$",
+      "$23\\pi\\text{ cm}^2$"
     ],
-    "answer": 0,
-    "explanation": "Product of roots for $ax^2+bx+c=0$ is $\\frac{c}{a} = 91$.",
+    "answer": 2,
+    "explanation": "$A = \\frac{16\\pi}{2}\\text{ cm}^2$.",
     "number": 20
   },
   {
+    "type_tag": "M1_CALC_COND_PROB",
     "module": "Mathematics 1",
-    "topic": "Quadratics",
+    "topic": "Calculus & Prob",
     "difficulty": "Medium",
-    "question": "Find the product of the real roots of the quadratic equation $x^2 - 22x + 112 = 0$.",
+    "question": "Given $P(A) = 0.60$, $P(B) = 0.40$, and $P(A \\cap B) = 0.24$, calculate $P(B \\mid A)$.",
     "options": [
-      "$112$",
-      "$122$",
-      "$131$",
-      "$-117$",
-      "$96$"
+      "$0.50$",
+      "$0.40$",
+      "$0.10$",
+      "$0.80$",
+      "$0.20$"
     ],
-    "answer": 0,
-    "explanation": "Product of roots for $ax^2+bx+c=0$ is $\\frac{c}{a} = 112$.",
+    "answer": 1,
+    "explanation": "$P(B \\mid A) = \\frac{P(A \\cap B)}{P(A)} = 0.40$.",
     "number": 21
   },
   {
+    "type_tag": "M1_ALG_COMPOSITE",
     "module": "Mathematics 1",
-    "topic": "Quadratics",
+    "topic": "Algebra",
     "difficulty": "Medium",
-    "question": "Find the product of the real roots of the quadratic equation $x^2 - 24x + 135 = 0$.",
+    "question": "If $f(x) = 3x + 2$ and $g(x) = x^2$, evaluate $f(g(5))$.",
     "options": [
-      "$135$",
-      "$124$",
-      "$154$",
-      "$-140$",
-      "$119$"
+      "$90$",
+      "$85$",
+      "$80$",
+      "$73$",
+      "$77$"
     ],
-    "answer": 0,
-    "explanation": "Product of roots for $ax^2+bx+c=0$ is $\\frac{c}{a} = 135$.",
+    "answer": 4,
+    "explanation": "$f(g(5)) = 3(25) + 2 = 77$.",
     "number": 22
   },
   {
+    "type_tag": "M1_GEO_DIST_2D",
     "module": "Mathematics 1",
-    "topic": "Quadratics",
-    "difficulty": "Medium",
-    "question": "Find the product of the real roots of the quadratic equation $x^2 - 26x + 160 = 0$.",
+    "topic": "Geometry & Trig",
+    "difficulty": "Easy",
+    "question": "Distance between $(0,0)$ and $(24, 32)$.",
     "options": [
-      "$160$",
-      "$126$",
-      "$179$",
-      "$-165$",
-      "$144$"
+      "$40$",
+      "$42$",
+      "$56$",
+      "$1600$",
+      "$32$"
     ],
     "answer": 0,
-    "explanation": "Product of roots for $ax^2+bx+c=0$ is $\\frac{c}{a} = 160$.",
+    "explanation": "$d = \\sqrt{576 + 1024} = 40$.",
     "number": 23
   },
   {
+    "type_tag": "M1_CALC_COMBINATIONS",
     "module": "Mathematics 1",
-    "topic": "Quadratics",
-    "difficulty": "Medium",
-    "question": "Find the product of the real roots of the quadratic equation $x^2 - 28x + 187 = 0$.",
+    "topic": "Calculus & Prob",
+    "difficulty": "Easy",
+    "question": "Number of ways to choose $2$ representatives from $9$ candidates.",
     "options": [
-      "$187$",
-      "$128$",
-      "$206$",
-      "$-192$",
-      "$171$"
+      "$81$",
+      "$18$",
+      "$72$",
+      "$39$",
+      "$36$"
     ],
-    "answer": 0,
-    "explanation": "Product of roots for $ax^2+bx+c=0$ is $\\frac{c}{a} = 187$.",
+    "answer": 4,
+    "explanation": "$\\binom{9}{2} = 36$.",
     "number": 24
   },
   {
+    "type_tag": "M1_ALG_EXP_EQ",
     "module": "Mathematics 1",
-    "topic": "Quadratics",
+    "topic": "Algebra",
     "difficulty": "Medium",
-    "question": "Find the product of the real roots of the quadratic equation $x^2 - 30x + 216 = 0$.",
+    "question": "Solve for $x$: $3^{x + 1} = 243$.",
     "options": [
-      "$216$",
-      "$130$",
-      "$235$",
-      "$-221$",
-      "$200$"
+      "$x = 6$",
+      "$x = 5$",
+      "$x = 4$",
+      "$x = 8$",
+      "$x = 7$"
     ],
-    "answer": 0,
-    "explanation": "Product of roots for $ax^2+bx+c=0$ is $\\frac{c}{a} = 216$.",
+    "answer": 2,
+    "explanation": "$3^{x+1} = 3^{5} \\implies x = 4$.",
     "number": 25
   },
   {
+    "type_tag": "M1_GEO_MIDPT",
     "module": "Mathematics 1",
-    "topic": "Quadratics",
-    "difficulty": "Medium",
-    "question": "Find the product of the real roots of the quadratic equation $x^2 - 32x + 247 = 0$.",
+    "topic": "Geometry & Trig",
+    "difficulty": "Easy",
+    "question": "Midpoint of segment connecting $A(16, 0)$ and $B(0, 24)$.",
     "options": [
-      "$247$",
-      "$132$",
-      "$266$",
-      "$-252$",
-      "$231$"
+      "$(4, 4)$",
+      "$(8, 12)$",
+      "$(16, 24)$",
+      "$(9, 12)$",
+      "$(12, 8)$"
     ],
-    "answer": 0,
-    "explanation": "Product of roots for $ax^2+bx+c=0$ is $\\frac{c}{a} = 247$.",
+    "answer": 1,
+    "explanation": "$M = (8, 12)$.",
     "number": 26
   },
   {
+    "type_tag": "M1_CALC_PERMUTATIONS",
     "module": "Mathematics 1",
-    "topic": "Quadratics",
-    "difficulty": "Medium",
-    "question": "Find the product of the real roots of the quadratic equation $x^2 - 34x + 280 = 0$.",
+    "topic": "Calculus & Prob",
+    "difficulty": "Easy",
+    "question": "Number of permutations of $2$ distinct items from $8$ items.",
     "options": [
-      "$280$",
-      "$134$",
-      "$299$",
-      "$-285$",
-      "$264$"
+      "$56$",
+      "$60$",
+      "$58$",
+      "$64$",
+      "$62$"
     ],
     "answer": 0,
-    "explanation": "Product of roots for $ax^2+bx+c=0$ is $\\frac{c}{a} = 280$.",
+    "explanation": "$P(8, 2) = 56$.",
     "number": 27
   },
   {
+    "type_tag": "CHM_ATM_ISOTOPES",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
+    "topic": "Atomic & Bonding",
     "difficulty": "Easy",
-    "question": "An isotope of an element possesses $11$ protons and $13$ neutrons. Determine its mass number $A$.",
+    "question": "Two isotopes of element with atomic number $Z=13$ have:",
     "options": [
-      "$24$",
-      "$11$",
-      "$13$",
-      "$29$",
-      "$152$"
+      "Different electron numbers",
+      "Different atomic numbers",
+      "Different chemical properties",
+      "Same protons ($13$), different neutrons",
+      "Same neutrons, different protons"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 11 + 13 = 24$.",
+    "answer": 3,
+    "explanation": "Isotopes share identical proton number $Z$.",
     "number": 28
   },
   {
+    "type_tag": "CHM_ENR_ENDOTHERMIC",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
+    "topic": "Energetics & Kinetics",
     "difficulty": "Easy",
-    "question": "An isotope of an element possesses $12$ protons and $14$ neutrons. Determine its mass number $A$.",
+    "question": "An endothermic reaction with $\\Delta H = +75\\text{ kJ mol}^{-1}$:",
     "options": [
-      "$26$",
-      "$12$",
-      "$14$",
-      "$31$",
-      "$152$"
+      "Absorbs heat from surroundings (surroundings cool)",
+      "Has $\\Delta H < 0$",
+      "Has zero entropy change",
+      "Releases heat to surroundings",
+      "Cannot proceed spontaneously"
     ],
     "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 12 + 14 = 26$.",
+    "explanation": "Endothermic reactions absorb thermal energy ($\\Delta H > 0$).",
     "number": 29
   },
   {
+    "type_tag": "CHM_ORG_HOMOLOGOUS",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
+    "topic": "Organic Chemistry",
     "difficulty": "Easy",
-    "question": "An isotope of an element possesses $13$ protons and $15$ neutrons. Determine its mass number $A$.",
+    "question": "In series of alkanes ($C_n H_{2n+2}$) up to $n=6$, members share:",
     "options": [
-      "$28$",
-      "$13$",
-      "$15$",
-      "$33$",
-      "$152$"
+      "Same general formula and functional group with successive $-\\text{CH}_2-$ difference",
+      "Same boiling point",
+      "Same melting point",
+      "Same molar mass",
+      "Different general formulas"
     ],
     "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 13 + 15 = 28$.",
+    "explanation": "Homologous series share general formula and functional group.",
     "number": 30
   },
   {
+    "type_tag": "CHM_ATM_HYBRIDISATION",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $14$ protons and $16$ neutrons. Determine its mass number $A$.",
+    "topic": "Atomic & Bonding",
+    "difficulty": "Hard",
+    "question": "Hybridisation of carbon atoms in alkene $C_{4}H_{8}$ double bond.",
     "options": [
-      "$30$",
-      "$14$",
-      "$16$",
-      "$35$",
-      "$152$"
+      "$sp^3$",
+      "$sp$",
+      "$sp^2$",
+      "$sp^3d$",
+      "$dsp^2$"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 14 + 16 = 30$.",
+    "answer": 2,
+    "explanation": "Trigonal planar carbon with double bond has $sp^2$ hybridisation.",
     "number": 31
   },
   {
+    "type_tag": "CHM_ENR_ATOM_ECONOMY",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $15$ protons and $17$ neutrons. Determine its mass number $A$.",
+    "topic": "Energetics & Kinetics",
+    "difficulty": "Medium",
+    "question": "Formula for Percentage Atom Economy in synthetic route 3:",
     "options": [
-      "$32$",
-      "$15$",
-      "$17$",
-      "$37$",
-      "$152$"
+      "$\\frac{\\text{Actual yield}}{\\text{Theoretical yield}} \\times 100\\%$",
+      "$\\frac{\\text{Reactant mass}}{\\text{Product mass}} \\times 100\\%$",
+      "$\\text{Percentage yield} \\times 2$",
+      "$\\frac{\\text{Mass of product}}{\\text{Mass of waste}} \\times 100\\%$",
+      "$\\frac{\\text{Molar mass of desired product}}{\\text{Total molar mass of all reactants}} \\times 100\\%$"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 15 + 17 = 32$.",
+    "answer": 4,
+    "explanation": "Atom economy measures incorporated reactant atoms.",
     "number": 32
   },
   {
+    "type_tag": "CHM_ORG_BENZENE_SUB",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $16$ protons and $18$ neutrons. Determine its mass number $A$.",
+    "topic": "Organic Chemistry",
+    "difficulty": "Hard",
+    "question": "Characteristic reaction mechanism of benzene ring in nitration experiment 3:",
     "options": [
-      "$34$",
-      "$16$",
-      "$18$",
-      "$39$",
-      "$152$"
+      "Electrophilic Addition",
+      "Elimination",
+      "Nucleophilic Substitution",
+      "Free Radical Addition",
+      "Electrophilic Aromatic Substitution"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 16 + 18 = 34$.",
+    "answer": 4,
+    "explanation": "Electrophilic substitution preserves aromatic resonance stability.",
     "number": 33
   },
   {
+    "type_tag": "CHM_ATM_NOBLE_CONFIG",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
+    "topic": "Atomic & Bonding",
     "difficulty": "Easy",
-    "question": "An isotope of an element possesses $17$ protons and $19$ neutrons. Determine its mass number $A$.",
+    "question": "Electronic configuration of noble gas Argon (Ar, Z=18).",
     "options": [
-      "$36$",
-      "$17$",
-      "$19$",
-      "$41$",
-      "$152$"
+      "$1s^2 2s^2 2p^6 3s^2$",
+      "$[\\text{He}] 2s^1$",
+      "$[\\text{Ne}] 3s^2 3p^6$",
+      "$1s^2 2s^2 2p^5 3s^1$",
+      "$1s^2 2s^2 2p^4$"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 17 + 19 = 36$.",
+    "answer": 2,
+    "explanation": "Full outer shell configuration: $[\\text{Ne}] 3s^2 3p^6$.",
     "number": 34
   },
   {
+    "type_tag": "CHM_ENR_KP_EXPRESSION",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $18$ protons and $20$ neutrons. Determine its mass number $A$.",
+    "topic": "Energetics & Kinetics",
+    "difficulty": "Medium",
+    "question": "Equilibrium expression $K_p$ for $2\\text{SO}_2(g) + \\text{O}_2(g) \\rightleftharpoons 2\\text{SO}_3(g)$ in vessel 3:",
     "options": [
-      "$38$",
-      "$18$",
-      "$20$",
-      "$43$",
-      "$152$"
+      "$K_p = p(\\text{SO}_3)^2 - p(\\text{SO}_2)^2$",
+      "$K_p = \\frac{[\\text{SO}_3]^2}{[\\text{SO}_2]^2[\\text{O}_2]}$",
+      "$K_p = \\frac{2p(\\text{SO}_3)}{2p(\\text{SO}_2) + p(\\text{O}_2)}$",
+      "$K_p = \\frac{p(\\text{SO}_3)^2}{p(\\text{SO}_2)^2 \\cdot p(\\text{O}_2)}$",
+      "$K_p = \\frac{p(\\text{SO}_2)^2 \\cdot p(\\text{O}_2)}{p(\\text{SO}_3)^2}$"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 18 + 20 = 38$.",
+    "answer": 3,
+    "explanation": "$K_p = \\frac{p(\\text{SO}_3)^2}{p(\\text{SO}_2)^2 \\cdot p(\\text{O}_2)}$.",
     "number": 35
   },
   {
+    "type_tag": "CHM_ORG_EZ_ISOMER",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $19$ protons and $21$ neutrons. Determine its mass number $A$.",
+    "topic": "Organic Chemistry",
+    "difficulty": "Medium",
+    "question": "Requirement for $E/Z$ stereoisomerism in alkene sample 3:",
     "options": [
-      "$40$",
-      "$19$",
-      "$21$",
-      "$45$",
-      "$152$"
+      "Hydrogen bonding capability",
+      "Triple bond",
+      "Chiral carbon atom",
+      "Restricted rotation around C=C and two different groups on each double-bonded carbon",
+      "Four identical groups on carbons"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 19 + 21 = 40$.",
+    "answer": 3,
+    "explanation": "Requires restricted rotation and non-identical substituents on both carbons.",
     "number": 36
   },
   {
+    "type_tag": "CHM_ATM_E_CONFIG",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
+    "topic": "Atomic & Bonding",
     "difficulty": "Easy",
-    "question": "An isotope of an element possesses $20$ protons and $22$ neutrons. Determine its mass number $A$.",
+    "question": "Ground state electron configuration of neutral Silicon (Si, Z=14).",
     "options": [
-      "$42$",
-      "$20$",
-      "$22$",
-      "$47$",
-      "$152$"
+      "$1s^2 2s^2 2p^6 3s^2 3p^2$",
+      "$[\\text{He}] 2s^2$",
+      "$1s^2 2s^2 2p^6$",
+      "$1s^2 2s^2 2p^6 3s^{10}$",
+      "$1s^2 2s^2 2p^5 3s^2$"
     ],
     "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 20 + 22 = 42$.",
+    "explanation": "Electronic configuration fills subshells: $1s^2 2s^2 2p^6 3s^2 3p^2$.",
     "number": 37
   },
   {
+    "type_tag": "CHM_ENR_HESS_LAW",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $21$ protons and $23$ neutrons. Determine its mass number $A$.",
+    "topic": "Energetics & Kinetics",
+    "difficulty": "Hard",
+    "question": "Calculate $\\Delta H$ given $\\sum \\Delta H_f^\\circ(\\text{prod}) = -1200\\text{ kJ}$ and $\\sum \\Delta H_f^\\circ(\\text{react}) = -400\\text{ kJ}$.",
     "options": [
-      "$44$",
-      "$21$",
-      "$23$",
-      "$49$",
-      "$152$"
+      "$-600\\text{ kJ mol}^{-1}$",
+      "$+800\\text{ kJ mol}^{-1}$",
+      "$-800\\text{ kJ mol}^{-1}$",
+      "$-1600\\text{ kJ mol}^{-1}$",
+      "$+1600\\text{ kJ mol}^{-1}$"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 21 + 23 = 44$.",
+    "answer": 2,
+    "explanation": "$\\Delta H = \\text{Products} - \\text{Reactants} = -800\\text{ kJ mol}^{-1}$.",
     "number": 38
   },
   {
+    "type_tag": "CHM_ORG_IUPAC_ALC",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
+    "topic": "Organic Chemistry",
     "difficulty": "Easy",
-    "question": "An isotope of an element possesses $22$ protons and $24$ neutrons. Determine its mass number $A$.",
+    "question": "IUPAC name of straight-chain alcohol Butan-1-ol.",
     "options": [
-      "$46$",
-      "$22$",
-      "$24$",
-      "$51$",
-      "$152$"
+      "Propanoic acid",
+      "Ethane",
+      "Butan-1-ol",
+      "Propanone",
+      "Methoxyethane"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 22 + 24 = 46$.",
+    "answer": 2,
+    "explanation": "Butan-1-ol is a primary alcohol.",
     "number": 39
   },
   {
+    "type_tag": "CHM_ATM_VSEPR_CH4",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $23$ protons and $25$ neutrons. Determine its mass number $A$.",
+    "topic": "Atomic & Bonding",
+    "difficulty": "Medium",
+    "question": "VSEPR molecular shape and bond angle of methane ($\\text{CH}_4$) in sample 4.",
     "options": [
-      "$48$",
-      "$23$",
-      "$25$",
-      "$53$",
-      "$152$"
+      "Trigonal planar, $120^\\circ$",
+      "Bent, $104.5^\\circ$",
+      "Trigonal pyramidal, $107^\\circ$",
+      "Linear, $180^\\circ$",
+      "Tetrahedral, $109.5^\\circ$"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 23 + 25 = 48$.",
+    "answer": 4,
+    "explanation": "4 bonding pairs, 0 lone pairs $\\implies$ Tetrahedral, $109.5^\\circ$.",
     "number": 40
   },
   {
+    "type_tag": "CHM_ENR_GIBBS",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $24$ protons and $26$ neutrons. Determine its mass number $A$.",
+    "topic": "Energetics & Kinetics",
+    "difficulty": "Hard",
+    "question": "Temperature at which reaction with $\\Delta H = +120\\text{ kJ}, \\Delta S = +400\\text{ J K}^{-1}$ has $\\Delta G = 0$.",
     "options": [
-      "$50$",
-      "$24$",
-      "$26$",
-      "$55$",
-      "$152$"
+      "$T = 0\\text{ K}$",
+      "$T = 3000\\text{ K}$",
+      "$T = 30\\text{ K}$",
+      "$T = 300\\text{ K}$",
+      "$T = 100\\text{ K}$"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 24 + 26 = 50$.",
+    "answer": 3,
+    "explanation": "$T = \\frac{\\Delta H}{\\Delta S} = \\frac{120000}{400} = 300\\text{ K}$.",
     "number": 41
   },
   {
+    "type_tag": "CHM_ORG_IUPAC_KET",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
+    "topic": "Organic Chemistry",
     "difficulty": "Easy",
-    "question": "An isotope of an element possesses $25$ protons and $27$ neutrons. Determine its mass number $A$.",
+    "question": "IUPAC name of ketone Pentan-3-one.",
     "options": [
-      "$52$",
-      "$25$",
-      "$27$",
-      "$57$",
-      "$152$"
+      "Methyl ethanoate",
+      "Propanoic acid",
+      "Propan-1-ol",
+      "Propanal",
+      "Pentan-3-one"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 25 + 27 = 52$.",
+    "answer": 4,
+    "explanation": "Pentan-3-one is an aliphatic ketone.",
     "number": 42
   },
   {
+    "type_tag": "CHM_ATM_VSEPR_NH3",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $26$ protons and $28$ neutrons. Determine its mass number $A$.",
+    "topic": "Atomic & Bonding",
+    "difficulty": "Medium",
+    "question": "VSEPR shape and bond angle of ammonia ($\\text{NH}_3$) in container 4.",
     "options": [
-      "$54$",
-      "$26$",
-      "$28$",
-      "$59$",
-      "$152$"
+      "Trigonal planar, $120^\\circ$",
+      "Tetrahedral, $109.5^\\circ$",
+      "Trigonal pyramidal, $107^\\circ$",
+      "T-shaped, $90^\\circ$",
+      "Bent, $104.5^\\circ$"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 26 + 28 = 54$.",
+    "answer": 2,
+    "explanation": "3 bonding pairs, 1 lone pair $\\implies$ Trigonal pyramidal, $107^\\circ$.",
     "number": 43
   },
   {
+    "type_tag": "CHM_ENR_RATE_EQ",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $27$ protons and $29$ neutrons. Determine its mass number $A$.",
+    "topic": "Energetics & Kinetics",
+    "difficulty": "Medium",
+    "question": "$\\text{Rate} = k[A]^{4}[B]$. If $[A]$ is doubled and $[B]$ unchanged, rate increases by factor:",
     "options": [
-      "$56$",
-      "$27$",
-      "$29$",
-      "$61$",
-      "$152$"
+      "$20$",
+      "$16$",
+      "$17$",
+      "$19$",
+      "$18$"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 27 + 29 = 56$.",
+    "answer": 1,
+    "explanation": "Factor $= 2^{4} = 16$.",
     "number": 44
   },
   {
+    "type_tag": "CHM_ORG_CHIRAL",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $28$ protons and $30$ neutrons. Determine its mass number $A$.",
+    "topic": "Organic Chemistry",
+    "difficulty": "Medium",
+    "question": "Which compound in set 4 contains an asymmetric chiral carbon?",
     "options": [
-      "$58$",
-      "$28$",
-      "$30$",
-      "$63$",
-      "$152$"
+      "Butan-2-ol ($\\text{CH}_3\\text{CH(OH)CH}_2\\text{CH}_3$)",
+      "Ethane",
+      "Propan-2-ol",
+      "Butan-1-ol",
+      "Propan-1-ol"
     ],
     "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 28 + 30 = 58$.",
+    "explanation": "C-2 in butan-2-ol has 4 distinct substituents.",
     "number": 45
   },
   {
+    "type_tag": "CHM_ATM_VSEPR_H2O",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $29$ protons and $31$ neutrons. Determine its mass number $A$.",
+    "topic": "Atomic & Bonding",
+    "difficulty": "Medium",
+    "question": "VSEPR shape and bond angle of water ($\\text{H}_2\\text{O}$) in trial 4.",
     "options": [
-      "$60$",
-      "$29$",
-      "$31$",
-      "$65$",
-      "$152$"
+      "Tetrahedral, $109.5^\\circ$",
+      "Bent, $104.5^\\circ$",
+      "Linear, $180^\\circ$",
+      "Trigonal planar, $120^\\circ$",
+      "Trigonal pyramidal, $107^\\circ$"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 29 + 31 = 60$.",
+    "answer": 1,
+    "explanation": "2 bonding pairs, 2 lone pairs $\\implies$ Bent, $104.5^\\circ$.",
     "number": 46
   },
   {
+    "type_tag": "CHM_ENR_LE_CHATELIER",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $30$ protons and $32$ neutrons. Determine its mass number $A$.",
+    "topic": "Energetics & Kinetics",
+    "difficulty": "Medium",
+    "question": "Exothermic reaction with $\\Delta H = -200\\text{ kJ mol}^{-1}$. Increasing temperature causes $K_c$ to:",
     "options": [
-      "$62$",
-      "$30$",
-      "$32$",
-      "$67$",
-      "$152$"
+      "Become zero",
+      "Remain constant",
+      "Double",
+      "Decrease (equilibrium shifts in reverse)",
+      "Increase"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 30 + 32 = 62$.",
+    "answer": 3,
+    "explanation": "Exothermic reactions shift left when heated, lowering $K_c$.",
     "number": 47
   },
   {
+    "type_tag": "CHM_ORG_MARKOVNIKOV",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $31$ protons and $33$ neutrons. Determine its mass number $A$.",
+    "topic": "Organic Chemistry",
+    "difficulty": "Medium",
+    "question": "Major organic product of propene reacting with $\\text{HBr}$ in trial 4:",
     "options": [
-      "$64$",
-      "$31$",
-      "$33$",
-      "$69$",
-      "$152$"
+      "1,2-dibromopropane",
+      "2-bromopropene",
+      "1-bromopropane",
+      "2-bromopropane",
+      "Propane"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 31 + 33 = 64$.",
+    "answer": 3,
+    "explanation": "Markovnikov addition proceeds via more stable secondary carbocation.",
     "number": 48
   },
   {
+    "type_tag": "CHM_ATM_IONIS_ENERGY",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $32$ protons and $34$ neutrons. Determine its mass number $A$.",
+    "topic": "Atomic & Bonding",
+    "difficulty": "Medium",
+    "question": "Sharp jump between the 5th and 6th ionisation energies indicates valence electron count of:",
     "options": [
-      "$66$",
-      "$32$",
-      "$34$",
-      "$71$",
-      "$152$"
+      "$5$ valence electrons",
+      "$6$ valence electrons",
+      "$7$ valence electrons",
+      "$8$ valence electrons",
+      "$9$ valence electrons"
     ],
     "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 32 + 34 = 66$.",
+    "explanation": "Jump occurs when removing electron from inner shell after losing all $5$ valence electrons.",
     "number": 49
   },
   {
+    "type_tag": "CHM_ENR_PH_STRONG",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
+    "topic": "Energetics & Kinetics",
     "difficulty": "Easy",
-    "question": "An isotope of an element possesses $33$ protons and $35$ neutrons. Determine its mass number $A$.",
+    "question": "pH of solution with $[\\text{H}^+] = 1.0 \\times 10^{-4}\\text{ mol dm}^{-3}$.",
     "options": [
-      "$68$",
-      "$33$",
-      "$35$",
-      "$73$",
-      "$152$"
+      "$5.0$",
+      "$6.0$",
+      "$8.0$",
+      "$7.0$",
+      "$4.0$"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 33 + 35 = 68$.",
+    "answer": 4,
+    "explanation": "$\\text{pH} = -\\log_{10}(10^{-4}) = 4.0$.",
     "number": 50
   },
   {
+    "type_tag": "CHM_ORG_NUCLEO_SUB",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $34$ protons and $36$ neutrons. Determine its mass number $A$.",
+    "topic": "Organic Chemistry",
+    "difficulty": "Medium",
+    "question": "Reaction mechanism for bromoethane with aqueous $\\text{NaOH}$ in flask 4:",
     "options": [
-      "$70$",
-      "$34$",
-      "$36$",
-      "$75$",
-      "$152$"
+      "Elimination",
+      "Nucleophilic Substitution ($S_N2$)",
+      "Electrophilic Substitution",
+      "Free Radical Substitution",
+      "Electrophilic Addition"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 34 + 36 = 70$.",
+    "answer": 1,
+    "explanation": "$\\text{OH}^-$ nucleophile attacks primary haloalkane via $S_N2$.",
     "number": 51
   },
   {
+    "type_tag": "CHM_ATM_ELECTRONEG",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
+    "topic": "Atomic & Bonding",
     "difficulty": "Easy",
-    "question": "An isotope of an element possesses $35$ protons and $37$ neutrons. Determine its mass number $A$.",
+    "question": "Which element among (F, Cl, Br, I, At) has the highest Pauling electronegativity in group set 4?",
     "options": [
-      "$72$",
-      "$35$",
-      "$37$",
-      "$77$",
-      "$152$"
+      "Iodine (I)",
+      "Fluorine (F, 4.0)",
+      "Bromine (Br)",
+      "Astatine (At)",
+      "Chlorine (Cl)"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 35 + 37 = 72$.",
+    "answer": 1,
+    "explanation": "Fluorine has highest electronegativity (4.0).",
     "number": 52
   },
   {
+    "type_tag": "CHM_ENR_BUFFER",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $36$ protons and $38$ neutrons. Determine its mass number $A$.",
+    "topic": "Energetics & Kinetics",
+    "difficulty": "Hard",
+    "question": "pH of buffer with $[\\text{acid}] = [\\text{salt}]$ and $pK_a = 4.90$.",
     "options": [
-      "$74$",
-      "$36$",
-      "$38$",
-      "$79$",
-      "$152$"
+      "$9.10$",
+      "$7.00$",
+      "$1.00$",
+      "$3.90$",
+      "$4.90$"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 36 + 38 = 74$.",
+    "answer": 4,
+    "explanation": "$\\text{pH} = pK_a = 4.90$.",
     "number": 53
   },
   {
+    "type_tag": "CHM_ORG_OXID_ALC_PRI",
     "module": "Chemistry",
-    "topic": "Atomic Structure",
-    "difficulty": "Easy",
-    "question": "An isotope of an element possesses $37$ protons and $39$ neutrons. Determine its mass number $A$.",
+    "topic": "Organic Chemistry",
+    "difficulty": "Medium",
+    "question": "Product of primary alcohol heated under reflux with excess acidified $\\text{K}_2\\text{Cr}_2\\text{O}_7$ in run 4:",
     "options": [
-      "$76$",
-      "$37$",
-      "$39$",
-      "$81$",
-      "$152$"
+      "Ester",
+      "Alkene",
+      "Aldehyde",
+      "Carboxylic acid",
+      "Ketone"
     ],
-    "answer": 0,
-    "explanation": "Mass number $A = \\text{protons} + \\text{neutrons} = 37 + 39 = 76$.",
+    "answer": 3,
+    "explanation": "Full reflux oxidation yields carboxylic acid.",
     "number": 54
   },
   {
+    "type_tag": "BIO_CEL_PROKARYOTE",
     "module": "Biology",
     "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 200$ in study 1. What is the image size in mm?",
+    "difficulty": "Easy",
+    "question": "Structural feature present in prokaryotic bacterium 3 but absent in eukaryotes:",
     "options": [
-      "$4.0\\text{ mm}$",
-      "$42.0\\text{ mm}$",
-      "$0.7\\text{ mm}$",
-      "$11.5\\text{ mm}$",
-      "$12.0\\text{ mm}$"
+      "$80\\text{S}$ ribosomes",
+      "Linear chromosomes",
+      "Mitochondria",
+      "Peptidoglycan cell wall and circular naked DNA ($70\\text{S}$ ribosomes)",
+      "Nucleus"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 200 = 4000\\,\\mu\\text{m} = 4.0\\text{ mm}$.",
+    "answer": 3,
+    "explanation": "Prokaryotes possess circular DNA and $70\\text{S}$ ribosomes.",
     "number": 55
   },
   {
+    "type_tag": "BIO_GEN_KARYOTYPE",
     "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 300$ in study 2. What is the image size in mm?",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Easy",
+    "question": "Genetic condition caused by trisomy $21$ ($47$ chromosomes) diagnosed in karyotype 3:",
     "options": [
-      "$6.0\\text{ mm}$",
-      "$62.0\\text{ mm}$",
-      "$0.9\\text{ mm}$",
-      "$16.5\\text{ mm}$",
-      "$14.0\\text{ mm}$"
+      "Klinefelter Syndrome",
+      "Hemophilia",
+      "Turner Syndrome",
+      "Down Syndrome",
+      "Sickle Cell"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 300 = 6000\\,\\mu\\text{m} = 6.0\\text{ mm}$.",
+    "answer": 3,
+    "explanation": "Trisomy 21 is Down syndrome.",
     "number": 56
   },
   {
+    "type_tag": "BIO_PHY_ALVEOLI_ADAPT",
     "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 400$ in study 3. What is the image size in mm?",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Easy",
+    "question": "Structural adaptation of pulmonary alveoli maximizing gas exchange rate in lung 3:",
     "options": [
-      "$8.0\\text{ mm}$",
-      "$82.0\\text{ mm}$",
-      "$1.1\\text{ mm}$",
-      "$21.5\\text{ mm}$",
-      "$16.0\\text{ mm}$"
+      "Low capillary density",
+      "Small total surface area",
+      "Thick lining",
+      "Single-cell thin epithelial wall and extensive capillary network",
+      "Dry surface"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 400 = 8000\\,\\mu\\text{m} = 8.0\\text{ mm}$.",
+    "answer": 3,
+    "explanation": "Alveoli minimize diffusion distance and maximize surface area.",
     "number": 57
   },
   {
+    "type_tag": "BIO_CEL_FACIL_DIFF",
     "module": "Biology",
     "topic": "Cell Biology",
     "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 500$ in study 4. What is the image size in mm?",
+    "question": "Facilitated diffusion of solute across membrane in cell 3 differs from active transport because it:",
     "options": [
-      "$10.0\\text{ mm}$",
-      "$102.0\\text{ mm}$",
-      "$1.3\\text{ mm}$",
-      "$26.5\\text{ mm}$",
-      "$18.0\\text{ mm}$"
+      "Requires ATP hydrolysis",
+      "Uses endocytosis",
+      "Is passive (down gradient) and requires no ATP",
+      "Moves solutes against gradient",
+      "Only transports water"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 500 = 10000\\,\\mu\\text{m} = 10.0\\text{ mm}$.",
+    "answer": 2,
+    "explanation": "Facilitated diffusion is passive downhill transport.",
     "number": 58
   },
   {
+    "type_tag": "BIO_GEN_CODOMINANCE",
     "module": "Biology",
-    "topic": "Cell Biology",
+    "topic": "Genetics & Molecular",
     "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 600$ in study 5. What is the image size in mm?",
+    "question": "In human blood group pedigree 3, alleles $I^A$ and $I^B$ exhibiting equal phenotypic expression demonstrate:",
     "options": [
-      "$12.0\\text{ mm}$",
-      "$122.0\\text{ mm}$",
-      "$1.5\\text{ mm}$",
-      "$31.5\\text{ mm}$",
-      "$20.0\\text{ mm}$"
+      "Pleiotropy",
+      "Codominance",
+      "Incomplete dominance",
+      "Epistasis",
+      "Sex-linkage"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 600 = 12000\\,\\mu\\text{m} = 12.0\\text{ mm}$.",
+    "answer": 1,
+    "explanation": "Both alleles are expressed simultaneously $\\implies$ codominance.",
     "number": 59
   },
   {
+    "type_tag": "BIO_PHY_LIGHT_DEP_PHO",
     "module": "Biology",
-    "topic": "Cell Biology",
+    "topic": "Physiology & Ecology",
     "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 700$ in study 6. What is the image size in mm?",
+    "question": "Photolysis of water yielding oxygen occurs at which complex in thylakoid 3:",
     "options": [
-      "$14.0\\text{ mm}$",
-      "$142.0\\text{ mm}$",
-      "$1.7\\text{ mm}$",
-      "$36.5\\text{ mm}$",
-      "$22.0\\text{ mm}$"
+      "Photosystem I (PSI)",
+      "Photosystem II (PSII)",
+      "Outer membrane",
+      "Calvin cycle (Stroma)",
+      "Mitochondrial matrix"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 700 = 14000\\,\\mu\\text{m} = 14.0\\text{ mm}$.",
+    "answer": 1,
+    "explanation": "Water oxidation occurs at the oxygen-evolving complex of PSII.",
     "number": 60
   },
   {
+    "type_tag": "BIO_CEL_LYSOSOMES",
     "module": "Biology",
     "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 800$ in study 7. What is the image size in mm?",
+    "difficulty": "Easy",
+    "question": "Organelle containing hydrolytic digestive enzymes in phagocyte 3:",
     "options": [
-      "$16.0\\text{ mm}$",
-      "$162.0\\text{ mm}$",
-      "$1.9\\text{ mm}$",
-      "$41.5\\text{ mm}$",
-      "$24.0\\text{ mm}$"
+      "Ribosome",
+      "Peroxisome only",
+      "Nucleolus",
+      "Centriole",
+      "Lysosome"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 800 = 16000\\,\\mu\\text{m} = 16.0\\text{ mm}$.",
+    "answer": 4,
+    "explanation": "Lysosomes contain acid hydrolases for intracellular degradation.",
     "number": 61
   },
   {
+    "type_tag": "BIO_GEN_SEMICONSERV",
     "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 900$ in study 8. What is the image size in mm?",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Easy",
+    "question": "Meselson-Stahl density gradient experiment in culture 3 confirmed DNA replication is:",
     "options": [
-      "$18.0\\text{ mm}$",
-      "$182.0\\text{ mm}$",
-      "$2.1\\text{ mm}$",
-      "$46.5\\text{ mm}$",
-      "$26.0\\text{ mm}$"
+      "Semi-conservative",
+      "Non-conservative",
+      "Conservative",
+      "Random",
+      "Dispersive"
     ],
     "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 900 = 18000\\,\\mu\\text{m} = 18.0\\text{ mm}$.",
+    "explanation": "Each replicated DNA duplex retains one parental and one newly synthesized strand.",
     "number": 62
   },
   {
+    "type_tag": "BIO_PHY_GLYCOLYSIS_LOC",
     "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 1000$ in study 9. What is the image size in mm?",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Easy",
+    "question": "Cellular location of initial anaerobic glycolysis pathway in cell 3:",
     "options": [
-      "$20.0\\text{ mm}$",
-      "$202.0\\text{ mm}$",
-      "$2.3\\text{ mm}$",
-      "$51.5\\text{ mm}$",
-      "$28.0\\text{ mm}$"
+      "Cristae",
+      "Mitochondrial matrix",
+      "Cytoplasm / Cytosol",
+      "Nucleus",
+      "Thylakoid"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 1000 = 20000\\,\\mu\\text{m} = 20.0\\text{ mm}$.",
+    "answer": 2,
+    "explanation": "Glycolysis enzymes reside in the soluble cytosol.",
     "number": 63
   },
   {
+    "type_tag": "BIO_CEL_MITOCHONDRIA",
     "module": "Biology",
     "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 1100$ in study 10. What is the image size in mm?",
+    "difficulty": "Easy",
+    "question": "Primary function of mitochondria in eukaryotic cell lineage 4:",
     "options": [
-      "$22.0\\text{ mm}$",
-      "$222.0\\text{ mm}$",
-      "$2.5\\text{ mm}$",
-      "$56.5\\text{ mm}$",
-      "$30.0\\text{ mm}$"
+      "Aerobic cellular respiration and ATP synthesis",
+      "Photosynthesis",
+      "Lipid synthesis",
+      "Waste digestion",
+      "Protein translation"
     ],
     "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 1100 = 22000\\,\\mu\\text{m} = 22.0\\text{ mm}$.",
+    "explanation": "Mitochondria synthesize ATP via oxidative phosphorylation.",
     "number": 64
   },
   {
+    "type_tag": "BIO_GEN_CHARGAFF",
     "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 1200$ in study 11. What is the image size in mm?",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Easy",
+    "question": "DNA sample 4 has $27\\%$ Adenine. Percentage of Cytosine?",
     "options": [
-      "$24.0\\text{ mm}$",
-      "$242.0\\text{ mm}$",
-      "$2.7\\text{ mm}$",
-      "$61.5\\text{ mm}$",
-      "$32.0\\text{ mm}$"
+      "$10\\%$",
+      "$50\\%$",
+      "$23\\%$",
+      "$27\\%$",
+      "$54\\%$"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 1200 = 24000\\,\\mu\\text{m} = 24.0\\text{ mm}$.",
+    "answer": 2,
+    "explanation": "$\\text{A}=\\text{T}=27\\% \\implies \\text{G}=\\text{C}=50 - (27) = 23\\%$.",
     "number": 65
   },
   {
+    "type_tag": "BIO_PHY_AORTA",
     "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 1300$ in study 12. What is the image size in mm?",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Easy",
+    "question": "Vessel carrying oxygenated blood under high pressure from left ventricle to systemic organs in subject 4:",
     "options": [
-      "$26.0\\text{ mm}$",
-      "$262.0\\text{ mm}$",
-      "$2.9\\text{ mm}$",
-      "$66.5\\text{ mm}$",
-      "$34.0\\text{ mm}$"
+      "Pulmonary vein",
+      "Aorta",
+      "Pulmonary artery",
+      "Vena cava",
+      "Coronary sinus"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 1300 = 26000\\,\\mu\\text{m} = 26.0\\text{ mm}$.",
+    "answer": 1,
+    "explanation": "Aorta distributes oxygenated blood from left ventricle.",
     "number": 66
   },
   {
+    "type_tag": "BIO_CEL_RER",
     "module": "Biology",
     "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 1400$ in study 13. What is the image size in mm?",
+    "difficulty": "Easy",
+    "question": "Function of Rough Endoplasmic Reticulum (RER) in secretory tissue 4:",
     "options": [
-      "$28.0\\text{ mm}$",
-      "$282.0\\text{ mm}$",
-      "$3.1\\text{ mm}$",
-      "$71.5\\text{ mm}$",
-      "$36.0\\text{ mm}$"
+      "Steroid lipid synthesis",
+      "DNA replication",
+      "Glycogen breakdown",
+      "Aerobic respiration",
+      "Synthesis and folding of proteins destined for membranes or secretion"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 1400 = 28000\\,\\mu\\text{m} = 28.0\\text{ mm}$.",
+    "answer": 4,
+    "explanation": "RER-bound ribosomes synthesize secretory proteins.",
     "number": 67
   },
   {
+    "type_tag": "BIO_GEN_TRANSCRIPTION",
     "module": "Biology",
-    "topic": "Cell Biology",
+    "topic": "Genetics & Molecular",
     "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 1500$ in study 14. What is the image size in mm?",
+    "question": "DNA coding sequence $5'-\\text{ATG-CGA}-3'$ transcribes to mRNA in clone 4:",
     "options": [
-      "$30.0\\text{ mm}$",
-      "$302.0\\text{ mm}$",
-      "$3.3\\text{ mm}$",
-      "$76.5\\text{ mm}$",
-      "$38.0\\text{ mm}$"
+      "$3'-\\text{UAC-GCU}-5'$",
+      "$5'-\\text{AUG-CGA}-3'$",
+      "$5'-\\text{ATG-CGA}-3'$",
+      "$5'-\\text{UAC-GCU}-3'$",
+      "$3'-\\text{AUG-CGA}-5'$"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 1500 = 30000\\,\\mu\\text{m} = 30.0\\text{ mm}$.",
+    "answer": 1,
+    "explanation": "mRNA transcript corresponds to coding strand with U replacing T.",
     "number": 68
   },
   {
+    "type_tag": "BIO_PHY_BOHR_SHIFT",
     "module": "Biology",
-    "topic": "Cell Biology",
+    "topic": "Physiology & Ecology",
     "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 1600$ in study 15. What is the image size in mm?",
+    "question": "Bohr shift in exercising muscle tissue 4: elevated $p\\text{CO}_2$ and lower pH shift hemoglobin curve:",
     "options": [
-      "$32.0\\text{ mm}$",
-      "$322.0\\text{ mm}$",
-      "$3.5\\text{ mm}$",
-      "$81.5\\text{ mm}$",
-      "$40.0\\text{ mm}$"
+      "To the left, increasing oxygen affinity",
+      "To the right, facilitating oxygen unloading at respiring tissues",
+      "Downward completely",
+      "No shift",
+      "Upward"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 1600 = 32000\\,\\mu\\text{m} = 32.0\\text{ mm}$.",
+    "answer": 1,
+    "explanation": "Right shift lowers oxygen affinity, enhancing delivery to tissues.",
     "number": 69
   },
   {
+    "type_tag": "BIO_CEL_GOLGI",
     "module": "Biology",
     "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 1700$ in study 16. What is the image size in mm?",
+    "difficulty": "Easy",
+    "question": "Primary role of the Golgi apparatus in gland cells 4:",
     "options": [
-      "$34.0\\text{ mm}$",
-      "$342.0\\text{ mm}$",
-      "$3.7\\text{ mm}$",
-      "$86.5\\text{ mm}$",
-      "$42.0\\text{ mm}$"
+      "Photosynthesis",
+      "Modification, packaging, and sorting of proteins into secretory vesicles",
+      "Translation of mRNA",
+      "Cell division",
+      "ATP synthesis"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 1700 = 34000\\,\\mu\\text{m} = 34.0\\text{ mm}$.",
+    "answer": 1,
+    "explanation": "Golgi apparatus modifies and packages proteins.",
     "number": 70
   },
   {
+    "type_tag": "BIO_GEN_HAPLOID",
     "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 1800$ in study 17. What is the image size in mm?",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Easy",
+    "question": "Organism with diploid number $2n = 28$. Chromosome count in haploid gamete?",
     "options": [
-      "$36.0\\text{ mm}$",
-      "$362.0\\text{ mm}$",
-      "$3.9\\text{ mm}$",
-      "$91.5\\text{ mm}$",
-      "$44.0\\text{ mm}$"
+      "$15$ chromosomes",
+      "$16$ chromosomes",
+      "$18$ chromosomes",
+      "$17$ chromosomes",
+      "$14$ chromosomes (haploid)"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 1800 = 36000\\,\\mu\\text{m} = 36.0\\text{ mm}$.",
+    "answer": 4,
+    "explanation": "Haploid number $n = 14$.",
     "number": 71
   },
   {
+    "type_tag": "BIO_PHY_DEPOLARIS",
     "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 1900$ in study 18. What is the image size in mm?",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Hard",
+    "question": "Depolarization phase of neuron action potential in trace 4 is caused by rapid influx of:",
     "options": [
-      "$38.0\\text{ mm}$",
-      "$382.0\\text{ mm}$",
-      "$4.1\\text{ mm}$",
-      "$96.5\\text{ mm}$",
-      "$46.0\\text{ mm}$"
+      "Potassium ions ($\\text{K}^+$)",
+      "Sodium ions ($\\text{Na}^+$)",
+      "Chloride ions ($\\text{Cl}^-$)",
+      "Calcium ions ($\\text{Ca}^{2+}$)",
+      "Hydrogen ions"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 1900 = 38000\\,\\mu\\text{m} = 38.0\\text{ mm}$.",
+    "answer": 1,
+    "explanation": "Opening of voltage-gated $\\text{Na}^+$ channels causes inward current.",
     "number": 72
   },
   {
+    "type_tag": "BIO_CEL_MAGNIFICATION",
     "module": "Biology",
     "topic": "Cell Biology",
     "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 2000$ in study 19. What is the image size in mm?",
+    "question": "Actual cell size $40\\,\\mu\\text{m}$ viewed under magnification $\\times 400$. Image size in mm?",
     "options": [
-      "$40.0\\text{ mm}$",
-      "$402.0\\text{ mm}$",
-      "$4.3\\text{ mm}$",
-      "$101.5\\text{ mm}$",
-      "$48.0\\text{ mm}$"
+      "$8.0\\text{ mm}$",
+      "$1.60\\text{ mm}$",
+      "$16.0\\text{ mm}$",
+      "$16000\\text{ mm}$",
+      "$160.0\\text{ mm}$"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 2000 = 40000\\,\\mu\\text{m} = 40.0\\text{ mm}$.",
+    "answer": 2,
+    "explanation": "$I = A \\times M = (40 \\times 10^{-3}\\,\\text{mm}) \\times 400 = 16.0\\text{ mm}$.",
     "number": 73
   },
   {
+    "type_tag": "BIO_GEN_MONOHYBRID",
     "module": "Biology",
-    "topic": "Cell Biology",
+    "topic": "Genetics & Molecular",
     "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 2100$ in study 20. What is the image size in mm?",
+    "question": "Monohybrid cross $Tt \\times Tt$ produces $160$ offspring. Expected number of dwarf ($tt$) plants?",
     "options": [
-      "$42.0\\text{ mm}$",
-      "$422.0\\text{ mm}$",
-      "$4.5\\text{ mm}$",
-      "$106.5\\text{ mm}$",
-      "$50.0\\text{ mm}$"
+      "$160$ plants",
+      "$120$ plants",
+      "$80$ plants",
+      "$20$ plants",
+      "$40$ plants"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 2100 = 42000\\,\\mu\\text{m} = 42.0\\text{ mm}$.",
+    "answer": 4,
+    "explanation": "$25\\%$ of $160$ is $40$ plants.",
     "number": 74
   },
   {
+    "type_tag": "BIO_PHY_GLUCAGON",
     "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 2200$ in study 21. What is the image size in mm?",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Easy",
+    "question": "Hormone secreted by pancreatic $\\alpha$-cells during fasting state 4:",
     "options": [
-      "$44.0\\text{ mm}$",
-      "$442.0\\text{ mm}$",
-      "$4.7\\text{ mm}$",
-      "$111.5\\text{ mm}$",
-      "$52.0\\text{ mm}$"
+      "Cortisol",
+      "Insulin",
+      "Glucagon",
+      "Adrenaline",
+      "Thyroxine"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 2200 = 44000\\,\\mu\\text{m} = 44.0\\text{ mm}$.",
+    "answer": 2,
+    "explanation": "Glucagon stimulates liver glycogenolysis.",
     "number": 75
   },
   {
+    "type_tag": "BIO_CEL_WATER_POT",
     "module": "Biology",
     "topic": "Cell Biology",
     "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 2300$ in study 22. What is the image size in mm?",
+    "question": "Plant cell with solute potential $\\Psi_s = -500\\text{ kPa}$ and pressure potential $\\Psi_p = +200\\text{ kPa}$. Total $\\Psi$?",
     "options": [
-      "$46.0\\text{ mm}$",
-      "$462.0\\text{ mm}$",
-      "$4.9\\text{ mm}$",
-      "$116.5\\text{ mm}$",
-      "$54.0\\text{ mm}$"
+      "$-400\\text{ kPa}$",
+      "$-300\\text{ kPa}$",
+      "$-450\\text{ kPa}$",
+      "$-350\\text{ kPa}$",
+      "$-500\\text{ kPa}$"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 2300 = 46000\\,\\mu\\text{m} = 46.0\\text{ mm}$.",
+    "answer": 1,
+    "explanation": "$\\Psi = \\Psi_s + \\Psi_p = -300\\text{ kPa}$.",
     "number": 76
   },
   {
+    "type_tag": "BIO_GEN_SEX_LINKED",
     "module": "Biology",
-    "topic": "Cell Biology",
+    "topic": "Genetics & Molecular",
     "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 2400$ in study 23. What is the image size in mm?",
+    "question": "Carrier mother ($X^B X^b$) and normal father ($X^B Y$) in pedigree 4. Probability of colour-blind son?",
     "options": [
-      "$48.0\\text{ mm}$",
-      "$482.0\\text{ mm}$",
-      "$5.1\\text{ mm}$",
-      "$121.5\\text{ mm}$",
-      "$56.0\\text{ mm}$"
+      "$0\\%$",
+      "$100\\%$",
+      "$25\\%$",
+      "$50\\%$ of sons",
+      "$75\\%$"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 2400 = 48000\\,\\mu\\text{m} = 48.0\\text{ mm}$.",
+    "answer": 3,
+    "explanation": "Sons have $50\\%$ probability of receiving recessive $X^b$ allele.",
     "number": 77
   },
   {
+    "type_tag": "BIO_PHY_ADH",
     "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 2500$ in study 24. What is the image size in mm?",
+    "topic": "Physiology & Ecology",
+    "difficulty": "Hard",
+    "question": "Action of Anti-Diuretic Hormone (ADH) on collecting duct epithelium in kidney 4:",
     "options": [
-      "$50.0\\text{ mm}$",
-      "$502.0\\text{ mm}$",
-      "$5.3\\text{ mm}$",
-      "$126.5\\text{ mm}$",
-      "$58.0\\text{ mm}$"
+      "Inhibits Bowman's capsule",
+      "Increases sodium excretion",
+      "Inserts aquaporin channels, increasing water reabsorption",
+      "Blocks water reabsorption",
+      "Decreases urine concentration"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 2500 = 50000\\,\\mu\\text{m} = 50.0\\text{ mm}$.",
+    "answer": 2,
+    "explanation": "ADH promotes aquaporin-2 vesicle insertion to concentrate urine.",
     "number": 78
   },
   {
+    "type_tag": "BIO_CEL_TEST_GLUCOSE",
     "module": "Biology",
     "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 2600$ in study 25. What is the image size in mm?",
+    "difficulty": "Easy",
+    "question": "Reagent test confirming reducing sugars (glucose) in solution 4:",
     "options": [
-      "$52.0\\text{ mm}$",
-      "$522.0\\text{ mm}$",
-      "$5.5\\text{ mm}$",
-      "$131.5\\text{ mm}$",
-      "$60.0\\text{ mm}$"
+      "Iodine solution (blue-black)",
+      "Benedict's reagent heated (brick-red precipitate)",
+      "Biuret test (purple)",
+      "Emulsion test",
+      "DCPIP test"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 2600 = 52000\\,\\mu\\text{m} = 52.0\\text{ mm}$.",
+    "answer": 1,
+    "explanation": "Benedict's reagent heated gives brick-red copper(I) oxide precipitate.",
     "number": 79
   },
   {
+    "type_tag": "BIO_GEN_HARDY_WEIN",
     "module": "Biology",
-    "topic": "Cell Biology",
-    "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 2700$ in study 26. What is the image size in mm?",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Hard",
+    "question": "Population in HW equilibrium has $q^2 = 0.04$ ($4\\%$ recessive) in study 4. Heterozygote frequency $2pq$?",
     "options": [
-      "$54.0\\text{ mm}$",
-      "$542.0\\text{ mm}$",
-      "$5.7\\text{ mm}$",
-      "$136.5\\text{ mm}$",
-      "$62.0\\text{ mm}$"
+      "$16\\%$",
+      "$48\\%$",
+      "$32\\%$ ($0.32$)",
+      "$8\\%$",
+      "$64\\%$"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 2700 = 54000\\,\\mu\\text{m} = 54.0\\text{ mm}$.",
+    "answer": 2,
+    "explanation": "$q=0.2, p=0.8 \\implies 2pq = 2(0.8)(0.2) = 0.32$.",
     "number": 80
   },
   {
+    "type_tag": "BIO_PHY_RUBISCO",
     "module": "Biology",
-    "topic": "Cell Biology",
+    "topic": "Physiology & Ecology",
     "difficulty": "Medium",
-    "question": "A cell of actual diameter $20\\,\\mu\\text{m}$ is viewed under a microscope magnification of $\\times 2800$ in study 27. What is the image size in mm?",
+    "question": "Enzyme fixing $\\text{CO}_2$ to ribulose bisphosphate (RuBP) in photosynthetic leaf 4:",
     "options": [
-      "$56.0\\text{ mm}$",
-      "$562.0\\text{ mm}$",
-      "$5.9\\text{ mm}$",
-      "$141.5\\text{ mm}$",
-      "$64.0\\text{ mm}$"
+      "DNA Polymerase",
+      "RuBisCO",
+      "ATP Synthase",
+      "Pepsin",
+      "Amylase"
     ],
-    "answer": 0,
-    "explanation": "Image Size $I = A \\times M = 20\\,\\mu\\text{m} \\times 2800 = 56000\\,\\mu\\text{m} = 56.0\\text{ mm}$.",
+    "answer": 1,
+    "explanation": "RuBisCO catalyses carbon fixation in chloroplast stroma.",
     "number": 81
   }
 ];

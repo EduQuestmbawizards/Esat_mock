@@ -1,242 +1,257 @@
 const QUESTIONS = [
   {
+    "type_tag": "PHY_MECH_SUVAT_V",
     "module": "Physics",
-    "topic": "Thermal Physics",
-    "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $6.5\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "topic": "Mechanics",
+    "difficulty": "Easy",
+    "question": "Car accelerates from $2\\text{ m s}^{-1}$ at $2\\text{ m s}^{-2}$ for $3\\text{ s}$. Find final velocity $v$.",
     "options": [
-      "$273000\\text{ J}$",
-      "$546250\\text{ J}$",
-      "$136620\\text{ J}$",
-      "$273750\\text{ J}$",
-      "$1365000\\text{ J}$"
+      "$8\\text{ m s}^{-1}$",
+      "$6\\text{ m s}^{-1}$",
+      "$3\\text{ m s}^{-1}$",
+      "$4\\text{ m s}^{-1}$",
+      "$10\\text{ m s}^{-1}$"
     ],
     "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 6.5 \\times 4200 \\times 10 = 273000\\text{ J}$.",
+    "explanation": "$v = 2 + 6 = 8\\text{ m s}^{-1}$.",
     "number": 1
   },
   {
+    "type_tag": "PHY_MECH_PROJECTILE",
     "module": "Physics",
-    "topic": "Thermal Physics",
+    "topic": "Mechanics",
     "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $7.0\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "question": "Ball launched horizontally at $10\\text{ m s}^{-1}$ from height $20\\text{ m}$ ($g=10$). Find horizontal range.",
     "options": [
-      "$294000\\text{ J}$",
-      "$588250\\text{ J}$",
-      "$147120\\text{ J}$",
-      "$294750\\text{ J}$",
-      "$1470000\\text{ J}$"
+      "$20\\text{ m}$",
+      "$30\\text{ m}$",
+      "$5\\text{ m}$",
+      "$10\\text{ m}$",
+      "$40\\text{ m}$"
     ],
     "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 7.0 \\times 4200 \\times 10 = 294000\\text{ J}$.",
+    "explanation": "Range $= ut = 10 \\times 2 = 20\\text{ m}$.",
     "number": 2
   },
   {
+    "type_tag": "PHY_MECH_NEWTON2",
     "module": "Physics",
-    "topic": "Thermal Physics",
+    "topic": "Mechanics",
     "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $7.5\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "question": "Net force on mass $2\\text{ kg}$ accelerating at $4\\text{ m s}^{-2}$.",
     "options": [
-      "$315000\\text{ J}$",
-      "$630250\\text{ J}$",
-      "$157620\\text{ J}$",
-      "$315750\\text{ J}$",
-      "$1575000\\text{ J}$"
+      "$9\\text{ N}$",
+      "$7\\text{ N}$",
+      "$5\\text{ N}$",
+      "$8\\text{ N}$",
+      "$6\\text{ N}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 7.5 \\times 4200 \\times 10 = 315000\\text{ J}$.",
+    "answer": 3,
+    "explanation": "$F = ma = 8\\text{ N}$.",
     "number": 3
   },
   {
+    "type_tag": "PHY_MECH_MOMENTUM",
     "module": "Physics",
-    "topic": "Thermal Physics",
+    "topic": "Mechanics",
     "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $8.0\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "question": "Trolley of mass $2\\text{ kg}$ at $5\\text{ m s}^{-1}$ collides inelastically with stationary $3\\text{ kg}$ trolley. Common speed?",
     "options": [
-      "$336000\\text{ J}$",
-      "$672250\\text{ J}$",
-      "$168120\\text{ J}$",
-      "$336750\\text{ J}$",
-      "$1680000\\text{ J}$"
+      "$4\\text{ m s}^{-1}$",
+      "$1\\text{ m s}^{-1}$",
+      "$2\\text{ m s}^{-1}$",
+      "$2.5\\text{ m s}^{-1}$",
+      "$5\\text{ m s}^{-1}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 8.0 \\times 4200 \\times 10 = 336000\\text{ J}$.",
+    "answer": 2,
+    "explanation": "$v = 2\\text{ m s}^{-1}$.",
     "number": 4
   },
   {
+    "type_tag": "PHY_MECH_POWER",
     "module": "Physics",
-    "topic": "Thermal Physics",
-    "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $8.5\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "topic": "Mechanics",
+    "difficulty": "Easy",
+    "question": "Engine exerts force $50\\text{ N}$ at steady speed $4\\text{ m s}^{-1}$. Power output?",
     "options": [
-      "$357000\\text{ J}$",
-      "$714250\\text{ J}$",
-      "$178620\\text{ J}$",
-      "$357750\\text{ J}$",
-      "$1785000\\text{ J}$"
+      "$100\\text{ W}$",
+      "$400\\text{ W}$",
+      "$200\\text{ W}$",
+      "$50\\text{ W}$",
+      "$54\\text{ W}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 8.5 \\times 4200 \\times 10 = 357000\\text{ J}$.",
+    "answer": 2,
+    "explanation": "$P = Fv = 200\\text{ W}$.",
     "number": 5
   },
   {
+    "type_tag": "PHY_MECH_HOOKE",
     "module": "Physics",
-    "topic": "Thermal Physics",
+    "topic": "Mechanics",
     "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $9.0\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "question": "Elastic potential energy in spring with $k = 100\\text{ N m}^{-1}$ extended by $0.10\\text{ m}$.",
     "options": [
-      "$378000\\text{ J}$",
-      "$756250\\text{ J}$",
-      "$189120\\text{ J}$",
-      "$378750\\text{ J}$",
-      "$1890000\\text{ J}$"
+      "$0.25\\text{ J}$",
+      "$1.0\\text{ J}$",
+      "$10.0\\text{ J}$",
+      "$0.5\\text{ J}$",
+      "$5.0\\text{ J}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 9.0 \\times 4200 \\times 10 = 378000\\text{ J}$.",
+    "answer": 3,
+    "explanation": "$E = 0.5 k x^2 = 0.5\\text{ J}$.",
     "number": 6
   },
   {
+    "type_tag": "PHY_MECH_YOUNG_MOD",
     "module": "Physics",
-    "topic": "Thermal Physics",
-    "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $9.5\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "topic": "Mechanics",
+    "difficulty": "Hard",
+    "question": "Stress $\\sigma$ is $200\\text{ MPa}$, strain $\\varepsilon$ is $0.001$. Young modulus $E$?",
     "options": [
-      "$399000\\text{ J}$",
-      "$798250\\text{ J}$",
-      "$199620\\text{ J}$",
-      "$399750\\text{ J}$",
-      "$1995000\\text{ J}$"
+      "$200.0\\text{ GPa}$",
+      "$240.0\\text{ GPa}$",
+      "$280.0\\text{ GPa}$",
+      "$220.0\\text{ GPa}$",
+      "$260.0\\text{ GPa}$"
     ],
     "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 9.5 \\times 4200 \\times 10 = 399000\\text{ J}$.",
+    "explanation": "$E = \\frac{\\sigma}{\\varepsilon} = 200.0\\text{ GPa}$.",
     "number": 7
   },
   {
+    "type_tag": "PHY_MECH_INCLINE",
     "module": "Physics",
-    "topic": "Thermal Physics",
+    "topic": "Mechanics",
     "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $10.0\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "question": "Component of gravity down $30^\\circ$ slope for mass $2\\text{ kg}$ ($g=10$).",
     "options": [
-      "$420000\\text{ J}$",
-      "$840250\\text{ J}$",
-      "$210120\\text{ J}$",
-      "$420750\\text{ J}$",
-      "$2100000\\text{ J}$"
+      "$2\\text{ N}$",
+      "$17.3\\text{ N}$",
+      "$10\\text{ N}$",
+      "$20\\text{ N}$",
+      "$5\\text{ N}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 10.0 \\times 4200 \\times 10 = 420000\\text{ J}$.",
+    "answer": 2,
+    "explanation": "$F_\\parallel = mg\\sin(30^\\circ) = 10\\text{ N}$.",
     "number": 8
   },
   {
+    "type_tag": "PHY_MECH_CENTRIPETAL",
     "module": "Physics",
-    "topic": "Thermal Physics",
-    "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $10.5\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "topic": "Mechanics",
+    "difficulty": "Hard",
+    "question": "Centripetal force on $2\\text{ kg}$ moving at $3\\text{ m s}^{-1}$ in circle radius $3\\text{ m}$.",
     "options": [
-      "$441000\\text{ J}$",
-      "$882250\\text{ J}$",
-      "$220620\\text{ J}$",
-      "$441750\\text{ J}$",
-      "$2205000\\text{ J}$"
+      "$6\\text{ N}$",
+      "$12\\text{ N}$",
+      "$10\\text{ N}$",
+      "$14\\text{ N}$",
+      "$8\\text{ N}$"
     ],
     "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 10.5 \\times 4200 \\times 10 = 441000\\text{ J}$.",
+    "explanation": "$F_c = \\frac{mv^2}{r} = 6\\text{ N}$.",
     "number": 9
   },
   {
+    "type_tag": "PHY_MECH_DENSITY",
     "module": "Physics",
-    "topic": "Thermal Physics",
-    "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $11.0\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "topic": "Mechanics",
+    "difficulty": "Easy",
+    "question": "Density of object with mass $100\\text{ g}$ and volume $50\\text{ cm}^3$.",
     "options": [
-      "$462000\\text{ J}$",
-      "$924250\\text{ J}$",
-      "$231120\\text{ J}$",
-      "$462750\\text{ J}$",
-      "$2310000\\text{ J}$"
+      "$50\\text{ g cm}^{-3}$",
+      "$2\\text{ g cm}^{-3}$",
+      "$4\\text{ g cm}^{-3}$",
+      "$3\\text{ g cm}^{-3}$",
+      "$1\\text{ g cm}^{-3}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 11.0 \\times 4200 \\times 10 = 462000\\text{ J}$.",
+    "answer": 1,
+    "explanation": "$\\rho = \\frac{m}{V} = 2\\text{ g cm}^{-3}$.",
     "number": 10
   },
   {
+    "type_tag": "PHY_MECH_PRESSURE_FLUID",
     "module": "Physics",
-    "topic": "Thermal Physics",
+    "topic": "Mechanics",
     "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $11.5\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "question": "Hydrostatic pressure at depth $5\\text{ m}$ in water ($\\rho=1000, g=10$).",
     "options": [
-      "$483000\\text{ J}$",
-      "$966250\\text{ J}$",
-      "$241620\\text{ J}$",
-      "$483750\\text{ J}$",
-      "$2415000\\text{ J}$"
+      "$25\\text{ kPa}$",
+      "$5\\text{ kPa}$",
+      "$10\\text{ kPa}$",
+      "$50\\text{ kPa}$",
+      "$500\\text{ kPa}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 11.5 \\times 4200 \\times 10 = 483000\\text{ J}$.",
+    "answer": 3,
+    "explanation": "$P = \\rho gh = 50\\text{ kPa}$.",
     "number": 11
   },
   {
+    "type_tag": "PHY_MECH_EFFICIENCY",
     "module": "Physics",
-    "topic": "Thermal Physics",
-    "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $12.0\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "topic": "Mechanics",
+    "difficulty": "Easy",
+    "question": "Useful work output is $40\\text{ J}$ from total input $50\\text{ J}$. Efficiency?",
     "options": [
-      "$504000\\text{ J}$",
-      "$1008250\\text{ J}$",
-      "$252120\\text{ J}$",
-      "$504750\\text{ J}$",
-      "$2520000\\text{ J}$"
+      "$50\\%$",
+      "$20\\%$",
+      "$90\\%$",
+      "$80\\%$",
+      "$40\\%$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 12.0 \\times 4200 \\times 10 = 504000\\text{ J}$.",
+    "answer": 3,
+    "explanation": "$\\text{Efficiency} = 80\\%$.",
     "number": 12
   },
   {
+    "type_tag": "PHY_MECH_MOMENT_FORCE",
     "module": "Physics",
-    "topic": "Thermal Physics",
-    "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $12.5\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "topic": "Mechanics",
+    "difficulty": "Easy",
+    "question": "Moment of force of $10\\text{ N}$ acting at perpendicular distance $0.5\\text{ m}$.",
     "options": [
-      "$525000\\text{ J}$",
-      "$1050250\\text{ J}$",
-      "$262620\\text{ J}$",
-      "$525750\\text{ J}$",
-      "$2625000\\text{ J}$"
+      "$20\\text{ N m}$",
+      "$7\\text{ N m}$",
+      "$10\\text{ N m}$",
+      "$5\\text{ N m}$",
+      "$2.5\\text{ N m}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 12.5 \\times 4200 \\times 10 = 525000\\text{ J}$.",
+    "answer": 3,
+    "explanation": "$\\tau = F d = 5\\text{ N m}$.",
     "number": 13
   },
   {
+    "type_tag": "PHY_MECH_IMPULSE",
     "module": "Physics",
-    "topic": "Thermal Physics",
+    "topic": "Mechanics",
     "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $13.0\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "question": "Force of $20\\text{ N}$ acts for $0.2\\text{ s}$. Calculate impulse $\\Delta p$.",
     "options": [
-      "$546000\\text{ J}$",
-      "$1092250\\text{ J}$",
-      "$273120\\text{ J}$",
-      "$546750\\text{ J}$",
-      "$2730000\\text{ J}$"
+      "$2\\text{ N s}$",
+      "$8\\text{ N s}$",
+      "$20\\text{ N s}$",
+      "$5\\text{ N s}$",
+      "$4\\text{ N s}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 13.0 \\times 4200 \\times 10 = 546000\\text{ J}$.",
+    "answer": 4,
+    "explanation": "$\\text{Impulse} = 4\\text{ N s}$.",
     "number": 14
   },
   {
+    "type_tag": "PHY_MECH_FREE_FALL",
     "module": "Physics",
-    "topic": "Thermal Physics",
-    "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $13.5\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "topic": "Mechanics",
+    "difficulty": "Easy",
+    "question": "Time taken for an object of mass $1\\text{ kg}$ to drop $45\\text{ m}$ from rest ($g=10\\text{ m s}^{-2}$).",
     "options": [
-      "$567000\\text{ J}$",
-      "$1134250\\text{ J}$",
-      "$283620\\text{ J}$",
-      "$567750\\text{ J}$",
-      "$2835000\\text{ J}$"
+      "$4.5\\text{ s}$",
+      "$1.5\\text{ s}$",
+      "$2\\text{ s}$",
+      "$3\\text{ s}$",
+      "$9\\text{ s}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 13.5 \\times 4200 \\times 10 = 567000\\text{ J}$.",
+    "answer": 3,
+    "explanation": "$t = \\sqrt{2h/g} = 3\\text{ s}$ (independent of mass).",
     "number": 15
   }
 ];

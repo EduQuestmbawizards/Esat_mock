@@ -1,242 +1,257 @@
 const QUESTIONS = [
   {
+    "type_tag": "BIO_GEN_CHARGAFF",
     "module": "Biology",
-    "topic": "Cellular Respiration",
-    "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $2.8\\text{ mol}$ of glucose in trial 28?",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Easy",
+    "question": "DNA sample 1 has $18\\%$ Adenine. Percentage of Cytosine?",
     "options": [
-      "$89.6\\text{ mol}$",
-      "$182.2\\text{ mol}$",
-      "$46.0\\text{ mol}$",
-      "$0.3375\\text{ mol}$",
-      "$104.6\\text{ mol}$"
+      "$50\\%$",
+      "$18\\%$",
+      "$36\\%$",
+      "$10\\%$",
+      "$32\\%$"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 2.8 \\times 32 = 89.6\\text{ mol}$.",
+    "answer": 4,
+    "explanation": "$\\text{A}=\\text{T}=18\\% \\implies \\text{G}=\\text{C}=50 - (18) = 32\\%$.",
     "number": 1
   },
   {
+    "type_tag": "BIO_GEN_TRANSCRIPTION",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Genetics & Molecular",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $2.9\\text{ mol}$ of glucose in trial 29?",
+    "question": "DNA coding sequence $5'-\\text{ATG-CGA}-3'$ transcribes to mRNA in clone 1:",
     "options": [
-      "$92.8\\text{ mol}$",
-      "$188.6\\text{ mol}$",
-      "$47.6\\text{ mol}$",
-      "$0.3406\\text{ mol}$",
-      "$107.8\\text{ mol}$"
+      "$3'-\\text{UAC-GCU}-5'$",
+      "$3'-\\text{AUG-CGA}-5'$",
+      "$5'-\\text{AUG-CGA}-3'$",
+      "$5'-\\text{UAC-GCU}-3'$",
+      "$5'-\\text{ATG-CGA}-3'$"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 2.9 \\times 32 = 92.8\\text{ mol}$.",
+    "answer": 2,
+    "explanation": "mRNA transcript corresponds to coding strand with U replacing T.",
     "number": 2
   },
   {
+    "type_tag": "BIO_GEN_HAPLOID",
     "module": "Biology",
-    "topic": "Cellular Respiration",
-    "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $3.0\\text{ mol}$ of glucose in trial 30?",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Easy",
+    "question": "Organism with diploid number $2n = 22$. Chromosome count in haploid gamete?",
     "options": [
-      "$96.0\\text{ mol}$",
-      "$195.0\\text{ mol}$",
-      "$49.2\\text{ mol}$",
-      "$0.3438\\text{ mol}$",
-      "$111.0\\text{ mol}$"
+      "$15$ chromosomes",
+      "$11$ chromosomes (haploid)",
+      "$14$ chromosomes",
+      "$13$ chromosomes",
+      "$12$ chromosomes"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 3.0 \\times 32 = 96.0\\text{ mol}$.",
+    "answer": 1,
+    "explanation": "Haploid number $n = 11$.",
     "number": 3
   },
   {
+    "type_tag": "BIO_GEN_MONOHYBRID",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Genetics & Molecular",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $3.1\\text{ mol}$ of glucose in trial 31?",
+    "question": "Monohybrid cross $Tt \\times Tt$ produces $40$ offspring. Expected number of dwarf ($tt$) plants?",
     "options": [
-      "$99.2\\text{ mol}$",
-      "$201.4\\text{ mol}$",
-      "$50.8\\text{ mol}$",
-      "$0.3469\\text{ mol}$",
-      "$114.2\\text{ mol}$"
+      "$30$ plants",
+      "$5$ plants",
+      "$40$ plants",
+      "$20$ plants",
+      "$10$ plants"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 3.1 \\times 32 = 99.2\\text{ mol}$.",
+    "answer": 4,
+    "explanation": "$25\\%$ of $40$ is $10$ plants.",
     "number": 4
   },
   {
+    "type_tag": "BIO_GEN_SEX_LINKED",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Genetics & Molecular",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $3.2\\text{ mol}$ of glucose in trial 32?",
+    "question": "Carrier mother ($X^B X^b$) and normal father ($X^B Y$) in pedigree 1. Probability of colour-blind son?",
     "options": [
-      "$102.4\\text{ mol}$",
-      "$207.8\\text{ mol}$",
-      "$52.4\\text{ mol}$",
-      "$0.35\\text{ mol}$",
-      "$117.4\\text{ mol}$"
+      "$100\\%$",
+      "$50\\%$ of sons",
+      "$75\\%$",
+      "$25\\%$",
+      "$0\\%$"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 3.2 \\times 32 = 102.4\\text{ mol}$.",
+    "answer": 1,
+    "explanation": "Sons have $50\\%$ probability of receiving recessive $X^b$ allele.",
     "number": 5
   },
   {
+    "type_tag": "BIO_GEN_HARDY_WEIN",
     "module": "Biology",
-    "topic": "Cellular Respiration",
-    "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $3.3\\text{ mol}$ of glucose in trial 33?",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Hard",
+    "question": "Population in HW equilibrium has $q^2 = 0.04$ ($4\\%$ recessive) in study 1. Heterozygote frequency $2pq$?",
     "options": [
-      "$105.6\\text{ mol}$",
-      "$214.2\\text{ mol}$",
-      "$54.0\\text{ mol}$",
-      "$0.3531\\text{ mol}$",
-      "$120.6\\text{ mol}$"
+      "$32\\%$ ($0.32$)",
+      "$48\\%$",
+      "$8\\%$",
+      "$64\\%$",
+      "$16\\%$"
     ],
     "answer": 0,
-    "explanation": "Total ATP $= 3.3 \\times 32 = 105.6\\text{ mol}$.",
+    "explanation": "$q=0.2, p=0.8 \\implies 2pq = 2(0.8)(0.2) = 0.32$.",
     "number": 6
   },
   {
+    "type_tag": "BIO_GEN_NONSENSE_MUT",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Genetics & Molecular",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $3.4\\text{ mol}$ of glucose in trial 34?",
+    "question": "A mutation converting an amino acid codon into a premature STOP codon in gene 1 is a:",
     "options": [
-      "$108.8\\text{ mol}$",
-      "$220.6\\text{ mol}$",
-      "$55.6\\text{ mol}$",
-      "$0.3563\\text{ mol}$",
-      "$123.8\\text{ mol}$"
+      "Duplication",
+      "Frameshift insertion",
+      "Silent mutation",
+      "Nonsense mutation",
+      "Missense mutation"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 3.4 \\times 32 = 108.8\\text{ mol}$.",
+    "answer": 3,
+    "explanation": "Nonsense mutations introduce premature termination codons.",
     "number": 7
   },
   {
+    "type_tag": "BIO_GEN_DNA_POLYMER",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Genetics & Molecular",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $3.5\\text{ mol}$ of glucose in trial 35?",
+    "question": "Enzyme synthesising new DNA strands in $5' \\to 3'$ direction during replication in cell 1:",
     "options": [
-      "$112.0\\text{ mol}$",
-      "$227.0\\text{ mol}$",
-      "$57.2\\text{ mol}$",
-      "$0.3594\\text{ mol}$",
-      "$127.0\\text{ mol}$"
+      "Topoisomerase",
+      "DNA Polymerase",
+      "RNA Polymerase",
+      "DNA Helicase",
+      "DNA Ligase"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 3.5 \\times 32 = 112.0\\text{ mol}$.",
+    "answer": 1,
+    "explanation": "DNA Polymerase adds complementary nucleotides in $5'\\to 3'$ direction.",
     "number": 8
   },
   {
+    "type_tag": "BIO_GEN_CROSSING_OVER",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Genetics & Molecular",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $3.6\\text{ mol}$ of glucose in trial 36?",
+    "question": "Meiotic phase where crossing over and chiasmata occur in gametogenesis 1:",
     "options": [
-      "$115.2\\text{ mol}$",
-      "$233.4\\text{ mol}$",
-      "$58.8\\text{ mol}$",
-      "$0.3625\\text{ mol}$",
-      "$130.2\\text{ mol}$"
+      "Prophase II",
+      "Anaphase I",
+      "Prophase I",
+      "Telophase II",
+      "Metaphase I"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 3.6 \\times 32 = 115.2\\text{ mol}$.",
+    "answer": 2,
+    "explanation": "Crossing over occurs between homologous non-sister chromatids in Prophase I.",
     "number": 9
   },
   {
+    "type_tag": "BIO_GEN_DIHYBRID_RATIO",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Genetics & Molecular",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $3.7\\text{ mol}$ of glucose in trial 37?",
+    "question": "Expected phenotypic ratio in $F_2$ generation of Mendelian dihybrid cross $AaBb \\times AaBb$ in cross 1:",
     "options": [
-      "$118.4\\text{ mol}$",
-      "$239.8\\text{ mol}$",
-      "$60.4\\text{ mol}$",
-      "$0.3656\\text{ mol}$",
-      "$133.4\\text{ mol}$"
+      "$1 : 1 : 1 : 1$",
+      "$3 : 1$",
+      "$1 : 2 : 1$",
+      "$9 : 3 : 3 : 1$",
+      "$12 : 3 : 1$"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 3.7 \\times 32 = 118.4\\text{ mol}$.",
+    "answer": 3,
+    "explanation": "Standard unlinked dihybrid cross yields $9:3:3:1$ ratio.",
     "number": 10
   },
   {
+    "type_tag": "BIO_GEN_FRAME_SHIFT",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Genetics & Molecular",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $3.8\\text{ mol}$ of glucose in trial 38?",
+    "question": "Insertion of $1$ nucleotide base pair in an exon of gene 1 causes a:",
     "options": [
-      "$121.6\\text{ mol}$",
-      "$246.2\\text{ mol}$",
-      "$62.0\\text{ mol}$",
-      "$0.3688\\text{ mol}$",
-      "$136.6\\text{ mol}$"
+      "Frameshift mutation",
+      "Inversion",
+      "Point substitution only",
+      "Silent mutation",
+      "Polyploidy"
     ],
     "answer": 0,
-    "explanation": "Total ATP $= 3.8 \\times 32 = 121.6\\text{ mol}$.",
+    "explanation": "Non-multiple-of-three insertions alter the translational reading frame.",
     "number": 11
   },
   {
+    "type_tag": "BIO_GEN_DNA_LIGASE",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Genetics & Molecular",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $3.9\\text{ mol}$ of glucose in trial 39?",
+    "question": "Enzyme responsible for joining Okazaki fragments on the lagging strand in cell 1:",
     "options": [
-      "$124.8\\text{ mol}$",
-      "$252.6\\text{ mol}$",
-      "$63.6\\text{ mol}$",
-      "$0.3719\\text{ mol}$",
-      "$139.8\\text{ mol}$"
+      "DNA Ligase",
+      "DNA Helicase",
+      "DNA Primase",
+      "DNA Polymerase I",
+      "Exonuclease"
     ],
     "answer": 0,
-    "explanation": "Total ATP $= 3.9 \\times 32 = 124.8\\text{ mol}$.",
+    "explanation": "DNA Ligase catalyses phosphodiester bond formation between fragments.",
     "number": 12
   },
   {
+    "type_tag": "BIO_GEN_KARYOTYPE",
     "module": "Biology",
-    "topic": "Cellular Respiration",
-    "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $4.0\\text{ mol}$ of glucose in trial 40?",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Easy",
+    "question": "Genetic condition caused by trisomy $21$ ($47$ chromosomes) diagnosed in karyotype 1:",
     "options": [
-      "$128.0\\text{ mol}$",
-      "$259.0\\text{ mol}$",
-      "$65.2\\text{ mol}$",
-      "$0.375\\text{ mol}$",
-      "$143.0\\text{ mol}$"
+      "Klinefelter Syndrome",
+      "Sickle Cell",
+      "Hemophilia",
+      "Down Syndrome",
+      "Turner Syndrome"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 4.0 \\times 32 = 128.0\\text{ mol}$.",
+    "answer": 3,
+    "explanation": "Trisomy 21 is Down syndrome.",
     "number": 13
   },
   {
+    "type_tag": "BIO_GEN_CODOMINANCE",
     "module": "Biology",
-    "topic": "Cellular Respiration",
+    "topic": "Genetics & Molecular",
     "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $4.1\\text{ mol}$ of glucose in trial 41?",
+    "question": "In human blood group pedigree 1, alleles $I^A$ and $I^B$ exhibiting equal phenotypic expression demonstrate:",
     "options": [
-      "$131.2\\text{ mol}$",
-      "$265.4\\text{ mol}$",
-      "$66.8\\text{ mol}$",
-      "$0.3781\\text{ mol}$",
-      "$146.2\\text{ mol}$"
+      "Epistasis",
+      "Incomplete dominance",
+      "Pleiotropy",
+      "Codominance",
+      "Sex-linkage"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 4.1 \\times 32 = 131.2\\text{ mol}$.",
+    "answer": 3,
+    "explanation": "Both alleles are expressed simultaneously $\\implies$ codominance.",
     "number": 14
   },
   {
+    "type_tag": "BIO_GEN_SEMICONSERV",
     "module": "Biology",
-    "topic": "Cellular Respiration",
-    "difficulty": "Medium",
-    "question": "Assuming an aerobic yield of $32\\text{ ATP}$ per glucose molecule, how many moles of ATP are produced from complete oxidation of $4.2\\text{ mol}$ of glucose in trial 42?",
+    "topic": "Genetics & Molecular",
+    "difficulty": "Easy",
+    "question": "Meselson-Stahl density gradient experiment in culture 1 confirmed DNA replication is:",
     "options": [
-      "$134.4\\text{ mol}$",
-      "$271.8\\text{ mol}$",
-      "$68.4\\text{ mol}$",
-      "$0.3812\\text{ mol}$",
-      "$149.4\\text{ mol}$"
+      "Conservative",
+      "Non-conservative",
+      "Dispersive",
+      "Random",
+      "Semi-conservative"
     ],
-    "answer": 0,
-    "explanation": "Total ATP $= 4.2 \\times 32 = 134.4\\text{ mol}$.",
+    "answer": 4,
+    "explanation": "Each replicated DNA duplex retains one parental and one newly synthesized strand.",
     "number": 15
   }
 ];

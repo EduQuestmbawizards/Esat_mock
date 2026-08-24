@@ -1,242 +1,257 @@
 const QUESTIONS = [
   {
+    "type_tag": "M1_CALC_TANG_GRAD",
     "module": "Mathematics 1",
-    "topic": "Probability",
-    "difficulty": "Medium",
-    "question": "A bag contains $32$ red and $33$ blue counters. A counter is drawn at random. What is the probability of choosing a red counter?",
+    "topic": "Calculus & Prob",
+    "difficulty": "Easy",
+    "question": "Gradient of tangent to $y = 3x^2$ at $x = 1$.",
     "options": [
-      "$\\frac{32}{65}$",
-      "$\\frac{33}{65}$",
-      "$\\frac{32}{68}$",
-      "$\\frac{1}{65}$",
-      "$\\frac{31}{66}$"
+      "$9$",
+      "$3$",
+      "$6$",
+      "$8$",
+      "$2$"
     ],
-    "answer": 0,
-    "explanation": "$P(\\text{Red}) = \\frac{\\text{number of red}}{\\text{total}} = \\frac{32}{65}$.",
+    "answer": 2,
+    "explanation": "$\\frac{dy}{dx} = 2(3)x = 6$.",
     "number": 1
   },
   {
+    "type_tag": "M1_CALC_NORM_GRAD",
     "module": "Mathematics 1",
-    "topic": "Probability",
+    "topic": "Calculus & Prob",
     "difficulty": "Medium",
-    "question": "A bag contains $33$ red and $34$ blue counters. A counter is drawn at random. What is the probability of choosing a red counter?",
+    "question": "If tangent gradient is $3$, find normal gradient.",
     "options": [
-      "$\\frac{33}{67}$",
-      "$\\frac{34}{67}$",
-      "$\\frac{33}{70}$",
-      "$\\frac{1}{67}$",
-      "$\\frac{32}{68}$"
+      "$-3$",
+      "$-\\frac{1}{4}$",
+      "$3$",
+      "$-\\frac{1}{3}$",
+      "$\\frac{1}{3}$"
     ],
-    "answer": 0,
-    "explanation": "$P(\\text{Red}) = \\frac{\\text{number of red}}{\\text{total}} = \\frac{33}{67}$.",
+    "answer": 3,
+    "explanation": "$m_n = -\\frac{1}{3}$.",
     "number": 2
   },
   {
+    "type_tag": "M1_CALC_STAT_PT",
     "module": "Mathematics 1",
-    "topic": "Probability",
+    "topic": "Calculus & Prob",
     "difficulty": "Medium",
-    "question": "A bag contains $34$ red and $35$ blue counters. A counter is drawn at random. What is the probability of choosing a red counter?",
+    "question": "Positive $x$-coordinate of stationary point of $y = x^3 - 6x + 4$.",
     "options": [
-      "$\\frac{34}{69}$",
-      "$\\frac{35}{69}$",
-      "$\\frac{34}{72}$",
-      "$\\frac{1}{69}$",
-      "$\\frac{33}{70}$"
+      "$4$",
+      "$2$",
+      "$3$",
+      "$\\sqrt{2}$",
+      "$\\frac{1}{\\sqrt{2}}$"
     ],
-    "answer": 0,
-    "explanation": "$P(\\text{Red}) = \\frac{\\text{number of red}}{\\text{total}} = \\frac{34}{69}$.",
+    "answer": 3,
+    "explanation": "$3x^2 = 3(2) \\implies x = \\sqrt{2}$.",
     "number": 3
   },
   {
+    "type_tag": "M1_CALC_DEF_INT",
     "module": "Mathematics 1",
-    "topic": "Probability",
+    "topic": "Calculus & Prob",
     "difficulty": "Medium",
-    "question": "A bag contains $35$ red and $36$ blue counters. A counter is drawn at random. What is the probability of choosing a red counter?",
+    "question": "Evaluate $\\int_0^2 3x^2 \\, dx$.",
     "options": [
-      "$\\frac{35}{71}$",
-      "$\\frac{36}{71}$",
-      "$\\frac{35}{74}$",
-      "$\\frac{1}{71}$",
-      "$\\frac{34}{72}$"
+      "$8$",
+      "$16$",
+      "$12$",
+      "$10$",
+      "$4$"
     ],
     "answer": 0,
-    "explanation": "$P(\\text{Red}) = \\frac{\\text{number of red}}{\\text{total}} = \\frac{35}{71}$.",
+    "explanation": "$\\left[ 1x^3 \\right]_0^2 = 8$.",
     "number": 4
   },
   {
+    "type_tag": "M1_CALC_KIN_VEL",
     "module": "Mathematics 1",
-    "topic": "Probability",
-    "difficulty": "Medium",
-    "question": "A bag contains $36$ red and $37$ blue counters. A counter is drawn at random. What is the probability of choosing a red counter?",
+    "topic": "Calculus & Prob",
+    "difficulty": "Easy",
+    "question": "Displacement $s(t) = 2t + 4t^2$. Find velocity at $t = 1\\text{ s}$.",
     "options": [
-      "$\\frac{36}{73}$",
-      "$\\frac{37}{73}$",
-      "$\\frac{36}{76}$",
-      "$\\frac{1}{73}$",
-      "$\\frac{35}{74}$"
+      "$4\\text{ m s}^{-1}$",
+      "$6\\text{ m s}^{-1}$",
+      "$12\\text{ m s}^{-1}$",
+      "$8\\text{ m s}^{-1}$",
+      "$10\\text{ m s}^{-1}$"
     ],
-    "answer": 0,
-    "explanation": "$P(\\text{Red}) = \\frac{\\text{number of red}}{\\text{total}} = \\frac{36}{73}$.",
+    "answer": 4,
+    "explanation": "$v(1) = 2 + 8 = 10\\text{ m s}^{-1}$.",
     "number": 5
   },
   {
+    "type_tag": "M1_CALC_KIN_DISP",
     "module": "Mathematics 1",
-    "topic": "Probability",
+    "topic": "Calculus & Prob",
     "difficulty": "Medium",
-    "question": "A bag contains $37$ red and $38$ blue counters. A counter is drawn at random. What is the probability of choosing a red counter?",
+    "question": "Velocity $v(t) = 3 + 6t$. Find displacement $\\Delta s$ from $t=0$ to $t=2\\text{ s}$.",
     "options": [
-      "$\\frac{37}{75}$",
-      "$\\frac{38}{75}$",
-      "$\\frac{37}{78}$",
-      "$\\frac{1}{75}$",
-      "$\\frac{36}{76}$"
+      "$18\\text{ m}$",
+      "$12\\text{ m}$",
+      "$10\\text{ m}$",
+      "$14\\text{ m}$",
+      "$8\\text{ m}$"
     ],
     "answer": 0,
-    "explanation": "$P(\\text{Red}) = \\frac{\\text{number of red}}{\\text{total}} = \\frac{37}{75}$.",
+    "explanation": "$\\Delta s = 2(3) + 12 = 18\\text{ m}$.",
     "number": 6
   },
   {
+    "type_tag": "M1_CALC_AP_NTH",
     "module": "Mathematics 1",
-    "topic": "Probability",
-    "difficulty": "Medium",
-    "question": "A bag contains $38$ red and $39$ blue counters. A counter is drawn at random. What is the probability of choosing a red counter?",
+    "topic": "Calculus & Prob",
+    "difficulty": "Easy",
+    "question": "AP has $a = 2$ and $d = 4$. Find $10\\text{th}$ term ($u_{10}$).",
     "options": [
-      "$\\frac{38}{77}$",
-      "$\\frac{39}{77}$",
-      "$\\frac{38}{80}$",
-      "$\\frac{1}{77}$",
-      "$\\frac{37}{78}$"
+      "$34$",
+      "$36$",
+      "$32$",
+      "$40$",
+      "$38$"
     ],
-    "answer": 0,
-    "explanation": "$P(\\text{Red}) = \\frac{\\text{number of red}}{\\text{total}} = \\frac{38}{77}$.",
+    "answer": 4,
+    "explanation": "$u_{10} = 2 + 36$.",
     "number": 7
   },
   {
+    "type_tag": "M1_CALC_AP_SUM",
     "module": "Mathematics 1",
-    "topic": "Probability",
+    "topic": "Calculus & Prob",
     "difficulty": "Medium",
-    "question": "A bag contains $39$ red and $40$ blue counters. A counter is drawn at random. What is the probability of choosing a red counter?",
+    "question": "Sum of first $10$ terms of AP with $a = 2$ and $d = 3$.",
     "options": [
-      "$\\frac{39}{79}$",
-      "$\\frac{40}{79}$",
-      "$\\frac{39}{82}$",
-      "$\\frac{1}{79}$",
-      "$\\frac{38}{80}$"
+      "$160$",
+      "$150$",
+      "$140$",
+      "$145$",
+      "$155$"
     ],
-    "answer": 0,
-    "explanation": "$P(\\text{Red}) = \\frac{\\text{number of red}}{\\text{total}} = \\frac{39}{79}$.",
+    "answer": 4,
+    "explanation": "$S_{10} = 5(2(2) + 27) = 155$.",
     "number": 8
   },
   {
+    "type_tag": "M1_CALC_GP_NTH",
     "module": "Mathematics 1",
-    "topic": "Probability",
-    "difficulty": "Medium",
-    "question": "A bag contains $40$ red and $41$ blue counters. A counter is drawn at random. What is the probability of choosing a red counter?",
+    "topic": "Calculus & Prob",
+    "difficulty": "Easy",
+    "question": "GP has $a = 3$ and $r = 3$. Find $4\\text{th}$ term.",
     "options": [
-      "$\\frac{40}{81}$",
-      "$\\frac{41}{81}$",
-      "$\\frac{40}{84}$",
-      "$\\frac{1}{81}$",
-      "$\\frac{39}{82}$"
+      "$243$",
+      "$27$",
+      "$36$",
+      "$81$",
+      "$83$"
     ],
-    "answer": 0,
-    "explanation": "$P(\\text{Red}) = \\frac{\\text{number of red}}{\\text{total}} = \\frac{40}{81}$.",
+    "answer": 3,
+    "explanation": "$u_4 = (3) \\times 27 = 81$.",
     "number": 9
   },
   {
+    "type_tag": "M1_CALC_GP_SUM_INF",
     "module": "Mathematics 1",
-    "topic": "Probability",
+    "topic": "Calculus & Prob",
     "difficulty": "Medium",
-    "question": "A bag contains $41$ red and $42$ blue counters. A counter is drawn at random. What is the probability of choosing a red counter?",
+    "question": "Sum to infinity of GP with $a = 3$ and $r = \\frac{1}{4}$.",
     "options": [
-      "$\\frac{41}{83}$",
-      "$\\frac{42}{83}$",
-      "$\\frac{41}{86}$",
-      "$\\frac{1}{83}$",
-      "$\\frac{40}{84}$"
+      "$12$",
+      "$3$",
+      "$4$",
+      "$5$",
+      "$1$"
     ],
-    "answer": 0,
-    "explanation": "$P(\\text{Red}) = \\frac{\\text{number of red}}{\\text{total}} = \\frac{41}{83}$.",
+    "answer": 2,
+    "explanation": "$S_\\infty = \\frac{3}{3/4} = 4$.",
     "number": 10
   },
   {
+    "type_tag": "M1_CALC_COND_PROB",
     "module": "Mathematics 1",
-    "topic": "Probability",
+    "topic": "Calculus & Prob",
     "difficulty": "Medium",
-    "question": "A bag contains $42$ red and $43$ blue counters. A counter is drawn at random. What is the probability of choosing a red counter?",
+    "question": "Given $P(A) = 0.30$, $P(B) = 0.40$, and $P(A \\cap B) = 0.12$, calculate $P(B \\mid A)$.",
     "options": [
-      "$\\frac{42}{85}$",
-      "$\\frac{43}{85}$",
-      "$\\frac{42}{88}$",
-      "$\\frac{1}{85}$",
-      "$\\frac{41}{86}$"
+      "$0.20$",
+      "$0.40$",
+      "$0.80$",
+      "$0.50$",
+      "$0.10$"
     ],
-    "answer": 0,
-    "explanation": "$P(\\text{Red}) = \\frac{\\text{number of red}}{\\text{total}} = \\frac{42}{85}$.",
+    "answer": 1,
+    "explanation": "$P(B \\mid A) = \\frac{P(A \\cap B)}{P(A)} = 0.40$.",
     "number": 11
   },
   {
+    "type_tag": "M1_CALC_COMBINATIONS",
     "module": "Mathematics 1",
-    "topic": "Probability",
-    "difficulty": "Medium",
-    "question": "A bag contains $43$ red and $44$ blue counters. A counter is drawn at random. What is the probability of choosing a red counter?",
+    "topic": "Calculus & Prob",
+    "difficulty": "Easy",
+    "question": "Number of ways to choose $2$ representatives from $6$ candidates.",
     "options": [
-      "$\\frac{43}{87}$",
-      "$\\frac{44}{87}$",
-      "$\\frac{43}{90}$",
-      "$\\frac{1}{87}$",
-      "$\\frac{42}{88}$"
+      "$18$",
+      "$30$",
+      "$15$",
+      "$12$",
+      "$36$"
     ],
-    "answer": 0,
-    "explanation": "$P(\\text{Red}) = \\frac{\\text{number of red}}{\\text{total}} = \\frac{43}{87}$.",
+    "answer": 2,
+    "explanation": "$\\binom{6}{2} = 15$.",
     "number": 12
   },
   {
+    "type_tag": "M1_CALC_PERMUTATIONS",
     "module": "Mathematics 1",
-    "topic": "Probability",
-    "difficulty": "Medium",
-    "question": "A bag contains $44$ red and $45$ blue counters. A counter is drawn at random. What is the probability of choosing a red counter?",
+    "topic": "Calculus & Prob",
+    "difficulty": "Easy",
+    "question": "Number of permutations of $2$ distinct items from $5$ items.",
     "options": [
-      "$\\frac{44}{89}$",
-      "$\\frac{45}{89}$",
-      "$\\frac{44}{92}$",
-      "$\\frac{1}{89}$",
-      "$\\frac{43}{90}$"
+      "$20$",
+      "$24$",
+      "$26$",
+      "$28$",
+      "$22$"
     ],
     "answer": 0,
-    "explanation": "$P(\\text{Red}) = \\frac{\\text{number of red}}{\\text{total}} = \\frac{44}{89}$.",
+    "explanation": "$P(5, 2) = 20$.",
     "number": 13
   },
   {
+    "type_tag": "M1_CALC_MEAN_SCALE",
     "module": "Mathematics 1",
-    "topic": "Probability",
-    "difficulty": "Medium",
-    "question": "A bag contains $45$ red and $46$ blue counters. A counter is drawn at random. What is the probability of choosing a red counter?",
+    "topic": "Calculus & Prob",
+    "difficulty": "Easy",
+    "question": "A dataset with mean $\\mu = 13$ has each value multiplied by $3$ and plus $2$. Find new mean.",
     "options": [
-      "$\\frac{45}{91}$",
-      "$\\frac{46}{91}$",
-      "$\\frac{45}{94}$",
-      "$\\frac{1}{91}$",
-      "$\\frac{44}{92}$"
+      "$45$",
+      "$39$",
+      "$41$",
+      "$15$",
+      "$29$"
     ],
-    "answer": 0,
-    "explanation": "$P(\\text{Red}) = \\frac{\\text{number of red}}{\\text{total}} = \\frac{45}{91}$.",
+    "answer": 2,
+    "explanation": "$\\mu_{\\text{new}} = 3(13) + 2 = 41$.",
     "number": 14
   },
   {
+    "type_tag": "M1_CALC_SD_SCALE",
     "module": "Mathematics 1",
-    "topic": "Probability",
-    "difficulty": "Medium",
-    "question": "A bag contains $46$ red and $47$ blue counters. A counter is drawn at random. What is the probability of choosing a red counter?",
+    "topic": "Calculus & Prob",
+    "difficulty": "Easy",
+    "question": "If a dataset with standard deviation $\\sigma = 4$ has each value multiplied by $4$, what is the new SD?",
     "options": [
-      "$\\frac{46}{93}$",
-      "$\\frac{47}{93}$",
-      "$\\frac{46}{96}$",
-      "$\\frac{1}{93}$",
-      "$\\frac{45}{94}$"
+      "$16$",
+      "$4$",
+      "$8$",
+      "$64$",
+      "$18$"
     ],
     "answer": 0,
-    "explanation": "$P(\\text{Red}) = \\frac{\\text{number of red}}{\\text{total}} = \\frac{46}{93}$.",
+    "explanation": "$\\sigma_{\\text{new}} = 4 \\times (4) = 16$.",
     "number": 15
   }
 ];

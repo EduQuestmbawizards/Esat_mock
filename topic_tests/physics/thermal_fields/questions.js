@@ -1,242 +1,257 @@
 const QUESTIONS = [
   {
+    "type_tag": "PHY_THM_SHC",
     "module": "Physics",
-    "topic": "Thermal Physics",
-    "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $21.5\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "topic": "Thermal & Fields",
+    "difficulty": "Easy",
+    "question": "Heat needed to warm $1\\text{ kg}$ of water ($c=4200$) by $10\\text{ K}$.",
     "options": [
-      "$903000\\text{ J}$",
-      "$1806250\\text{ J}$",
-      "$451620\\text{ J}$",
-      "$903750\\text{ J}$",
-      "$4515000\\text{ J}$"
+      "$84\\text{ kJ}$",
+      "$21\\text{ kJ}$",
+      "$420\\text{ kJ}$",
+      "$4.2\\text{ kJ}$",
+      "$42\\text{ kJ}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 21.5 \\times 4200 \\times 10 = 903000\\text{ J}$.",
+    "answer": 4,
+    "explanation": "$Q = mc\\Delta T = 42\\text{ kJ}$.",
     "number": 1
   },
   {
+    "type_tag": "PHY_THM_BOYLE",
     "module": "Physics",
-    "topic": "Thermal Physics",
+    "topic": "Thermal & Fields",
     "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $22.0\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "question": "Ideal gas at constant $T$ compressed to volume $V/2$. New pressure?",
     "options": [
-      "$924000\\text{ J}$",
-      "$1848250\\text{ J}$",
-      "$462120\\text{ J}$",
-      "$924750\\text{ J}$",
-      "$4620000\\text{ J}$"
+      "$2P_0$",
+      "$P_0/4$",
+      "$P_0$",
+      "$P_0/2$",
+      "$4P_0$"
     ],
     "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 22.0 \\times 4200 \\times 10 = 924000\\text{ J}$.",
+    "explanation": "$P_2 = 2P_0$.",
     "number": 2
   },
   {
+    "type_tag": "PHY_FLD_GRAV_LAW",
     "module": "Physics",
-    "topic": "Thermal Physics",
+    "topic": "Thermal & Fields",
     "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $22.5\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "question": "Distance from planet centre increases by factor $2$. Gravitational field $g$?",
     "options": [
-      "$945000\\text{ J}$",
-      "$1890250\\text{ J}$",
-      "$472620\\text{ J}$",
-      "$945750\\text{ J}$",
-      "$4725000\\text{ J}$"
+      "Decreases by factor $2$",
+      "Unchanged",
+      "Decreases by factor $4$",
+      "Increases by factor $2$",
+      "Increases by factor $4$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 22.5 \\times 4200 \\times 10 = 945000\\text{ J}$.",
+    "answer": 2,
+    "explanation": "$g' = \\frac{g}{4}$.",
     "number": 3
   },
   {
+    "type_tag": "PHY_FLD_COULOMB",
     "module": "Physics",
-    "topic": "Thermal Physics",
+    "topic": "Thermal & Fields",
     "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $23.0\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "question": "Electrostatic force between two charges $+1Q$ and $+Q$ at distance $r$.",
     "options": [
-      "$966000\\text{ J}$",
-      "$1932250\\text{ J}$",
-      "$483120\\text{ J}$",
-      "$966750\\text{ J}$",
-      "$4830000\\text{ J}$"
+      "$F = \\frac{1Q^2}{4\\pi\\varepsilon_0 r^2}$ (repulsive)",
+      "$F = \\frac{1Q^2}{4\\pi\\varepsilon_0 r}$",
+      "Attractive force",
+      "$F = \\frac{Q^2}{4\\pi\\varepsilon_0 r^2}$",
+      "$F = \\frac{2Q}{4\\pi\\varepsilon_0 r^2}$"
     ],
     "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 23.0 \\times 4200 \\times 10 = 966000\\text{ J}$.",
+    "explanation": "$F = \\frac{1Q^2}{4\\pi\\varepsilon_0 r^2}$.",
     "number": 4
   },
   {
+    "type_tag": "PHY_FLD_MAGNETIC_F",
     "module": "Physics",
-    "topic": "Thermal Physics",
-    "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $23.5\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "topic": "Thermal & Fields",
+    "difficulty": "Easy",
+    "question": "Force on wire length $0.5\\text{ m}$ carrying $2\\text{ A}$ perpendicular to field $0.2\\text{ T}$.",
     "options": [
-      "$987000\\text{ J}$",
-      "$1974250\\text{ J}$",
-      "$493620\\text{ J}$",
-      "$987750\\text{ J}$",
-      "$4935000\\text{ J}$"
+      "$0.30\\text{ N}$",
+      "$0.10\\text{ N}$",
+      "$0.4\\text{ N}$",
+      "$1.0\\text{ N}$",
+      "$0.2\\text{ N}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 23.5 \\times 4200 \\times 10 = 987000\\text{ J}$.",
+    "answer": 4,
+    "explanation": "$F = BIL = 0.2\\text{ N}$.",
     "number": 5
   },
   {
+    "type_tag": "PHY_NUC_HALF_LIFE",
     "module": "Physics",
-    "topic": "Thermal Physics",
+    "topic": "Thermal & Fields",
     "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $24.0\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "question": "Fraction of sample remaining after $2$ half-lives.",
     "options": [
-      "$1008000\\text{ J}$",
-      "$2016250\\text{ J}$",
-      "$504120\\text{ J}$",
-      "$1008750\\text{ J}$",
-      "$5040000\\text{ J}$"
+      "$\\frac{1}{8}$",
+      "$\\frac{1}{5}$",
+      "$\\frac{1}{4}$",
+      "$\\frac{1}{7}$",
+      "$\\frac{1}{6}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 24.0 \\times 4200 \\times 10 = 1008000\\text{ J}$.",
+    "answer": 2,
+    "explanation": "Remaining $= \\frac{1}{4}$.",
     "number": 6
   },
   {
+    "type_tag": "PHY_QUA_PHOTOELEC",
     "module": "Physics",
-    "topic": "Thermal Physics",
-    "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $24.5\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "topic": "Thermal & Fields",
+    "difficulty": "Hard",
+    "question": "Photon energy $E$ for frequency $f = 2 \\times 10^{15}\\text{ Hz}$ in terms of Planck's constant $h$.",
     "options": [
-      "$1029000\\text{ J}$",
-      "$2058250\\text{ J}$",
-      "$514620\\text{ J}$",
-      "$1029750\\text{ J}$",
-      "$5145000\\text{ J}$"
+      "$4h \\times 10^{15}\\text{ J}$",
+      "$\\frac{h}{2} \\times 10^{15}\\text{ J}$",
+      "$2h \\times 10^{15}\\text{ J}$",
+      "$2h \\times 10^{8}\\text{ J}$",
+      "$2hc\\text{ J}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 24.5 \\times 4200 \\times 10 = 1029000\\text{ J}$.",
+    "answer": 2,
+    "explanation": "$E = hf = 2h \\times 10^{15}\\text{ J}$.",
     "number": 7
   },
   {
+    "type_tag": "PHY_THM_RMS_SPEED",
     "module": "Physics",
-    "topic": "Thermal Physics",
-    "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $25.0\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "topic": "Thermal & Fields",
+    "difficulty": "Hard",
+    "question": "If absolute temperature is increased by factor $4$, RMS molecular speed increases by factor:",
     "options": [
-      "$1050000\\text{ J}$",
-      "$2100250\\text{ J}$",
-      "$525120\\text{ J}$",
-      "$1050750\\text{ J}$",
-      "$5250000\\text{ J}$"
+      "$16$",
+      "$4$",
+      "$2$",
+      "$\\sqrt{2}$",
+      "$1$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 25.0 \\times 4200 \\times 10 = 1050000\\text{ J}$.",
+    "answer": 2,
+    "explanation": "$c_{\\text{rms}} \\propto \\sqrt{T} \\implies \\sqrt{4} = 2$.",
     "number": 8
   },
   {
+    "type_tag": "PHY_THM_FIRST_LAW",
     "module": "Physics",
-    "topic": "Thermal Physics",
+    "topic": "Thermal & Fields",
     "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $25.5\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "question": "A gas absorbs $100\\text{ J}$ of heat and does $30\\text{ J}$ of work. Change in internal energy $\\Delta U$?",
     "options": [
-      "$1071000\\text{ J}$",
-      "$2142250\\text{ J}$",
-      "$535620\\text{ J}$",
-      "$1071750\\text{ J}$",
-      "$5355000\\text{ J}$"
+      "$100\\text{ J}$",
+      "$130\\text{ J}$",
+      "$80\\text{ J}$",
+      "$30\\text{ J}$",
+      "$70\\text{ J}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 25.5 \\times 4200 \\times 10 = 1071000\\text{ J}$.",
+    "answer": 4,
+    "explanation": "$\\Delta U = Q - W = 100 - 30 = 70\\text{ J}$.",
     "number": 9
   },
   {
+    "type_tag": "PHY_FLD_ESCAPE_VEL",
     "module": "Physics",
-    "topic": "Thermal Physics",
-    "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $26.0\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "topic": "Thermal & Fields",
+    "difficulty": "Hard",
+    "question": "Escape velocity from planet of mass $1M$ and radius $R$.",
     "options": [
-      "$1092000\\text{ J}$",
-      "$2184250\\text{ J}$",
-      "$546120\\text{ J}$",
-      "$1092750\\text{ J}$",
-      "$5460000\\text{ J}$"
+      "$\\frac{1GM}{R^2}$",
+      "$\\sqrt{2\\frac{GM}{R}}$",
+      "$\\sqrt{\\frac{GM}{R}}$",
+      "$\\sqrt{\\frac{1GM}{2R}}$",
+      "$2\\frac{GM}{R}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 26.0 \\times 4200 \\times 10 = 1092000\\text{ J}$.",
+    "answer": 1,
+    "explanation": "$v_{\\text{esc}} = \\sqrt{\\frac{2G(1M)}{R}} = \\sqrt{2\\frac{GM}{R}}$.",
     "number": 10
   },
   {
+    "type_tag": "PHY_NUC_MASS_DEFECT",
     "module": "Physics",
-    "topic": "Thermal Physics",
+    "topic": "Thermal & Fields",
     "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $26.5\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "question": "Mass defect $\\Delta m = 1 \\times 10^{-28}\\text{ kg}$ converted to energy ($c=3\\times 10^8\\text{ m s}^{-1}$).",
     "options": [
-      "$1113000\\text{ J}$",
-      "$2226250\\text{ J}$",
-      "$556620\\text{ J}$",
-      "$1113750\\text{ J}$",
-      "$5565000\\text{ J}$"
+      "$9 \\times 10^{-20}\\text{ J}$",
+      "$9 \\times 10^{-12}\\text{ J}$",
+      "$3 \\times 10^{-12}\\text{ J}$",
+      "$1 \\times 10^{-12}\\text{ J}$",
+      "$6 \\times 10^{-12}\\text{ J}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 26.5 \\times 4200 \\times 10 = 1113000\\text{ J}$.",
+    "answer": 1,
+    "explanation": "$E = \\Delta m c^2 = (1 \\times 10^{-28})(9 \\times 10^{16}) = 9 \\times 10^{-12}\\text{ J}$.",
     "number": 11
   },
   {
+    "type_tag": "PHY_QUA_DE_BROGLIE",
     "module": "Physics",
-    "topic": "Thermal Physics",
+    "topic": "Thermal & Fields",
     "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $27.0\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "question": "de Broglie wavelength of particle with momentum $p = 2 \\times 10^{-24}\\text{ kg m s}^{-1}$ in terms of $h$.",
     "options": [
-      "$1134000\\text{ J}$",
-      "$2268250\\text{ J}$",
-      "$567120\\text{ J}$",
-      "$1134750\\text{ J}$",
-      "$5670000\\text{ J}$"
+      "$\\frac{hc}{2}$",
+      "$\\frac{h}{4 \\times 10^{-24}}$",
+      "$2h \\times 10^{-24}$",
+      "$\\frac{2 \\times 10^{-24}}{h}$",
+      "$\\frac{h}{2 \\times 10^{-24}}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 27.0 \\times 4200 \\times 10 = 1134000\\text{ J}$.",
+    "answer": 4,
+    "explanation": "$\\lambda = \\frac{h}{p} = \\frac{h}{2 \\times 10^{-24}}$.",
     "number": 12
   },
   {
+    "type_tag": "PHY_THM_LATENT_HEAT",
     "module": "Physics",
-    "topic": "Thermal Physics",
-    "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $27.5\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "topic": "Thermal & Fields",
+    "difficulty": "Easy",
+    "question": "Energy required to vaporize mass $1\\text{ kg}$ with specific latent heat $L = 2.26 \\times 10^6\\text{ J kg}^{-1}$.",
     "options": [
-      "$1155000\\text{ J}$",
-      "$2310250\\text{ J}$",
-      "$577620\\text{ J}$",
-      "$1155750\\text{ J}$",
-      "$5775000\\text{ J}$"
+      "$5.26 \\times 10^6\\text{ J}$",
+      "$6.26 \\times 10^6\\text{ J}$",
+      "$2.26 \\times 10^6\\text{ J}$",
+      "$4.26 \\times 10^6\\text{ J}$",
+      "$3.26 \\times 10^6\\text{ J}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 27.5 \\times 4200 \\times 10 = 1155000\\text{ J}$.",
+    "answer": 2,
+    "explanation": "$Q = mL = 2.26 \\times 10^6\\text{ J}$.",
     "number": 13
   },
   {
+    "type_tag": "PHY_FLD_LORENTZ_F",
     "module": "Physics",
-    "topic": "Thermal Physics",
-    "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $28.0\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "topic": "Thermal & Fields",
+    "difficulty": "Hard",
+    "question": "Magnetic force on charge $1\\text{ C}$ moving at $5\\text{ m s}^{-1}$ perpendicular to field $0.4\\text{ T}$.",
     "options": [
-      "$1176000\\text{ J}$",
-      "$2352250\\text{ J}$",
-      "$588120\\text{ J}$",
-      "$1176750\\text{ J}$",
-      "$5880000\\text{ J}$"
+      "$4\\text{ N}$",
+      "$1\\text{ N}$",
+      "$3\\text{ N}$",
+      "$2.5\\text{ N}$",
+      "$2\\text{ N}$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 28.0 \\times 4200 \\times 10 = 1176000\\text{ J}$.",
+    "answer": 4,
+    "explanation": "$F = qvB = (1)(5)(0.4) = 2\\text{ N}$.",
     "number": 14
   },
   {
+    "type_tag": "PHY_NUC_ALPHA_DECAY",
     "module": "Physics",
-    "topic": "Thermal Physics",
-    "difficulty": "Medium",
-    "question": "How much heat energy is required to raise the temperature of $28.5\\text{ kg}$ of water ($c = 4200\\text{ J kg}^{-1}\\text{ K}^{-1}$) by $10\\text{ K}$?",
+    "topic": "Thermal & Fields",
+    "difficulty": "Easy",
+    "question": "Nuclide $^{238}_{92}\\text{U}$ undergoing $1$ alpha ($\\alpha$) decay(s) has new atomic number $Z$:",
     "options": [
-      "$1197000\\text{ J}$",
-      "$2394250\\text{ J}$",
-      "$598620\\text{ J}$",
-      "$1197750\\text{ J}$",
-      "$5985000\\text{ J}$"
+      "$91$",
+      "$94$",
+      "$92$",
+      "$90$",
+      "$88$"
     ],
-    "answer": 0,
-    "explanation": "$Q = mc\\Delta T = 28.5 \\times 4200 \\times 10 = 1197000\\text{ J}$.",
+    "answer": 3,
+    "explanation": "Each $\\alpha$ decay decreases $Z$ by $2 \\implies 92 - 2(1) = 90$.",
     "number": 15
   }
 ];
