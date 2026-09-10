@@ -196,6 +196,31 @@
       color: #34d399;
       display: block;
     }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 12px;
+      }
+      .auth-card {
+        padding: 24px 18px;
+        border-radius: 16px;
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+      .field input, .field select {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+      }
+      .role-btn {
+        font-size: 0.8rem;
+        padding: 7px;
+      }
+      .btn-auth {
+        padding: 11px 16px;
+        font-size: 0.92rem;
+      }
+    }
   </style>
 </head>
 
@@ -288,6 +313,10 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       clearAuthInputs();
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('role') === 'admin') {
+        switchRole('admin');
+      }
     });
 
     function switchRole(role) {
@@ -367,6 +396,7 @@
           if (error) {
             // Fallback check for admin email
             if (email.toLowerCase() === 'rupali.eduquest@gmail.com') {
+              localStorage.setItem('eduquest_admin_session', JSON.stringify({ email: email, timestamp: Date.now() }));
               localStorage.setItem('eduquest_custom_session', JSON.stringify({ user: { email: email } }));
               window.location.href = 'admin.html';
               return;
@@ -375,6 +405,8 @@
             return;
           }
           if (data && data.user) {
+            localStorage.setItem('eduquest_admin_session', JSON.stringify({ email: email, timestamp: Date.now() }));
+            localStorage.setItem('eduquest_custom_session', JSON.stringify({ user: { email: email } }));
             window.location.href = 'admin.html';
           }
         } catch (err) {

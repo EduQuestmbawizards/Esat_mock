@@ -113,10 +113,94 @@
     .modal-hdr h3 { font-family: 'Syne', sans-serif; font-size: 1.5rem; margin-bottom: 4px; }
     .modal-hdr p { color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; }
     
-    .review-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 24px; }
-    .review-stat { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 14px; text-align: center; }
-    .review-stat .r-num { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; }
-    .review-stat .r-lbl { font-size: 0.7rem; color: rgba(255, 255, 255, 0.5); text-transform: uppercase; margin-top: 2px; }
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 40px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .table-responsive table {
+      margin-bottom: 0;
+      border: none;
+      border-radius: 0;
+    }
+
+    /* MOBILE RESPONSIVE STYLES */
+    @media (max-width: 768px) {
+      .hdr {
+        height: auto;
+        min-height: 56px;
+        padding: 8px 14px;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .wrap {
+        padding: 0 14px;
+        margin: 20px auto;
+      }
+      .dash-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .dash-top h2 {
+        font-size: 1.5rem;
+      }
+      .module-scores-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .mod-card {
+        padding: 14px 10px;
+      }
+      .mod-card .mod-val {
+        font-size: 1.8rem;
+      }
+      .stat-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+      .stat-card {
+        padding: 14px 10px;
+      }
+      .stat-card .val {
+        font-size: 1.4rem;
+      }
+      .chart-box {
+        padding: 16px 12px;
+        margin-bottom: 24px;
+      }
+      .modal-card {
+        padding: 20px 14px;
+        border-radius: 16px;
+      }
+      .modal-hdr {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .review-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      th, td {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .module-scores-grid {
+        grid-template-columns: 1fr;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
     /* MULTI-PAGE FULL PRINT STYLES */
     @media print {
@@ -242,22 +326,24 @@
 
     <!-- SUBMITTED TEST HISTORY TABLE -->
     <h3 style="font-family:'Syne',sans-serif; margin-bottom:16px; font-size:1.2rem;">Submitted Exam &amp; Mock Reports</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Assessment Title</th>
-          <th>Type</th>
-          <th>Raw Score</th>
-          <th>Accuracy</th>
-          <th>Module Scores (1.0–9.0)</th>
-          <th>Submitted On</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody id="reportsTableBody">
-        <tr><td colspan="7" style="text-align:center; color:rgba(255,255,255,0.4);">Loading results from Supabase...</td></tr>
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Assessment Title</th>
+            <th>Type</th>
+            <th>Raw Score</th>
+            <th>Accuracy</th>
+            <th>Module Scores (1.0–9.0)</th>
+            <th>Submitted On</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="reportsTableBody">
+          <tr><td colspan="7" style="text-align:center; color:rgba(255,255,255,0.4);">Loading results from Supabase...</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <!-- MODAL FOR DETAILED REPORT LOOK & REVIEW IN DASHBOARD -->

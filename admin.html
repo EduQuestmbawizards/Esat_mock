@@ -108,6 +108,52 @@
     .review-stat .r-num { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; }
     .review-stat .r-lbl { font-size: 0.7rem; color: rgba(255, 255, 255, 0.5); text-transform: uppercase; margin-top: 2px; }
 
+    /* MOBILE RESPONSIVE STYLES */
+    @media (max-width: 768px) {
+      .hdr {
+        height: auto;
+        min-height: 56px;
+        padding: 8px 14px;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .wrap {
+        padding: 0 14px;
+        margin: 18px auto;
+      }
+      .main-tabs {
+        gap: 6px;
+      }
+      .main-tab-btn {
+        padding: 8px 12px;
+        font-size: 0.82rem;
+      }
+      .status-tabs {
+        flex-direction: column;
+        gap: 4px;
+      }
+      .status-tab-btn {
+        padding: 6px;
+        font-size: 0.8rem;
+      }
+      .modal-card {
+        padding: 20px 14px;
+        border-radius: 16px;
+      }
+      .modal-hdr {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .review-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      th, td {
+        padding: 10px 10px;
+        font-size: 0.8rem;
+      }
+    }
+
     @media print {
       html, body { background: #0d0d14 !important; color: #fff !important; }
       .hdr, .main-tabs, .tab-content, h2, button { display: none !important; }
@@ -118,27 +164,67 @@
 </head>
 
 <body>
-  <!-- HEADER -->
-  <header class="hdr">
-    <a href="index.html" class="brand">
-      <span>📐</span><span>EduQuest</span>
-      <span class="brand-pill">ESAT Admin</span>
-    </a>
-    <div style="display:flex; align-items:center; gap:14px;">
-      <span style="color:rgba(255,255,255,0.7); font-size:0.85rem; font-weight:500;">🔑 Admin: rupali.eduquest@gmail.com</span>
-      <a href="index.html" class="btn-sm" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px; color:#60a5fa; padding:6px 12px;">🏠 Home Portal</a>
-      <button onclick="window.supabaseLogout()" class="btn-logout">🚪 Logout</button>
-    </div>
-  </header>
+  <!-- ADMIN AUTHENTICATION GATE -->
+  <div id="adminAuthScreen" style="display: flex; min-height: 100vh; align-items: center; justify-content: center; padding: 20px; background: #0d0d14;">
+    <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 40px 36px; max-width: 440px; width: 100%; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); text-align: center;">
+      <div style="font-size: 2.8rem; margin-bottom: 12px;">🔐</div>
+      <h2 style="font-family: 'Syne', sans-serif; font-size: 1.6rem; margin-bottom: 6px;">Administrator Authentication</h2>
+      <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; margin-bottom: 24px; line-height: 1.5;">
+        Restricted access. Please enter your administrator credentials to unlock the ESAT Control Center.
+      </p>
 
-  <div class="wrap">
-    <h2 style="font-family:'Syne',sans-serif; font-size:1.8rem; margin-bottom:20px;">ESAT Administrator Control Center</h2>
+      <form id="adminLoginForm" onsubmit="handleAdminLogin(event)" style="text-align: left;">
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 0.78rem; font-weight: 600; color: rgba(255, 255, 255, 0.6); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Admin Email *</label>
+          <input type="email" id="adminEmail" placeholder="admin@example.com" required autocomplete="username"
+                 style="width: 100%; border: 1.5px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 10px 14px; font-family: inherit; font-size: 0.92rem; outline: none; background: #141422; color: #fff;">
+        </div>
 
-    <!-- MAIN NAVIGATION TABS -->
-    <div class="main-tabs">
-      <button class="main-tab-btn active" onclick="switchMainTab('access')">🔒 Student Access Permissions</button>
-      <button class="main-tab-btn" onclick="switchMainTab('reports')">📊 Student Submissions &amp; Reports</button>
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; font-size: 0.78rem; font-weight: 600; color: rgba(255, 255, 255, 0.6); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Password *</label>
+          <div style="position: relative;">
+            <input type="password" id="adminPassword" placeholder="Enter administrator password" required autocomplete="current-password"
+                   style="width: 100%; border: 1.5px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 10px 42px 10px 14px; font-family: inherit; font-size: 0.92rem; outline: none; background: #141422; color: #fff;">
+            <button type="button" onclick="toggleAdminPwdVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: rgba(255, 255, 255, 0.4); cursor: pointer; font-size: 1rem; padding: 4px;">👁️</button>
+          </div>
+        </div>
+
+        <div id="adminAuthMsg" style="display: none; padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; margin-bottom: 16px;"></div>
+
+        <button type="submit" id="btnAdminSubmit" style="width: 100%; padding: 12px 20px; border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer; border: none; background: #3b82f6; color: #fff; transition: all 0.2s;">
+          Verify &amp; Enter Dashboard →
+        </button>
+      </form>
+
+      <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.08); text-align: center;">
+        <a href="index.html" style="color: #60a5fa; text-decoration: none; font-size: 0.85rem; font-weight: 500;">← Return to Student Portal / Home</a>
+      </div>
     </div>
+  </div>
+
+  <!-- ADMIN DASHBOARD CONTAINER (HIDDEN UNTIL VERIFIED) -->
+  <div id="adminAppScreen" style="display: none;">
+    <!-- HEADER -->
+    <header class="hdr">
+      <a href="index.html" class="brand">
+        <span>📐</span><span>EduQuest</span>
+        <span class="brand-pill">ESAT Admin</span>
+      </a>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <span id="adminEmailBadge" style="color:rgba(255,255,255,0.7); font-size:0.85rem; font-weight:500;">🔑 Admin: rupali.eduquest@gmail.com</span>
+        <a href="index.html" class="btn-sm" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px; color:#60a5fa; padding:6px 12px;">🏠 Home Portal</a>
+        <button onclick="handleAdminLogout()" class="btn-logout">🚪 Logout</button>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <h2 style="font-family:'Syne',sans-serif; font-size:1.8rem; margin-bottom:20px;">ESAT Administrator Control Center</h2>
+
+      <!-- MAIN NAVIGATION TABS -->
+      <div class="main-tabs">
+        <button class="main-tab-btn active" onclick="switchMainTab('access')">🔒 Student Access Permissions</button>
+        <button class="main-tab-btn" onclick="switchMainTab('reports')">📊 Student Submissions &amp; Reports</button>
+      </div>
 
     <!-- 1. STUDENT ACCESS MANAGEMENT TAB -->
     <div id="tab-access" class="tab-content active">
@@ -247,6 +333,7 @@
       <div id="modalQuestionList"></div>
     </div>
   </div>
+  </div> <!-- CLOSE adminAppScreen -->
 
   <script>
     let allUsers = [];
@@ -258,9 +345,147 @@
     const LETTERS = ['A', 'B', 'C', 'D', 'E'];
 
     document.addEventListener('DOMContentLoaded', () => {
+      checkAdminAuth();
+    });
+
+    async function checkAdminAuth() {
+      // 1. Check local admin session
+      const customAdmin = localStorage.getItem('eduquest_admin_session');
+      if (customAdmin) {
+        try {
+          const parsed = JSON.parse(customAdmin);
+          if (parsed && parsed.email && parsed.email.toLowerCase() === 'rupali.eduquest@gmail.com') {
+            unlockAdminDashboard(parsed.email);
+            return;
+          }
+        } catch (e) {}
+      }
+
+      // 2. Check Supabase active session
+      if (window.supabase && typeof window.supabase.createClient === 'function') {
+        try {
+          const client = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
+          const { data: { session } } = await client.auth.getSession();
+          if (session && session.user && session.user.email) {
+            const email = session.user.email.toLowerCase();
+            if (email === 'rupali.eduquest@gmail.com') {
+              unlockAdminDashboard(email);
+              return;
+            }
+          }
+        } catch (e) {}
+      }
+
+      // Not authenticated -> Keep adminAppScreen hidden, show adminAuthScreen
+      document.getElementById('adminAppScreen').style.display = 'none';
+      document.getElementById('adminAuthScreen').style.display = 'flex';
+    }
+
+    function unlockAdminDashboard(email) {
+      document.getElementById('adminAuthScreen').style.display = 'none';
+      document.getElementById('adminAppScreen').style.display = 'block';
+      const adminEmailBadge = document.getElementById('adminEmailBadge');
+      if (adminEmailBadge) adminEmailBadge.textContent = `🔑 Admin: ${email}`;
+
       fetchStudentAccessData();
       fetchAdminReports();
-    });
+    }
+
+    async function handleAdminLogin(e) {
+      e.preventDefault();
+      const emailInput = document.getElementById('adminEmail');
+      const passInput = document.getElementById('adminPassword');
+      const msgBox = document.getElementById('adminAuthMsg');
+      const btn = document.getElementById('btnAdminSubmit');
+
+      const email = (emailInput.value || '').trim().toLowerCase();
+      const password = passInput.value || '';
+
+      if (!email || !password) {
+        showAdminMsg('Please enter both administrator email and password.', 'error');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Verifying Credentials...';
+      msgBox.style.display = 'none';
+
+      try {
+        const client = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
+        const { data, error } = await client.auth.signInWithPassword({ email, password });
+        
+        const isAuthorizedEmail = (email === 'rupali.eduquest@gmail.com');
+
+        if (data && data.user && isAuthorizedEmail) {
+          localStorage.setItem('eduquest_admin_session', JSON.stringify({ email: email, timestamp: Date.now() }));
+          localStorage.setItem('eduquest_custom_session', JSON.stringify({ user: { email: email } }));
+          showAdminMsg('Verified! Access granted.', 'success');
+          setTimeout(() => {
+            unlockAdminDashboard(email);
+            btn.disabled = false;
+            btn.textContent = 'Verify & Enter Dashboard →';
+          }, 500);
+          return;
+        }
+
+        if (!isAuthorizedEmail) {
+          showAdminMsg('Access Denied: This account is not registered as an Administrator.', 'error');
+          btn.disabled = false;
+          btn.textContent = 'Verify & Enter Dashboard →';
+          return;
+        }
+
+        if (error) {
+          showAdminMsg(error.message || 'Invalid administrator password.', 'error');
+          btn.disabled = false;
+          btn.textContent = 'Verify & Enter Dashboard →';
+          return;
+        }
+      } catch (err) {
+        showAdminMsg(err.message || 'Authentication error occurred.', 'error');
+        btn.disabled = false;
+        btn.textContent = 'Verify & Enter Dashboard →';
+      }
+    }
+
+    function showAdminMsg(text, type) {
+      const msgBox = document.getElementById('adminAuthMsg');
+      msgBox.textContent = text;
+      msgBox.style.display = 'block';
+      if (type === 'error') {
+        msgBox.style.background = 'rgba(239, 68, 68, 0.15)';
+        msgBox.style.border = '1px solid rgba(239, 68, 68, 0.4)';
+        msgBox.style.color = '#f87171';
+      } else {
+        msgBox.style.background = 'rgba(16, 185, 129, 0.15)';
+        msgBox.style.border = '1px solid rgba(16, 185, 129, 0.4)';
+        msgBox.style.color = '#34d399';
+      }
+    }
+
+    function toggleAdminPwdVisibility() {
+      const pwd = document.getElementById('adminPassword');
+      pwd.type = pwd.type === 'password' ? 'text' : 'password';
+    }
+
+    function handleAdminLogout() {
+      localStorage.removeItem('eduquest_admin_session');
+      localStorage.removeItem('eduquest_custom_session');
+      if (window.supabase && typeof window.supabase.createClient === 'function') {
+        try {
+          const client = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
+          client.auth.signOut();
+        } catch (e) {}
+      }
+      document.getElementById('adminAppScreen').style.display = 'none';
+      document.getElementById('adminAuthScreen').style.display = 'flex';
+      const emailInput = document.getElementById('adminEmail');
+      const passInput = document.getElementById('adminPassword');
+      if (emailInput) emailInput.value = '';
+      if (passInput) passInput.value = '';
+      const msgBox = document.getElementById('adminAuthMsg');
+      if (msgBox) msgBox.style.display = 'none';
+    }
 
     function switchMainTab(tabKey) {
       document.querySelectorAll('.main-tab-btn').forEach(btn => btn.classList.remove('active'));
