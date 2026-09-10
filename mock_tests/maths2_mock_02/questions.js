@@ -98,7 +98,7 @@ const QUESTIONS = [
       "$-4 + 5i$"
     ],
     "answer": 3,
-    "explanation": "$4 + 5i$.",
+    "explanation": "The complex conjugate of $z = a - bi$ is $\\bar{z} = a + bi$. Therefore, the conjugate of $4 - 5i$ is $4 + 5i$.",
     "number": 6
   },
   {

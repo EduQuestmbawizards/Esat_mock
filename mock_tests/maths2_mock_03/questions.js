@@ -234,7 +234,7 @@ const QUESTIONS = [
       "$p = 9$"
     ],
     "answer": 4,
-    "explanation": "$p = 9$.",
+    "explanation": "For parallel vectors, corresponding components are proportional: $\\frac{p}{6} = \\frac{3}{2} = 1.5 \\implies p = 6 \\times 1.5 = 9$.",
     "number": 14
   },
   {
@@ -404,7 +404,7 @@ const QUESTIONS = [
       "$-5 + 5i$"
     ],
     "answer": 2,
-    "explanation": "$5 + 5i$.",
+    "explanation": "The complex conjugate of $z = 5 - 5i$ is obtained by inverting the sign of the imaginary component: $\\bar{z} = 5 + 5i$.",
     "number": 24
   },
   {

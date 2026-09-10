@@ -183,7 +183,7 @@ const QUESTIONS = [
       "$3$"
     ],
     "answer": 0,
-    "explanation": "$3 + 5i$.",
+    "explanation": "The complex conjugate of $z = a - bi$ is $\\bar{z} = a + bi$. For $z = 3 - 5i$, $\\bar{z} = 3 + 5i$.",
     "number": 11
   },
   {

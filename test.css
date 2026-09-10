@@ -475,6 +475,25 @@ main.test-main {
   color: #fff;
 }
 
+.pal-num.locked {
+  opacity: 0.35;
+  cursor: not-allowed;
+  border-style: dashed;
+}
+
+.pal-num.completed-locked {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #10b981;
+  cursor: not-allowed;
+}
+
+.opt-btn.locked-opt {
+  pointer-events: none;
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
 .legend {
   display: flex;
   gap: 14px;

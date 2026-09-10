@@ -846,7 +846,7 @@ const QUESTIONS = [
       "$p = 15$"
     ],
     "answer": 4,
-    "explanation": "$p = 15$.",
+    "explanation": "For parallel vectors, corresponding components are proportional: $\\frac{p}{6} = \\frac{5}{2} = 2.5 \\implies p = 6 \\times 2.5 = 15$.",
     "number": 50
   },
   {

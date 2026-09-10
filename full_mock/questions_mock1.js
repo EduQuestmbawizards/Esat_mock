@@ -941,14 +941,14 @@ const QUESTIONS = [
     "difficulty": "Easy",
     "question": "In a closed loop with EMF $18\\text{ V}$ and resistors $R_1 = 3\\,\\Omega, R_2 = 6\\,\\Omega$, current $I$ is:",
     "options": [
-      "$0.8\\text{ A}$",
-      "$3.3\\text{ A}$",
-      "$2.3\\text{ A}$",
-      "$1.3\\text{ A}$",
-      "$4.3\\text{ A}$"
+      "$1.0\\text{ A}$",
+      "$3.0\\text{ A}$",
+      "$2.0\\text{ A}$",
+      "$6.0\\text{ A}$",
+      "$0.5\\text{ A}$"
     ],
     "answer": 2,
-    "explanation": "$I = \\frac{18}{9} = 2.3\\text{ A}$.",
+    "explanation": "Total resistance $R_{\\text{total}} = R_1 + R_2 = 3\\,\\Omega + 6\\,\\Omega = 9\\,\\Omega$. By Ohm's law, $I = \\frac{\\mathcal{E}}{R_{\\text{total}}} = \\frac{18\\text{ V}}{9\\,\\Omega} = 2.0\\text{ A}$.",
     "number": 56
   },
   {
@@ -1197,13 +1197,13 @@ const QUESTIONS = [
     "question": "Potential divider: $R_1 = 100\\,\\Omega, R_2 = 400\\,\\Omega, V_{\\text{in}} = 12\\text{ V}$. Find $V_{\\text{out}}$ across $R_2$.",
     "options": [
       "$8.00\\text{ V}$",
-      "$11.00\\text{ V}$",
+      "$2.40\\text{ V}$",
       "$9.00\\text{ V}$",
-      "$12.00\\text{ V}$",
-      "$10.00\\text{ V}$"
+      "$10.00\\text{ V}$",
+      "$9.60\\text{ V}$"
     ],
     "answer": 4,
-    "explanation": "$V_{\\text{out}} = 10.00\\text{ V}$.",
+    "explanation": "Using the potential divider formula, $V_{\\text{out}} = V_{\\text{in}} \\times \\frac{R_2}{R_1 + R_2} = 12\\text{ V} \\times \\frac{400\\,\\Omega}{100\\,\\Omega + 400\\,\\Omega} = 12 \\times \\frac{400}{500} = 9.60\\text{ V}$.",
     "number": 71
   },
   {
@@ -1304,8 +1304,8 @@ const QUESTIONS = [
       "$9.0\\text{ V}$",
       "$11.0\\text{ V}$"
     ],
-    "answer": 0,
-    "explanation": "$V = 12 - 2(0.5(4)) = 10.0\\text{ V}$.",
+    "answer": 1,
+    "explanation": "Terminal potential difference is given by $V = \\mathcal{E} - I r = 12\\text{ V} - (2\\text{ A} \\times 2.0\\,\\Omega) = 12\\text{ V} - 4.0\\text{ V} = 8.0\\text{ V}$.",
     "number": 77
   },
   {

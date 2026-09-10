@@ -46,8 +46,8 @@ const QUESTIONS = [
       "$7.00\\text{ V}$",
       "$10.00\\text{ V}$"
     ],
-    "answer": 0,
-    "explanation": "$V_{\\text{out}} = 8.00\\text{ V}$.",
+    "answer": 1,
+    "explanation": "Since $R_1 = R_2 = 100\\,\\Omega$, the voltage divides equally: $V_{\\text{out}} = 12\\text{ V} \\times \\frac{100\\,\\Omega}{100\\,\\Omega + 100\\,\\Omega} = 6.00\\text{ V}$.",
     "number": 3
   },
   {
@@ -74,14 +74,14 @@ const QUESTIONS = [
     "difficulty": "Hard",
     "question": "Battery $\\mathcal{E} = 12\\text{ V}, r = 0.5\\,\\Omega$, current $2\\text{ A}$. Terminal p.d. $V$?",
     "options": [
-      "$9.5\\text{ V}$",
-      "$12.5\\text{ V}$",
-      "$13.5\\text{ V}$",
-      "$11.5\\text{ V}$",
-      "$10.5\\text{ V}$"
+      "$9.0\\text{ V}$",
+      "$12.0\\text{ V}$",
+      "$10.0\\text{ V}$",
+      "$11.0\\text{ V}$",
+      "$8.0\\text{ V}$"
     ],
     "answer": 3,
-    "explanation": "$V = 12 - 2(0.5(1)) = 11.5\\text{ V}$.",
+    "explanation": "Terminal potential difference is $V = \\mathcal{E} - I r = 12\\text{ V} - (2\\text{ A} \\times 0.5\\,\\Omega) = 12\\text{ V} - 1.0\\text{ V} = 11.0\\text{ V}$.",
     "number": 5
   },
   {
@@ -210,14 +210,14 @@ const QUESTIONS = [
     "difficulty": "Easy",
     "question": "In a closed loop with EMF $6\\text{ V}$ and resistors $R_1 = 1\\,\\Omega, R_2 = 2\\,\\Omega$, current $I$ is:",
     "options": [
-      "$1.1\\text{ A}$",
-      "$0.6\\text{ A}$",
-      "$4.1\\text{ A}$",
-      "$3.1\\text{ A}$",
-      "$2.1\\text{ A}$"
+      "$1.0\\text{ A}$",
+      "$0.5\\text{ A}$",
+      "$4.0\\text{ A}$",
+      "$3.0\\text{ A}$",
+      "$2.0\\text{ A}$"
     ],
     "answer": 4,
-    "explanation": "$I = \\frac{6}{3} = 2.1\\text{ A}$.",
+    "explanation": "Total resistance $R_{\\text{total}} = R_1 + R_2 = 1\\,\\Omega + 2\\,\\Omega = 3\\,\\Omega$. By Ohm's law, $I = \\frac{\\mathcal{E}}{R_{\\text{total}}} = \\frac{6\\text{ V}}{3\\,\\Omega} = 2.0\\text{ A}$.",
     "number": 13
   },
   {

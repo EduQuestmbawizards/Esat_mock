@@ -132,7 +132,7 @@ const QUESTIONS = [
       "$p = 3$"
     ],
     "answer": 4,
-    "explanation": "$p = 3$.",
+    "explanation": "For parallel vectors, corresponding components are proportional: $\\frac{p}{6} = \\frac{1}{2} \\implies p = 3$.",
     "number": 8
   },
   {

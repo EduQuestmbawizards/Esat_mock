@@ -540,7 +540,7 @@ const QUESTIONS = [
       "$p = 16$"
     ],
     "answer": 2,
-    "explanation": "$p = 12$.",
+    "explanation": "For parallel vectors, corresponding components are proportional: $\\frac{p}{6} = \\frac{4}{2} = 2 \\implies p = 6 \\times 2 = 12$.",
     "number": 32
   },
   {
@@ -710,7 +710,7 @@ const QUESTIONS = [
       "$-6 - 5i$"
     ],
     "answer": 0,
-    "explanation": "$6 + 5i$.",
+    "explanation": "The complex conjugate of $z = a - bi$ is $\\bar{z} = a + bi$. For $z = 6 - 5i$, $\\bar{z} = 6 + 5i$.",
     "number": 42
   },
   {
@@ -1043,14 +1043,14 @@ const QUESTIONS = [
     "difficulty": "Medium",
     "question": "Potential divider: $R_1 = 100\\,\\Omega, R_2 = 500\\,\\Omega, V_{\\text{in}} = 12\\text{ V}$. Find $V_{\\text{out}}$ across $R_2$.",
     "options": [
-      "$11.29\\text{ V}$",
-      "$8.29\\text{ V}$",
-      "$9.29\\text{ V}$",
-      "$10.29\\text{ V}$",
-      "$12.29\\text{ V}$"
+      "$2.00\\text{ V}$",
+      "$8.00\\text{ V}$",
+      "$9.00\\text{ V}$",
+      "$10.00\\text{ V}$",
+      "$12.00\\text{ V}$"
     ],
     "answer": 3,
-    "explanation": "$V_{\\text{out}} = 10.29\\text{ V}$.",
+    "explanation": "Using the potential divider formula, $V_{\\text{out}} = V_{\\text{in}} \\times \\frac{R_2}{R_1 + R_2} = 12\\text{ V} \\times \\frac{500\\,\\Omega}{100\\,\\Omega + 500\\,\\Omega} = 12 \\times \\frac{5}{6} = 10.00\\text{ V}$.",
     "number": 62
   },
   {
@@ -1145,14 +1145,14 @@ const QUESTIONS = [
     "difficulty": "Hard",
     "question": "Battery $\\mathcal{E} = 12\\text{ V}, r = 2.5\\,\\Omega$, current $2\\text{ A}$. Terminal p.d. $V$?",
     "options": [
-      "$10.5\\text{ V}$",
-      "$11.5\\text{ V}$",
-      "$7.5\\text{ V}$",
-      "$8.5\\text{ V}$",
-      "$9.5\\text{ V}$"
+      "$10.0\\text{ V}$",
+      "$11.0\\text{ V}$",
+      "$5.0\\text{ V}$",
+      "$8.0\\text{ V}$",
+      "$7.0\\text{ V}$"
     ],
     "answer": 4,
-    "explanation": "$V = 12 - 2(0.5(5)) = 9.5\\text{ V}$.",
+    "explanation": "Terminal potential difference is $V = \\mathcal{E} - I r = 12\\text{ V} - (2\\text{ A} \\times 2.5\\,\\Omega) = 12\\text{ V} - 5.0\\text{ V} = 7.0\\text{ V}$.",
     "number": 68
   },
   {

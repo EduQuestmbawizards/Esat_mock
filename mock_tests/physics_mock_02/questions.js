@@ -176,14 +176,14 @@ const QUESTIONS = [
     "difficulty": "Easy",
     "question": "In a closed loop with EMF $12\\text{ V}$ and resistors $R_1 = 2\\,\\Omega, R_2 = 4\\,\\Omega$, current $I$ is:",
     "options": [
-      "$1.2\\text{ A}$",
-      "$0.7\\text{ A}$",
-      "$4.2\\text{ A}$",
-      "$2.2\\text{ A}$",
-      "$3.2\\text{ A}$"
+      "$1.0\\text{ A}$",
+      "$0.5\\text{ A}$",
+      "$4.0\\text{ A}$",
+      "$2.0\\text{ A}$",
+      "$3.0\\text{ A}$"
     ],
     "answer": 3,
-    "explanation": "$I = \\frac{12}{6} = 2.2\\text{ A}$.",
+    "explanation": "Total resistance $R_{\\text{total}} = R_1 + R_2 = 2\\,\\Omega + 4\\,\\Omega = 6\\,\\Omega$. By Ohm's law, $I = \\frac{\\mathcal{E}}{R_{\\text{total}}} = \\frac{12\\text{ V}}{6\\,\\Omega} = 2.0\\text{ A}$.",
     "number": 11
   },
   {
@@ -431,14 +431,14 @@ const QUESTIONS = [
     "difficulty": "Medium",
     "question": "Potential divider: $R_1 = 100\\,\\Omega, R_2 = 300\\,\\Omega, V_{\\text{in}} = 12\\text{ V}$. Find $V_{\\text{out}}$ across $R_2$.",
     "options": [
-      "$7.60\\text{ V}$",
-      "$10.60\\text{ V}$",
-      "$11.60\\text{ V}$",
-      "$8.60\\text{ V}$",
-      "$9.60\\text{ V}$"
+      "$3.00\\text{ V}$",
+      "$6.00\\text{ V}$",
+      "$8.00\\text{ V}$",
+      "$10.00\\text{ V}$",
+      "$9.00\\text{ V}$"
     ],
     "answer": 4,
-    "explanation": "$V_{\\text{out}} = 9.60\\text{ V}$.",
+    "explanation": "Using the potential divider formula, $V_{\\text{out}} = V_{\\text{in}} \\times \\frac{R_2}{R_1 + R_2} = 12\\text{ V} \\times \\frac{300\\,\\Omega}{100\\,\\Omega + 300\\,\\Omega} = 12 \\times \\frac{3}{4} = 9.00\\text{ V}$.",
     "number": 26
   },
   {

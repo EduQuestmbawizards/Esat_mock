@@ -131,8 +131,8 @@ const QUESTIONS = [
       "$7.00\\text{ V}$",
       "$11.00\\text{ V}$"
     ],
-    "answer": 0,
-    "explanation": "$V_{\\text{out}} = 9.00\\text{ V}$.",
+    "answer": 1,
+    "explanation": "Using the potential divider formula, $V_{\\text{out}} = V_{\\text{in}} \\times \\frac{R_2}{R_1 + R_2} = 12\\text{ V} \\times \\frac{200\\,\\Omega}{100\\,\\Omega + 200\\,\\Omega} = 12 \\times \\frac{2}{3} = 8.00\\text{ V}$.",
     "number": 8
   },
   {
@@ -233,8 +233,8 @@ const QUESTIONS = [
       "$11.0\\text{ V}$",
       "$13.0\\text{ V}$"
     ],
-    "answer": 3,
-    "explanation": "$V = 12 - 2(0.5(2)) = 11.0\\text{ V}$.",
+    "answer": 2,
+    "explanation": "Terminal potential difference is $V = \\mathcal{E} - I r = 12\\text{ V} - (2\\text{ A} \\times 1.0\\,\\Omega) = 12\\text{ V} - 2.0\\text{ V} = 10.0\\text{ V}$.",
     "number": 14
   },
   {

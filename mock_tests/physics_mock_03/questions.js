@@ -74,14 +74,14 @@ const QUESTIONS = [
     "difficulty": "Hard",
     "question": "Battery $\\mathcal{E} = 12\\text{ V}, r = 1.5\\,\\Omega$, current $2\\text{ A}$. Terminal p.d. $V$?",
     "options": [
-      "$12.5\\text{ V}$",
-      "$8.5\\text{ V}$",
-      "$11.5\\text{ V}$",
-      "$9.5\\text{ V}$",
-      "$10.5\\text{ V}$"
+      "$12.0\\text{ V}$",
+      "$6.0\\text{ V}$",
+      "$11.0\\text{ V}$",
+      "$8.0\\text{ V}$",
+      "$9.0\\text{ V}$"
     ],
     "answer": 4,
-    "explanation": "$V = 12 - 2(0.5(3)) = 10.5\\text{ V}$.",
+    "explanation": "Terminal potential difference is $V = \\mathcal{E} - I r = 12\\text{ V} - (2\\text{ A} \\times 1.5\\,\\Omega) = 12\\text{ V} - 3.0\\text{ V} = 9.0\\text{ V}$.",
     "number": 5
   },
   {

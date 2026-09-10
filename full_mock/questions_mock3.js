@@ -788,14 +788,14 @@ const QUESTIONS = [
     "difficulty": "Easy",
     "question": "In a closed loop with EMF $24\\text{ V}$ and resistors $R_1 = 4\\,\\Omega, R_2 = 8\\,\\Omega$, current $I$ is:",
     "options": [
-      "$4.4\\text{ A}$",
-      "$3.4\\text{ A}$",
-      "$0.9\\text{ A}$",
-      "$2.4\\text{ A}$",
-      "$1.4\\text{ A}$"
+      "$4.0\\text{ A}$",
+      "$3.0\\text{ A}$",
+      "$1.0\\text{ A}$",
+      "$2.0\\text{ A}$",
+      "$6.0\\text{ A}$"
     ],
     "answer": 3,
-    "explanation": "$I = \\frac{24}{12} = 2.4\\text{ A}$.",
+    "explanation": "Total resistance $R_{\\text{total}} = R_1 + R_2 = 4\\,\\Omega + 8\\,\\Omega = 12\\,\\Omega$. By Ohm's law, $I = \\frac{\\mathcal{E}}{R_{\\text{total}}} = \\frac{24\\text{ V}}{12\\,\\Omega} = 2.0\\text{ A}$.",
     "number": 47
   },
   {
