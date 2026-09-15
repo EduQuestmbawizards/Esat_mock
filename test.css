@@ -827,8 +827,46 @@ main.test-main {
     padding: 0 10px;
   }
   .res-card {
-    padding: 20px 14px;
+    padding: 18px 12px;
     border-radius: 16px;
+  }
+  .res-card table th, .res-card table td {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+/* KaTeX Math Responsive Scrolling */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 0;
+}
+
+@media (max-width: 480px) {
+  .mod-select-header h2 {
+    font-size: 1.45rem;
+  }
+  .compulsory-banner {
+    padding: 16px 14px;
+  }
+  .compulsory-title {
+    font-size: 1.05rem;
+  }
+  .mod-card-opt {
+    padding: 16px 14px;
+  }
+  .mod-card-title {
+    font-size: 1.05rem;
+  }
+  .opt-btn {
+    padding: 10px 12px;
+    min-height: 48px;
+  }
+  .q-nav .btn {
+    min-height: 46px;
+    font-size: 0.92rem;
   }
 }
 
@@ -838,6 +876,9 @@ main.test-main {
   }
   .hdr-module {
     display: none;
+  }
+  .opt-btn {
+    font-size: 0.84rem;
   }
 }
 
