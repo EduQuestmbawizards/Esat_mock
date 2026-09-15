@@ -273,12 +273,27 @@
         <button class="btn-sm" onclick="fetchAdminReports()">🔄 Refresh Submissions</button>
       </div>
 
-      <div class="sub-tabs" id="reportSubTabs">
-        <button class="sub-tab-btn active" onclick="filterReportType('ALL')">All Submissions</button>
-        <button class="sub-tab-btn" onclick="filterReportType('full_mock')">🎓 Full Mocks</button>
-        <button class="sub-tab-btn" onclick="filterReportType('diagnostic')">🎯 Diagnostics</button>
-        <button class="sub-tab-btn" onclick="filterReportType('mock_test')">⏱️ Module Mocks</button>
-        <button class="sub-tab-btn" onclick="filterReportType('topic_test')">📐 Topic Tests</button>
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:12px;">
+        <div class="sub-tabs" id="reportSubTabs" style="margin-bottom:0;">
+          <button class="sub-tab-btn active" onclick="filterReportType('ALL')">All Submissions</button>
+          <button class="sub-tab-btn" onclick="filterReportType('full_mock')">🎓 Full Mocks</button>
+          <button class="sub-tab-btn" onclick="filterReportType('diagnostic')">🎯 Diagnostics</button>
+          <button class="sub-tab-btn" onclick="filterReportType('mock_test')">⏱️ Module Mocks</button>
+          <button class="sub-tab-btn" onclick="filterReportType('topic_test')">📐 Topic Tests</button>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:8px;">
+          <label style="font-size:0.75rem; text-transform:uppercase; color:rgba(255,255,255,0.6); font-weight:700;">Combination:</label>
+          <select id="modComboFilter" onchange="filterReportCombination(this.value)" style="background:#141422; border:1.5px solid rgba(255,255,255,0.15); color:#fff; padding:6px 12px; border-radius:6px; font-size:0.82rem; outline:none; cursor:pointer;">
+            <option value="ALL">All Combinations</option>
+            <option value="M1 + M2 + Physics">M1 + M2 + Physics</option>
+            <option value="M1 + M2 + Chemistry">M1 + M2 + Chemistry</option>
+            <option value="M1 + M2 + Biology">M1 + M2 + Biology</option>
+            <option value="M1 + Physics + Chemistry">M1 + Physics + Chemistry</option>
+            <option value="M1 + Physics + Biology">M1 + Physics + Biology</option>
+            <option value="M1 + Chemistry + Biology">M1 + Chemistry + Biology</option>
+          </select>
+        </div>
       </div>
 
       <input type="text" class="search-bar" id="reportSearch" placeholder="🔍 Search submission by student name, email, or test title..." onkeyup="filterReportTable()">
@@ -782,6 +797,13 @@
       }
     }
 
+    let currentComboFilter = 'ALL';
+
+    function filterReportCombination(combo) {
+      currentComboFilter = combo;
+      renderSubmissionsTable();
+    }
+
     function renderSubmissionsTable() {
       const tbody = document.getElementById('adminReportsBody');
       tbody.innerHTML = '';
@@ -791,8 +813,23 @@
         list = list.filter(r => r.test_type === currentReportType);
       }
 
+      if (currentComboFilter !== 'ALL') {
+        list = list.filter(r => {
+          let taken = r.modules_taken;
+          if (!taken || !Array.isArray(taken) || taken.length === 0) {
+            let modArr = [];
+            try {
+              modArr = typeof r.module_scores_json === 'string' ? JSON.parse(r.module_scores_json) : (r.module_scores_json || []);
+            } catch (e) { modArr = []; }
+            taken = modArr.map(m => m.module);
+          }
+          const code = taken.map(m => (m === 'Mathematics 1' ? 'M1' : m === 'Mathematics 2' ? 'M2' : m)).join(' + ');
+          return code.toLowerCase() === currentComboFilter.toLowerCase();
+        });
+      }
+
       if (list.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:20px; color:rgba(255,255,255,0.4);">No submissions found.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:20px; color:rgba(255,255,255,0.4);">No submissions found matching criteria.</td></tr>';
         return;
       }
 
@@ -801,6 +838,12 @@
         try {
           modArr = typeof r.module_scores_json === 'string' ? JSON.parse(r.module_scores_json) : (r.module_scores_json || []);
         } catch (e) { modArr = []; }
+
+        let taken = r.modules_taken;
+        if (!taken || !Array.isArray(taken) || taken.length === 0) {
+          taken = modArr.map(m => m.module);
+        }
+        const configCode = taken.map(m => (m === 'Mathematics 1' ? 'M1' : m === 'Mathematics 2' ? 'M2' : m)).join(' + ');
 
         const modScoresHtml = modArr.map(m => `
           <span style="background:rgba(59,130,246,0.15); color:#60a5fa; padding:2px 6px; border-radius:4px; font-weight:700; font-size:0.75rem; margin-right:4px;">
@@ -812,7 +855,10 @@
         tr.innerHTML = `
           <td><strong>${r.name || 'Student'}</strong></td>
           <td>${r.email || 'N/A'}</td>
-          <td>${r.test_title || 'ESAT Assessment'}</td>
+          <td>
+            <strong>${r.test_title || 'ESAT Assessment'}</strong>
+            ${configCode ? `<div style="font-size:0.75rem; color:#38bdf8; font-weight:700; margin-top:2px;">🧩 ${configCode}</div>` : ''}
+          </td>
           <td><span style="font-size:0.75rem; text-transform:uppercase; color:rgba(255,255,255,0.5);">${r.test_type || 'full_mock'}</span></td>
           <td><span style="color:#38bdf8; font-weight:700;">${r.total_correct || 0} / ${r.total_questions || 0}</span></td>
           <td><span style="color:#60a5fa; font-weight:600;">${r.overall_accuracy || 0}%</span></td>
@@ -848,17 +894,24 @@
       const r = allSubmissions[idx];
       if (!r) return;
 
-      document.getElementById('modalExamTitle').textContent = `📊 ${r.test_title || 'ESAT Assessment'} Report`;
-      document.getElementById('modalStudentMeta').textContent = `Candidate: ${r.name || 'Student'} (${r.email || 'N/A'}) &nbsp;|&nbsp; Submitted: ${r.submit_time || 'N/A'}`;
-      document.getElementById('mCorrect').textContent = `${r.total_correct || 0} / ${r.total_questions || 0}`;
-      document.getElementById('mWrong').textContent = r.total_wrong || 0;
-      document.getElementById('mSkipped').textContent = r.total_unattempted || 0;
-      document.getElementById('mPct').textContent = `${r.overall_accuracy || 0}%`;
-
       let modArr = [];
       try {
         modArr = typeof r.module_scores_json === 'string' ? JSON.parse(r.module_scores_json) : (r.module_scores_json || []);
       } catch (e) { modArr = []; }
+
+      let taken = r.modules_taken;
+      if (!taken || !Array.isArray(taken) || taken.length === 0) {
+        taken = modArr.map(m => m.module);
+      }
+      const configCode = taken.map(m => (m === 'Mathematics 1' ? 'M1' : m === 'Mathematics 2' ? 'M2' : m)).join(' + ');
+
+      document.getElementById('modalExamTitle').textContent = `📊 ${r.test_title || 'ESAT Assessment'} Report`;
+      const confTag = configCode ? ` &nbsp;|&nbsp; Modules: <span style="color:#38bdf8; font-weight:700;">${configCode}</span>` : '';
+      document.getElementById('modalStudentMeta').innerHTML = `Candidate: ${r.name || 'Student'} (${r.email || 'N/A'}) &nbsp;|&nbsp; Submitted: ${r.submit_time || 'N/A'}${confTag}`;
+      document.getElementById('mCorrect').textContent = `${r.total_correct || 0} / ${r.total_questions || 0}`;
+      document.getElementById('mWrong').textContent = r.total_wrong || 0;
+      document.getElementById('mSkipped').textContent = r.total_unattempted || 0;
+      document.getElementById('mPct').textContent = `${r.overall_accuracy || 0}%`;
 
       const modContainer = document.getElementById('modalModuleCards');
       modContainer.innerHTML = modArr.map(m => `

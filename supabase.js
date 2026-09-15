@@ -119,7 +119,7 @@ async function saveToSupabase(result) {
     phone: result.student.phone || '',
     test_title: result.testTitle || 'ESAT Assessment',
     test_type: result.testType || 'full_mock',
-    modules_taken: moduleNames.length > 0 ? moduleNames : ['Mathematics 1'],
+    modules_taken: (result.modulesTaken && result.modulesTaken.length > 0) ? result.modulesTaken : (moduleNames.length > 0 ? moduleNames : ['Mathematics 1']),
     total_questions: result.totalQuestions || 81,
     total_correct: result.totalCorrect || 0,
     total_wrong: result.totalWrong || 0,
