@@ -33,10 +33,10 @@
     <h1>Master the ESAT<br><span>Diagnostic, Module &amp; Full Mocks</span></h1>
     <p>Prepare for Cambridge &amp; Imperial Engineering, Natural Sciences, Chemical Engineering, Physics, and Veterinary Medicine. Practice compulsory Mathematics 1, tailor your 2 elective modules, build topic mastery, and track scores on the official 1.0–9.0 scale.</p>
 
-    <!-- TABS -->
+    <!-- TABS (Diagnostic Default Active) -->
     <div class="tabs">
-      <button class="tab-btn active" onclick="showTab('full-mock')">🎓 Full Mocks (3)</button>
-      <button class="tab-btn" onclick="showTab('diagnostic')">🎯 Diagnostic Tests (3)</button>
+      <button class="tab-btn active" onclick="showTab('diagnostic')">🎯 Diagnostic Tests (3)</button>
+      <button class="tab-btn" onclick="showTab('full-mock')">🎓 Full Mocks (3)</button>
       <button class="tab-btn" onclick="showTab('module-mocks')">⏱️ Module Mocks (15)</button>
       <button class="tab-btn" onclick="showTab('maths1-topics')">📐 Maths 1 Topics (3)</button>
       <button class="tab-btn" onclick="showTab('maths2-topics')">🔢 Maths 2 Topics (3)</button>
@@ -46,7 +46,7 @@
     </div>
 
     <!-- 1. FULL MOCK TAB (3 TESTS) -->
-    <div id="tab-full-mock" class="tab-content active">
+    <div id="tab-full-mock" class="tab-content">
       <div class="cards">
         <div class="exam-card" style="border-color: rgba(139, 92, 246, 0.4); background: rgba(139, 92, 246, 0.04);">
           <div class="card-icon">🎓</div>
@@ -84,16 +84,16 @@
     </div>
 
     <!-- 2. DIAGNOSTIC ASSESSMENT TAB (3 TESTS) -->
-    <div id="tab-diagnostic" class="tab-content">
+    <div id="tab-diagnostic" class="tab-content active">
       <div class="cards">
-        <div class="exam-card" style="border-color: rgba(59, 130, 246, 0.4); background: rgba(59, 130, 246, 0.04);">
+        <div class="exam-card" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.04);">
           <div class="card-icon">🎯</div>
-          <div class="card-num">Diagnostic Assessment 01</div>
+          <div class="card-num">Diagnostic Assessment 01 · Open Demo</div>
           <div class="card-title">ESAT Full Diagnostic Assessment 1</div>
           <div class="card-sub">81 Questions · 3 Modules · 120 Minutes · Mathematics 1 (Compulsory) + Choose 2 Modules. Diagnostic topic evaluation with precision score analytics.</div>
           <div class="card-meta">
-            <span class="tag tag-compulsory">81 Qs · 3 Modules · 120 Min</span>
-            <a href="diagnostic_test/test_diag.html" class="card-btn">Choose Modules →</a>
+            <span class="tag" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.3); font-weight:700;">🟢 FREE UNLOCKED</span>
+            <a href="diagnostic_test/test_diag.html" class="card-btn" style="background:#10b981; color:#fff; border:none;">Start Free Diagnostic →</a>
           </div>
         </div>
 
@@ -438,54 +438,80 @@
     async function updateCardLockStatus() {
       try {
         const session = await getUserSession();
-        if (!session || !session.user || !session.user.email) return;
+        const isLoggedIn = !!(session && session.user && session.user.email);
+        const email = isLoggedIn ? session.user.email.toLowerCase().trim() : '';
+        const isAdmin = email === 'rupali.eduquest@gmail.com';
 
-        const email = session.user.email.toLowerCase().trim();
-        if (email === 'rupali.eduquest@gmail.com') {
-          // Admin bypass - unlock everything
-          document.querySelectorAll('.card-btn').forEach(btn => {
-            btn.innerHTML = '🟢 Unlocked · Start Test →';
-            btn.style.background = '#3b82f6';
-            btn.style.color = '#fff';
-            btn.style.border = 'none';
-          });
-          return;
-        }
-
-        const headers = { 'apikey': SUPABASE_CONFIG.anonKey, 'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}` };
-        const res = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/profiles?email=eq.${encodeURIComponent(email)}`, { headers });
         let profile = null;
-        if (res.ok) {
-          const list = await res.json();
-          if (list && list.length > 0) profile = list[0];
+        if (isLoggedIn && !isAdmin) {
+          try {
+            const headers = { 'apikey': SUPABASE_CONFIG.anonKey, 'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}` };
+            const res = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/profiles?email=eq.${encodeURIComponent(email)}`, { headers });
+            if (res.ok) {
+              const list = await res.json();
+              if (list && list.length > 0) profile = list[0];
+            }
+          } catch (e) {
+            console.warn('Profile fetch notice:', e);
+          }
         }
 
-        const hasOverall = profile && profile.has_esat_access === true;
-        const hasFull = hasOverall && profile.has_esat_fullmock_access === true;
-        const hasDiag = hasOverall && profile.has_esat_diagnostic_access === true;
-        const hasMock = hasOverall && profile.has_esat_mock_access === true;
-        const hasTopic = hasOverall && profile.has_esat_topic_access === true;
+        const hasOverall = isAdmin || (profile && profile.has_esat_access === true);
+        const hasFull = isAdmin || (hasOverall && profile && profile.has_esat_fullmock_access === true);
+        const hasDiag = isAdmin || (hasOverall && profile && profile.has_esat_diagnostic_access === true);
+        const hasMock = isAdmin || (hasOverall && profile && profile.has_esat_mock_access === true);
+        const hasTopic = isAdmin || (hasOverall && profile && profile.has_esat_topic_access === true);
 
         // Apply lock states to cards
         document.querySelectorAll('.card-btn').forEach(btn => {
           const href = btn.getAttribute('href') || '';
+          
+          // 1st Diagnostic Test is ALWAYS UNLOCKED for everyone!
+          const isFirstDiag = href.includes('test_diag.html') && !href.includes('test_diag_02') && !href.includes('test_diag_03');
+          
+          if (isFirstDiag) {
+            btn.innerHTML = '🟢 Free Unlocked · Start Test →';
+            btn.style.background = '#10b981';
+            btn.style.color = '#fff';
+            btn.style.border = 'none';
+            btn.onclick = null;
+            return;
+          }
+
           let isUnlocked = false;
-
-          if (href.includes('full_mock')) isUnlocked = hasFull;
-          else if (href.includes('diagnostic')) isUnlocked = hasDiag;
-          else if (href.includes('mock_tests')) isUnlocked = hasMock;
-          else if (href.includes('topic_tests')) isUnlocked = hasTopic;
-
-          if (!isUnlocked) {
-            btn.innerHTML = '🔒 Locked (Admin Approval Req)';
-            btn.style.background = 'rgba(239, 68, 68, 0.15)';
-            btn.style.color = '#f87171';
-            btn.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+          if (isAdmin) {
+            isUnlocked = true;
+          } else if (isLoggedIn) {
+            if (href.includes('full_mock')) isUnlocked = hasFull;
+            else if (href.includes('diagnostic')) isUnlocked = hasDiag;
+            else if (href.includes('mock_tests')) isUnlocked = hasMock;
+            else if (href.includes('topic_tests')) isUnlocked = hasTopic;
           } else {
+            // Guest -> All other tests are locked by default
+            isUnlocked = false;
+          }
+
+          if (isUnlocked) {
             btn.innerHTML = '🟢 Unlocked · Start Test →';
             btn.style.background = '#3b82f6';
             btn.style.color = '#fff';
             btn.style.border = 'none';
+            btn.onclick = null;
+          } else {
+            btn.innerHTML = '🔒 Locked (Admin Access Req)';
+            btn.style.background = 'rgba(239, 68, 68, 0.12)';
+            btn.style.color = '#f87171';
+            btn.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+            btn.onclick = function(e) {
+              e.preventDefault();
+              if (!isLoggedIn) {
+                if (confirm('🔒 This assessment is locked.\n\nPlease Sign In or register your student account to request access clearance from the Administrator.\n\nOnly Diagnostic Assessment 1 is open without admin clearance.\n\nProceed to Sign In page?')) {
+                  window.location.href = 'login.html?redirect=' + encodeURIComponent(href);
+                }
+              } else {
+                alert('🔒 This assessment is currently locked for your account (' + email + ').\n\nOnly Diagnostic Assessment 1 is free.\n\nTo unlock this assessment, please contact the Administrator (rupali.eduquest@gmail.com) for clearance.');
+              }
+            };
           }
         });
       } catch (e) {

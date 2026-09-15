@@ -442,38 +442,60 @@
             options: { data: { name: name, phone: phoneVal, target_course: course } }
           });
 
-          // Save user to esat_user
+          // Save user to esat_user registration log
           await saveRegistration({ name: name || email.split('@')[0], email: email, phone: phoneVal }, 'ESAT Registration', ['Mathematics 1', 'Mathematics 2', 'Physics'], course);
 
-          // Create initial locked profile record in profiles
+          // Force lock in profiles: ensure account is LOCKED by default until admin grants approval
+          const emLower = email.toLowerCase().trim();
+          const esatLockData = {
+            has_esat_access: false,
+            has_esat_fullmock_access: false,
+            has_esat_diagnostic_access: false,
+            has_esat_mock_access: false,
+            has_esat_topic_access: false
+          };
+
           try {
-            await fetch(`${SUPABASE_CONFIG.url}/rest/v1/profiles`, {
-              method: 'POST',
+            // First try PATCH to update existing record
+            const patchRes = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/profiles?email=eq.${encodeURIComponent(emLower)}`, {
+              method: 'PATCH',
               headers: {
                 'Content-Type': 'application/json',
                 'apikey': SUPABASE_CONFIG.anonKey,
                 'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}`,
-                'Prefer': 'return=minimal'
+                'Prefer': 'return=representation'
               },
-              body: JSON.stringify({
-                email: email.toLowerCase().trim(),
-                name: name || email.split('@')[0],
-                has_esat_access: false,
-                has_esat_fullmock_access: false,
-                has_esat_diagnostic_access: false,
-                has_esat_mock_access: false,
-                has_esat_topic_access: false
-              })
+              body: JSON.stringify(esatLockData)
             });
+
+            const updatedRows = patchRes.ok ? await patchRes.json() : [];
+            if (!Array.isArray(updatedRows) || updatedRows.length === 0) {
+              // If record doesn't exist, insert new locked profile
+              await fetch(`${SUPABASE_CONFIG.url}/rest/v1/profiles`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'apikey': SUPABASE_CONFIG.anonKey,
+                  'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}`,
+                  'Prefer': 'return=minimal'
+                },
+                body: JSON.stringify(Object.assign({
+                  email: emLower,
+                  name: name || email.split('@')[0],
+                  phone: phoneVal,
+                  role: 'student'
+                }, esatLockData))
+              });
+            }
           } catch (e) {
-            console.warn('Profile init notice:', e);
+            console.warn('Profile lock initialization notice:', e);
           }
 
           localStorage.setItem('eduquest_custom_session', JSON.stringify({ user: { email: email, user_metadata: { name: name } } }));
-          showMsg('Account created! Awaiting admin approval to unlock tests.', 'success');
+          showMsg('Account created successfully! All tests (except Diagnostic 1) require Admin approval to unlock.', 'success');
           setTimeout(() => {
             window.location.href = redirectUrl ? decodeURIComponent(redirectUrl) : 'index.html';
-          }, 1200);
+          }, 1400);
         } catch (err) {
           showMsg(err.message || 'Registration error', 'error');
         }
