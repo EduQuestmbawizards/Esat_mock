@@ -1156,7 +1156,7 @@ function renderResults(res) {
               <div style="font-size:1.15rem; font-weight:700; color:#fff;">${m.module}</div>
             </div>
             <div style="background:rgba(59,130,246,0.18); color:#60a5fa; padding:4px 10px; border-radius:20px; font-size:0.75rem; font-weight:700;">
-              ${m.percentile || 'Estimated Score'}
+              Estimated Scale (1.0 – 9.0)
             </div>
           </div>
 

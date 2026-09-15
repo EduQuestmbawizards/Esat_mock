@@ -324,5 +324,94 @@ class TestESATScoreReporting(unittest.TestCase):
             self.assertIn("percentage", m)
             self.assertIn("esatScore", m)
 
+    def test_07_controlled_acceptance_dataset(self):
+        """Verify the exact controlled test dataset from specification Section 16:
+        M1: 27 total, 22 correct, 4 incorrect, 1 unanswered -> 22/27, 81.48%
+        M2: 27 total, 20 correct, 5 incorrect, 2 unanswered -> 20/27, 74.07%
+        Physics: 27 total, 23 correct, 3 incorrect, 1 unanswered -> 23/27, 85.19%
+        TOTAL: 81 total, 65 correct, 12 incorrect, 4 unanswered, 77 attempted, 65/81 raw score, 80.25%
+        """
+        js = """
+        const questions = [];
+        const userAnswers = {};
+
+        // M1: 22 correct, 4 incorrect, 1 unanswered
+        for (let i = 0; i < 27; i++) {
+            questions.push({ id: 'M1-' + i, module: 'Mathematics 1', answer: 0 });
+            if (i < 22) userAnswers[i] = 0;
+            else if (i < 26) userAnswers[i] = 1;
+        }
+
+        // M2: 20 correct, 5 incorrect, 2 unanswered
+        for (let i = 27; i < 54; i++) {
+            questions.push({ id: 'M2-' + i, module: 'Mathematics 2', answer: 0 });
+            if (i < 27 + 20) userAnswers[i] = 0;
+            else if (i < 27 + 25) userAnswers[i] = 1;
+        }
+
+        // Physics: 23 correct, 3 incorrect, 1 unanswered
+        for (let i = 54; i < 81; i++) {
+            questions.push({ id: 'PHY-' + i, module: 'Physics', answer: 0 });
+            if (i < 54 + 23) userAnswers[i] = 0;
+            else if (i < 54 + 26) userAnswers[i] = 1;
+        }
+
+        const res = computeESATResults(questions, userAnswers, { name: 'Student' }, 'ESAT Controlled Test', 'full_mock');
+        console.log(JSON.stringify(res));
+        """
+        res = self.run_js(js)
+
+        # Mathematical verification of invariants
+        self.assertTrue(res["validation"]["passed"])
+        self.assertEqual(res["totalQuestions"], 81)
+        self.assertEqual(res["totalCorrect"], 65)
+        self.assertEqual(res["totalWrong"], 12)
+        self.assertEqual(res["totalUnattempted"], 4)
+        self.assertEqual(res["totalAttempted"], 77)
+        self.assertEqual(res["rawScore"], 65)
+        self.assertAlmostEqual(res["percentage"], 80.25, places=2)
+
+        # M1 verification
+        m1 = res["modules"]["M1"]
+        self.assertEqual(m1["total"], 27)
+        self.assertEqual(m1["correct"], 22)
+        self.assertEqual(m1["incorrect"], 4)
+        self.assertEqual(m1["unanswered"], 1)
+        self.assertEqual(m1["attempted"], 26)
+        self.assertEqual(m1["score"], 22)
+        self.assertAlmostEqual(m1["percentage"], 81.48, places=2)
+
+        # M2 verification
+        m2 = res["modules"]["M2"]
+        self.assertEqual(m2["total"], 27)
+        self.assertEqual(m2["correct"], 20)
+        self.assertEqual(m2["incorrect"], 5)
+        self.assertEqual(m2["unanswered"], 2)
+        self.assertEqual(m2["attempted"], 25)
+        self.assertEqual(m2["score"], 20)
+        self.assertAlmostEqual(m2["percentage"], 74.07, places=2)
+
+        # Physics verification
+        phy = res["modules"]["PHYSICS"]
+        self.assertEqual(phy["total"], 27)
+        self.assertEqual(phy["correct"], 23)
+        self.assertEqual(phy["incorrect"], 3)
+        self.assertEqual(phy["unanswered"], 1)
+        self.assertEqual(phy["attempted"], 26)
+        self.assertEqual(phy["score"], 23)
+        self.assertAlmostEqual(phy["percentage"], 85.19, places=2)
+
+    def test_08_no_manufactured_percentiles(self):
+        """Confirm that speculative/manufactured percentiles are eliminated"""
+        js = """
+        console.log(JSON.stringify({
+            p7: getESATPercentile(7.0),
+            p9: getESATPercentile(9.0)
+        }));
+        """
+        res = self.run_js(js)
+        self.assertIsNone(res["p7"])
+        self.assertIsNone(res["p9"])
+
 if __name__ == '__main__':
     unittest.main()

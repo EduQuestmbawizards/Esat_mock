@@ -64,24 +64,12 @@ function calculateModuleESATScore(correct, total = 27) {
 }
 
 /**
- * Returns estimated percentile bracket based on 1.0 - 9.0 score
- * @param {number|string} score 
- * @returns {string} Percentile label
+ * Official UAT-UK / Cambridge admissions assessments do not publish fixed percentiles
+ * for practice mocks as percentiles vary dynamically with live cohort distributions.
+ * To maintain scoring integrity, speculative percentiles are not manufactured.
  */
 function getESATPercentile(score) {
-  const num = parseFloat(score);
-  if (num >= 9.0) return '~99th+';
-  if (num >= 8.5) return '~98th';
-  if (num >= 8.0) return '~94th';
-  if (num >= 7.5) return '~88th';
-  if (num >= 7.0) return '~80th';
-  if (num >= 6.5) return '~70th';
-  if (num >= 6.0) return '~60th';
-  if (num >= 5.5) return '~50th';
-  if (num >= 5.0) return '~40th';
-  if (num >= 4.0) return '~25th';
-  if (num >= 3.0) return '~12th';
-  return '< 10th';
+  return null;
 }
 
 const CANONICAL_MODULES = {
