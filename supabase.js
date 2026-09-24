@@ -259,6 +259,9 @@ async function saveRegistration(studentData, examName, selectedModules = ['Mathe
             
             <div style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 14px 16px; border-radius: 6px; margin: 18px 0; font-size: 13.5px; color: #1e40af;">
               📌 <strong>Notice:</strong> <em>This is an automated reply. We have received your inquiry/registration and our admissions &amp; administration team will shortly respond to assist you with full course access.</em>
+              <div style="margin-top: 10px; font-weight: 600; color: #0f172a; padding-top: 8px; border-top: 1px dashed #bfdbfe;">
+                📞 <strong>Fast Response / Direct Contact:</strong> Call or WhatsApp us directly at <a href="tel:+919958041888" style="color: #2563eb; text-decoration: none; font-size: 15px; font-weight: 700;">+91 9958041888</a>
+              </div>
             </div>
 
             <h4 style="margin: 18px 0 8px 0; color: #0f172a; font-size: 14px;">Your Registration Details:</h4>
@@ -281,10 +284,10 @@ async function saveRegistration(studentData, examName, selectedModules = ['Mathe
               </tr>
             </table>
 
-            <p style="margin-bottom: 0;">If you have any urgent queries, you can directly reply to this email or contact us at <a href="mailto:rupali.eduquest@gmail.com" style="color: #2563eb; font-weight: 600; text-decoration: none;">rupali.eduquest@gmail.com</a>.</p>
+            <p style="margin-bottom: 0;">For any urgent inquiries, you can call/WhatsApp <a href="tel:+919958041888" style="color: #2563eb; font-weight: 700; text-decoration: none;">9958041888</a> or reply to this email at <a href="mailto:rupali.eduquest@gmail.com" style="color: #2563eb; font-weight: 600; text-decoration: none;">rupali.eduquest@gmail.com</a>.</p>
           </div>
           <div style="background: #f8fafc; padding: 14px 24px; font-size: 12px; color: #64748b; border-top: 1px solid #e2e8f0; text-align: center;">
-            EduQuest Global • Cambridge &amp; Imperial ESAT Preparation Center
+            EduQuest Global • Cambridge &amp; Imperial ESAT Preparation Center • Helpline: +91 9958041888
           </div>
         </div>
       `;
@@ -294,11 +297,12 @@ async function saveRegistration(studentData, examName, selectedModules = ['Mathe
         subject: studentReplySubject,
         bodyHtml: studentReplyHtml,
         bodyData: {
-          "Notice": "This is an automated reply. The admin will shortly respond to your inquiry.",
+          "Notice": "This is an automated reply. For fast response call 9958041888.",
           "Student Name": studentData.name || 'N/A',
           "Target Course": targetCourse || 'Engineering',
           "Selected Modules": formattedModules,
-          "Exam / Test": examName || 'ESAT Assessment'
+          "Exam / Test": examName || 'ESAT Assessment',
+          "Direct Helpline": "+91 9958041888"
         }
       });
     } catch (studentErr) {
@@ -521,10 +525,15 @@ async function saveToSupabase(result) {
               </table>
             ` : ''}
 
-            <p style="margin-top: 20px; margin-bottom: 0;">You can log in to your EduQuest ESAT Portal anytime to review in-depth explanations for all questions or attempt more practice mock tests.</p>
+            <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px 16px; margin: 20px 0; font-size: 13.5px; color: #166534;">
+              📞 <strong>Fast Response / Direct Contact:</strong> For 1-on-1 counseling, test review, or course enrollment, directly call or WhatsApp our mentoring team at: 
+              <a href="tel:+919958041888" style="color: #15803d; text-decoration: none; font-weight: 700; font-size: 15px;">+91 9958041888</a>
+            </div>
+
+            <p style="margin-top: 16px; margin-bottom: 0;">You can log in to your EduQuest ESAT Portal anytime to review in-depth explanations for all questions or attempt more practice mock tests.</p>
           </div>
           <div style="background: #f8fafc; padding: 14px 24px; font-size: 12px; color: #64748b; border-top: 1px solid #e2e8f0; text-align: center;">
-            EduQuest Global ESAT Assessment Platform • <a href="mailto:rupali.eduquest@gmail.com" style="color: #64748b;">rupali.eduquest@gmail.com</a>
+            EduQuest Global ESAT Assessment Platform • Helpline: +91 9958041888 • <a href="mailto:rupali.eduquest@gmail.com" style="color: #64748b;">rupali.eduquest@gmail.com</a>
           </div>
         </div>
       `;
@@ -539,6 +548,7 @@ async function saveToSupabase(result) {
           "Subject / Test": testTitle,
           "Score": `${result.totalCorrect || 0}/${result.totalQuestions || 0}`,
           "Accuracy": `${accuracy}%`,
+          "Direct Helpline": "+91 9958041888",
           "Timestamp": result.submitTime || new Date().toLocaleString()
         }
       });
