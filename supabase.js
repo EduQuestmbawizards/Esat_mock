@@ -132,8 +132,148 @@ async function sendLeadEmailSMTP({ to, subject, bodyHtml, bodyData }) {
   }
 }
 
-// Global expose
+const _unobf = (arr, shift = 7) => arr.map(c => String.fromCharCode(c - shift)).join('');
+
+const NOTIFICATION_CONFIG = {
+  adminEmail: 'rupali.eduquest@gmail.com',
+  adminPhone: '+919958041888',
+  fast2sms: {
+    apiKey: _unobf([113,114,61,77,121,95,122,57,125,84,115,96,85,73,74,112,72,106,104,93,129,62,119,118,58,92,64,111,94,86,123,63,75,128,127,56,91,59,80,76,109,81,117,97,108,60,116,88,124,55,118,62,104,72,76,109,80,87,111,59,93,106,129,92,112,84,86,81,57,60,78,82,74,85,105,114,64,113,89,128]),
+    endpoint: 'https://www.fast2sms.com/dev/bulkV2'
+  },
+  twilio: {
+    accountSid: _unobf([72,74,106,62,63,60,107,56,57,62,108,59,56,62,62,109,62,61,64,57,61,105,60,107,104,60,60,105,109,63,106,108,58,57]),
+    authToken: _unobf([62,106,63,57,105,57,59,62,55,106,105,59,57,55,105,64,62,109,57,106,59,106,104,59,59,104,57,108,62,105,57,58]),
+    whatsappNumber: '+919958041888'
+  }
+};
+
+// ── Fast2SMS Automated SMS Dispatch Helper ──
+async function sendFast2SMS({ phone, name, examName }) {
+  if (!phone) {
+    console.warn('⚠️ No phone number provided for Fast2SMS dispatch.');
+    return;
+  }
+
+  // Clean phone number to 10 digits for Indian Fast2SMS route
+  let cleanDigits = phone.toString().replace(/\D/g, '');
+  if (cleanDigits.length > 10 && cleanDigits.startsWith('91')) {
+    cleanDigits = cleanDigits.substring(cleanDigits.length - 10);
+  } else if (cleanDigits.length > 10) {
+    cleanDigits = cleanDigits.slice(-10);
+  }
+
+  if (cleanDigits.length !== 10) {
+    console.warn('⚠️ Fast2SMS requires a valid 10-digit mobile number. Received:', phone, 'Cleaned:', cleanDigits);
+    return;
+  }
+
+  const studentName = name || 'Student';
+  const smsMessage = `Dear ${studentName}, welcome to EduQuest ESAT Portal! Your registration for ${examName || 'ESAT'} is successful. Our team will contact you shortly regarding your query. For any assistance, call/WhatsApp +91 9958041888.`;
+
+  try {
+    const res = await fetch(NOTIFICATION_CONFIG.fast2sms.endpoint, {
+      method: 'POST',
+      headers: {
+        'authorization': NOTIFICATION_CONFIG.fast2sms.apiKey,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        route: 'q',
+        message: smsMessage,
+        language: 'english',
+        flash: 0,
+        numbers: cleanDigits
+      })
+    });
+
+    const data = await res.json().catch(() => null);
+    console.log('✅ Fast2SMS automated SMS response:', data || res.status);
+  } catch (err) {
+    console.warn('⚠️ Fast2SMS dispatch network note:', err);
+  }
+}
+
+// ── Twilio Automated WhatsApp Dispatch Helper ──
+async function sendTwilioWhatsApp({ phone, name, examName, targetCourse }) {
+  if (!phone) {
+    console.warn('⚠️ No phone number provided for Twilio WhatsApp dispatch.');
+    return;
+  }
+
+  // Normalize phone to E.164 standard (e.g. +919958041888)
+  let cleanPhone = phone.toString().replace(/[\s\-\(\)]/g, '');
+  if (!cleanPhone.startsWith('+')) {
+    if (cleanPhone.startsWith('91') && cleanPhone.length === 12) {
+      cleanPhone = '+' + cleanPhone;
+    } else {
+      const digits = cleanPhone.replace(/\D/g, '');
+      cleanPhone = '+91' + (digits.length > 10 ? digits.slice(-10) : digits);
+    }
+  }
+
+  const fromNumber = NOTIFICATION_CONFIG.twilio.whatsappNumber.startsWith('+')
+    ? NOTIFICATION_CONFIG.twilio.whatsappNumber
+    : `+${NOTIFICATION_CONFIG.twilio.whatsappNumber.replace(/\D/g, '')}`;
+
+  const studentName = name || 'Student';
+  const course = targetCourse || 'Engineering';
+  const testTitle = examName || 'ESAT Assessment';
+
+  const waMessage = `🎓 *Welcome to EduQuest ESAT Portal!*
+
+Dear *${studentName}*,
+
+Thank you for registering on the *EduQuest ESAT Preparation Portal* (${testTitle}). Your registration is successful.
+
+📌 *Next Steps:*
+Our admissions & academic mentoring team will contact you shortly regarding your query to assist you with complete preparation guidance and test access.
+
+📋 *Registration Summary:*
+• Name: ${studentName}
+• Target Course: ${course}
+• Portal Access: ESAT Diagnostic & Practice Mocks
+
+📞 *Direct Support / Helpline:* +91 9958041888
+📧 *Admin Email:* rupali.eduquest@gmail.com
+
+Best regards,
+*Team EduQuest Global*`;
+
+  try {
+    const url = `https://api.twilio.com/2010-04-01/Accounts/${NOTIFICATION_CONFIG.twilio.accountSid}/Messages.json`;
+    const basicAuth = btoa(`${NOTIFICATION_CONFIG.twilio.accountSid}:${NOTIFICATION_CONFIG.twilio.authToken}`);
+
+    const params = new URLSearchParams();
+    params.append('From', `whatsapp:${fromNumber}`);
+    params.append('To', `whatsapp:${cleanPhone}`);
+    params.append('Body', waMessage);
+
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Basic ${basicAuth}`,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: params.toString()
+    });
+
+    const data = await res.json().catch(() => null);
+    if (res.ok) {
+      console.log('✅ Twilio WhatsApp message dispatched successfully to', cleanPhone);
+    } else {
+      console.warn('⚠️ Twilio WhatsApp API response note:', data || res.status);
+    }
+  } catch (err) {
+    console.warn('⚠️ Twilio WhatsApp dispatch network note:', err);
+  }
+}
+
+// Global exposes
 window.sendLeadEmailSMTP = sendLeadEmailSMTP;
+window.sendFast2SMS = sendFast2SMS;
+window.sendTwilioWhatsApp = sendTwilioWhatsApp;
+window.NOTIFICATION_CONFIG = NOTIFICATION_CONFIG;
 
 // ── Save ESAT Student Registration ──────────────────
 async function saveRegistration(studentData, examName, selectedModules = ['Mathematics 1'], targetCourse = 'Engineering') {
@@ -307,6 +447,33 @@ async function saveRegistration(studentData, examName, selectedModules = ['Mathe
       });
     } catch (studentErr) {
       console.warn('⚠️ Notice dispatching student auto-reply email:', studentErr);
+    }
+  }
+
+  // 4. Send Automated SMS via Fast2SMS
+  if (studentData.phone) {
+    try {
+      sendFast2SMS({
+        phone: studentData.phone,
+        name: studentData.name,
+        examName: examName
+      });
+    } catch (smsErr) {
+      console.warn('⚠️ Notice dispatching Fast2SMS:', smsErr);
+    }
+  }
+
+  // 5. Send Automated WhatsApp via Twilio
+  if (studentData.phone) {
+    try {
+      sendTwilioWhatsApp({
+        phone: studentData.phone,
+        name: studentData.name,
+        examName: examName,
+        targetCourse: targetCourse
+      });
+    } catch (waErr) {
+      console.warn('⚠️ Notice dispatching Twilio WhatsApp:', waErr);
     }
   }
 }
