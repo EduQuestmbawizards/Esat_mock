@@ -380,6 +380,10 @@ function startTest() {
     showAlert('Please enter a valid email address.');
     return;
   }
+  if (phoneInput && !phoneInput.value.trim()) {
+    showAlert('Please enter your mobile phone number.');
+    return;
+  }
 
   // If this test requires module selection, validate selection strictly:
   if (requiresModuleSelection()) {

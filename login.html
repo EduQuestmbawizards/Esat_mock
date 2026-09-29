@@ -265,7 +265,7 @@
 
       <!-- Phone field (Sign up only) -->
       <div class="field" id="fieldPhone" style="display:none;">
-        <label>Mobile Number</label>
+        <label>Mobile Number *</label>
         <div style="display:flex; gap:8px;">
           <select id="regCC" style="max-width:130px;"></select>
           <input type="tel" id="authPhone" placeholder="Mobile number" autocomplete="off">
@@ -357,6 +357,10 @@
     function setFieldVisibility(showExtra) {
       document.getElementById('fieldName').style.display = showExtra ? 'block' : 'none';
       document.getElementById('fieldPhone').style.display = showExtra ? 'block' : 'none';
+      const nameInput = document.getElementById('authName');
+      const phoneInput = document.getElementById('authPhone');
+      if (nameInput) nameInput.required = showExtra;
+      if (phoneInput) phoneInput.required = showExtra;
     }
 
     function togglePwdVisibility() {
@@ -383,6 +387,18 @@
       if (!email || !password) {
         showMsg('Please fill in all required fields.', 'error');
         return;
+      }
+
+      if (currentMode === 'signup' && currentRole === 'student') {
+        if (!name) {
+          showMsg('Please enter your full name.', 'error');
+          return;
+        }
+        const rawPhone = phoneInput ? phoneInput.value.trim() : '';
+        if (!rawPhone) {
+          showMsg('Please enter your phone number.', 'error');
+          return;
+        }
       }
 
       const client = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
