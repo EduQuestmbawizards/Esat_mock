@@ -316,6 +316,8 @@
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.get('role') === 'admin') {
         switchRole('admin');
+      } else if (urlParams.get('mode') === 'signup' || window.location.hash === '#signup') {
+        switchMode('signup');
       }
     });
 
@@ -359,8 +361,16 @@
       document.getElementById('fieldPhone').style.display = showExtra ? 'block' : 'none';
       const nameInput = document.getElementById('authName');
       const phoneInput = document.getElementById('authPhone');
-      if (nameInput) nameInput.required = showExtra;
-      if (phoneInput) phoneInput.required = showExtra;
+      if (nameInput) {
+        nameInput.required = showExtra;
+        if (showExtra) nameInput.setAttribute('required', 'true');
+        else nameInput.removeAttribute('required');
+      }
+      if (phoneInput) {
+        phoneInput.required = showExtra;
+        if (showExtra) phoneInput.setAttribute('required', 'true');
+        else phoneInput.removeAttribute('required');
+      }
     }
 
     function togglePwdVisibility() {
@@ -379,7 +389,7 @@
       e.preventDefault();
       const email = document.getElementById('authEmail').value.trim();
       const password = document.getElementById('authPassword').value;
-      const name = document.getElementById('authName').value.trim();
+      const name = document.getElementById('authName') ? document.getElementById('authName').value.trim() : '';
       const phoneInput = document.getElementById('authPhone');
       const ccInput = document.getElementById('regCC');
       const course = 'Engineering';
@@ -391,12 +401,20 @@
 
       if (currentMode === 'signup' && currentRole === 'student') {
         if (!name) {
-          showMsg('Please enter your full name.', 'error');
+          showMsg('Please enter your full name (Required).', 'error');
           return;
         }
         const rawPhone = phoneInput ? phoneInput.value.trim() : '';
         if (!rawPhone) {
-          showMsg('Please enter your phone number.', 'error');
+          showMsg('Please enter your mobile number (Required).', 'error');
+          return;
+        }
+        if (rawPhone.length < 6) {
+          showMsg('Please enter a valid mobile number.', 'error');
+          return;
+        }
+        if (password.length < 6) {
+          showMsg('Password must be at least 6 characters long.', 'error');
           return;
         }
       }
